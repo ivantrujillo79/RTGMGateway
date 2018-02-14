@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" />
+  <xs:complexType name="EmpleadoCRMDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q1:EmpleadoCRM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmpleadoCRMDatos" nillable="true" type="tns:EmpleadoCRMDatos" />
+  <xs:complexType name="CondicionesCreditoCRMDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q2:CondicionesCreditoCRM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CondicionesCreditoCRMDatos" nillable="true" type="tns:CondicionesCreditoCRMDatos" />
+  <xs:complexType name="DatosFiscalesCRMDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q3:DatosFiscalesCRM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DatosFiscalesCRMDatos" nillable="true" type="tns:DatosFiscalesCRMDatos" />
+  <xs:complexType name="RutaCRMDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q4:RutaCRM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RutaCRMDatos" nillable="true" type="tns:RutaCRMDatos" />
+  <xs:complexType name="ZonaCRMDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q5:ZonaCRM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZonaCRMDatos" nillable="true" type="tns:ZonaCRMDatos" />
+  <xs:complexType name="DireccionEntregaCRMDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q6:DireccionEntregaCRM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DireccionEntregaCRMDatos" nillable="true" type="tns:DireccionEntregaCRMDatos" />
+</xs:schema>
