@@ -6,3 +6,12 @@ C:\Users\Iván Trujillo\Documents\RTGMGateway\bin\Debug\log4net.xml
 C:\Users\Iván Trujillo\Documents\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
 C:\Users\Iván Trujillo\Documents\RTGMGateway\obj\Debug\RTGMGateway.dll
 C:\Users\Iván Trujillo\Documents\RTGMGateway\obj\Debug\RTGMGateway.pdb
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.dll.config
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.dll
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.pdb
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\bin\Debug\System.Net.Http.dll
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\bin\Debug\System.Net.Http.xml
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\bin\Debug\es\System.Net.Http.resources.dll
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.dll
+C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.pdb

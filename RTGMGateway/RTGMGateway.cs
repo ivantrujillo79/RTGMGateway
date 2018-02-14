@@ -23,7 +23,7 @@ namespace RTGMGateway
         /// Método que recupera las direcciones de entrega
         /// </summary>
         /// <param name="ParSolicitud">Objeto del tipo SolicitudDireccionEntrega</param>
-        public RTGMCore.DireccionEntrega BusquedaDireccionEntrega(SolicitudDireccionEntrega ParSolicitud)
+        public RTGMCore.DireccionEntrega BuscarDireccionEntrega(SolicitudDireccionEntrega ParSolicitud)
         {
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
             try
@@ -55,7 +55,7 @@ namespace RTGMGateway
         }
 
 
-        public RTGMCore.DatosFiscales BusquedaDatosFiscales(SolicitudDireccionEntrega ParSolicitud)
+        public RTGMCore.DatosFiscales BuscarDatosFiscales(SolicitudDireccionEntrega ParSolicitud)
         {
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
             try
