@@ -87,13 +87,251 @@ namespace RTGMGateway
         }
     }
 
-    public struct SolicitudDireccionEntrega
+    public struct SolicitudGateway
     {
-        public RTGMCore.Fuente Fuente { get; set; }
-        public int IDDireccionEntrega { get; set; }
-        public int IDEmpresa { get; set; }
-        public bool Portatil { get; set; }
-        public int Autotanque { get; set; }
-    }
+
+        private RTGMCore.Fuente _Fuente;
+
+        private System.Nullable<int> _IDCliente;
+
+        private int _IDEmpresa;
+
+        private System.Nullable<int> _Sucursal;
+
+        private string _Telefono;
+
+        private string _CalleNombre;
+
+        private string _ColoniaNombre;
+
+        private string _MunicipioNombre;
+
+        private string _Nombre;
+
+        private System.Nullable<int> _NumeroExterior;
+
+        private string _NumeroInterior;
+
+        private System.Nullable<int> _TipoServicio;
+
+        private System.Nullable<int> _Zona;
+
+        private System.Nullable<int> _ZonaEconomica;
+
+        private int _ZonaLecturista;
+
+        private bool _Portatil;
+
+        private string _Usuario;
+
+        private string _Referencia;
+
+        private System.Nullable<int> _IDAutotanque;
+
+        public int IDEmpresa
+        {
+            get
+            {
+                return _IDEmpresa;
+            }
+            set
+            {
+                _IDEmpresa = value;
+            }
+        }
+
+        public System.Nullable<int> Sucursal
+        {
+            get
+            {
+                return _Sucursal;
+            }
+            set
+            {
+                _Sucursal = value;
+            }
+        }
+
+        public string Telefono
+        {
+            get
+            {
+                return _Telefono;
+            }
+            set
+            {
+                _Telefono = value;
+            }
+        }
+
+        public string CalleNombre
+        {
+            get
+            {
+                return _CalleNombre;
+            }
+            set
+            {
+                _CalleNombre = value;
+            }
+        }
+
+        public string ColoniaNombre
+        {
+            get
+            {
+                return _ColoniaNombre;
+            }
+            set
+            {
+                _ColoniaNombre = value;
+            }
+        }
+
+        public string MunicipioNombre
+        {
+            get
+            {
+                return _MunicipioNombre;
+            }
+            set
+            {
+                _MunicipioNombre = value;
+            }
+        }
+
+        public string Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                _Nombre = value;
+            }
+        }
+
+        public System.Nullable<int> NumeroExterior
+        {
+            get
+            {
+                return _NumeroExterior;
+            }
+            set
+            {
+                _NumeroExterior = value;
+            }
+        }
+
+        public string NumeroInterior
+        {
+            get
+            {
+                return _NumeroInterior;
+            }
+            set
+            {
+                _NumeroInterior = value;
+            }
+        }
+
+        public System.Nullable<int> TipoServicio
+        {
+            get
+            {
+                return _TipoServicio;
+            }
+            set
+            {
+                _TipoServicio = value;
+            }
+        }
+
+        public System.Nullable<int> Zona
+        {
+            get
+            {
+                return _Zona;
+            }
+            set
+            {
+                _Zona = value;
+            }
+        }
+
+        public System.Nullable<int> ZonaEconomica
+        {
+            get
+            {
+                return _ZonaEconomica;
+            }
+            set
+            {
+                _ZonaEconomica = value;
+            }
+        }
+
+        public int ZonaLecturista
+        {
+            get
+            {
+                return _ZonaLecturista;
+            }
+            set
+            {
+                _ZonaLecturista = value;
+            }
+        }
+
+        public bool Portatil
+        {
+            get
+            {
+                return _Portatil;
+            }
+            set
+            {
+                _Portatil = value;
+            }
+        }
+
+        public string Usuario
+        {
+            get
+            {
+                return _Usuario;
+            }
+            set
+            {
+                _Usuario = value;
+            }
+        }
+
+        public string Referencia
+        {
+            get
+            {
+                return _Referencia;
+            }
+            set
+            {
+                _Referencia = value;
+            }
+        }
+
+        public System.Nullable<int> IDAutotanque
+        {
+            get
+            {
+                return _IDAutotanque;
+            }
+            set
+            {
+                _IDAutotanque = value;
+            }
+        }
+
+    }//end SolicitudGateway
 
 }
