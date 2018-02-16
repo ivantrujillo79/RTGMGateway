@@ -49,12 +49,4 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DireccionEntregaCRMDatos" nillable="true" type="tns:DireccionEntregaCRMDatos" />
-  <xs:complexType name="PedidoCRMDatos">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q7:PedidoCRM">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PedidoCRMDatos" nillable="true" type="tns:PedidoCRMDatos" />
 </xs:schema>

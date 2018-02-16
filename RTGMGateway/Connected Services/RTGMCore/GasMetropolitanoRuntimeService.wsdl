@@ -16,12 +16,6 @@
   <wsdl:message name="IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_OutputMessage">
     <wsdl:part name="parameters" element="tns:BusquedaDireccionEntregaResponse" />
   </wsdl:message>
-  <wsdl:message name="IGasMetropolitanoRuntimeService_ConsultarPedidos_InputMessage">
-    <wsdl:part name="parameters" element="tns:ConsultarPedidos" />
-  </wsdl:message>
-  <wsdl:message name="IGasMetropolitanoRuntimeService_ConsultarPedidos_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ConsultarPedidosResponse" />
-  </wsdl:message>
   <wsdl:message name="IGasMetropolitanoRuntimeService_ConsultarDatosFiscales_InputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarDatosFiscales" />
   </wsdl:message>
@@ -33,10 +27,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntrega" message="tns:IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaResponse" message="tns:IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ConsultarPedidos">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos" message="tns:IGasMetropolitanoRuntimeService_ConsultarPedidos_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidosResponse" message="tns:IGasMetropolitanoRuntimeService_ConsultarPedidos_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="ConsultarDatosFiscales">
       <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscales" message="tns:IGasMetropolitanoRuntimeService_ConsultarDatosFiscales_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscalesResponse" message="tns:IGasMetropolitanoRuntimeService_ConsultarDatosFiscales_OutputMessage" />
@@ -46,15 +36,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="BusquedaDireccionEntrega">
       <soap:operation soapAction="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntrega" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ConsultarPedidos">
-      <soap:operation soapAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
