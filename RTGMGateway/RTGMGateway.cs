@@ -12,23 +12,63 @@ namespace RTGMGateway
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public string URLServicio { get; set; }
         RTGMCore.GasMetropolitanoRuntimeServiceClient serviceClient;
-
+        private double longitudRepuesta;
+        private int tiempoEspera;
+        private bool guardarLog;
 
         public RTGMGateway()
         {
             log.Info("Nueva instancia del Gateway ha sido creada.");
         }
 
+        public double LongitudRepuesta
+        {
+            get
+            {
+                return longitudRepuesta;
+            }
+            set
+            {
+                longitudRepuesta = value;
+            }
+        }
+
+        public int TiempoEspera
+        {
+            get
+            {
+                return tiempoEspera;
+            }
+            set
+            {
+                tiempoEspera = value;
+            }
+        }
+
+        public bool GuardarLog
+        {
+            get
+            {
+                return guardarLog;
+            }
+            set
+            {
+                guardarLog = value;
+            }
+        }
+
+        #region METODOS
+
         /// <summary>
         /// Método que recupera las direcciones de entrega
         /// </summary>
         /// <param name="ParSolicitud">Objeto del tipo SolicitudDireccionEntrega</param>
-        public RTGMCore.DireccionEntrega BuscarDireccionEntrega(SolicitudDireccionEntrega ParSolicitud)
+        public RTGMCore.DireccionEntrega buscarDireccionEntrega(SolicitudGateway ParSolicitud)
         {
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
             try
             {
-                log.Info("Inicia ejecución de método BusquedaDireccionEntrega");
+                log.Info("Inicia ejecución de método buscarDireccionEntrega");
                 BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
                 EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
@@ -36,13 +76,30 @@ namespace RTGMGateway
                 RTGMCore.Fuente source;
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
-                
-                log.Info("Inicia llamado a BusquedaDireccionEntrega, Source: " + ParSolicitud.Fuente + " ID: " + ParSolicitud.IDDireccionEntrega + " Empresa: " + ParSolicitud.IDEmpresa + " Portatil: " + ParSolicitud.Portatil + " Autotanque: " + ParSolicitud.Autotanque);
 
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDDireccionEntrega, ParSolicitud.IDEmpresa, null, null,
-                   null, null, null, null, null,
-                   null, null, null, null, null,
-                   null, ParSolicitud.Portatil, null, null, ParSolicitud.Autotanque);
+                //log.Info("Inicia llamado a BusquedaDireccionEntrega, Source: " + ParSolicitud.Fuente + " ID: " + ParSolicitud.IDDireccionEntrega + " Empresa: " + ParSolicitud.IDEmpresa + " Portatil: " + ParSolicitud.Portatil + " Autotanque: " + ParSolicitud.Autotanque);
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, null, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -53,14 +110,13 @@ namespace RTGMGateway
 
             return direcciones[0];
         }
-
-
-        public RTGMCore.DatosFiscales BuscarDatosFiscales(SolicitudDireccionEntrega ParSolicitud)
+        
+        public RTGMCore.DatosFiscales buscarDatoFiscal(SolicitudGateway ParSolicitud)
         {
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
             try
             {
-                log.Info("Inicia ejecución de método BusquedaDatosFiscales");
+                log.Info("Inicia ejecución de método buscarDatoFiscal");
                 BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
                 EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
@@ -69,74 +125,1004 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDatosFiscales, Source: " + ParSolicitud.Fuente + " ID: " + ParSolicitud.IDDireccionEntrega + " Empresa: " + ParSolicitud.IDEmpresa + " Portatil: " + ParSolicitud.Portatil + " Autotanque: " + ParSolicitud.Autotanque);
+                //log.Info("Inicia llamado a BusquedaDatosFiscales, Source: " + ParSolicitud.Fuente + " ID: " + ParSolicitud.IDDireccionEntrega + " Empresa: " + ParSolicitud.IDEmpresa + " Portatil: " + ParSolicitud.Portatil + " Autotanque: " + ParSolicitud.Autotanque);
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, null, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
 
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDDireccionEntrega, ParSolicitud.IDEmpresa, null, null,
-                   null, null, null, null, null,
-                   null, null, null, null, null,
-                   null, ParSolicitud.Portatil, null, null, ParSolicitud.Autotanque);
-
-                log.Info("Finaliza ejecución de método BusquedaDatosFiscales");
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
             }
-            log.Info("Se recuperan los datos fiscales en método BusquedaDatosFiscales");
+            log.Info("Se recuperan los datos fiscales en método buscarDatoFiscal");
             return direcciones[0].DatosFiscales;
         }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.Georreferencia buscarGeorreferencia(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarGeorreferencia");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera georreferencia en método buscarGeorreferencia");
+            return direcciones[0].Georreferencia;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.CondicionesCredito buscarCondicionesCredito(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarCondicionesCredito");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera condición de credito en método buscarCondicionesCredito");
+            return direcciones[0].CondicionesCredito;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.Empleado buscarEmpleado(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarEmpleado");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera empleado en método buscarEmpleado");
+            return direcciones[0].SupervisorComercial;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.Precio buscarPrecio(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarPrecio");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera precio en método buscarPrecio");
+            return direcciones[0].PrecioPorDefecto;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.ConfiguracionSuministro buscarConfiguracionSuministro(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarConfiguracionSuministro");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera configuración suministro en método buscarConfiguracionSuministro");
+            return direcciones[0].ConfiguracionSuministro;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.Zona buscarZona(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarZona");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera zona en método buscarZona");
+            return direcciones[0].ZonaSuministro;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.Ruta buscarRuta(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarRuta");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera ruta en método buscarRuta");
+            return direcciones[0].Ruta;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.ZonaEconomica buscarZonaEconomica(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarZonaEconomica");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera zona económica en método buscarZonaEconomica");
+            return direcciones[0].ZonaEconomica;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.ProgramacionSuministro buscarProgramacionSuministro(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarProgramacionSuministro");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera programación suministro en método buscarProgramacionSuministro");
+            return direcciones[0].ProgramacionSuministro;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.GiroCliente buscarGiroCliente(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarGiroCliente");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera giro cliente en método buscarGiroCliente");
+            //return direcciones[0].GiroCliente;
+            return null;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.RamoCliente buscarRamoCliente(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarRamoCliente");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera ramo cliente en método buscarRamoCliente");
+            return direcciones[0].Ramo;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.TipoCliente buscarTipoCliente(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarTipoCliente");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera tipo cliente en método buscarTipoCliente");
+            return direcciones[0].TipoCliente;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.OrigenCliente buscarOrigenCliente(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarOrigenCliente");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera origen cliente en método buscarOrigenCliente");
+            return direcciones[0].OrigenCliente;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.TarjetaCredito buscarTarjetaCredito(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarTarjetaCredito");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera tarjeta de crédito en método buscarTarjetaCredito");
+            return direcciones[0].TarjetasCredito[0];
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.AgendaGestionCobranza buscarAgendaCobranza(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarAgendaCobranza");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera agenda cobranza en método buscarAgendaCobranza");
+            //return direcciones[0].
+            return null;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.Producto buscarProducto(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarProducto");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera producto en método buscarProducto");
+            //return direcciones[0].
+            return null;
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.Descuento buscarDescuento(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarDescuento");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera descuento en método buscarDescuento");
+            return direcciones[0].Descuentos[0];
+        }
+
+        /// 
+        /// <param name="ParSolicitud"></param>
+        public RTGMCore.TipoFacturacion buscarTipoFacturacion(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("Inicia ejecución de método buscarTipoFacturacion");
+                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                RTGMCore.Fuente source;
+
+                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+
+                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                    ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, null,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+
+                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Se recupera tipo facturación en método buscarTipoFacturacion");
+            return direcciones[0].TipoFacturacion;
+        }
+
+        #endregion
     }
 
+    
     public struct SolicitudGateway
     {
 
-        private RTGMCore.Fuente _Fuente;
+        private RTGMCore.Fuente fuente;
 
-        private System.Nullable<int> _IDCliente;
+        private System.Nullable<int> idCliente;
 
-        private int _IDEmpresa;
+        private int idEmpresa;
 
-        private System.Nullable<int> _Sucursal;
+        private System.Nullable<int> sucursal;
 
-        private string _Telefono;
+        private string telefono;
 
-        private string _CalleNombre;
+        private string calleNombre;
 
-        private string _ColoniaNombre;
+        private string coloniaNombre;
 
-        private string _MunicipioNombre;
+        private string municipioNombre;
 
-        private string _Nombre;
+        private string nombre;
 
-        private System.Nullable<int> _NumeroExterior;
+        private System.Nullable<int> numeroExterior;
 
-        private string _NumeroInterior;
+        private string numeroInterior;
 
-        private System.Nullable<int> _TipoServicio;
+        private System.Nullable<int> tipoServicio;
 
-        private System.Nullable<int> _Zona;
+        private System.Nullable<int> zona;
 
-        private System.Nullable<int> _ZonaEconomica;
+        private System.Nullable<int> zonaEconomica;
 
-        private int _ZonaLecturista;
+        private int zonaLecturista;
 
-        private bool _Portatil;
+        private bool portatil;
 
-        private string _Usuario;
+        private string usuario;
 
-        private string _Referencia;
+        private string referencia;
 
-        private System.Nullable<int> _IDAutotanque;
+        private System.Nullable<int> idAutotanque;
+
+        #region PROPIEDADES
+        public RTGMCore.Fuente Fuente
+        {
+            get
+            {
+                return fuente;
+            }
+            set
+            {
+                fuente = value;
+            }
+        }
+
+        public System.Nullable<int> IDCliente
+        {
+            get
+            {
+                return idCliente;
+            }
+            set
+            {
+                idCliente = value;
+            }
+        }
 
         public int IDEmpresa
         {
             get
             {
-                return _IDEmpresa;
+                return idEmpresa;
             }
             set
             {
-                _IDEmpresa = value;
+                idEmpresa = value;
             }
         }
 
@@ -144,11 +1130,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _Sucursal;
+                return sucursal;
             }
             set
             {
-                _Sucursal = value;
+                sucursal = value;
             }
         }
 
@@ -156,11 +1142,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _Telefono;
+                return telefono;
             }
             set
             {
-                _Telefono = value;
+                telefono = value;
             }
         }
 
@@ -168,11 +1154,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _CalleNombre;
+                return calleNombre;
             }
             set
             {
-                _CalleNombre = value;
+                calleNombre = value;
             }
         }
 
@@ -180,11 +1166,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _ColoniaNombre;
+                return coloniaNombre;
             }
             set
             {
-                _ColoniaNombre = value;
+                coloniaNombre = value;
             }
         }
 
@@ -192,11 +1178,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _MunicipioNombre;
+                return municipioNombre;
             }
             set
             {
-                _MunicipioNombre = value;
+                municipioNombre = value;
             }
         }
 
@@ -204,11 +1190,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _Nombre;
+                return nombre;
             }
             set
             {
-                _Nombre = value;
+                nombre = value;
             }
         }
 
@@ -216,11 +1202,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _NumeroExterior;
+                return numeroExterior;
             }
             set
             {
-                _NumeroExterior = value;
+                numeroExterior = value;
             }
         }
 
@@ -228,11 +1214,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _NumeroInterior;
+                return numeroInterior;
             }
             set
             {
-                _NumeroInterior = value;
+                numeroInterior = value;
             }
         }
 
@@ -240,11 +1226,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _TipoServicio;
+                return tipoServicio;
             }
             set
             {
-                _TipoServicio = value;
+                tipoServicio = value;
             }
         }
 
@@ -252,11 +1238,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _Zona;
+                return zona;
             }
             set
             {
-                _Zona = value;
+                zona = value;
             }
         }
 
@@ -264,11 +1250,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _ZonaEconomica;
+                return zonaEconomica;
             }
             set
             {
-                _ZonaEconomica = value;
+                zonaEconomica = value;
             }
         }
 
@@ -276,11 +1262,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _ZonaLecturista;
+                return zonaLecturista;
             }
             set
             {
-                _ZonaLecturista = value;
+                zonaLecturista = value;
             }
         }
 
@@ -288,11 +1274,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _Portatil;
+                return portatil;
             }
             set
             {
-                _Portatil = value;
+                portatil = value;
             }
         }
 
@@ -300,11 +1286,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _Usuario;
+                return usuario;
             }
             set
             {
-                _Usuario = value;
+                usuario = value;
             }
         }
 
@@ -312,11 +1298,11 @@ namespace RTGMGateway
         {
             get
             {
-                return _Referencia;
+                return referencia;
             }
             set
             {
-                _Referencia = value;
+                referencia = value;
             }
         }
 
@@ -324,13 +1310,14 @@ namespace RTGMGateway
         {
             get
             {
-                return _IDAutotanque;
+                return idAutotanque;
             }
             set
             {
-                _IDAutotanque = value;
+                idAutotanque = value;
             }
         }
+        #endregion
 
     }//end SolicitudGateway
 
