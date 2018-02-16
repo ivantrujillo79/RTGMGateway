@@ -83,6 +83,9 @@
     <None Include="Connected Services\RTGMCore\RTGMGateway.RTGMCore.DireccionEntrega.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\RTGMCore\RTGMGateway.RTGMCore.Pedido.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="RTGMGateway.config" />
   </ItemGroup>

@@ -85,7 +85,7 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
@@ -96,10 +96,11 @@ namespace RTGMGateway
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
                                                                     ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
-                                                                    ParSolicitud.Zona, null, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
                                                                     ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -133,7 +134,7 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
@@ -144,10 +145,11 @@ namespace RTGMGateway
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
                                                                     ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
-                                                                    ParSolicitud.Zona, null, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
                                                                     ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -182,21 +184,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -231,21 +234,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -280,21 +284,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -329,21 +334,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -378,21 +384,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -427,21 +434,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -476,21 +484,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -525,21 +534,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -574,21 +584,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -623,21 +634,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -673,21 +685,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -722,21 +735,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -771,21 +785,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -820,21 +835,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -869,21 +885,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -919,21 +936,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -969,21 +987,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
@@ -1018,21 +1037,22 @@ namespace RTGMGateway
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
                     ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona + 
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
                     ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-
-                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente,
+  
+                direcciones = serviceClient.BusquedaDireccionEntrega(ParSolicitud.Fuente, ParSolicitud.IDCliente, 
                                                                     ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                                                                    ParSolicitud.Zona, null,
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque);
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
             }
