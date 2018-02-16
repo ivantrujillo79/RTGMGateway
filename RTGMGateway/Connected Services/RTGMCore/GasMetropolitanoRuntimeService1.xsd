@@ -65,4 +65,20 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DireccionEntregaSIGAMETPortatilDatos" nillable="true" type="tns:DireccionEntregaSIGAMETPortatilDatos" />
+  <xs:complexType name="PedidoSIGAMETDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q9:PedidoSIGAMET">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PedidoSIGAMETDatos" nillable="true" type="tns:PedidoSIGAMETDatos" />
+  <xs:complexType name="PedidoSigametPortatilDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q10:PedidoSigametPortatil">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PedidoSigametPortatilDatos" nillable="true" type="tns:PedidoSigametPortatilDatos" />
 </xs:schema>
