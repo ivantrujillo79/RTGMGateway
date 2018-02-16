@@ -1089,6 +1089,10 @@ namespace RTGMGateway
 
         private System.Nullable<int> idAutotanque;
 
+        private System.Nullable<int> ruta;
+
+        private System.Nullable<System.DateTime> fechaConsulta;
+
         #region PROPIEDADES
         public RTGMCore.Fuente Fuente
         {
@@ -1315,6 +1319,30 @@ namespace RTGMGateway
             set
             {
                 idAutotanque = value;
+            }
+        }
+
+        public System.Nullable<int> Ruta
+        {
+            get
+            {
+                return ruta;
+            }
+            set
+            {
+                ruta = value;
+            }
+        }
+
+        public System.Nullable<System.DateTime> FechaConsulta
+        {
+            get
+            {
+                return fechaConsulta;
+            }
+            set
+            {
+                fechaConsulta = value;
             }
         }
         #endregion
