@@ -125,7 +125,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarDatoFiscal" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
