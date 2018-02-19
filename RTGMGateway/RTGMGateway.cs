@@ -77,7 +77,6 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                //log.Info("Inicia llamado a BusquedaDireccionEntrega, Source: " + ParSolicitud.Fuente + " ID: " + ParSolicitud.IDDireccionEntrega + " Empresa: " + ParSolicitud.IDEmpresa + " Portatil: " + ParSolicitud.Portatil + " Autotanque: " + ParSolicitud.Autotanque);
                 log.Info("Inicia llamado a BusquedaDireccionEntrega" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
@@ -126,7 +125,6 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                //log.Info("Inicia llamado a BusquedaDatosFiscales, Source: " + ParSolicitud.Fuente + " ID: " + ParSolicitud.IDDireccionEntrega + " Empresa: " + ParSolicitud.IDEmpresa + " Portatil: " + ParSolicitud.Portatil + " Autotanque: " + ParSolicitud.Autotanque);
                 log.Info("Inicia llamado a BusquedaDireccionEntrega" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +

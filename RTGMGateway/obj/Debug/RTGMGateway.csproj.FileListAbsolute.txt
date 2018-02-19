@@ -15,3 +15,9 @@ C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\bin\Debug\es
 C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
 C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.dll
 C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.pdb
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.dll.config
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.pdb
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.pdb
