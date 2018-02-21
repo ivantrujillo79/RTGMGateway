@@ -77,7 +77,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarDireccionEntrega" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -101,7 +101,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarDireccionEntrega");
             }
             catch(Exception ex)
             {
@@ -149,7 +149,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarDatoFiscal");
             }
             catch (Exception ex)
             {
@@ -175,7 +175,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarGeorreferencia" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -199,7 +199,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarGeorreferencia");
             }
             catch (Exception ex)
             {
@@ -225,7 +225,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarCondicionesCredito" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -249,7 +249,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarCondicionesCredito");
             }
             catch (Exception ex)
             {
@@ -275,7 +275,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarEmpleado" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -299,7 +299,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarEmpleado");
             }
             catch (Exception ex)
             {
@@ -325,7 +325,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarPrecio" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -349,7 +349,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarPrecio");
             }
             catch (Exception ex)
             {
@@ -375,7 +375,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarConfiguracionSuministro" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -399,7 +399,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarConfiguracionSuministro");
             }
             catch (Exception ex)
             {
@@ -425,7 +425,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarZona" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -449,7 +449,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarZona");
             }
             catch (Exception ex)
             {
@@ -475,7 +475,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarRuta" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -499,7 +499,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarRuta");
             }
             catch (Exception ex)
             {
@@ -525,7 +525,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarZonaEconomica" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -549,7 +549,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarZonaEconomica");
             }
             catch (Exception ex)
             {
@@ -575,7 +575,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarProgramacionSuministro" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -599,7 +599,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarProgramacionSuministro");
             }
             catch (Exception ex)
             {
@@ -625,7 +625,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarGiroCliente" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -649,7 +649,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarGiroCliente");
             }
             catch (Exception ex)
             {
@@ -676,7 +676,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarRamoCliente" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -700,7 +700,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarRamoCliente");
             }
             catch (Exception ex)
             {
@@ -726,7 +726,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarTipoCliente" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -750,7 +750,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarTipoCliente");
             }
             catch (Exception ex)
             {
@@ -776,7 +776,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarOrigenCliente" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -800,7 +800,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarOrigenCliente");
             }
             catch (Exception ex)
             {
@@ -826,7 +826,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarTarjetaCredito" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -850,7 +850,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarTarjetaCredito");
             }
             catch (Exception ex)
             {
@@ -876,7 +876,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarAgendaCobranza" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -900,7 +900,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarAgendaCobranza");
             }
             catch (Exception ex)
             {
@@ -927,7 +927,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarProducto" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -951,7 +951,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarProducto");
             }
             catch (Exception ex)
             {
@@ -978,7 +978,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarDescuento" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -1002,7 +1002,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarDescuento");
             }
             catch (Exception ex)
             {
@@ -1028,7 +1028,7 @@ namespace RTGMGateway
 
                 Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
 
-                log.Info("Inicia llamado a BusquedaDireccionEntrega" +
+                log.Info("Inicia llamado a buscarTipoFacturacion" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -1052,7 +1052,7 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método BusquedaDireccionEntrega");
+                log.Info("Finaliza ejecución de método buscarTipoFacturacion");
             }
             catch (Exception ex)
             {
