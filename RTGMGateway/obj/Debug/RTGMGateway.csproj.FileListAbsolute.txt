@@ -20,7 +20,6 @@ C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGa
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.pdb
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\log4net.dll
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\log4net.xml
-C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.csprojResolveAssemblyReference.cache
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.dll
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.pdb
