@@ -25,3 +25,6 @@ C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGa
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.pdb
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\nunit.framework.dll
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\nunit.framework.xml
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.dll.CodeAnalysisLog.xml
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.dll.lastcodeanalysissucceeded
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.csprojResolveAssemblyReference.cache
