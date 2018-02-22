@@ -62,7 +62,7 @@ namespace RTGMGateway
         /// <summary>
         /// Método que recupera las direcciones de entrega
         /// </summary>
-        /// <param name="ParSolicitud">Objeto del tipo SolicitudDireccionEntrega</param>
+        /// <param name="ParSolicitud">Objeto del tipo SolicitudGateway</param>
         public RTGMCore.DireccionEntrega buscarDireccionEntrega(SolicitudGateway ParSolicitud)
         {
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();

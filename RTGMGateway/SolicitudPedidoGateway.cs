@@ -24,11 +24,11 @@ namespace RTGMGateway
 
 		private System.Nullable<int> idSucursal;
 
-		private System.Nullable<System.DateTime> fechaCompromisoIncicio;
+		private System.Nullable<System.DateTime> fechaCompromisoInicio;
 
 		private System.Nullable<System.DateTime> fechaCompromisoFin;
 
-		private System.Nullable<System.DateTime> fechaSumistroInicio;
+		private System.Nullable<System.DateTime> fechaSuministroInicio;
 
 		private System.Nullable<System.DateTime> fechaSuministroFin;
 
@@ -141,12 +141,12 @@ namespace RTGMGateway
 			}
 		}
 
-		public System.Nullable<System.DateTime> FechaCompromisoIncicio{
+		public System.Nullable<System.DateTime> FechaCompromisoInicio{
 			get{
-				return fechaCompromisoIncicio;
+				return fechaCompromisoInicio;
 			}
 			set{
-				fechaCompromisoIncicio = value;
+				fechaCompromisoInicio = value;
 			}
 		}
 
@@ -159,12 +159,12 @@ namespace RTGMGateway
 			}
 		}
 
-		public System.Nullable<System.DateTime> FechaSumistroInicio{
+		public System.Nullable<System.DateTime> FechaSuministroInicio{
 			get{
-				return fechaSumistroInicio;
+				return fechaSuministroInicio;
 			}
 			set{
-				fechaSumistroInicio = value;
+                fechaSuministroInicio = value;
 			}
 		}
 
