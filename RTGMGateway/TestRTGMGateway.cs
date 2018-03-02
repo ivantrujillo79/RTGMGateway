@@ -30,12 +30,12 @@ namespace RTGMGateway
 
             Assert.AreEqual(objDireccionEntega.Nombre.Trim(), Nombre);
         }
-        
+
         //[TestCase(1000578, 0, "57875000", "VIA MORELOS KM 14.5", "GEO INTERNACIONAL SA DE CV")]
         //[TestCase(6, 0, "56921243", "ANILLO PERIFERICO", "MARIA ELIZABETH URIBE GONZALEZ")]
         //[TestCase(3, 0, "56830138", "PRIV DE LOS CEDROS", "SIN EMPRESA")]
-        //[TestCase(0, -1, "", "", "")]
-        //[TestCase(null, 0, "", "", "")]
+        //[TestCase(9, 0, " ", "", "SIN EMPRESA")]
+        //[TestCase(16, 0, "", "!", "SIN EMPRESA")]
         public void pruebaRecuperaDatosFiscales(int Cliente, int Empresa, string Telefono, string Calle, string RazonSocial)
         {
             RTGMGateway objGateway = new RTGMGateway();
@@ -406,79 +406,6 @@ namespace RTGMGateway
             RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
 
             Assert.AreEqual(objDireccionEntega.TipoCliente.IDTipoCliente, TipoCliente);
-        }
-
-        [TestCase(80279, 0, "", "", "", "", null, null, 
-            "MARICELA BARNDA                                                                 ", )]
-        public void pruebaRecuperaOrigenCliente(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
-            string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior,
-            string NumeroInterior, int TipoServicio, int Zona, int Ruta, int IDOrigenCliente)
-        {
-            RTGMGateway objGateway = new RTGMGateway();
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
-            SolicitudGateway objRequest = new SolicitudGateway
-            {
-                Fuente = RTGMCore.Fuente.Sigamet,
-                IDCliente = Cliente,
-                IDEmpresa = Empresa,
-                Portatil = false,
-                IDAutotanque = Autotanque,
-                Telefono = Telefono,
-                CalleNombre = Calle,
-                ColoniaNombre = Colonia,
-                MunicipioNombre = Municipio,
-                Sucursal = Sucursal,
-                Nombre = NombreCliente,
-                NumeroExterior = NumeroExterior,
-                NumeroInterior = NumeroInterior,
-                TipoServicio = TipoServicio,
-                Zona = Zona,
-                Ruta = Ruta
-            };
-
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
-
-            Assert.AreEqual(objDireccionEntega.OrigenCliente.IDOrigenCliente, IDOrigenCliente);
-        }
-
-
-
-
-
-
-
-
-
-
-
-        //          Método sin implementación
-        public void pruebaRecuperaGiroCliente(int Cliente, int Empresa, string Telefono, string Calle,
-            string Colonia, string Municipio, int Sucursal, int Autotanque, string NombreCliente,
-            int NumeroExterior, string NumeroInterior, int TipoServicio, bool ProgramacionActiva)
-        {
-            //RTGMGateway objGateway = new RTGMGateway();
-            //objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
-            //SolicitudGateway objRequest = new SolicitudGateway
-            //{
-            //    Fuente = RTGMCore.Fuente.Sigamet,
-            //    IDCliente = Cliente,
-            //    IDEmpresa = Empresa,
-            //    Portatil = false,
-            //    IDAutotanque = Autotanque,
-            //    Telefono = Telefono,
-            //    CalleNombre = Calle,
-            //    ColoniaNombre = Colonia,
-            //    MunicipioNombre = Municipio,
-            //    Sucursal = Sucursal,
-            //    Nombre = NombreCliente,
-            //    NumeroExterior = NumeroExterior,
-            //    NumeroInterior = NumeroInterior,
-            //    TipoServicio = TipoServicio
-            //};
-
-            //RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
-
-            //Assert.AreEqual(objDireccionEntega.ProgramacionSuministro.ProgramacionActiva, ProgramacionActiva);
-        }
-    }
+        }        
+    }// end TestRTGMGateway
 }
