@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 
 namespace RTGMGateway
 {
@@ -152,7 +152,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarPedidos", ParSolicitud);
 
@@ -181,7 +181,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarPedidos", ParSolicitud);
 
@@ -212,7 +212,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarGeorreferencia", ParSolicitud);
 
@@ -242,7 +242,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarCondicionesCredito", ParSolicitud);
 
@@ -273,7 +273,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarEmpleado", ParSolicitud);
 
@@ -304,7 +304,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarPrecio", ParSolicitud);
 
@@ -335,7 +335,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarConfiguracionSuministro", ParSolicitud);
 
@@ -366,7 +366,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarZona", ParSolicitud);
 
@@ -396,7 +396,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarRuta", ParSolicitud);
 
@@ -427,7 +427,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarZonaEconomica", ParSolicitud);
 
@@ -458,7 +458,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarProgramacionSuministro", ParSolicitud);
 
@@ -489,7 +489,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarGiroCliente", ParSolicitud);
 
@@ -520,7 +520,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarRamoCliente", ParSolicitud);
 
@@ -551,7 +551,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarTipoCliente", ParSolicitud);
 
@@ -582,7 +582,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarOrigenCliente", ParSolicitud);
 
@@ -613,7 +613,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarTarjetaCredito", ParSolicitud);
 
@@ -644,7 +644,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarAgendaCobranza", ParSolicitud);
 
@@ -675,7 +675,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarProducto", ParSolicitud);
 
@@ -706,7 +706,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarDescuento", ParSolicitud);
 
@@ -737,7 +737,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                Enum.TryParse<RTGMCore.Fuente>("SIGAMET", out source);
+                source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarTipoFacturacion", ParSolicitud);
 
