@@ -13,6 +13,7 @@ namespace RTGMGateway
         //[TestCase(502602198, "BLAS RAMIREZ LUNA")]
         //[TestCase(null, "Venta al publico")]
         //[TestCase(0, "Venta al publico")]
+        //[TestCase(1, "")]
         public void pruebaRecuperaCliente(int Cliente, string Nombre)
         {
             RTGMGateway objGateway = new RTGMGateway();
@@ -20,10 +21,10 @@ namespace RTGMGateway
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 Fuente = RTGMCore.Fuente.Sigamet,
-                IDCliente = Cliente,
-                IDEmpresa = 0,
-                Portatil = false,
-                IDAutotanque = 52
+                //IDCliente = Cliente,
+                //IDEmpresa = 0,
+                //Portatil = false,
+                //IDAutotanque = 52
             };
 
             RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
@@ -50,10 +51,10 @@ namespace RTGMGateway
                 Telefono = Telefono,
                 CalleNombre = Calle
             };
-
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
             
-            Assert.AreEqual(objDireccionEntega.DatosFiscales.RazonSocial.Trim(), RazonSocial);
+            RTGMCore.DatosFiscales objDatosFiscales = objGateway.buscarDatoFiscal(objRequest);
+
+            Assert.AreEqual(objDatosFiscales.RazonSocial.Trim(), RazonSocial);
         }
 
         //[TestCase(8, 0, "55724061", "IGNACIO ARTEAGA", "SAN ANDRES", "0.00000000")]
@@ -78,9 +79,9 @@ namespace RTGMGateway
                 ColoniaNombre = Colonia
             };
 
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
+            RTGMCore.Georreferencia objGeorreferencia = objGateway.buscarGeorreferencia(objRequest);
 
-            Assert.AreEqual(objDireccionEntega.Georreferencia.Latitud, decimal.Parse(Latitud));
+            Assert.AreEqual(objGeorreferencia.Latitud, decimal.Parse(Latitud));
         }
 
         //[TestCase(57990055, 0, "57043430", "SERICULTURA", "VEINTE DE NOVIEMBRE 2DO TRAMO", "VENUSTIANO CARRANZA",
@@ -107,10 +108,10 @@ namespace RTGMGateway
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio
             };
-
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
-
-            Assert.AreEqual(objDireccionEntega.CondicionesCredito.CarteraDescripcion.Trim(), CarteraDescripcion);
+            
+            RTGMCore.CondicionesCredito objCondicionesCredito = objGateway.buscarCondicionesCredito(objRequest);
+            
+            Assert.AreEqual(objCondicionesCredito.CarteraDescripcion.Trim(), CarteraDescripcion);
         }
 
         //[TestCase(502246858, 0, "S/Teléfono", "CINE MEXICANO", "LOMAS ESTRELLA 1A SECCION", "IZTAPALAPA",
@@ -137,10 +138,10 @@ namespace RTGMGateway
                 MunicipioNombre = Municipio,
                 Sucursal = Sucursal
             };
+            
+            RTGMCore.Empleado objSupervisorComercial = objGateway.buscarEmpleado(objRequest);
 
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
-
-            Assert.AreEqual(objDireccionEntega.SupervisorComercial.IDEmpleado, Empleado);
+            Assert.AreEqual(objSupervisorComercial.IDEmpleado, Empleado);
         }
 
         //[TestCase(200023, 0, "55439234       ", "NEBRASKA", "NAPOLES", "BENITO JUAREZ", 0, "10.35")]
@@ -168,7 +169,7 @@ namespace RTGMGateway
             Assert.AreEqual(objDireccionEntega.PrecioPorDefecto.ValorPrecio, decimal.Parse(Precio));
         }
 
-        //[TestCase(666013, 0, "5700002        ", "LUIS G SADA", "BENITO JUAREZ NORTE XALOSTOC", "ECATEPEC", -23, 
+        //[TestCase(666013, 0, "5700002        ", "LUIS G SADA", "BENITO JUAREZ NORTE XALOSTOC", "ECATEPEC", -23,
         //    52, "+03.0")]
         //[TestCase(502298378, 0, "52473233", "VALLE DE BRAVO", "LOMA DE VALLESCONDIDO", "~", 0, 7, "+03.0")]
         //[TestCase(502638831, 0, "", "OTUMBA", " ", "ATIZAPAN DE ZARAGOZA", 0, 21, "+03.0")]
@@ -192,10 +193,10 @@ namespace RTGMGateway
                 MunicipioNombre = Municipio,
                 Sucursal = Sucursal,
             };
+            
+            RTGMCore.ConfiguracionSuministro objConfiguracionSuministro = objGateway.buscarConfiguracionSuministro(objRequest);
 
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
-
-            Assert.AreEqual(objDireccionEntega.ConfiguracionSuministro.Ajustes.Trim(), Ajustes);
+            Assert.AreEqual(objConfiguracionSuministro.Ajustes.Trim(), Ajustes);
         }
 
         //[TestCase(3700003, 0, "00000000", "LUIS G SADA", "BENITO JUAREZ NORTE XALOSTOC", "ECATEPEC", 0, 52,
@@ -227,17 +228,17 @@ namespace RTGMGateway
                 Sucursal = Sucursal,
                 Nombre = NombreCliente
             };
-
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
-
-            Assert.AreEqual(objDireccionEntega.ZonaSuministro.NumeroZona, NumeroZona);
+            
+            RTGMCore.Zona objZona = objGateway.buscarZona(objRequest);
+            
+            Assert.AreEqual(objZona.NumeroZona, NumeroZona);
         }
 
-        //[TestCase(6017, 0, "", "", "", "", 0, 52, "", 154, 16)]
-        //[TestCase(6018, 0, "", "", "", "", 0, 21, "", 0, 322)]
-        //[TestCase(6112, 0, "", "", "", "", 0, -9, "", -9, 24)]
-        //[TestCase(6308, 0, "", "", "", "", 0, 0, "", 0, 201)]
-        //[TestCase(6399, 0, "", "", "", "", 0, 0, "", -14, 16)]
+        [TestCase(6017, 0, "", "", "", "", 0, 52, "", 154, 16)]
+        [TestCase(6018, 0, "", "", "", "", 0, 21, "", 0, 322)]
+        [TestCase(6112, 0, "", "", "", "", 0, -9, "", -9, 24)]
+        [TestCase(6308, 0, "", "", "", "", 0, 0, "", 0, 201)]
+        [TestCase(6399, 0, "", "", "", "", 0, 0, "", -14, 16)]
         public void pruebaRecuperaRuta(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior,
             int NumeroRuta)
@@ -259,10 +260,10 @@ namespace RTGMGateway
                 Nombre = NombreCliente,
                 NumeroExterior = NumeroExterior
             };
-
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
-
-            Assert.AreEqual(objDireccionEntega.Ruta.NumeroRuta, NumeroRuta);
+            
+            RTGMCore.Ruta objRuta = objGateway.buscarRuta(objRequest);
+            
+            Assert.AreEqual(objRuta.NumeroRuta, NumeroRuta);
         }
 
         //[TestCase(46020, null, "57942437       ", "", "", "", 0, 52, "", 181, null, 0)]
