@@ -6,6 +6,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>False</Visible>
     </Content>
+    <Content Include="$(MSBuildThisFileDirectory)NUnit3.TestAdapter.pdb">
+      <Link>NUnit3.TestAdapter.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)nunit.engine.dll">
       <Link>nunit.engine.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -18,21 +23,6 @@
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Mono.Cecil.dll">
       <Link>Mono.Cecil.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Visible>False</Visible>
-    </Content>
-    <Content Include="$(MSBuildThisFileDirectory)Mono.Cecil.Pdb.dll">
-      <Link>Mono.Cecil.Pdb.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Visible>False</Visible>
-    </Content>
-    <Content Include="$(MSBuildThisFileDirectory)Mono.Cecil.Mdb.dll">
-      <Link>Mono.Cecil.Mdb.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Visible>False</Visible>
-    </Content>
-    <Content Include="$(MSBuildThisFileDirectory)Mono.Cecil.Rocks.dll">
-      <Link>Mono.Cecil.Rocks.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>False</Visible>
     </Content>
