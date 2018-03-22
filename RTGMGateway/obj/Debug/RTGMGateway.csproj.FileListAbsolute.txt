@@ -39,3 +39,4 @@ C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\NUnit3
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.dll.config
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.dll
 C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.pdb
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.csprojResolveAssemblyReference.cache

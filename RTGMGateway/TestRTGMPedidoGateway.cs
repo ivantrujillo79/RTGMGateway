@@ -10,18 +10,46 @@ namespace RTGMGateway
     class TestRTGMPedidoGateway
     {
 
-        //[TestCase(4, 0, "1")]
+        [TestCase(4, 0, "19.55350667")]
         public void pruebaRecuperaGeorreferencia(int IDCliente, int IDEmpresa, string Latitud)
         {
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
+                IDEmpresa = 0,
                 FuenteDatos = RTGMCore.Fuente.Sigamet,
-                IDDireccionEntrega = IDCliente,
-                FechaCompromisoInicio = Convert.ToDateTime("02/07/2002"),
-                IDZona = 209
-                //IDAutotanque = 52
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
+                Portatil = false,
+                IDUsuario = null,
+                IDDireccionEntrega = null,
+                IDSucursal = null,
+                FechaCompromisoInicio = DateTime.Now.Date,
+                FechaCompromisoFin = null,
+                FechaSuministroInicio = null,
+                FechaSuministroFin = null,
+                IDZona = 201,
+                IDRutaOrigen = null,
+                IDRutaBoletin = null,
+                IDRutaSuministro = null,
+                IDEstatusPedido = null,
+                EstatusPedidoDescripcion = null,
+                IDEstatusBoletin = null,
+                EstatusBoletin = "BOLETIN",
+                IDEstatusMovil = null,
+                EstatusMovilDescripcion = null,
+                IDAutotanque = null,
+                IDAutotanqueMovil = null,
+                SerieRemision = null,
+                FolioRemision = null,
+                SerieFactura = null,
+                FolioFactura = null,
+                IDZonaLecturista = null,
+                TipoPedido = null,
+                TipoServicio = null,
+                AñoPed = null,
+                IDPedido = null,
+                PedidoReferencia = null
             };
 
             List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
@@ -29,19 +57,47 @@ namespace RTGMGateway
             Assert.AreEqual(objPedido[0].Georreferencia.Latitud, decimal.Parse(Latitud));
         }
 
-        //[TestCase(88763, 0, 1)]
+        [TestCase(88763, 0, 201)]
         public void pruebaRecuperaZona(int IDCliente, int IDEmpresa, int IDZona)
         {
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
+
+                IDEmpresa = 0,
                 FuenteDatos = RTGMCore.Fuente.Sigamet,
-                //IDEmpresa = IDEmpresa,
-                IDDireccionEntrega = IDCliente,
-                //Portatil = false,
-                //IDAutotanque = 52
-                IDZona = 1
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
+                Portatil = false,
+                IDUsuario = null,
+                IDDireccionEntrega = null,
+                IDSucursal = null,
+                FechaCompromisoInicio = DateTime.Now.Date,
+                FechaCompromisoFin = null,
+                FechaSuministroInicio = null,
+                FechaSuministroFin = null,
+                IDZona = 201,
+                IDRutaOrigen = null,
+                IDRutaBoletin = null,
+                IDRutaSuministro = null,
+                IDEstatusPedido = null,
+                EstatusPedidoDescripcion = null,
+                IDEstatusBoletin = null,
+                EstatusBoletin = "BOLETIN",
+                IDEstatusMovil = null,
+                EstatusMovilDescripcion = null,
+                IDAutotanque = null,
+                IDAutotanqueMovil = null,
+                SerieRemision = null,
+                FolioRemision = null,
+                SerieFactura = null,
+                FolioFactura = null,
+                IDZonaLecturista = null,
+                TipoPedido = null,
+                TipoServicio = null,
+                AñoPed = null,
+                IDPedido = null,
+                PedidoReferencia = null
             };
 
             RTGMCore.Zona objZona = objPedidoGateway.buscarZona(objRequest);
