@@ -35,6 +35,7 @@
           <xs:element minOccurs="0" name="EntreCalle2Nombre" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="EstadoNombre" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FAlta" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FactorConversion" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="FechaConsulta" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="FuenteDatos" type="tns:Fuente" />
           <xs:element minOccurs="0" name="Georreferencia" nillable="true" type="tns:Georreferencia" />
@@ -144,8 +145,8 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:ServiceResult">
         <xs:sequence>
-          <xs:element minOccurs="0" name="CadaCuanto" nillable="true" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="Cardinalidad" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="CadaCuanto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Cardinalidad" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Dia" type="xs:int" />
           <xs:element minOccurs="0" name="DiaNombre" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="HoraFinGestion" nillable="true" type="xs:dateTime" />
@@ -381,6 +382,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IDEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="IDRuta" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="NumeroRuta" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="ReporteRAF" nillable="true" type="xs:boolean" />
         </xs:sequence>
@@ -515,6 +517,9 @@
       <xs:enumeration value="Boletin" />
       <xs:enumeration value="EnvioDispositivoMovil" />
       <xs:enumeration value="RegistroPedido" />
+      <xs:enumeration value="ActualizacionStatus" />
+      <xs:enumeration value="Metropoli" />
+      <xs:enumeration value="ServiciosTecnicos" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="TipoConsultaPedido" nillable="true" type="tns:TipoConsultaPedido" />
@@ -542,9 +547,11 @@
           <xs:element minOccurs="0" name="FCargo" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="FCompromiso" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="FEnvioMovil" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FLecturaAnterior" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="FStatusMovil" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="FSuministro" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="FolioFactura" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="FolioPresupuestoST" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="FolioRemision" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="FormaPago" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="GUID" nillable="true" type="xs:string" />
@@ -567,14 +574,18 @@
           <xs:element minOccurs="0" name="IDTipoServicio" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IDUsuarioAlta" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IDZona" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ImagenLectura" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Importe" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Impuesto" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Lecturista" nillable="true" type="tns:EmpleadoLecturista" />
           <xs:element minOccurs="0" name="LlamadaInsistente" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="MotivoCancelacion" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="NumeroImpresiones" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ObservacionesCancelacion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ObservacionesServiciosTecnicos" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PedidoReferencia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PedidosRelacionados" nillable="true" type="tns:ArrayOfPedido" />
           <xs:element minOccurs="0" name="PrioridadPedido" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ReporteRAF" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ReporteRAFBoletin" nillable="true" type="xs:string" />
@@ -605,18 +616,26 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:ServiceResult">
         <xs:sequence>
+          <xs:element minOccurs="0" name="CantidadLectura" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CantidadLecturaAnterior" type="xs:decimal" />
           <xs:element minOccurs="0" name="CantidadSolicitada" type="xs:decimal" />
           <xs:element minOccurs="0" name="CantidadSurtida" type="xs:decimal" />
           <xs:element minOccurs="0" name="DescuentoAplicable" type="xs:decimal" />
           <xs:element minOccurs="0" name="DescuentoAplicado" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiferenciaDeLecturas" type="xs:decimal" />
           <xs:element minOccurs="0" name="GUID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IDDetallePedido" type="xs:int" />
           <xs:element minOccurs="0" name="IDPedido" type="xs:int" />
+          <xs:element minOccurs="0" name="ImagenLectura" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Importe" type="xs:decimal" />
           <xs:element minOccurs="0" name="Impuesto" type="xs:decimal" />
           <xs:element minOccurs="0" name="ImpuestoAplicable" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PorcentajeTanque" type="xs:int" />
           <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
           <xs:element minOccurs="0" name="PrecioAplicable" type="xs:decimal" />
           <xs:element minOccurs="0" name="Producto" nillable="true" type="tns:Producto" />
+          <xs:element minOccurs="0" name="RedondeoAnterior" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Total" type="xs:decimal" />
           <xs:element minOccurs="0" name="TotalAplicable" type="xs:decimal" />
         </xs:sequence>
@@ -624,6 +643,26 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DetallePedido" nillable="true" type="tns:DetallePedido" />
+  <xs:complexType name="EmpleadoLecturista">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Empleado">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ZonaLecturista" nillable="true" type="tns:ZonaLecturista" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmpleadoLecturista" nillable="true" type="tns:EmpleadoLecturista" />
+  <xs:complexType name="ZonaLecturista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDZonaLecturista" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZonaLecturistaId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZonaLecturista" nillable="true" type="tns:ZonaLecturista" />
   <xs:complexType name="PedidoSIGAMET">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Pedido">
@@ -648,4 +687,18 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PedidoCRM" nillable="true" type="tns:PedidoCRM" />
+  <xs:simpleType name="TipoActualizacion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Saldo" />
+      <xs:enumeration value="Boletin" />
+      <xs:enumeration value="EnvioProgramacion" />
+      <xs:enumeration value="EstatusMovil" />
+      <xs:enumeration value="Liquidacion" />
+      <xs:enumeration value="AsignacionServicioTecnico" />
+      <xs:enumeration value="Facturacion" />
+      <xs:enumeration value="Metropoli" />
+      <xs:enumeration value="Cancelacion" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoActualizacion" nillable="true" type="tns:TipoActualizacion" />
 </xs:schema>
