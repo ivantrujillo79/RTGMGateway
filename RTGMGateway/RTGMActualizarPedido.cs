@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RTGMGateway
 {
-    class RTGMActualizarPedido
+    public class RTGMActualizarPedido
     {
         public string URLServicio { get; set; }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
