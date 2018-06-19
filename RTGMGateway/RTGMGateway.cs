@@ -118,7 +118,6 @@ namespace RTGMGateway
                 return direcciones[0];
             else
                 return null;
-
         }
         
         public RTGMCore.DatosFiscales buscarDatoFiscal(SolicitudGateway ParSolicitud)
@@ -164,9 +163,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recuperan los datos fiscales en método buscarDatoFiscal");
-            return direcciones[0].DatosFiscales;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].DatosFiscales;
+            else
+                return null;
         }
 
         /// 
@@ -214,9 +220,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera georreferencia en método buscarGeorreferencia");
-            return direcciones[0].Georreferencia;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].Georreferencia;
+            else
+                return null;
         }
 
         /// 
@@ -264,9 +277,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera condición de credito en método buscarCondicionesCredito");
-            return direcciones[0].CondicionesCredito;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].CondicionesCredito;
+            else
+                return null;
         }
 
         /// 
@@ -314,9 +334,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera empleado en método buscarEmpleado");
-            return direcciones[0].SupervisorComercial;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].SupervisorComercial;
+            else
+                return null;
         }
 
         /// 
@@ -364,9 +391,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera precio en método buscarPrecio");
-            return direcciones[0].PrecioPorDefecto;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].PrecioPorDefecto;
+            else
+                return null;
         }
 
         /// 
@@ -414,9 +448,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera configuración suministro en método buscarConfiguracionSuministro");
-            return direcciones[0].ConfiguracionSuministro;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].ConfiguracionSuministro;
+            else
+                return null;
         }
 
         /// 
@@ -464,9 +505,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera zona en método buscarZona");
-            return direcciones[0].ZonaSuministro;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].ZonaSuministro;
+            else
+                return null;
         }
 
         /// 
@@ -514,9 +562,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera ruta en método buscarRuta");
-            return direcciones[0].Ruta;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].Ruta;
+            else
+                return null;
         }
 
         /// 
@@ -564,9 +619,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera zona económica en método buscarZonaEconomica");
-            return direcciones[0].ZonaEconomica;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].ZonaEconomica;
+            else
+                return null;
         }
 
         /// 
@@ -614,9 +676,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera programación suministro en método buscarProgramacionSuministro");
-            return direcciones[0].ProgramacionSuministro;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].ProgramacionSuministro;
+            else
+                return null;
         }
 
         /// 
@@ -715,9 +784,17 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera ramo cliente en método buscarRamoCliente");
-            return direcciones[0].Ramo;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].Ramo;
+            else
+                return null;
+
         }
 
         /// 
@@ -765,9 +842,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera tipo cliente en método buscarTipoCliente");
-            return direcciones[0].TipoCliente;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].TipoCliente;
+            else
+                return null;
         }
 
         /// 
@@ -815,9 +899,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera origen cliente en método buscarOrigenCliente");
-            return direcciones[0].OrigenCliente;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].OrigenCliente;
+            else
+                return null;
         }
 
         /// 
@@ -865,9 +956,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera tarjeta de crédito en método buscarTarjetaCredito");
-            return direcciones[0].TarjetasCredito[0];
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].TarjetasCredito[0];
+            else
+                return null;
         }
 
         /// 
@@ -915,6 +1013,10 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera agenda cobranza en método buscarAgendaCobranza");
             //return direcciones[0].
@@ -1017,9 +1119,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera descuento en método buscarDescuento");
-            return direcciones[0].Descuentos[0];
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].Descuentos[0];
+            else
+                return null;
         }
 
         /// 
@@ -1067,9 +1176,16 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
             }
             log.Info("Se recupera tipo facturación en método buscarTipoFacturacion");
-            return direcciones[0].TipoFacturacion;
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0].TipoFacturacion;
+            else
+                return null;
         }
         #endregion
     }
