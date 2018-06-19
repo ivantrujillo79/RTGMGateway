@@ -13,18 +13,19 @@ namespace RTGMGateway
         //[TestCase(502602198, "BLAS RAMIREZ LUNA")]
         //[TestCase(null, "Venta al publico")]
         //[TestCase(0, "Venta al publico")]
-        //[TestCase(1, "")]
+        [TestCase(1, "")]
         public void pruebaRecuperaCliente(int Cliente, string Nombre)
         {
             RTGMGateway objGateway = new RTGMGateway();
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
-                //IDCliente = Cliente,
-                //IDEmpresa = 0,
-                //Portatil = false,
-                //IDAutotanque = 52
+                //Fuente = RTGMCore.Fuente.Sigamet,
+                Fuente = RTGMCore.Fuente.CRM,
+                IDCliente = Cliente,
+                IDEmpresa = 1,
+                Portatil = false,
+                IDAutotanque = 52
             };
 
             RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
@@ -32,7 +33,7 @@ namespace RTGMGateway
             Assert.AreEqual(objDireccionEntega.Nombre.Trim(), Nombre);
         }
 
-        //[TestCase(1000578, 0, "57875000", "VIA MORELOS KM 14.5", "GEO INTERNACIONAL SA DE CV")]
+        [TestCase(1000578, 0, "57875000", "VIA MORELOS KM 14.5", "GEO INTERNACIONAL SA DE CV")]
         //[TestCase(6, 0, "56921243", "ANILLO PERIFERICO", "MARIA ELIZABETH URIBE GONZALEZ")]
         //[TestCase(3, 0, "56830138", "PRIV DE LOS CEDROS", "SIN EMPRESA")]
         //[TestCase(9, 0, " ", "", "SIN EMPRESA")]

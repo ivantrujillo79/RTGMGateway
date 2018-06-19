@@ -108,9 +108,17 @@ namespace RTGMGateway
             catch(Exception ex)
             {
                 log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n"+ex.Message);
+                }
             }
 
-            return direcciones[0];
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones[0];
+            else
+                return null;
+
         }
         
         public RTGMCore.DatosFiscales buscarDatoFiscal(SolicitudGateway ParSolicitud)
@@ -1065,5 +1073,13 @@ namespace RTGMGateway
         }
         #endregion
     }
+
+    //public class rtgmInvalidResponseException : Exception
+    //{
+    //    public rtgmInvalidResponseException(string Mensaje)
+    //    {
+    //        new Exception(Mensaje);
+    //    }
+    //}
     
 }
