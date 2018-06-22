@@ -10,8 +10,8 @@ namespace RTGMGateway
     class TestRTGMPedidoGateway
     {
         //  DireccionEntrega
-        [TestCase(502692435, 0, "ELIZABETH LEON")]
-        public void pruebaRecuperaDireccionEntrega(int IDCliente, int IDEmpresa, string Cliente)
+        [TestCase("201820147549", 1, 502627606)]
+        public void pruebaRecuperaDireccionEntrega(string PedidoReferencia, int IDEmpresa, int IDDireccionEntrega)
         {
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
@@ -20,10 +20,11 @@ namespace RTGMGateway
                 IDEmpresa = IDEmpresa,
                 FuenteDatos = RTGMCore.Fuente.Sigamet,
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
-                IDDireccionEntrega = IDCliente,
                 FechaCompromisoInicio = DateTime.Now.Date,
                 IDZona = 201,
                 EstatusBoletin = "BOLETIN",
+                PedidoReferencia = PedidoReferencia,
+                IDDireccionEntrega = null,
                 Portatil = false,
                 IDUsuario = null,
                 IDSucursal = null,
@@ -48,21 +49,21 @@ namespace RTGMGateway
                 TipoPedido = null,
                 TipoServicio = null,
                 AñoPed = null,
-                IDPedido = null,
-                PedidoReferencia = null
+                IDPedido = null
             };
 
             List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
 
-            Assert.AreEqual(objPedido[0].DireccionEntrega.Nombre.Trim(), Cliente);
+            Assert.AreEqual(IDDireccionEntrega, objPedido[0].IDDireccionEntrega);
         }
 
         //  Georreferencia
-        [TestCase(4, 0, "19.55350667")]
-        public void pruebaRecuperaGeorreferencia(int IDCliente, int IDEmpresa, string Latitud)
+        [TestCase("201820146299", 1, "19.54064367")]
+        public void pruebaRecuperaGeorreferencia(string PedidoReferencia, int IDEmpresa, string Latitud)
         {
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
                 IDEmpresa = IDEmpresa,
@@ -71,9 +72,10 @@ namespace RTGMGateway
                 FechaCompromisoInicio = DateTime.Now.Date,
                 IDZona = 201,
                 EstatusBoletin = "BOLETIN",
+                PedidoReferencia = PedidoReferencia,
+                IDDireccionEntrega = null,
                 Portatil = false,
                 IDUsuario = null,
-                IDDireccionEntrega = null,
                 IDSucursal = null,
                 FechaCompromisoFin = null,
                 FechaSuministroInicio = null,
@@ -96,42 +98,41 @@ namespace RTGMGateway
                 TipoPedido = null,
                 TipoServicio = null,
                 AñoPed = null,
-                IDPedido = null,
-                PedidoReferencia = null
+                IDPedido = null
             };
 
-            List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
+            RTGMCore.Georreferencia objGeorreferencia = objPedidoGateway.buscarGeorreferencia(objRequest);
 
-            Assert.AreEqual(objPedido[0].Georreferencia.Latitud, decimal.Parse(Latitud));
+            Assert.AreEqual(decimal.Parse(Latitud), objGeorreferencia.Latitud);
         }
 
-        [TestCase(88763, 0, 201)]
-        public void pruebaRecuperaZona(int IDCliente, int IDEmpresa, int IDZona)
+        [TestCase(502615080, 1, 2)]
+        public void pruebaRecuperaZona(int Cliente, int IDEmpresa, int IDZona)
         {
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
 
-                IDEmpresa = 0,
+                IDEmpresa = IDEmpresa,
                 FuenteDatos = RTGMCore.Fuente.Sigamet,
-                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido,
+                FechaCompromisoInicio = DateTime.Now.Date,
+                EstatusBoletin = "BOLETIN",
+                IDDireccionEntrega = Cliente,
+                PedidoReferencia = null,
                 Portatil = false,
                 IDUsuario = null,
-                IDDireccionEntrega = null,
                 IDSucursal = null,
-                FechaCompromisoInicio = DateTime.Now.Date,
                 FechaCompromisoFin = null,
                 FechaSuministroInicio = null,
                 FechaSuministroFin = null,
-                IDZona = 201,
                 IDRutaOrigen = null,
                 IDRutaBoletin = null,
                 IDRutaSuministro = null,
                 IDEstatusPedido = null,
                 EstatusPedidoDescripcion = null,
                 IDEstatusBoletin = null,
-                EstatusBoletin = "BOLETIN",
                 IDEstatusMovil = null,
                 EstatusMovilDescripcion = null,
                 IDAutotanque = null,
@@ -140,65 +141,17 @@ namespace RTGMGateway
                 FolioRemision = null,
                 SerieFactura = null,
                 FolioFactura = null,
+                IDZona = null,
                 IDZonaLecturista = null,
                 TipoPedido = null,
                 TipoServicio = null,
                 AñoPed = null,
-                IDPedido = null,
-                PedidoReferencia = null
+                IDPedido = null
             };
 
             RTGMCore.Zona objZona = objPedidoGateway.buscarZona(objRequest);
 
-            Assert.AreEqual(objZona.IDZona, IDZona);
-        }
-
-        //  Pedidos
-        [TestCase(14876, 0, "201820614876")]
-        public void pruebaRecuperaPedidoReferencia(int Pedido, int IDEmpresa, string PedidoReferencia)
-        {
-            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
-            objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
-            SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
-            {
-                IDEmpresa = IDEmpresa,
-                FuenteDatos = RTGMCore.Fuente.Sigamet,
-                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
-                IDDireccionEntrega = null,
-                FechaCompromisoInicio = DateTime.Now.Date,
-                IDZona = 206,
-                EstatusBoletin = "BOLETIN",
-                Portatil = false,
-                IDUsuario = null,
-                IDSucursal = null,
-                FechaCompromisoFin = null,
-                FechaSuministroInicio = null,
-                FechaSuministroFin = null,
-                IDRutaOrigen = null,
-                IDRutaBoletin = null,
-                IDRutaSuministro = null,
-                IDEstatusPedido = null,
-                EstatusPedidoDescripcion = null,
-                IDEstatusBoletin = null,
-                IDEstatusMovil = null,
-                EstatusMovilDescripcion = null,
-                IDAutotanque = null,
-                IDAutotanqueMovil = null,
-                SerieRemision = null,
-                FolioRemision = null,
-                SerieFactura = null,
-                FolioFactura = null,
-                IDZonaLecturista = null,
-                TipoPedido = null,
-                TipoServicio = null,
-                AñoPed = null,
-                IDPedido = Pedido,
-                PedidoReferencia = null
-            };
-
-            List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
-
-            Assert.AreEqual(objPedido[0].PedidoReferencia.Trim(), PedidoReferencia);
+            Assert.AreEqual(IDZona, objZona.IDZona);
         }
     }
 }
