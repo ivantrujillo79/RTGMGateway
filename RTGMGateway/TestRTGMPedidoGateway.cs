@@ -10,15 +10,16 @@ namespace RTGMGateway
     class TestRTGMPedidoGateway
     {
         //  DireccionEntrega
-        [TestCase("201820147549", 1, 502627606)]
-        public void pruebaRecuperaDireccionEntrega(string PedidoReferencia, int IDEmpresa, int IDDireccionEntrega)
+        [TestCase("201820147549", 1, 502627606, RTGMCore.Fuente.Sigamet)]
+        [TestCase("201820147549", 1, 502627606, RTGMCore.Fuente.CRM)]
+        public void pruebaRecuperaDireccionEntrega(string PedidoReferencia, int IDEmpresa, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
         {
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
                 IDEmpresa = IDEmpresa,
-                FuenteDatos = RTGMCore.Fuente.Sigamet,
+                FuenteDatos = Fuente,
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
                 FechaCompromisoInicio = DateTime.Now.Date,
                 IDZona = 201,

@@ -9,39 +9,16 @@ namespace RTGMGateway
     [TestFixture]
     class TestRTGMGateway
     {
-        [TestCase(502602197, "GMO PM ROSTICERIAS MI PAN SA DE CV")]
-        [TestCase(502602198, "BLAS RAMIREZ LUNA")]
-        [TestCase(null, "Venta al publico")]
-        [TestCase(0, "Venta al publico")]
-        //[TestCase(1, "")]
-        public void pruebaRecuperaCliente(int Cliente, string Nombre)
-        {
-            RTGMGateway objGateway = new RTGMGateway();
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
-            SolicitudGateway objRequest = new SolicitudGateway
-            {
-                //Fuente = RTGMCore.Fuente.CRM,
-                Fuente = RTGMCore.Fuente.Sigamet,
-                IDCliente = Cliente,
-                IDEmpresa = 1,
-                Portatil = false,
-                IDAutotanque = 52
-            };
-
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
-
-            Assert.AreEqual(objDireccionEntega.Nombre.Trim(), Nombre);
-        }
-
-        [TestCase(502602197, "GMO PM ROSTICERIAS MI PAN SA DE CV", RTGMCore.Fuente.CRM)]
+        /*[TestCase(502602197, "GMO PM ROSTICERIAS MI PAN SA DE CV", RTGMCore.Fuente.CRM)]
         [TestCase(502602197, "GMO PM ROSTICERIAS MI PAN SA DE CV", RTGMCore.Fuente.Sigamet)]
         [TestCase(502602198, "BLAS RAMIREZ LUNA", RTGMCore.Fuente.CRM)]
         [TestCase(502602198, "BLAS RAMIREZ LUNA", RTGMCore.Fuente.Sigamet)]
         [TestCase(null, "Venta al publico", RTGMCore.Fuente.CRM)]
         [TestCase(null, "Venta al publico", RTGMCore.Fuente.Sigamet)]
         [TestCase(0, "Venta al publico", RTGMCore.Fuente.CRM)]
-        [TestCase(0, "Venta al publico", RTGMCore.Fuente.Sigamet)]
-        //[TestCase(1, "")]
+        [TestCase(0, "Venta al publico", RTGMCore.Fuente.Sigamet)]*/
+        [TestCase(1, "bserrano", RTGMCore.Fuente.CRM)]
+        [TestCase(1, "FILOMENA REYES PEÑALOZA", RTGMCore.Fuente.Sigamet)]
         public void pruebaRecuperaCliente(int Cliente, string Nombre,RTGMCore.Fuente Fuente)
         {
             RTGMGateway objGateway = new RTGMGateway();
@@ -52,7 +29,8 @@ namespace RTGMGateway
                 IDCliente = Cliente,
                 IDEmpresa = 1,
                 Portatil = false,
-                IDAutotanque = 52
+                IDAutotanque = null,
+                FechaConsulta = DateTime.Now
             };
 
             RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);

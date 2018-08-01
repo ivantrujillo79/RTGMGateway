@@ -9,8 +9,9 @@ namespace RTGMGateway
     [TestFixture]
     class TestRTGMActualizaPedido
     {
-        [TestCase]
-        public void pruebaActualizaPedido()
+        [TestCase(RTGMCore.Fuente.Sigamet)]
+        [TestCase(RTGMCore.Fuente.CRM)]
+        public void pruebaActualizaPedido(RTGMCore.Fuente FuentePrueba)
         {
             RTGMActualizarPedido objGateway = new RTGMActualizarPedido();
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
@@ -22,13 +23,15 @@ namespace RTGMGateway
             lstPedido.Add(new RTGMCore.PedidoCRMSaldo { IDPedido = 6165, IDZona = 6, AnioPed = 2018, Abono = 200, PedidoReferencia = "6165" });
             lstPedido.Add(new RTGMCore.PedidoCRMSaldo { IDPedido = 6166, IDZona = 6, AnioPed = 2018, Abono = 200, PedidoReferencia = "6166" });
             
-            SolicitudActualizarPedido Solicitud = new SolicitudActualizarPedido { Fuente = RTGMCore.Fuente.CRM, IDEmpresa = 1, Pedidos = lstPedido, Portatil = false, TipoActualizacion = RTGMCore.TipoActualizacion.Saldo, Usuario = "ROPIMA" };
+            SolicitudActualizarPedido Solicitud = new SolicitudActualizarPedido { Fuente = FuentePrueba, IDEmpresa = 1, Pedidos = lstPedido, Portatil = false, TipoActualizacion = RTGMCore.TipoActualizacion.Saldo, Usuario = "ROPIMA" };
 
             List<RTGMCore.Pedido> ListaRespuesta = objGateway.ActualizarPedido(Solicitud);
 
             Assert.IsNotNull(ListaRespuesta);
             Assert.AreEqual(ListaRespuesta.Count, 5);
         }
+
+
 
 
     }
