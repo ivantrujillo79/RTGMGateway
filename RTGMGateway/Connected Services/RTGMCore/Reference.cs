@@ -11,8 +11,8 @@
 namespace RTGMCore {
     using System.Runtime.Serialization;
     using System;
-    
-    
+    using System.Xml.Serialization;
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Fuente", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     public enum Fuente : int {
@@ -2626,6 +2626,7 @@ namespace RTGMCore {
             }
         }
         
+        [XmlIgnore]
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.Dictionary<string, string> PreferenciasCliente {
             get {
@@ -5050,6 +5051,12 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaSIGAMETDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos")]
     [System.SerializableAttribute()]
+    [XmlInclude(typeof(RTGMCore.CondicionesCreditoSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.EmpleadoSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
+    [XmlInclude(typeof(RTGMCore.DatosFiscalesSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.RutaSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.ZonaSIGAMETDatos))]
     public partial class DireccionEntregaSIGAMETDatos : RTGMCore.DireccionEntregaSIGAMET {
     }
     
