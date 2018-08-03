@@ -36,7 +36,9 @@ namespace RTGMGateway
 
         private System.Nullable<int> zonaEconomica;
 
-        private int zonaLecturista;
+        //private int zonaLecturista;
+
+        private System.Nullable<int> zonaLecturista;
 
         private bool portatil;
 
@@ -220,7 +222,19 @@ namespace RTGMGateway
             }
         }
 
-        public int ZonaLecturista
+        //public int ZonaLecturista
+        //{
+        //    get
+        //    {
+        //        return zonaLecturista;
+        //    }
+        //    set
+        //    {
+        //        zonaLecturista = value;
+        //    }
+        //}
+
+        public System.Nullable<int> ZonaLecturista
         {
             get
             {
