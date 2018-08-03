@@ -3521,6 +3521,8 @@ namespace RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRM))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
+    [XmlInclude(typeof(RTGMCore.PedidoSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
     public partial class Pedido : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -5013,6 +5015,7 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PedidoCRMDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
     [System.SerializableAttribute()]
+    [XmlRoot(ElementName = "Pedido")]
     public partial class PedidoCRMDatos : RTGMCore.PedidoCRM {
     }
     
@@ -5072,6 +5075,12 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaCRMDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
     [System.SerializableAttribute()]
+    [XmlInclude(typeof(RTGMCore.CondicionesCreditoCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.EmpleadoCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
+    [XmlInclude(typeof(RTGMCore.DatosFiscalesCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.RutaCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.ZonaCRMDatos))]
     public partial class DireccionEntregaCRMDatos : RTGMCore.DireccionEntregaCRM {
     }
     
