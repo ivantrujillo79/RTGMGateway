@@ -9,14 +9,11 @@ namespace RTGMGateway
     [TestFixture]
     class TestRTGM
     {
-        private const string CONSULTADIRECCION = "ConsultaDireccion";
-        private const string CONSULTAPEDIDO = "ConsultaPedido";
-        private const string ACTUALIZARPEDIDO = "ActualizarPedido";
-
-        [TestCase(502627606, "JORGE MORALES LOPEZ", "201820147549", RTGMCore.Fuente.Sigamet)]
-        public void pruebaLiquidacion(int cliente, string nombre, string pedidoReferencia, RTGMCore.Fuente fuente)
+        [TestCase(502627606, "ROBLEDO 24 COL. REAL ESMERALDA, ATIZAPAN DE ZARAGOZA", "201820147549", RTGMCore.Fuente.Sigamet)]
+        [TestCase(6, "HERRADURA 00     AGUILERA  AZCAPOTZALCO", "1215", RTGMCore.Fuente.CRM)]
+        public void pruebaLiquidacion(int cliente, string direccion, string pedidoReferencia, RTGMCore.Fuente fuente)
         {
-            string rutaConsultaDireccion = AppDomain.CurrentDomain.BaseDirectory + "/" + fuente.ToString() + ".xml";
+            bool respuestaExitosa = true;
             
             RTGMGateway obGateway = new RTGMGateway();
             obGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
@@ -25,7 +22,7 @@ namespace RTGMGateway
             RTGMActualizarPedido obGatewayActualizar = new RTGMActualizarPedido();
             obGatewayActualizar.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
 
-            //  Consultar direccion entrega
+            /*      BUSQUEDA DIRECCION ENTREGA      */
             SolicitudGateway obSolicitudGateway = new SolicitudGateway
             {
                 Fuente              = fuente,
@@ -36,36 +33,64 @@ namespace RTGMGateway
             RTGMCore.DireccionEntrega obDireccionEntrega = new RTGMCore.DireccionEntrega();
             obDireccionEntrega = obGateway.buscarDireccionEntrega(obSolicitudGateway);
 
-            Assert.IsNotNull(obDireccionEntrega.Nombre);
-            Assert.AreEqual(nombre, obDireccionEntrega.Nombre.Trim());
+            try
+            {
+                Assert.IsNotNull(obDireccionEntrega.DireccionCompleta);
+                Assert.AreEqual(direccion, obDireccionEntrega.DireccionCompleta.Trim());
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
 
-            Utilerias.ExportarAXML(obSolicitudGateway, rutaConsultaDireccion);
-            Utilerias.ExportarAXML(obDireccionEntrega, rutaConsultaDireccion, true);
+            Utilerias.Exportar(obSolicitudGateway, obDireccionEntrega, fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
 
-            //  Consultar pedido
+            /*      CONSULTAR PEDIDO        */
+            respuestaExitosa = true;
             SolicitudPedidoGateway obSolicitudPedido = new SolicitudPedidoGateway
             {
                 FuenteDatos             = fuente,
                 IDEmpresa               = 1,
-                TipoConsultaPedido      = RTGMCore.TipoConsultaPedido.Boletin,
-                FechaCompromisoInicio   = DateTime.Now.Date,
+                TipoConsultaPedido      = RTGMCore.TipoConsultaPedido.RegistroPedido,
+                //FechaCompromisoInicio   = DateTime.Now.Date,
                 EstatusBoletin          = "BOLETIN",
-                PedidoReferencia        = pedidoReferencia,
+                IDPedido                = 1
+                //PedidoReferencia        = pedidoReferencia,
+                //IDZona                  = 201
             };
 
             List<RTGMCore.Pedido> obPedidos = obGatewayPedido.buscarPedidos(obSolicitudPedido);
-            Assert.AreEqual(cliente, obPedidos[0].IDDireccionEntrega);
 
-            //  Actualizar pedido
-            List<RTGMCore.Pedido> obPedidosActualizar = new List<RTGMCore.Pedido>();
-            obPedidosActualizar.Add(new RTGMCore.PedidoCRMSaldo
+            try
             {
-                IDPedido            = obPedidos[0].IDPedido,
-                IDZona              = obPedidos[0].IDZona,
-                AnioPed             = obPedidos[0].AnioPed,
-                Abono               = obPedidos[0].Total == null ? 0 : (decimal)obPedidos[0].Total,
-                PedidoReferencia    = obPedidos[0].PedidoReferencia
-            });
+                Assert.AreEqual(cliente, obPedidos[0].IDDireccionEntrega);
+            }
+            catch(Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(obSolicitudPedido, obPedidos, fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
+
+            /*    ACTUALIZAR PEDIDO     */
+            respuestaExitosa = true;
+
+            //List<RTGMCore.Pedido> obPedidosActualizar = new List<RTGMCore.Pedido>();
+            //obPedidosActualizar.Add(new RTGMCore.PedidoCRMSaldo
+            //{
+            //    IDPedido            = obPedidos[0].IDPedido,
+            //    IDZona              = obPedidos[0].IDZona,
+            //    AnioPed             = obPedidos[0].AnioPed,
+            //    Abono               = obPedidos[0].Total == null ? 0 : (decimal)obPedidos[0].Total,
+            //    PedidoReferencia    = obPedidos[0].PedidoReferencia
+            //});
+
+            List<RTGMCore.Pedido> obPedidosActualizar = new List<RTGMCore.Pedido>();
+            obPedidosActualizar.Add(new RTGMCore.PedidoCRMSaldo { IDPedido = 6162, IDZona = 6, AnioPed = 2018, Abono = 200, PedidoReferencia = "6162" });
+            obPedidosActualizar.Add(new RTGMCore.PedidoCRMSaldo { IDPedido = 6163, IDZona = 6, AnioPed = 2018, Abono = 200, PedidoReferencia = "6163" });
+            obPedidosActualizar.Add(new RTGMCore.PedidoCRMSaldo { IDPedido = 6164, IDZona = 6, AnioPed = 2018, Abono = 200, PedidoReferencia = "6164" });
+            obPedidosActualizar.Add(new RTGMCore.PedidoCRMSaldo { IDPedido = 6165, IDZona = 6, AnioPed = 2018, Abono = 200, PedidoReferencia = "6165" });
+            obPedidosActualizar.Add(new RTGMCore.PedidoCRMSaldo { IDPedido = 6166, IDZona = 6, AnioPed = 2018, Abono = 200, PedidoReferencia = "6166" });
 
             SolicitudActualizarPedido obSolicitudActualizar = new SolicitudActualizarPedido
             {
@@ -78,7 +103,19 @@ namespace RTGMGateway
 
             List<RTGMCore.Pedido> obPedidosRespuesta = obGatewayActualizar.ActualizarPedido(obSolicitudActualizar);
 
-            Assert.AreEqual(1, obPedidosRespuesta.Count);
+            try
+            {
+                Assert.AreEqual(5, obPedidosRespuesta.Count);
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(obSolicitudActualizar, obPedidosRespuesta, fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedido);
         }
+
+
     }
 }
+
