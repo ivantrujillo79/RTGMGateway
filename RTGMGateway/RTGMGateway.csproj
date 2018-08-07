@@ -61,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DAO.cs" />
     <Compile Include="RTGMActualizarPedido.cs" />
     <Compile Include="RTGMGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

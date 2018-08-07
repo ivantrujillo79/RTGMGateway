@@ -15,7 +15,7 @@ namespace RTGMGateway
         {
             bool respuestaExitosa = true;
             
-            RTGMGateway obGateway = new RTGMGateway();
+            RTGMGateway obGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             obGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             RTGMPedidoGateway obGatewayPedido = new RTGMPedidoGateway();
             obGatewayPedido.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";

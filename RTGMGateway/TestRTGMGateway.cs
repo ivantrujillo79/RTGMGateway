@@ -21,7 +21,7 @@ namespace RTGMGateway
         [TestCase(1, "FILOMENA REYES PEÑALOZA", RTGMCore.Fuente.Sigamet)]
         public void pruebaRecuperaCliente(int Cliente, string Nombre,RTGMCore.Fuente Fuente)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -30,7 +30,7 @@ namespace RTGMGateway
                 IDEmpresa = 1,
                 Portatil = false,
                 IDAutotanque = null,
-                FechaConsulta = DateTime.Now
+                FechaConsulta = null,
             };
 
             RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
@@ -45,7 +45,7 @@ namespace RTGMGateway
         //[TestCase(16, 0, "", "!", "SIN EMPRESA")]
         public void pruebaRecuperaDatosFiscales(int Cliente, int Empresa, string Telefono, string Calle, string RazonSocial)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -71,7 +71,7 @@ namespace RTGMGateway
         public void pruebaRecuperaGeorreferencia(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Latitud)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -100,7 +100,7 @@ namespace RTGMGateway
         public void pruebaRecuperaCondicionesCredito(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Municipio, string CarteraDescripcion)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -129,7 +129,7 @@ namespace RTGMGateway
         public void pruebaRecuperaEmpleado(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Municipio, int Sucursal, int Empleado)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -154,7 +154,7 @@ namespace RTGMGateway
         public void pruebaRecuperaPrecio(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Municipio, int Sucursal, string Precio)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -184,7 +184,7 @@ namespace RTGMGateway
         public void pruebaRecuperaConfiguracionSuministro(int Cliente, int Empresa, string Telefono, string Calle, 
             string Colonia, string Municipio, int Sucursal, int Autotanque, string Ajustes)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -218,7 +218,7 @@ namespace RTGMGateway
         public void pruebaRecuperaZona(int Cliente, int Empresa, string Telefono, string Calle, string Colonia, 
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroZona)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -249,7 +249,7 @@ namespace RTGMGateway
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior,
             int NumeroRuta)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -281,7 +281,7 @@ namespace RTGMGateway
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior, 
             string NumeroInterior, int IDZona)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -315,7 +315,7 @@ namespace RTGMGateway
             string Colonia, string Municipio, int Sucursal, int Autotanque, string NombreCliente, 
             int NumeroExterior, string NumeroInterior, int TipoServicio, bool ProgramacionActiva)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -350,7 +350,7 @@ namespace RTGMGateway
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior, 
             string NumeroInterior, int TipoServicio, int Zona, int IDRamo)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -388,7 +388,7 @@ namespace RTGMGateway
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior,
             string NumeroInterior, int TipoServicio, int Zona, int Ruta, int TipoCliente)
         {
-            RTGMGateway objGateway = new RTGMGateway();
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
