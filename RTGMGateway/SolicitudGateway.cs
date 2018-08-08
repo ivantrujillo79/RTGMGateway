@@ -60,10 +60,6 @@ namespace RTGMGateway
             {
                 return fuente;
             }
-            set
-            {
-                fuente = value;
-            }
         }
 
         public System.Nullable<int> IDCliente
@@ -84,10 +80,6 @@ namespace RTGMGateway
             {
                 return idEmpresa;
             }
-            set
-            {
-                idEmpresa = value;
-            }
         }
 
         public System.Nullable<int> Sucursal
@@ -95,10 +87,6 @@ namespace RTGMGateway
             get
             {
                 return sucursal;
-            }
-            set
-            {
-                sucursal = value;
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.Data;
 
 
 namespace RTGMGateway
@@ -16,7 +17,7 @@ namespace RTGMGateway
             _Modulo = Modulo;
             _CadenaConexion = CadenaConexion;
         }
-        
+
         public RTGMCore.Fuente consultarFuente(byte Modulo, string CadenaConexion)
         {
             string valorParametro = "";
@@ -35,10 +36,10 @@ namespace RTGMGateway
                 {
                     cnn.Close();
                 }
-                switch(valorParametro.ToUpper().Trim())
+                switch (valorParametro.ToUpper().Trim())
                 {
                     case "CRM":
-                    fuenteRetorno = RTGMCore.Fuente.CRM;
+                        fuenteRetorno = RTGMCore.Fuente.CRM;
                         break;
                     case "SIGAMET":
                         fuenteRetorno = RTGMCore.Fuente.Sigamet;
@@ -51,12 +52,58 @@ namespace RTGMGateway
                         break;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
             return fuenteRetorno;
         }
 
+        public DataRow consultarCorporativoSucursal(byte Modulo, string CadenaConexion)
+        {
+            DataTable tablaParametros = new DataTable("Parametros");
+
+            DataColumn Corporativo = new DataColumn();
+            Corporativo.DataType = System.Type.GetType("System.Int32");
+            Corporativo.ColumnName = "Corporativo";
+            tablaParametros.Columns.Add(Corporativo);
+
+            DataColumn Sucursal = new DataColumn();
+            Sucursal.DataType = System.Type.GetType("System.Int32");
+            Sucursal.ColumnName = "Sucursal";
+            tablaParametros.Columns.Add(Sucursal);
+
+            DataRow drParametros = tablaParametros.NewRow();
+
+            try
+            {
+                SqlConnection cnn = new SqlConnection(CadenaConexion);
+                SqlCommand cmd = new SqlCommand("SELECT TOP 1 ISNULL(CORPORATIVO,1) AS CORPORATIVO, ISNULL(SUCURSAL,1) AS SUCURSAL FROM PARAMETRO WHERE MODULO = " + Modulo + " AND PARAMETRO = 'FUENTECRM'; ", cnn);
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cnn.State == System.Data.ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    drParametros["Corporativo"] = Convert.ToByte(dr[0]);
+                    drParametros["Sucursal"] = Convert.ToByte(dr[1]);
+                }
+
+                if (cnn.State == System.Data.ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return drParametros;
+        }
+    
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
+using System.Data;
 
 
 
@@ -20,13 +21,27 @@ namespace RTGMGateway
         private string _CadenaConexion;
         private byte _Modulo;
         private RTGMCore.Fuente _Fuente;
+        private byte _Corporativo;
+        private byte _Sucursal;
 
         public RTGMGateway(byte Modulo, string CadenaConexion)
         {
+            DataRow drParametros;
             _Modulo = Modulo;
             _CadenaConexion = CadenaConexion;
             DAO objDatos = new DAO(Modulo, CadenaConexion);
             _Fuente = objDatos.consultarFuente(Modulo, CadenaConexion);
+            drParametros = objDatos.consultarCorporativoSucursal(Modulo, CadenaConexion);
+            if (drParametros != null)
+            {
+                _Corporativo = Convert.ToByte(drParametros["Corporativo"]);
+                _Sucursal = Convert.ToByte(drParametros["Sucursal"]);
+            }
+            else
+            {
+                _Corporativo = 0;
+                _Sucursal = 0;
+            }
             log.Info("Nueva instancia del Gateway ha sido creada.");
         }
 
@@ -89,7 +104,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarDireccionEntrega" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -99,8 +114,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -145,7 +160,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarDatoFiscal" +
                     ", Source: "            + source + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -155,8 +170,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -203,7 +218,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarGeorreferencia" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -213,8 +228,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -261,7 +276,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarCondicionesCredito" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -271,8 +286,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -319,7 +334,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarEmpleado" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -329,8 +344,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -377,7 +392,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarPrecio" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -387,8 +402,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -435,7 +450,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarConfiguracionSuministro" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -445,8 +460,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -493,7 +508,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarZona" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -503,8 +518,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -550,7 +565,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarRuta" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -560,8 +575,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -607,7 +622,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarZonaEconomica" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -617,8 +632,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -665,7 +680,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarProgramacionSuministro" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -675,8 +690,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -723,7 +738,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarGiroCliente" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -733,8 +748,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -775,7 +790,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarRamoCliente" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -785,8 +800,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -834,7 +849,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarTipoCliente" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -844,8 +859,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -891,7 +906,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarOrigenCliente" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -901,8 +916,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -948,7 +963,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarTarjetaCredito" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -958,8 +973,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -1005,7 +1020,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarAgendaCobranza" +
                     ", Source: "            + ParSolicitud.Fuente               + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -1015,8 +1030,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -1060,7 +1075,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarProducto" +
                     ", Source: "            + source + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -1070,8 +1085,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -1111,7 +1126,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarDescuento" +
                     ", Source: "            + source + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -1121,8 +1136,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
@@ -1168,7 +1183,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarTipoFacturacion" +
                     ", Source: "            + source + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + ParSolicitud.IDEmpresa            + ", Sucursal: "        + ParSolicitud.Sucursal +
+                    ", Empresa: "           + _Corporativo + ", Sucursal: "        + _Sucursal +     
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -1178,8 +1193,8 @@ namespace RTGMGateway
                     ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
-                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente, 
-                                                                    ParSolicitud.IDEmpresa, ParSolicitud.Sucursal,
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,

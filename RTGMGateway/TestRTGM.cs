@@ -17,6 +17,7 @@ namespace RTGMGateway
             
             RTGMGateway obGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             obGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            obGateway.GuardarLog = true;
             RTGMPedidoGateway obGatewayPedido = new RTGMPedidoGateway();
             obGatewayPedido.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             RTGMActualizarPedido obGatewayActualizar = new RTGMActualizarPedido();
@@ -25,9 +26,9 @@ namespace RTGMGateway
             /*      BUSQUEDA DIRECCION ENTREGA      */
             SolicitudGateway obSolicitudGateway = new SolicitudGateway
             {
-                Fuente              = fuente,
+                //Fuente              = fuente,
                 IDCliente           = cliente,
-                IDEmpresa           = 1
+                //IDEmpresa           = 1
             };
 
             RTGMCore.DireccionEntrega obDireccionEntrega = new RTGMCore.DireccionEntrega();

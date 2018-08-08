@@ -25,9 +25,9 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = Fuente,
+                //Fuente = Fuente,
                 IDCliente = Cliente,
-                IDEmpresa = 1,
+                //IDEmpresa = 1,
                 Portatil = false,
                 IDAutotanque = null,
                 FechaConsulta = null,
@@ -49,9 +49,9 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = 52,
                 Telefono = Telefono,
@@ -75,9 +75,9 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = 52,
                 Telefono = Telefono,
@@ -104,9 +104,9 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = 52,
                 Telefono = Telefono,
@@ -133,16 +133,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = 52,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal
+                //Sucursal = Sucursal
             };
             
             RTGMCore.Empleado objSupervisorComercial = objGateway.buscarEmpleado(objRequest);
@@ -158,16 +158,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = 52,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal
+                //Sucursal = Sucursal
             };
 
             RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
@@ -188,16 +188,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = Autotanque,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal,
+                //Sucursal = Sucursal,
             };
             
             RTGMCore.ConfiguracionSuministro objConfiguracionSuministro = objGateway.buscarConfiguracionSuministro(objRequest);
@@ -222,16 +222,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = Autotanque,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal,
+                //Sucursal = Sucursal,
                 Nombre = NombreCliente
             };
             
@@ -253,16 +253,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = Autotanque,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal,
+                //Sucursal = Sucursal,
                 Nombre = NombreCliente,
                 NumeroExterior = NumeroExterior
             };
@@ -285,16 +285,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = Autotanque,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal,
+                //Sucursal = Sucursal,
                 Nombre = NombreCliente,
                 NumeroExterior = NumeroExterior,
                 NumeroInterior = NumeroInterior
@@ -319,16 +319,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = Autotanque,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal,
+                //Sucursal = Sucursal,
                 Nombre = NombreCliente,
                 NumeroExterior = NumeroExterior,
                 NumeroInterior = NumeroInterior,
@@ -354,16 +354,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = Autotanque,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal,
+                //Sucursal = Sucursal,
                 Nombre = NombreCliente,
                 NumeroExterior = NumeroExterior,
                 NumeroInterior = NumeroInterior,
@@ -392,16 +392,16 @@ namespace RTGMGateway
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                Fuente = RTGMCore.Fuente.Sigamet,
+                //Fuente = RTGMCore.Fuente.Sigamet,
                 IDCliente = Cliente,
-                IDEmpresa = Empresa,
+                //IDEmpresa = Empresa,
                 Portatil = false,
                 IDAutotanque = Autotanque,
                 Telefono = Telefono,
                 CalleNombre = Calle,
                 ColoniaNombre = Colonia,
                 MunicipioNombre = Municipio,
-                Sucursal = Sucursal,
+                //Sucursal = Sucursal,
                 Nombre = NombreCliente,
                 NumeroExterior = NumeroExterior,
                 NumeroInterior = NumeroInterior,
