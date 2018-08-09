@@ -14,14 +14,19 @@ namespace RTGMGateway
 		private double longitudRepuesta;
 		private int tiempoEspera;
 		private bool guardarLog;
-        
-		~RTGMPedidoGateway(){
+        private BasicHttpBinding _BasicHttpBinding;
+        private EndpointAddress _EndpointAddress;
+        private const int MAX_CAPACITY = 2147483647;
+
+        ~RTGMPedidoGateway(){
 
 		}
 
 		public RTGMPedidoGateway(){
-
-		}
+            _BasicHttpBinding = new BasicHttpBinding();
+            _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
+            _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+        }
 
 		public virtual void Dispose(){
 
@@ -146,13 +151,14 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarPedidos");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
 
-                RTGMCore.Fuente source;
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
 
-                source = RTGMCore.Fuente.Sigamet;
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+
+                //RTGMCore.Fuente source;
+
+                //source = RTGMCore.Fuente.Sigamet;
 
                 registrarParametros("buscarPedidos", ParSolicitud);
 
