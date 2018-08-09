@@ -26,6 +26,9 @@ namespace RTGMGateway
 
         public RTGMGateway(byte Modulo, string CadenaConexion)
         {
+            // Inicializar logger
+            log4net.Config.XmlConfigurator.Configure();
+
             DataRow drParametros;
             _Modulo = Modulo;
             _CadenaConexion = CadenaConexion;
