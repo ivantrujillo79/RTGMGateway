@@ -78,5 +78,16 @@ namespace RTGMGateway
             }
         }
 
+        public static string SerializarAString(object objeto)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(objeto.GetType());
+
+            using (StringWriter textWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(textWriter, objeto);
+                return textWriter.ToString();
+            }
+        }
+
     }
 }
