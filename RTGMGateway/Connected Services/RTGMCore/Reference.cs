@@ -3522,8 +3522,10 @@ namespace RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
     [XmlInclude(typeof(RTGMCore.PedidoSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.PedidoCRMDatos))]
     [XmlInclude(typeof(RTGMCore.PedidoCRMSaldo))]
     [XmlInclude(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     public partial class Pedido : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
