@@ -11,9 +11,10 @@ namespace RTGMGateway
     {
         //  DireccionEntrega
         [TestCase("201820147549", 1, 502627606, RTGMCore.Fuente.Sigamet)]
-        [TestCase("201820147549", 1, 502627606, RTGMCore.Fuente.CRM)]
-        public void pruebaRecuperaDireccionEntrega(string PedidoReferencia, int IDEmpresa, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
+        [TestCase(2, 1, 502627606, RTGMCore.Fuente.CRM)]
+        public void pruebaRecuperaDireccionEntrega(int Pedido, int IDEmpresa, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
         {
+            bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
@@ -21,41 +22,22 @@ namespace RTGMGateway
                 IDEmpresa = IDEmpresa,
                 FuenteDatos = Fuente,
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
-                FechaCompromisoInicio = DateTime.Now.Date,
-                IDZona = 201,
-                EstatusBoletin = "BOLETIN",
-                PedidoReferencia = PedidoReferencia,
-                IDDireccionEntrega = null,
-                Portatil = false,
-                IDUsuario = null,
-                IDSucursal = null,
-                FechaCompromisoFin = null,
-                FechaSuministroInicio = null,
-                FechaSuministroFin = null,
-                IDRutaOrigen = null,
-                IDRutaBoletin = null,
-                IDRutaSuministro = null,
-                IDEstatusPedido = null,
-                EstatusPedidoDescripcion = null,
-                IDEstatusBoletin = null,
-                IDEstatusMovil = null,
-                EstatusMovilDescripcion = null,
-                IDAutotanque = null,
-                IDAutotanqueMovil = null,
-                SerieRemision = null,
-                FolioRemision = null,
-                SerieFactura = null,
-                FolioFactura = null,
-                IDZonaLecturista = null,
-                TipoPedido = null,
-                TipoServicio = null,
-                AñoPed = null,
-                IDPedido = null
+                //IDPedido = Pedido
             };
 
             List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
 
-            Assert.AreEqual(IDDireccionEntrega, objPedido[0].IDDireccionEntrega);
+            try
+            {
+                Assert.IsNotNull(objPedido[0].IDDireccionEntrega);
+            }
+            catch(Exception ex)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(objRequest, objPedido, Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
+
         }
 
         //  Georreferencia
