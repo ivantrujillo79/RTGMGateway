@@ -84,6 +84,22 @@ namespace RTGMGateway
             }
         }
 
+        public RTGMCore.Fuente Fuente
+        {
+            get
+            {
+                return _Fuente;
+            }
+        }
+
+        public byte Corporativo
+        {
+            get
+            {
+                return _Corporativo;
+            }
+        }
+
         #region METODOS
 
         /// <summary>

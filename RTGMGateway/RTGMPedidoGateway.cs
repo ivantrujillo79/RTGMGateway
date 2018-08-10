@@ -85,6 +85,23 @@ namespace RTGMGateway
                 guardarLog = value;
             }
         }
+
+        public RTGMCore.Fuente Fuente
+        {
+            get
+            {
+                return _Fuente;
+            }
+        }
+
+        public byte Corporativo
+        {
+            get
+            {
+                return _Corporativo;
+            }
+        }
+
         #endregion
 
         #region METODOS DE CLASE
