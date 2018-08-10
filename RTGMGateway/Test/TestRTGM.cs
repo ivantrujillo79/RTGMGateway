@@ -55,7 +55,7 @@ namespace RTGMGateway
             {
                 TipoConsultaPedido      = RTGMCore.TipoConsultaPedido.RegistroPedido,
                 //FechaCompromisoInicio   = DateTime.Now.Date,
-                EstatusBoletin          = "BOLETIN",
+                //EstatusBoletin          = "BOLETIN",
                 IDPedido                = 1
                 //PedidoReferencia        = pedidoReferencia,
                 //IDZona                  = 201
