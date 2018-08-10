@@ -23,7 +23,7 @@ namespace RTGMGateway
             obGateway.GuardarLog = true;
             RTGMPedidoGateway obGatewayPedido = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
             obGatewayPedido.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
-            RTGMActualizarPedido obGatewayActualizar = new RTGMActualizarPedido();
+            RTGMActualizarPedido obGatewayActualizar = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
             obGatewayActualizar.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
 
             /*      BUSQUEDA DIRECCION ENTREGA      */
@@ -96,8 +96,8 @@ namespace RTGMGateway
 
             SolicitudActualizarPedido obSolicitudActualizar = new SolicitudActualizarPedido
             {
-                Fuente              = fuente,
-                IDEmpresa           = 1,
+                //Fuente              = fuente,
+                //IDEmpresa           = 1,
                 Pedidos             = obPedidosActualizar,
                 TipoActualizacion   = RTGMCore.TipoActualizacion.Saldo,
                 Usuario             = "ROPIMA"
