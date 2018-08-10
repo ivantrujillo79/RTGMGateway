@@ -82,18 +82,13 @@ namespace RTGMGateway
 			get{
 				return idEmpresa;
 			}
-			set{
-                idEmpresa = value;
-			}
 		}
 
 		public RTGMCore.Fuente FuenteDatos{
-			get{
-				return fuenteDatos;
-			}
-			set{
-				fuenteDatos = value;
-			}
+            get
+            {
+                return fuenteDatos;
+            }
 		}
 
 		public RTGMCore.TipoConsultaPedido TipoConsultaPedido{
@@ -135,9 +130,6 @@ namespace RTGMGateway
 		public System.Nullable<int> IDSucursal{
 			get{
 				return idSucursal;
-			}
-			set{
-                idSucursal = value;
 			}
 		}
 
