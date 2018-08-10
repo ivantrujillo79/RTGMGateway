@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -17,18 +18,34 @@ namespace RTGMGateway
         private BasicHttpBinding _BasicHttpBinding;
         private EndpointAddress _EndpointAddress;
         private const int MAX_CAPACITY = 2147483647;
+        private RTGMCore.Fuente _Fuente;
+        private string _CadenaConexion;
+        private byte _Corporativo;
+        private byte _Sucursal;
+        private byte _Modulo;
+
 
         ~RTGMPedidoGateway(){
 
 		}
 
-		public RTGMPedidoGateway(){
+		public RTGMPedidoGateway(byte Modulo, string CadenaConexion)
+        {
+            // Inicializar logger
+            log4net.Config.XmlConfigurator.Configure();
+
             _BasicHttpBinding = new BasicHttpBinding();
             _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
             _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+
+            _Modulo = Modulo;
+            _CadenaConexion = CadenaConexion;
+            consultarParametros(_Modulo, _CadenaConexion);
+
+            log.Info("Una nueva instancia de PedidoGateway ha sido creada.");
         }
 
-		public virtual void Dispose(){
+        public virtual void Dispose(){
 
 		}
 
@@ -79,13 +96,13 @@ namespace RTGMGateway
         private void registrarParametros(string ParNombreMetodo, SolicitudPedidoGateway ParSolicitud)
         {
             log.Info("Inicia llamado a "            + ParNombreMetodo + 
-                    ", ID Empresa: "                + ParSolicitud.IDEmpresa + 
-                    ", Source: "                    + ParSolicitud.FuenteDatos +
+                    ", ID Empresa: "                + _Corporativo + 
+                    ", Source: "                    + _Fuente +
                     ", Tipo consulta pedido: "      + ParSolicitud.TipoConsultaPedido + 
                     ", Portatil: "                  + ParSolicitud.Portatil +
                     ", ID Usuario: "                + ParSolicitud.IDUsuario + 
                     ", ID Dirección entrega: "      + ParSolicitud.IDDireccionEntrega +
-                    ", ID Sucursal: "               + ParSolicitud.IDSucursal + 
+                    ", ID Sucursal: "               + _Sucursal + 
                     ", Fecha compromiso inicio: "   + ParSolicitud.FechaCompromisoInicio +
                     ", Fecha compromiso fin: "      + ParSolicitud.FechaCompromisoFin + 
                     ", Fecha suministro inicio: "   + ParSolicitud.FechaSuministroInicio +
@@ -120,10 +137,10 @@ namespace RTGMGateway
         /// <param name="ParSolicitud">Objeto del tipo SolicitudPedidoGateway</param>
         private List<RTGMCore.Pedido> consultarPedidos(SolicitudPedidoGateway ParSolicitud)
         {
-            return serviceClient.ConsultarPedidos(ParSolicitud.IDEmpresa,                     ParSolicitud.FuenteDatos,
+            return serviceClient.ConsultarPedidos(  _Corporativo,                           _Fuente,
                                                     ParSolicitud.TipoConsultaPedido,        ParSolicitud.Portatil,
                                                     ParSolicitud.IDUsuario,                 ParSolicitud.IDDireccionEntrega,
-                                                    ParSolicitud.IDSucursal,                ParSolicitud.FechaCompromisoInicio,
+                                                    _Sucursal,                              ParSolicitud.FechaCompromisoInicio,
                                                     ParSolicitud.FechaCompromisoFin,        ParSolicitud.FechaSuministroInicio,
                                                     ParSolicitud.FechaSuministroFin,        ParSolicitud.IDZona,
                                                     ParSolicitud.IDRutaOrigen,              ParSolicitud.IDRutaBoletin,
@@ -138,6 +155,33 @@ namespace RTGMGateway
                                                     ParSolicitud.AñoPed,                    ParSolicitud.IDPedido,
                                                     ParSolicitud.PedidoReferencia);
         }
+
+        /// <summary>
+        /// Consulta los parámetros FuenteCRM, Corporativo y Sucursal mediante una instancia de la 
+        /// clase DAO
+        /// </summary>
+        /// <param name="modulo"></param>
+        /// <param name="cadenaConexion"></param>
+        private void consultarParametros(byte modulo, string cadenaConexion)
+        {
+            DataRow drParametros;
+            DAO obDAO = new DAO(modulo, cadenaConexion);
+
+            _Fuente = obDAO.consultarFuente(modulo, cadenaConexion);
+            drParametros = obDAO.consultarCorporativoSucursal(modulo, cadenaConexion);
+
+            if (drParametros != null)
+            {
+                _Corporativo = Convert.ToByte(drParametros["Corporativo"]);
+                _Sucursal = Convert.ToByte(drParametros["Sucursal"]);
+            }
+            else
+            {
+                _Corporativo = 0;
+                _Sucursal = 0;
+            }
+        }
+
         #endregion
 
         #region METODOS DE BUSQUEDA
