@@ -13,18 +13,18 @@ namespace RTGMGateway
         private byte _Modulo = 1;
 
         //  DireccionEntrega
-        [TestCase("201820147549", 1, 502627606, RTGMCore.Fuente.Sigamet)]
-        [TestCase(2, 1, 502627606, RTGMCore.Fuente.CRM)]
-        public void pruebaRecuperaDireccionEntrega(int Pedido, int IDEmpresa, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
+        [TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
+        [TestCase(2,502627606, RTGMCore.Fuente.CRM)]
+        public void pruebaRecuperaDireccionEntrega(int Pedido, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
-                IDEmpresa = IDEmpresa,
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
-                //IDPedido = Pedido
+                IDPedido = Pedido
             };
 
             List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
@@ -51,8 +51,6 @@ namespace RTGMGateway
             
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
-                IDEmpresa = IDEmpresa,
-                FuenteDatos = RTGMCore.Fuente.Sigamet,
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
                 FechaCompromisoInicio = DateTime.Now.Date,
                 IDZona = 201,
@@ -61,7 +59,6 @@ namespace RTGMGateway
                 IDDireccionEntrega = null,
                 Portatil = false,
                 IDUsuario = null,
-                IDSucursal = null,
                 FechaCompromisoFin = null,
                 FechaSuministroInicio = null,
                 FechaSuministroFin = null,
@@ -94,13 +91,10 @@ namespace RTGMGateway
         [TestCase(502615080, 1, 2)]
         public void pruebaRecuperaZona(int Cliente, int IDEmpresa, int IDZona)
         {
-            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway();
+            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
-
-                IDEmpresa = IDEmpresa,
-                FuenteDatos = RTGMCore.Fuente.Sigamet,
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido,
                 FechaCompromisoInicio = DateTime.Now.Date,
                 EstatusBoletin = "BOLETIN",
@@ -108,7 +102,6 @@ namespace RTGMGateway
                 PedidoReferencia = null,
                 Portatil = false,
                 IDUsuario = null,
-                IDSucursal = null,
                 FechaCompromisoFin = null,
                 FechaSuministroInicio = null,
                 FechaSuministroFin = null,

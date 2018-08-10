@@ -9,16 +9,19 @@ namespace RTGMGateway
     [TestFixture]
     class TestRTGM
     {
+        private string _CadenaConexion = "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;";
+        private byte _Modulo = 1;
+
         [TestCase(502627606, "ROBLEDO 24 COL. REAL ESMERALDA, ATIZAPAN DE ZARAGOZA", "201820147549", RTGMCore.Fuente.Sigamet)]
         [TestCase(6, "HERRADURA 00     AGUILERA  AZCAPOTZALCO", "1215", RTGMCore.Fuente.CRM)]
         public void pruebaLiquidacion(int cliente, string direccion, string pedidoReferencia, RTGMCore.Fuente fuente)
         {
             bool respuestaExitosa = true;
             
-            RTGMGateway obGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
+            RTGMGateway obGateway = new RTGMGateway(_Modulo, _CadenaConexion);
             obGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             obGateway.GuardarLog = true;
-            RTGMPedidoGateway obGatewayPedido = new RTGMPedidoGateway();
+            RTGMPedidoGateway obGatewayPedido = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
             obGatewayPedido.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
             RTGMActualizarPedido obGatewayActualizar = new RTGMActualizarPedido();
             obGatewayActualizar.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
@@ -50,8 +53,6 @@ namespace RTGMGateway
             respuestaExitosa = true;
             SolicitudPedidoGateway obSolicitudPedido = new SolicitudPedidoGateway
             {
-                FuenteDatos             = fuente,
-                IDEmpresa               = 1,
                 TipoConsultaPedido      = RTGMCore.TipoConsultaPedido.RegistroPedido,
                 //FechaCompromisoInicio   = DateTime.Now.Date,
                 EstatusBoletin          = "BOLETIN",
