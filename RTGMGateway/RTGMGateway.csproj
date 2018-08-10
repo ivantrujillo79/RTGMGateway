@@ -69,14 +69,16 @@
     <Compile Include="SolicitudActualizaPedido.cs" />
     <Compile Include="SolicitudGateway.cs" />
     <Compile Include="SolicitudPedidoGateway.cs" />
-    <Compile Include="TestRTGM.cs" />
-    <Compile Include="TestRTGMActualizaPedido.cs" />
-    <Compile Include="TestRTGMGateway.cs" />
-    <Compile Include="TestRTGMPedidoGateway.cs" />
+    <Compile Include="Test\TestRTGM.cs" />
+    <Compile Include="Test\TestRTGMActualizaPedido.cs" />
+    <Compile Include="Test\TestRTGMGateway.cs" />
+    <Compile Include="Test\TestRTGMPedidoGateway.cs" />
     <Compile Include="Utilerias.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService.wsdl" />
     <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService.xsd">
       <SubType>Designer</SubType>
