@@ -21,21 +21,32 @@ namespace RTGMGateway
         [TestCase(1, "FILOMENA REYES PEÑALOZA", RTGMCore.Fuente.Sigamet)]
         public void pruebaRecuperaCliente(int Cliente, string Nombre,RTGMCore.Fuente Fuente)
         {
+            bool respuestaExitosa = true;
             RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
             objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                //Fuente = Fuente,
                 IDCliente = Cliente,
-                //IDEmpresa = 1,
                 Portatil = false,
                 IDAutotanque = null,
-                FechaConsulta = null,
+                FechaConsulta = null
             };
 
             RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
 
-            Assert.AreEqual(objDireccionEntega.Nombre.Trim(), Nombre);
+            try
+            {
+                Assert.IsNotNull(objDireccionEntega);
+                Assert.AreEqual(objDireccionEntega.Nombre.Trim(), Nombre);
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(objRequest, objDireccionEntega, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
+
         }
 
         [TestCase(1000578, 0, "57875000", "VIA MORELOS KM 14.5", "GEO INTERNACIONAL SA DE CV")]
