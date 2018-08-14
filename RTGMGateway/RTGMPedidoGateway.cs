@@ -157,7 +157,7 @@ namespace RTGMGateway
             return serviceClient.ConsultarPedidos(  _Corporativo,                           _Fuente,
                                                     ParSolicitud.TipoConsultaPedido,        ParSolicitud.Portatil,
                                                     ParSolicitud.IDUsuario,                 ParSolicitud.IDDireccionEntrega,
-                                                    _Sucursal,                              ParSolicitud.FechaCompromisoInicio,
+                                                    null,                              ParSolicitud.FechaCompromisoInicio,
                                                     ParSolicitud.FechaCompromisoFin,        ParSolicitud.FechaSuministroInicio,
                                                     ParSolicitud.FechaSuministroFin,        ParSolicitud.IDZona,
                                                     ParSolicitud.IDRutaOrigen,              ParSolicitud.IDRutaBoletin,
