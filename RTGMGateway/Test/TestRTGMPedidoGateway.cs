@@ -13,9 +13,8 @@ namespace RTGMGateway
         private byte _Modulo = 1;
 
         //  DireccionEntrega
-        [TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
-        [TestCase(2,502627606, RTGMCore.Fuente.CRM)]
-        public void pruebaRecuperaDireccionEntrega(int Pedido, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
+        [TestCase("201820147549", 502627606, RTGMCore.Fuente.Sigamet)]
+        public void pruebaRecuperaDireccionEntrega(string PedidoReferencia, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
@@ -24,7 +23,8 @@ namespace RTGMGateway
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
-                IDPedido = Pedido
+                FechaCompromisoInicio = DateTime.Now,
+                PedidoReferencia = PedidoReferencia
             };
 
             List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
@@ -33,12 +33,40 @@ namespace RTGMGateway
             {
                 Assert.IsNotNull(objPedido[0].IDDireccionEntrega);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 respuestaExitosa = false;
             }
 
-            Utilerias.Exportar(objRequest, objPedido, Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
+            Utilerias.Exportar(objRequest, objPedido, objPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
+
+        }
+
+        [TestCase("1111", 502627606, RTGMCore.Fuente.CRM)]
+        public void pruebaRecuperaDireccionEntregaCRM(string PedidoReferencia, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
+        {
+            bool respuestaExitosa = true;
+            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
+            objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+
+            SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
+            {
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
+                PedidoReferencia = PedidoReferencia
+            };
+
+            List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
+
+            try
+            {
+                Assert.IsNotNull(objPedido[0].IDDireccionEntrega);
+            }
+            catch (Exception ex)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(objRequest, objPedido, objPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
 
         }
 
