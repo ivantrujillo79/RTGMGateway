@@ -124,7 +124,7 @@ namespace RTGMGateway
 
             try
             {
-                log.Info("Inicia ejecución de método ActualizarPedido");
+                log.Info("===   Inicia ejecución de método ActualizarPedido   ===");
 
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
@@ -136,11 +136,15 @@ namespace RTGMGateway
 
                 lstPedidosRespuesta.ForEach(x => x.Message = "NO HAY ERROR");
 
-                lstPedidosRespuesta.ForEach(x => Utilerias.SerializarAString(x));
+                lstPedidosRespuesta.ForEach(x => log.Info(Utilerias.SerializarAString(x)));
             }
             catch (Exception ex)
             {
                 log.Error(ex.Message, ex);
+            }
+            finally
+            {
+                log.Info("===   Finaliza ejecución de método ActualizarPedidos   ===");
             }
             return lstPedidosRespuesta;
         }
