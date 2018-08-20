@@ -28,24 +28,33 @@ namespace RTGMGateway
         {
             // Inicializar logger
             log4net.Config.XmlConfigurator.Configure();
+            log.Info("Creando nueva instancia de RTGMGateway...");
 
-            DataRow drParametros;
-            _Modulo = Modulo;
-            _CadenaConexion = CadenaConexion;
-            DAO objDatos = new DAO(Modulo, CadenaConexion);
-            _Fuente = objDatos.consultarFuente(Modulo, CadenaConexion);
-            drParametros = objDatos.consultarCorporativoSucursal(Modulo, CadenaConexion);
-            if (drParametros != null)
+            try
             {
-                _Corporativo = Convert.ToByte(drParametros["Corporativo"]);
-                _Sucursal = Convert.ToByte(drParametros["Sucursal"]);
+                DataRow drParametros;
+                _Modulo = Modulo;
+                _CadenaConexion = CadenaConexion;
+                DAO objDatos = new DAO(Modulo, CadenaConexion);
+                _Fuente = objDatos.consultarFuente(Modulo, CadenaConexion);
+                drParametros = objDatos.consultarCorporativoSucursal(Modulo, CadenaConexion);
+                if (drParametros != null)
+                {
+                    _Corporativo = Convert.ToByte(drParametros["Corporativo"]);
+                    _Sucursal = Convert.ToByte(drParametros["Sucursal"]);
+                }
+                else
+                {
+                    _Corporativo = 0;
+                    _Sucursal = 0;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _Corporativo = 0;
-                _Sucursal = 0;
+                log.Error(ex.Message);
+                throw ex;
             }
-            log.Info("Nueva instancia del Gateway ha sido creada.");
+            log.Info("Instancia de RTGMGateway creada.");
         }
 
         public double LongitudRepuesta

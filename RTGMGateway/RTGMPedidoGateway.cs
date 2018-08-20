@@ -33,16 +33,23 @@ namespace RTGMGateway
         {
             // Inicializar logger
             log4net.Config.XmlConfigurator.Configure();
+            log.Info("Creando nueva instancia de RTGMPedidoGateway...");
 
-            _BasicHttpBinding = new BasicHttpBinding();
-            _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
-            _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+            try
+            {
+                _BasicHttpBinding = new BasicHttpBinding();
+                _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
+                _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
 
-            _Modulo = Modulo;
-            _CadenaConexion = CadenaConexion;
-            consultarParametros(_Modulo, _CadenaConexion);
-
-            log.Info("Una nueva instancia de PedidoGateway ha sido creada.");
+                _Modulo = Modulo;
+                _CadenaConexion = CadenaConexion;
+                consultarParametros(_Modulo, _CadenaConexion);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Instancia de RTGMPedidoGateway creada.");
         }
 
         public virtual void Dispose(){
@@ -230,6 +237,7 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                throw ex;
             }
 
             return lstPedidos;
