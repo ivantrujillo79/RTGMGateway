@@ -63,14 +63,12 @@ namespace RTGMGateway
 
             List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
             lstPedido.Add(new RTGMCore.PedidoCRMSaldo
-            //lstPedido.Add(new RTGMCore.PedidoCRMDatos
             {
                 IDEmpresa = empresa
                 ,IDPedido = pedido
                 ,PedidoReferencia = pedidoReferencia
                 ,IDZona = zona
                 ,Abono = abono
-                //,AnioPed = 2018
             });
 
             SolicitudActualizarPedido Solicitud = new SolicitudActualizarPedido
