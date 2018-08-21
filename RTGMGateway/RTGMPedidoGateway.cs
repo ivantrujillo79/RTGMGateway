@@ -13,7 +13,7 @@ namespace RTGMGateway
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		private RTGMCore.GasMetropolitanoRuntimeServiceClient serviceClient;
 		private double longitudRepuesta;
-		private int tiempoEspera;
+		private int tiempoEspera = 180;
 		private bool guardarLog;
         private BasicHttpBinding _BasicHttpBinding;
         private EndpointAddress _EndpointAddress;
@@ -33,16 +33,24 @@ namespace RTGMGateway
         {
             // Inicializar logger
             log4net.Config.XmlConfigurator.Configure();
+            log.Info("Creando nueva instancia de RTGMPedidoGateway...");
 
-            _BasicHttpBinding = new BasicHttpBinding();
-            _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
-            _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+            try
+            {
+                _BasicHttpBinding = new BasicHttpBinding();
+                _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
+                _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
 
-            _Modulo = Modulo;
-            _CadenaConexion = CadenaConexion;
-            consultarParametros(_Modulo, _CadenaConexion);
-
-            log.Info("Una nueva instancia de PedidoGateway ha sido creada.");
+                _Modulo = Modulo;
+                _CadenaConexion = CadenaConexion;
+                consultarParametros(_Modulo, _CadenaConexion);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            log.Info("Instancia de RTGMPedidoGateway creada.");
         }
 
         public virtual void Dispose(){
@@ -119,7 +127,7 @@ namespace RTGMGateway
                     ", Portatil: "                  + ParSolicitud.Portatil +
                     ", ID Usuario: "                + ParSolicitud.IDUsuario + 
                     ", ID Dirección entrega: "      + ParSolicitud.IDDireccionEntrega +
-                    ", ID Sucursal: "               + _Sucursal + 
+                    ", ID Sucursal: "               + "" + 
                     ", Fecha compromiso inicio: "   + ParSolicitud.FechaCompromisoInicio +
                     ", Fecha compromiso fin: "      + ParSolicitud.FechaCompromisoFin + 
                     ", Fecha suministro inicio: "   + ParSolicitud.FechaSuministroInicio +
@@ -157,7 +165,7 @@ namespace RTGMGateway
             return serviceClient.ConsultarPedidos(  _Corporativo,                           _Fuente,
                                                     ParSolicitud.TipoConsultaPedido,        ParSolicitud.Portatil,
                                                     ParSolicitud.IDUsuario,                 ParSolicitud.IDDireccionEntrega,
-                                                    null,                              ParSolicitud.FechaCompromisoInicio,
+                                                    null,                                   ParSolicitud.FechaCompromisoInicio,
                                                     ParSolicitud.FechaCompromisoFin,        ParSolicitud.FechaSuministroInicio,
                                                     ParSolicitud.FechaSuministroFin,        ParSolicitud.IDZona,
                                                     ParSolicitud.IDRutaOrigen,              ParSolicitud.IDRutaBoletin,
@@ -230,6 +238,7 @@ namespace RTGMGateway
             catch (Exception ex)
             {
                 log.Error(ex.Message);
+                throw ex;
             }
 
             return lstPedidos;

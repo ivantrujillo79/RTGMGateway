@@ -14,7 +14,7 @@ namespace RTGMGateway
         private BasicHttpBinding _BasicHttpBinding;
         private EndpointAddress _EndpointAddress;
         private double longitudRepuesta;
-        private int tiempoEspera;
+        private int tiempoEspera = 180;
         private bool guardarLog;
         private const int MAX_CAPACITY = 2147483647;
         private RTGMCore.Fuente _Fuente;
@@ -49,16 +49,25 @@ namespace RTGMGateway
         {
             // Inicializar logger
             log4net.Config.XmlConfigurator.Configure();
+            log.Info("Creando instancia de RTGMActualizarPedido...");
 
-            _BasicHttpBinding = new BasicHttpBinding();
-            _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
-            _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+            try
+            {
+                _BasicHttpBinding = new BasicHttpBinding();
+                _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
+                _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
 
-            _Modulo = Modulo;
-            _CadenaConexion = CadenaConexion;
-            consultarParametros(_Modulo, _CadenaConexion);
-
-            log.Info("Una nueva instancia de ActualizarPedido ha sido creada.");
+                _Modulo = Modulo;
+                _CadenaConexion = CadenaConexion;
+                consultarParametros(_Modulo, _CadenaConexion);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                throw ex;
+            }
+            log.Info("Instancia de RTGMActualizarPedido creada.");
         }
 
         #region METODOS DE CLASE
@@ -124,7 +133,7 @@ namespace RTGMGateway
 
             try
             {
-                log.Info("Inicia ejecución de método ActualizarPedido");
+                log.Info("===   Inicia ejecución de método ActualizarPedido   ===");
 
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
@@ -136,11 +145,17 @@ namespace RTGMGateway
 
                 lstPedidosRespuesta.ForEach(x => x.Message = "NO HAY ERROR");
 
-                lstPedidosRespuesta.ForEach(x => Utilerias.SerializarAString(x));
+                lstPedidosRespuesta.ForEach(x => log.Info(Utilerias.SerializarAString(x)));
             }
             catch (Exception ex)
             {
                 log.Error(ex.Message, ex);
+                lstPedidosRespuesta.ForEach(x => x.Message += Environment.NewLine + ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                log.Info("===   Finaliza ejecución de método ActualizarPedidos   ===");
             }
             return lstPedidosRespuesta;
         }
