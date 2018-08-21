@@ -15,9 +15,12 @@ namespace RTGMGateway
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public string URLServicio { get; set; }
         RTGMCore.GasMetropolitanoRuntimeServiceClient serviceClient;
+        private BasicHttpBinding _BasicHttpBinding;
+        private EndpointAddress _EndpointAddress;
         private double longitudRepuesta;
-        private int tiempoEspera;
+        private int tiempoEspera = 180;
         private bool guardarLog;
+        private const int MAX_CAPACITY = 2147483647;
         private string _CadenaConexion;
         private byte _Modulo;
         private RTGMCore.Fuente _Fuente;
@@ -32,6 +35,11 @@ namespace RTGMGateway
 
             try
             {
+                _BasicHttpBinding = new BasicHttpBinding();
+                _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
+                _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
+
                 DataRow drParametros;
                 _Modulo = Modulo;
                 _CadenaConexion = CadenaConexion;
@@ -121,9 +129,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarDireccionEntrega");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+                
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -182,9 +191,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarDatoFiscal");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -240,9 +250,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarGeorreferencia");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -298,9 +309,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarCondicionesCredito");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -356,9 +368,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarEmpleado");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -414,9 +427,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarPrecio");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -472,9 +486,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarConfiguracionSuministro");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -530,9 +545,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarZona");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -588,9 +604,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarRuta");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -645,9 +662,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarZonaEconomica");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -702,9 +720,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarProgramacionSuministro");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -760,9 +779,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarGiroCliente");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -812,9 +832,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarRamoCliente");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -871,9 +892,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarTipoCliente");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -929,9 +951,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarOrigenCliente");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -986,9 +1009,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarTarjetaCredito");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -1043,9 +1067,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarAgendaCobranza");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -1098,9 +1123,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarProducto");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -1149,9 +1175,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarDescuento");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 
@@ -1206,9 +1233,10 @@ namespace RTGMGateway
             try
             {
                 log.Info("Inicia ejecución de método buscarTipoFacturacion");
-                BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
-                EndpointAddress endpointAddress = new EndpointAddress(this.URLServicio);
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(basicHttpBinding, endpointAddress);
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 RTGMCore.Fuente source;
 

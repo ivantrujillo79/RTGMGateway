@@ -14,7 +14,7 @@ namespace RTGMGateway
         private BasicHttpBinding _BasicHttpBinding;
         private EndpointAddress _EndpointAddress;
         private double longitudRepuesta;
-        private int tiempoEspera;
+        private int tiempoEspera = 180;
         private bool guardarLog;
         private const int MAX_CAPACITY = 2147483647;
         private RTGMCore.Fuente _Fuente;
@@ -56,6 +56,7 @@ namespace RTGMGateway
                 _BasicHttpBinding = new BasicHttpBinding();
                 _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
                 _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
 
                 _Modulo = Modulo;
                 _CadenaConexion = CadenaConexion;
