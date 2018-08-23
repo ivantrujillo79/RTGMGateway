@@ -233,6 +233,11 @@ namespace RTGMGateway
 
                 lstPedidos = consultarPedidos(ParSolicitud);
 
+                if (lstPedidos[0].Message != null && lstPedidos[0].Message.Contains("La consulta no regreso datos"))
+                {
+                    lstPedidos.Clear();
+                }
+
                 log.Info("Finaliza ejecución de método buscarPedidos");
             }
             catch (Exception ex)
