@@ -185,6 +185,71 @@ namespace RTGMGateway
                 return null;
         }
         
+        /// <summary>
+        /// Método que recupera clientes de acuerdo a su zona
+        /// </summary>
+        /// <param name="ParSolicitud">Objeto del tipo SolicitudGateway</param>
+        public List<RTGMCore.DireccionEntrega> buscarClientesPorZona(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("===   Inicia ejecución de método buscarClientesPorZona   ===");
+                
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+
+                RTGMCore.Fuente source;
+
+                source = _Fuente;
+
+                log.Info("Inicia llamado a buscarClientesPorZona" +
+                    ", Source: "            + source                            + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + _Corporativo                      + ", Sucursal: "        + "" +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+                
+                direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, null,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
+
+                foreach (RTGMCore.DireccionEntrega dir in direcciones)
+                {
+                    log.Info(Utilerias.SerializarAString(dir));
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarClientesPorZona   ===");
+            }
+            catch(Exception ex)
+            {
+                log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n"+ex.Message);
+                }
+            }
+
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones;
+            else
+                return null;
+        }
+        
         public RTGMCore.DatosFiscales buscarDatoFiscal(SolicitudGateway ParSolicitud)
         {
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
