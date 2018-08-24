@@ -37,6 +37,7 @@ namespace RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatil))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatilDatos))]
+    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     public partial class DireccionEntrega : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
