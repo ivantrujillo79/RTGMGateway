@@ -18,7 +18,7 @@ namespace RTGMGateway
         [TestCase(0, "Venta al publico", RTGMCore.Fuente.CRM)]
         [TestCase(0, "Venta al publico", RTGMCore.Fuente.Sigamet)]*/
         [TestCase(1, "bserrano", RTGMCore.Fuente.CRM)]
-        [TestCase(1, "FILOMENA REYES PEÑALOZA", RTGMCore.Fuente.Sigamet)]
+        [TestCase(6, "FILOMENA REYES PEÑALOZA", RTGMCore.Fuente.Sigamet)]
         public void pruebaRecuperaCliente(int Cliente, string Nombre,RTGMCore.Fuente Fuente)
         {
             bool respuestaExitosa = true;
@@ -27,7 +27,8 @@ namespace RTGMGateway
 
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                IDCliente = Cliente,
+                //IDCliente = Cliente,
+                Zona = 205,
                 Portatil = false,
                 IDAutotanque = null,
                 FechaConsulta = null
@@ -47,6 +48,33 @@ namespace RTGMGateway
 
             Utilerias.Exportar(objRequest, objDireccionEntega, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
 
+        }
+
+        [TestCase(205)]
+        public void pruebaRecuperaClientesPorZona(int zona)
+        {
+            bool respuestaExitosa = true;
+            RTGMGateway objGateway = new RTGMGateway(1, "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;");
+            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            List<RTGMCore.DireccionEntrega> lsDirecciones = new List<RTGMCore.DireccionEntrega>();
+
+            SolicitudGateway obSolicitud = new SolicitudGateway
+            {
+                Zona = zona,
+                Portatil = false,
+            };
+
+            try
+            {
+                lsDirecciones = objGateway.buscarClientesPorZona(obSolicitud);
+                Assert.IsNotNull(lsDirecciones[0]);
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(obSolicitud, lsDirecciones, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
         }
 
         [TestCase(1000578, 0, "57875000", "VIA MORELOS KM 14.5", "GEO INTERNACIONAL SA DE CV")]
