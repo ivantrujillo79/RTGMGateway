@@ -128,7 +128,7 @@ namespace RTGMGateway
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
             try
             {
-                log.Info("Inicia ejecución de método buscarDireccionEntrega");
+                log.Info("===   Inicia ejecución de método buscarDireccionEntrega   ===");
                 
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
@@ -168,7 +168,6 @@ namespace RTGMGateway
                     log.Info(Utilerias.SerializarAString(dir));
                 }
 
-                log.Info("Finaliza ejecución de método buscarDireccionEntrega");
             }
             catch(Exception ex)
             {
@@ -178,7 +177,10 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n"+ex.Message);
                 }
             }
-
+            finally
+            {
+                log.Info("===   Finaliza ejecución de método buscarDireccionEntrega   ===");
+            }
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0];
             else
