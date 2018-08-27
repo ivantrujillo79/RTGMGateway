@@ -243,12 +243,15 @@ namespace RTGMGateway
 
                 lstPedidos.ForEach(x => log.Info(Utilerias.SerializarAString(x)));
 
-                log.Info("===   Finaliza ejecución de método buscarPedidos   ===");
             }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
                 throw ex;
+            }
+            finally
+            {
+                log.Info("===   Finaliza ejecución de método buscarPedidos   ===");
             }
 
             return lstPedidos;
