@@ -143,7 +143,7 @@ namespace RTGMGateway
 
                 lstPedidosRespuesta = actualizarPedidos(Solicitud);
 
-                lstPedidosRespuesta.ForEach(x => x.Message = "NO HAY ERROR");
+                //lstPedidosRespuesta.ForEach(x => x.Message = "NO HAY ERROR");
 
                 lstPedidosRespuesta.ForEach(x => log.Info(Utilerias.SerializarAString(x)));
             }
