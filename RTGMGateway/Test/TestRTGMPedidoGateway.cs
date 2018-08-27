@@ -13,27 +13,35 @@ namespace RTGMGateway
         private byte _Modulo = 1;
 
         //  DireccionEntrega
-        [TestCase("201820147549", 502627606, RTGMCore.Fuente.Sigamet)]
-        public void pruebaRecuperaDireccionEntrega(string PedidoReferencia, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
+        [TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
+        [TestCase(1505,502627606, RTGMCore.Fuente.CRM)]
+        public void pruebaRecuperaDireccionEntrega(int Pedido, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
-                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
-                FechaCompromisoInicio = DateTime.Now,
-                PedidoReferencia = PedidoReferencia
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin
+                //,
+                //IDPedido = Pedido
+                //,FechaCompromisoInicio = new DateTime(2018, 7, 1)
+                //,FechaCompromisoFin = new DateTime(2018, 7, 31)
+                ,
+                IDZona = 205
+                //,
+                //EstatusBoletin = "BOLETINADO"
+                //EstatusPedidoDescripcion = "BOLETIN"
             };
-
-            List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
 
             try
             {
+                objPedido = objPedidoGateway.buscarPedidos(objRequest);
                 Assert.IsNotNull(objPedido[0].IDDireccionEntrega);
             }
-            catch(Exception)
+            catch (Exception ex)
             {
                 respuestaExitosa = false;
             }
@@ -42,23 +50,28 @@ namespace RTGMGateway
 
         }
 
-        [TestCase("1111", 502627606, RTGMCore.Fuente.CRM)]
-        public void pruebaRecuperaDireccionEntregaCRM(string PedidoReferencia, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
+        //  Servicios técnicos
+        [TestCase(2, 502627606, RTGMCore.Fuente.CRM)]
+        public void recuperaServiciosTecnicos(int Pedido, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
             objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
-                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
-                PedidoReferencia = PedidoReferencia
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.ServiciosTecnicos
+                ,EstatusPedidoDescripcion = "ACTIVO"
+                ,FechaCompromisoInicio = new DateTime(2018, 8, 1)
+                ,FechaCompromisoFin = new DateTime(2018, 8, 1)
+                ,IDZona = 205
+                //,TipoServicio = 5
             };
-
-            List<RTGMCore.Pedido> objPedido = objPedidoGateway.buscarPedidos(objRequest);
 
             try
             {
+                objPedido = objPedidoGateway.buscarPedidos(objRequest);
                 Assert.IsNotNull(objPedido[0].IDDireccionEntrega);
             }
             catch (Exception ex)
