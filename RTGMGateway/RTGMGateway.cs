@@ -228,6 +228,13 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
+                if (direcciones[0].Message != null && 
+                    (direcciones[0].Message.Contains("La consulta no regreso datos") 
+                    || direcciones[0].Message.Contains("La consulta no produjo resultados")))
+                {
+                    direcciones.Clear();
+                }
+
                 foreach (RTGMCore.DireccionEntrega dir in direcciones)
                 {
                     log.Info(Utilerias.SerializarAString(dir));
