@@ -219,7 +219,7 @@ namespace RTGMGateway
             List<RTGMCore.Pedido> lstPedidos = new List<RTGMCore.Pedido>();
             try
             {
-                log.Info("Inicia ejecución de método buscarPedidos");
+                log.Info("===   Inicia ejecución de método buscarPedidos   ===");
 
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
@@ -241,7 +241,9 @@ namespace RTGMGateway
                     }
                 }
 
-                log.Info("Finaliza ejecución de método buscarPedidos");
+                lstPedidos.ForEach(x => log.Info(Utilerias.SerializarAString(x)));
+
+                log.Info("===   Finaliza ejecución de método buscarPedidos   ===");
             }
             catch (Exception ex)
             {
