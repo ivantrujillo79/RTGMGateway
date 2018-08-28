@@ -141,7 +141,7 @@ namespace RTGMGateway
 
                 log.Info("Inicia llamado a buscarDireccionEntrega" +
                     ", Source: "            + source                            + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + _Corporativo                      + ", Sucursal: "        + _Sucursal +
+                    ", Empresa: "           + _Corporativo                      + ", Sucursal: "        + "" +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
                     ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
                     ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
@@ -186,7 +186,77 @@ namespace RTGMGateway
             else
                 return null;
         }
-        
+
+        /// <summary>
+        /// Método que recupera una lista de direcciones de entrega
+        /// </summary>
+        /// <param name="ParSolicitud"></param>
+        /// <returns></returns>
+        public List<RTGMCore.DireccionEntrega> buscarDireccionesEntrega(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> Direcciones = new List<RTGMCore.DireccionEntrega>();
+            try
+            {
+                log.Info("===   Inicia ejecución de método buscarDireccionesEntrega   ===");
+
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+
+                RTGMCore.Fuente source;
+
+                source = _Fuente;
+                //RTGMCore.Fuente.Sigamet;                
+                
+                log.Info("Inicia llamado a buscarDireccionEntrega" +
+                    ", Source: "            + source                            + ", Cliente: "         + ParSolicitud.IDCliente + 
+                    ", Empresa: "           + _Corporativo                      + ", Sucursal: "        + "" +
+                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
+                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
+                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
+                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
+                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
+                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
+                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
+                
+                Direcciones = serviceClient.BusquedaDireccionEntrega(source,                        ParSolicitud.IDCliente,
+                                                                    _Corporativo,                   null,
+                                                                    ParSolicitud.Telefono,          ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre,     ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre,            ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior,    ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona,              ParSolicitud.Ruta,
+                                                                    ParSolicitud.ZonaEconomica,     ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil,          ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia,        ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
+
+                foreach (RTGMCore.DireccionEntrega dir in Direcciones)
+                {
+                    log.Info(Utilerias.SerializarAString(dir));
+                }
+
+                //if (Direcciones.Count > 0 && 
+                //    Direcciones[0].Message != null && 
+                //    Direcciones[0].Message.Contains("ERROR"))
+                //{
+                //    throw new Exception(Direcciones[0].Message);
+                //}
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                log.Info("===   Finaliza ejecución de método buscarDireccionesEntrega   ===");
+            }
+
+            return Direcciones;
+        }
+
         /// <summary>
         /// Método que recupera clientes de acuerdo a su zona
         /// </summary>
