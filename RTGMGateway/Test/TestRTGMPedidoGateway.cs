@@ -13,9 +13,9 @@ namespace RTGMGateway
         private byte _Modulo = 1;
 
         //  DireccionEntrega
-        [TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
-        [TestCase(1505,502627606, RTGMCore.Fuente.CRM)]
-        public void pruebaRecuperaDireccionEntrega(int Pedido, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
+        //[TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
+        [TestCase(1555)]
+        public void pruebaRecuperaPorIDPedido(int Pedido)
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
@@ -24,22 +24,15 @@ namespace RTGMGateway
 
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
-                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin
-                //,
-                //IDPedido = Pedido
-                //,FechaCompromisoInicio = new DateTime(2018, 7, 1)
-                //,FechaCompromisoFin = new DateTime(2018, 7, 31)
-                ,
-                IDZona = 205
-                //,
-                //EstatusBoletin = "BOLETINADO"
-                //EstatusPedidoDescripcion = "BOLETIN"
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido
+                ,IDPedido = Pedido
             };
 
             try
             {
                 objPedido = objPedidoGateway.buscarPedidos(objRequest);
-                Assert.IsNotNull(objPedido[0].IDDireccionEntrega);
+                Assert.IsNotNull(objPedido[0]);
+                Assert.True(objPedido[0].Success);
             }
             catch (Exception ex)
             {
@@ -51,8 +44,8 @@ namespace RTGMGateway
         }
 
         //  Servicios técnicos
-        [TestCase(2, 502627606, RTGMCore.Fuente.CRM)]
-        public void recuperaServiciosTecnicos(int Pedido, int IDDireccionEntrega, RTGMCore.Fuente Fuente)
+        [TestCase(205)]
+        public void recuperaServiciosTecnicos(int parZona)
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
@@ -65,14 +58,15 @@ namespace RTGMGateway
                 ,EstatusPedidoDescripcion = "ACTIVO"
                 ,FechaCompromisoInicio = new DateTime(2018, 8, 1)
                 ,FechaCompromisoFin = new DateTime(2018, 8, 1)
-                ,IDZona = 205
+                ,IDZona = parZona
                 //,TipoServicio = 5
             };
 
             try
             {
                 objPedido = objPedidoGateway.buscarPedidos(objRequest);
-                Assert.IsNotNull(objPedido[0].IDDireccionEntrega);
+                Assert.IsNotNull(objPedido[0]);
+                Assert.True(objPedido[0].Success);
             }
             catch (Exception ex)
             {
@@ -81,6 +75,35 @@ namespace RTGMGateway
 
             Utilerias.Exportar(objRequest, objPedido, objPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
 
+        }
+
+        //  Estatus pedido
+        [TestCase("ACTIVO")]
+        public void pruebaRecuperaPorEstatusPedido(string parEstatus)
+        {
+            bool respuestaExitosa = true;
+            RTGMPedidoGateway obPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
+            obPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            List<RTGMCore.Pedido> Pedidos = new List<RTGMCore.Pedido>();
+
+            SolicitudPedidoGateway obSolicitud = new SolicitudPedidoGateway
+            {
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido,
+                EstatusPedidoDescripcion = parEstatus
+            };
+
+            try
+            {
+                Pedidos = obPedidoGateway.buscarPedidos(obSolicitud);
+                Assert.IsNotNull(Pedidos[0]);
+                Assert.True(Pedidos[0].Success);
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(obSolicitud, Pedidos, obPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
         }
 
         //  Georreferencia
