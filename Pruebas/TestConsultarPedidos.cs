@@ -12,6 +12,7 @@ namespace Pruebas
     {
         private string _CadenaConexion = "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;";
         private byte _Modulo = 1;
+        private string _URL = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
 
         //[TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
         [TestCase(1555)]
@@ -19,7 +20,7 @@ namespace Pruebas
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objPedidoGateway.URLServicio = _URL;
             List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
@@ -49,7 +50,7 @@ namespace Pruebas
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objPedidoGateway.URLServicio = _URL;
             List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
@@ -83,7 +84,7 @@ namespace Pruebas
         {
             bool respuestaExitosa = true;
             RTGMPedidoGateway obPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            obPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            obPedidoGateway.URLServicio = _URL;
             List<RTGMCore.Pedido> Pedidos = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway obSolicitud = new SolicitudPedidoGateway
@@ -111,7 +112,7 @@ namespace Pruebas
         public void pruebaRecuperaGeorreferencia(string PedidoReferencia, int IDEmpresa, string Latitud)
         {
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objPedidoGateway.URLServicio = _URL;
             
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
@@ -156,7 +157,7 @@ namespace Pruebas
         public void pruebaRecuperaZona(int Cliente, int IDEmpresa, int IDZona)
         {
             RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objPedidoGateway.URLServicio = _URL;
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
             {
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido,

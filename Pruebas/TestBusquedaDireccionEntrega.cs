@@ -12,6 +12,7 @@ namespace Pruebas
     {
         private readonly byte _Modulo = 1;
         private readonly string _CadenaConexion = "Server=192.168.1.30;Database=SigametDEVTB;User Id=ROPIMA;Password = ROPIMA9999;";
+        private string _URL = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
 
         [TestCase(6, "Cliente 7", RTGMCore.Fuente.CRM)]
         [TestCase(6, "MARIA ELIZABETH URIBE GONZALEZ", RTGMCore.Fuente.Sigamet)]
@@ -19,7 +20,7 @@ namespace Pruebas
         {
             bool respuestaExitosa = true;
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
 
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -50,7 +51,7 @@ namespace Pruebas
         {
             bool respuestaExitosa = true;
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             List<RTGMCore.DireccionEntrega> lsDirecciones = new List<RTGMCore.DireccionEntrega>();
 
             SolicitudGateway obSolicitud = new SolicitudGateway
@@ -78,7 +79,7 @@ namespace Pruebas
         {
             bool respuestaExitosa = true;
             RTGMGateway.RTGMGateway obGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            obGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            obGateway.URLServicio = _URL;
 
             List<RTGMCore.DireccionEntrega> lsDirecciones = null;
 
@@ -111,7 +112,7 @@ namespace Pruebas
         public void pruebaRecuperaDatosFiscales(int Cliente, int Empresa, string Telefono, string Calle, string RazonSocial)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -137,7 +138,7 @@ namespace Pruebas
             string Latitud)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -166,7 +167,7 @@ namespace Pruebas
             string Municipio, string CarteraDescripcion)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -195,7 +196,7 @@ namespace Pruebas
             string Municipio, int Sucursal, int Empleado)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -220,7 +221,7 @@ namespace Pruebas
             string Municipio, int Sucursal, string Precio)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -250,7 +251,7 @@ namespace Pruebas
             string Colonia, string Municipio, int Sucursal, int Autotanque, string Ajustes)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -284,7 +285,7 @@ namespace Pruebas
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroZona)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -315,7 +316,7 @@ namespace Pruebas
             int NumeroRuta)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -347,7 +348,7 @@ namespace Pruebas
             string NumeroInterior, int IDZona)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -381,7 +382,7 @@ namespace Pruebas
             int NumeroExterior, string NumeroInterior, int TipoServicio, bool ProgramacionActiva)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -416,7 +417,7 @@ namespace Pruebas
             string NumeroInterior, int TipoServicio, int Zona, int IDRamo)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -454,7 +455,7 @@ namespace Pruebas
             string NumeroInterior, int TipoServicio, int Zona, int Ruta, int TipoCliente)
         {
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,

@@ -12,6 +12,7 @@ namespace Pruebas
     {
         private string _CadenaConexion = "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;";
         private byte _Modulo = 1;
+        private string _URL = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
 
         // Actualizar estatus boletín
         [TestCase(1505, 1, 205, "BOLETINADO")]
@@ -20,7 +21,7 @@ namespace Pruebas
             bool respuestaExitosa = true;
 
             RTGMActualizarPedido objGateway = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
 
             List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
             lstPedido.Add(new RTGMCore.PedidoCRMDatos
@@ -60,7 +61,7 @@ namespace Pruebas
             bool respuestaExitosa = true;
 
             RTGMActualizarPedido objGateway = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
 
             List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
             lstPedido.Add(new RTGMCore.PedidoCRMSaldo
@@ -130,7 +131,7 @@ namespace Pruebas
             listaDetallePedidos.Add(obDetalle);
 
             RTGMActualizarPedido objGateway = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            objGateway.URLServicio = _URL;
 
             List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
             lstPedido.Add(new RTGMCore.PedidoCRMDatos
@@ -190,7 +191,7 @@ namespace Pruebas
             List<RTGMCore.Pedido> lsPedidos = new List<RTGMCore.Pedido>();
 
             RTGMActualizarPedido obGateway = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
-            obGateway.URLServicio = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+            obGateway.URLServicio = _URL;
 
             lsPedidos.Add(new RTGMCore.PedidoCRMDatos
             {
