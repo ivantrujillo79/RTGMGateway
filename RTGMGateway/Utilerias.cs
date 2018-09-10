@@ -12,40 +12,24 @@ namespace RTGMGateway
     {
         BusquedaDireccionEntrega = 1,
         ConsultarPedidos = 2,
-        ActualizarPedido = 3
+        ActualizarPedido = 3,
+        ActualizarPedidoBoletin = 4,
+        ActualizarPedidoSaldo = 5,
+        ActualizarPedidoLiquidacion = 6,
+        ActualizarPedidoCancelarLiquidacion = 7 
     }
     
     public class Utilerias
     {
         public static void Exportar(object obSolicitud, object obRespuesta, RTGMCore.Fuente fuente, bool exitoso, EnumMetodoWS metodo)
         {
-            string rutaConsultaDireccion = AppDomain.CurrentDomain.BaseDirectory
-                    + "\\Log\\" + "BusquedaDireccionEntrega" + fuente.ToString().ToUpper() + (exitoso ? "_EXITOSO.xml" : "_FALLIDO.xml");
+            string tipoConsulta = Enum.GetName(typeof(EnumMetodoWS), metodo);
 
-            string rutaConsultaPedido = AppDomain.CurrentDomain.BaseDirectory
-                    + "\\Log\\" + "ConsultarPedidos" + fuente.ToString().ToUpper() + (exitoso ? "_EXITOSO.xml" : "_FALLIDO.xml");
+            string ruta = AppDomain.CurrentDomain.BaseDirectory
+                    + "\\Log\\" + tipoConsulta + fuente.ToString().ToUpper() + (exitoso ? "_EXITOSO.xml" : "_FALLIDO.xml");
 
-            string rutaActualizarPedido = AppDomain.CurrentDomain.BaseDirectory
-                    + "\\Log\\" + "ActualizarPedido" + fuente.ToString().ToUpper() + (exitoso ? "_EXITOSO.xml" : "_FALLIDO.xml");
-
-            switch (metodo)
-            {
-                case EnumMetodoWS.BusquedaDireccionEntrega:
-                    Utilerias.ExportarAXML(obSolicitud, rutaConsultaDireccion);
-                    Utilerias.ExportarAXML(obRespuesta, rutaConsultaDireccion, true);
-                    break;
-
-                case EnumMetodoWS.ConsultarPedidos:
-                    Utilerias.ExportarAXML(obSolicitud, rutaConsultaPedido);
-                    Utilerias.ExportarAXML(obRespuesta, rutaConsultaPedido, true);
-                    break;
-
-                case EnumMetodoWS.ActualizarPedido:
-                    Utilerias.ExportarAXML(obSolicitud, rutaActualizarPedido);
-                    Utilerias.ExportarAXML(obRespuesta, rutaActualizarPedido, true);
-                    break;
-            }
-
+            Utilerias.ExportarAXML(obSolicitud, ruta);
+            Utilerias.ExportarAXML(obRespuesta, ruta, true);
         }
 
         private static void ExportarAXML(object objeto, string ruta, bool anexar = false)
