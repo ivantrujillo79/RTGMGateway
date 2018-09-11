@@ -55,7 +55,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestRTGM.cs" />
     <Compile Include="TestActualizarPedido.cs" />
     <Compile Include="TestBusquedaDireccionEntrega.cs" />
     <Compile Include="TestConsultarPedidos.cs" />
