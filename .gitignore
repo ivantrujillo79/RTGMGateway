@@ -6,3 +6,4 @@
 RTGMGateway/log4net.config
 RTGMGateway/TestResults/bc1ba28b-509c-4bd3-9c17-832094549ada/Iván Trujillo_LAPTOP-27A9SR4T 2018-07-19 11_36_02.coverage
 RTGMGateway/.vs/RTGMGateway/DesignTimeBuild/.dtbcache
+Pruebas/bin/Debug/Log/**
