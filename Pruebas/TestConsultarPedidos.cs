@@ -15,7 +15,7 @@ namespace Pruebas
         private string _URL = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
 
         //[TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
-        [TestCase(1555)]
+        [TestCase(1593)]
         public void pruebaRecuperaPorIDPedido(int Pedido)
         {
             bool respuestaExitosa = true;
@@ -44,8 +44,37 @@ namespace Pruebas
 
         }
 
+        [TestCase(201)]
+        public void pruebaRecuperaPorIDZona(int parZona)
+        {
+            bool respuestaExitosa = true;
+            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
+            objPedidoGateway.URLServicio = _URL;
+            List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
+
+            SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
+            {
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido
+                ,
+                IDZona = parZona
+            };
+
+            try
+            {
+                objPedido = objPedidoGateway.buscarPedidos(objRequest);
+                Assert.IsNotNull(objPedido[0]);
+                Assert.True(objPedido[0].Success);
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(objRequest, objPedido, objPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
+        }
+
         //  Servicios técnicos
-        [TestCase(205)]
+        [TestCase(201)]
         public void recuperaServiciosTecnicos(int parZona)
         {
             bool respuestaExitosa = true;
@@ -57,17 +86,17 @@ namespace Pruebas
             {
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.ServiciosTecnicos
                 ,EstatusPedidoDescripcion = "ACTIVO"
-                ,FechaCompromisoInicio = new DateTime(2018, 8, 1)
-                ,FechaCompromisoFin = new DateTime(2018, 8, 1)
+                ,FechaCompromisoInicio = new DateTime(2018, 9, 7)
+                ,FechaCompromisoFin = new DateTime(2018, 9, 7, 11, 59, 59)
                 ,IDZona = parZona
-                //,TipoServicio = 5
             };
 
             try
             {
                 objPedido = objPedidoGateway.buscarPedidos(objRequest);
                 Assert.IsNotNull(objPedido[0]);
-                Assert.True(objPedido[0].Success);
+                Assert.IsNull(objPedido[0].Message);
+                //Assert.True(objPedido[0].Success);
             }
             catch (Exception)
             {
