@@ -51,12 +51,12 @@ namespace Pruebas
                 respuestaExitosa = false;
             }
 
-            Utilerias.Exportar(Solicitud, ListaRespuesta, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedido);
+            Utilerias.Exportar(Solicitud, ListaRespuesta, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedidoBoletin);
         }
 
         // Actualizar saldo
-        [TestCase(1, 2, "2", 205, 20)]
-        public void pruebaActualizarSaldo(int empresa, int pedido, string pedidoReferencia, int zona, decimal abono)
+        [TestCase(1, 1638, 201, 20)]
+        public void pruebaActualizarSaldo(int empresa, int pedido, int zona, decimal abono)
         {
             bool respuestaExitosa = true;
 
@@ -66,11 +66,11 @@ namespace Pruebas
             List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
             lstPedido.Add(new RTGMCore.PedidoCRMSaldo
             {
-                IDEmpresa = empresa
-                ,IDPedido = pedido
-                ,PedidoReferencia = pedidoReferencia
-                ,IDZona = zona
-                ,Abono = abono
+                IDEmpresa               = empresa
+                ,IDPedido               = pedido
+                ,PedidoReferencia       = Convert.ToString(pedido)
+                ,IDZona                 = zona
+                ,Abono                  = abono
             });
 
             SolicitudActualizarPedido Solicitud = new SolicitudActualizarPedido
@@ -92,13 +92,13 @@ namespace Pruebas
                 respuestaExitosa = false;
             }
 
-            Utilerias.Exportar(Solicitud, ListaRespuesta, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedido);
+            Utilerias.Exportar(Solicitud, ListaRespuesta, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedidoSaldo);
 
         }
 
         // Liquidar pedido
-        [TestCase(1584, 201, 14, 1)]
-        public void pruebaLiquidacion(int? pedido, int zona, int ruta, int producto)
+        [TestCase(1638, 201, 1, 1, 49)]
+        public void pruebaLiquidacion(int? pedido, int zona, int ruta, int producto, int direccionEntrega)
         {
             bool respuestaExitosa = true;
             List<RTGMCore.DetallePedido> listaDetallePedidos = new List<RTGMCore.DetallePedido>();
@@ -108,11 +108,11 @@ namespace Pruebas
             {
                 Producto                    = obProducto,
                 DescuentoAplicado           = 0,
-                Importe                     = 290.25M,
+                Importe                     = 61.2M,
                 Impuesto                    = 0M,
-                Precio                      = 10.75M,
-                CantidadSurtida             = 27,
-                Total                       = 290.25M,
+                Precio                      = 10.2M,
+                CantidadSurtida             = 6,
+                Total                       = 61.2M,
 
                 CantidadLectura             = 0,
                 CantidadLecturaAnterior     = 0,
@@ -137,24 +137,25 @@ namespace Pruebas
             lstPedido.Add(new RTGMCore.PedidoCRMDatos
             {
                 IDPedido                = pedido
-                ,IDZona                  = zona
+                ,IDZona                 = zona
                 ,RutaSuministro         = obRuta
                 ,DetallePedido          = listaDetallePedidos
-                ,IDDireccionEntrega     = 37
+                ,IDDireccionEntrega     = direccionEntrega
                 ,AnioAtt                = 2018
                 ,FSuministro            = DateTime.Now
-                ,FolioRemision          = 17327695
+                ,FolioRemision          = 7654321
                 ,IDAutotanque           = 303
                 ,IDEmpresa              = 1
-                ,IDFolioAtt             = 47697
-                ,IDFormaPago            = 5
+                ,IDFolioAtt             = 927565
+                ,IDFormaPago            = 3
                 ,IDTipoCargo            = 1
                 ,IDTipoPedido           = 1
                 ,IDTipoServicio         = 1
-                ,Importe                = 291.25M
+                ,Importe                = 61.2M
                 ,Impuesto               = 0M
                 ,SerieRemision          = "E"
-                ,Total                  = 290.25M
+                ,Total                  = 61.2M
+                ,Saldo                  = 0
             });
 
             SolicitudActualizarPedido Solicitud = new SolicitudActualizarPedido
@@ -177,7 +178,7 @@ namespace Pruebas
                 respuestaExitosa = false;
             }
 
-            Utilerias.Exportar(Solicitud, ListaRespuesta, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedido);
+            Utilerias.Exportar(Solicitud, ListaRespuesta, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedidoLiquidacion);
         }
 
         // Cancelar liquidación
@@ -224,7 +225,7 @@ namespace Pruebas
                 respuestaExitosa = false;
             }
 
-            Utilerias.Exportar(obSolicitud, lsRespuesta, obGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedido);
+            Utilerias.Exportar(obSolicitud, lsRespuesta, obGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedidoCancelarLiquidacion);
         }
 
     }
