@@ -227,7 +227,6 @@ namespace Pruebas
 
             Utilerias.Exportar(obSolicitud, lsRespuesta, obGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedidoCancelarLiquidacion);
         }
-
     }
 }
 
