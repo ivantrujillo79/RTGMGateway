@@ -20,16 +20,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GasMetropolitanoRuntimeService.xsd" MetadataType="Schema" ID="62f3c33c-d9d7-4078-9e26-1d0b9fc20e82" SourceId="1" SourceUrl="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd0" />
-    <MetadataFile FileName="GasMetropolitanoRuntimeService1.xsd" MetadataType="Schema" ID="566327a3-2909-439b-a83a-98fbe209a768" SourceId="1" SourceUrl="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd3" />
-    <MetadataFile FileName="GasMetropolitanoRuntimeService2.xsd" MetadataType="Schema" ID="9aaf1153-830a-4944-9fac-61b0240b707a" SourceId="1" SourceUrl="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd2" />
-    <MetadataFile FileName="GasMetropolitanoRuntimeService.wsdl" MetadataType="Wsdl" ID="fc2f6001-bc90-428f-9e04-18fd95bf9703" SourceId="1" SourceUrl="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?wsdl" />
-    <MetadataFile FileName="GasMetropolitanoRuntimeService3.xsd" MetadataType="Schema" ID="97a8b00f-7c28-4692-aa73-29f3292eaf70" SourceId="1" SourceUrl="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd5" />
-    <MetadataFile FileName="GasMetropolitanoRuntimeService4.xsd" MetadataType="Schema" ID="0aa91a32-2f51-4a38-b954-f39f646283f8" SourceId="1" SourceUrl="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd4" />
-    <MetadataFile FileName="GasMetropolitanoRuntimeService5.xsd" MetadataType="Schema" ID="79449cd8-6a46-4e5c-9ce6-cce6b6bf1ee0" SourceId="1" SourceUrl="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GasMetropolitanoRuntimeService6.xsd" MetadataType="Schema" ID="5135f2a6-a7e5-4836-b81a-f50f8d7d133a" SourceId="1" SourceUrl="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?xsd=xsd3" />
+    <MetadataFile FileName="GasMetropolitanoRuntimeService61.xsd" MetadataType="Schema" ID="513bc872-4191-4b3d-84db-941f7e363036" SourceId="1" SourceUrl="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GasMetropolitanoRuntimeService62.xsd" MetadataType="Schema" ID="2146eb9b-4401-40c3-96e2-d063ad7a09c0" SourceId="1" SourceUrl="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?xsd=xsd4" />
+    <MetadataFile FileName="GasMetropolitanoRuntimeService63.xsd" MetadataType="Schema" ID="fb3bbc2b-e2e9-4bb5-bf1b-65b080144406" SourceId="1" SourceUrl="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?xsd=xsd5" />
+    <MetadataFile FileName="GasMetropolitanoRuntimeService64.xsd" MetadataType="Schema" ID="dba823ab-b073-43ef-8d15-82f212697fd5" SourceId="1" SourceUrl="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GasMetropolitanoRuntimeService1.wsdl" MetadataType="Wsdl" ID="082d6618-c5d8-4284-b8eb-78a3d500dbb3" SourceId="1" SourceUrl="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?wsdl" />
+    <MetadataFile FileName="GasMetropolitanoRuntimeService65.xsd" MetadataType="Schema" ID="c83a52a3-23bc-41cb-944c-ae19e4ec54e3" SourceId="1" SourceUrl="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

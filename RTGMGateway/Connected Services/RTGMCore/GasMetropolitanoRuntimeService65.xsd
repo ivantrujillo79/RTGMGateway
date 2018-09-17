@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:simpleType name="Fuente">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Sigamet" />
@@ -45,6 +45,7 @@
           <xs:element minOccurs="0" name="IDColonia" type="xs:int" />
           <xs:element minOccurs="0" name="IDDatosFiscales" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IDDireccionEntrega" type="xs:int" />
+          <xs:element minOccurs="0" name="IDDireccionEntregaPadre" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IDEmpresa" type="xs:int" />
           <xs:element minOccurs="0" name="IDEntreCalle1" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IDEntreCalle2" nillable="true" type="xs:int" />
@@ -634,6 +635,7 @@
           <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
           <xs:element minOccurs="0" name="PrecioAplicable" type="xs:decimal" />
           <xs:element minOccurs="0" name="Producto" nillable="true" type="tns:Producto" />
+          <xs:element minOccurs="0" name="Redondeo" type="xs:decimal" />
           <xs:element minOccurs="0" name="RedondeoAnterior" type="xs:decimal" />
           <xs:element minOccurs="0" name="Tag" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Total" type="xs:decimal" />
