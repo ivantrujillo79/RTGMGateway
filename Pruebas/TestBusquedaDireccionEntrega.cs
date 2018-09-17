@@ -12,10 +12,10 @@ namespace Pruebas
     {
         private readonly byte _Modulo = 1;
         private readonly string _CadenaConexion = "Server=192.168.1.30;Database=SigametDEVTB;User Id=ROPIMA;Password = ROPIMA9999;";
-        private string _URL = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+        private string _URL = @"http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc";
 
-        [TestCase(6, "Cliente 7", RTGMCore.Fuente.CRM)]
-        [TestCase(6, "MARIA ELIZABETH URIBE GONZALEZ", RTGMCore.Fuente.Sigamet)]
+        [TestCase(2, "MARIA ELIZABETH URIBE GONZALEZ", RTGMCore.Fuente.Sigamet)]
+        [TestCase(502763311, "MERLINA SOLANO MARQUEZ", RTGMCore.Fuente.CRM)]
         public void pruebaRecuperaClientePorID(int Cliente, string Nombre,RTGMCore.Fuente Fuente)
         {
             bool respuestaExitosa = true;
@@ -30,19 +30,19 @@ namespace Pruebas
                 FechaConsulta = null
             };
 
-            RTGMCore.DireccionEntrega objDireccionEntega = objGateway.buscarDireccionEntrega(objRequest);
+            RTGMCore.DireccionEntrega objDireccionEntrega = objGateway.buscarDireccionEntrega(objRequest);
 
             try
             {
-                Assert.IsNotNull(objDireccionEntega);
-                Assert.AreEqual(objDireccionEntega.Nombre.Trim(), Nombre);
+                Assert.IsNotNull(objDireccionEntrega);
+                Assert.True(objDireccionEntrega.Success);
             }
             catch (Exception)
             {
                 respuestaExitosa = false;
             }
 
-            Utilerias.Exportar(objRequest, objDireccionEntega, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
+            Utilerias.Exportar(objRequest, objDireccionEntrega, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
 
         }
 

@@ -12,10 +12,10 @@ namespace Pruebas
     {
         private string _CadenaConexion = "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;";
         private byte _Modulo = 1;
-        private string _URL = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+        private string _URL = @"http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc";
 
         //[TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
-        [TestCase(1593)]
+        [TestCase(30002431)]
         public void pruebaRecuperaPorIDPedido(int Pedido)
         {
             bool respuestaExitosa = true;

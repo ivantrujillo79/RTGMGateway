@@ -12,7 +12,7 @@ namespace Pruebas
     {
         private string _CadenaConexion = "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;";
         private byte _Modulo = 1;
-        private string _URL = @"http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc";
+        private string _URL = @"http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc";
 
         // Actualizar estatus boletín
         [TestCase(1505, 1, 205, "BOLETINADO")]
@@ -55,8 +55,8 @@ namespace Pruebas
         }
 
         // Actualizar saldo
-        [TestCase(1, 1638, 201, 20)]
-        public void pruebaActualizarSaldo(int empresa, int pedido, int zona, decimal abono)
+        [TestCase(30002431, 201, 70, 1)]
+        public void pruebaActualizarSaldo(int pedido, int zona, decimal abono, int empresa)
         {
             bool respuestaExitosa = true;
 
@@ -97,7 +97,7 @@ namespace Pruebas
         }
 
         // Liquidar pedido
-        [TestCase(1638, 201, 1, 1, 49)]
+        [TestCase(30002431, 201, 2, 1, 502763311)]
         public void pruebaLiquidacion(int? pedido, int zona, int ruta, int producto, int direccionEntrega)
         {
             bool respuestaExitosa = true;
@@ -108,11 +108,11 @@ namespace Pruebas
             {
                 Producto                    = obProducto,
                 DescuentoAplicado           = 0,
-                Importe                     = 61.2M,
-                Impuesto                    = 0M,
-                Precio                      = 10.2M,
-                CantidadSurtida             = 6,
-                Total                       = 61.2M,
+                Importe                     = 258.6207M,
+                Impuesto                    = 41.3793M,
+                Precio                      = 9.96M,
+                CantidadSurtida             = 30.05M,
+                Total                       = 300M,
 
                 CantidadLectura             = 0,
                 CantidadLecturaAnterior     = 0,
@@ -143,19 +143,19 @@ namespace Pruebas
                 ,IDDireccionEntrega     = direccionEntrega
                 ,AnioAtt                = 2018
                 ,FSuministro            = DateTime.Now
-                ,FolioRemision          = 7654321
+                ,FolioRemision          = 16182
                 ,IDAutotanque           = 303
                 ,IDEmpresa              = 1
                 ,IDFolioAtt             = 927565
-                ,IDFormaPago            = 3
+                ,IDFormaPago            = 4
                 ,IDTipoCargo            = 1
                 ,IDTipoPedido           = 1
                 ,IDTipoServicio         = 1
-                ,Importe                = 61.2M
-                ,Impuesto               = 0M
+                ,Importe                = 258.6207M
+                ,Impuesto               = 41.3793M
                 ,SerieRemision          = "E"
-                ,Total                  = 61.2M
-                ,Saldo                  = 0
+                ,Total                  = 300M
+                ,Saldo                  = 300M
             });
 
             SolicitudActualizarPedido Solicitud = new SolicitudActualizarPedido
