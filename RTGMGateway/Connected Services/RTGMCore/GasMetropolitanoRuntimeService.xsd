@@ -24,6 +24,7 @@
         <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="Referencia" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="IDAutotanque" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="FechaConsulta" nillable="true" type="xs:dateTime" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -31,6 +32,52 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="BusquedaDireccionEntregaResult" nillable="true" type="q2:ArrayOfDireccionEntrega" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPedidos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IDEmpresa" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="FuenteDatos" type="q3:Fuente" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="TipoConsultaPedido" type="q4:TipoConsultaPedido" />
+        <xs:element minOccurs="0" name="Portatil" type="xs:boolean" />
+        <xs:element minOccurs="0" name="IDUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IDDireccionEntrega" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="IDSucursal" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="FechaCompromisoIncicio" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FechaCompromisoFin" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FechaSumistroInicio" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FechaSuministroFin" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="IDZona" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="IDRutaOrigen" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="IDRutaBoletin" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="IDRutaSuministro" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="IDEstatusPedido" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="EstatusPedidoDescripcion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IDEstatusBoletin" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="EstatusBoletin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IDEstatusMovil" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="EstatusMovilDescripcion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IDAutotanque" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="IDAutotanqueMovil" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="SerieRemision" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FolioRemision" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="SerieFactura" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FolioFactura" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="IDZonaLecturista" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="TipoPedido" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="TipoServicio" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="AñoPed" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="IDPedido" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="PedidoReferencia" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPedidosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ConsultarPedidosResult" nillable="true" type="q5:ArrayOfPedido" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -45,7 +92,26 @@
   <xs:element name="ConsultarDatosFiscalesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ConsultarDatosFiscalesResult" nillable="true" type="q3:DatosFiscales" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ConsultarDatosFiscalesResult" nillable="true" type="q6:DatosFiscales" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarPedido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="FuenteDatos" type="q7:Fuente" />
+        <xs:element minOccurs="0" name="IDEmpresa" type="xs:int" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="TipoActualizacion" type="q8:TipoActualizacion" />
+        <xs:element minOccurs="0" name="Portatil" type="xs:boolean" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="Pedido" nillable="true" type="q9:ArrayOfPedido" />
+        <xs:element minOccurs="0" name="IDUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarPedidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ActualizarPedidoResult" nillable="true" type="q10:ArrayOfPedido" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

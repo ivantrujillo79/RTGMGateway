@@ -15,3 +15,46 @@ C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\bin\Debug\es
 C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
 C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.dll
 C:\Users\Public\Documents\Proyectos\Trabajo\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.pdb
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.dll.config
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.dll
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.pdb
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\bin\Debug\log4net.dll
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\bin\Debug\nunit.framework.dll
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\bin\Debug\log4net.xml
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\bin\Debug\nunit.framework.xml
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.dll
+C:\Users\Transforma1\Source\Repos\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.pdb
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\NUnit3.TestAdapter.pdb
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\nunit.engine.dll
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\nunit.engine.api.dll
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\Mono.Cecil.dll
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.dll.config
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.dll
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.pdb
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\log4net.dll
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\nunit.framework.dll
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\log4net.xml
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\bin\Debug\nunit.framework.xml
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.csprojResolveAssemblyReference.cache
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CopyComplete
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.dll
+C:\Users\elena\Documents\RTGMGateway\RTGMGateway\obj\Debug\RTGMGateway.pdb
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\NUnit3.TestAdapter.pdb
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\nunit.engine.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\nunit.engine.api.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\Mono.Cecil.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.dll.config
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\RTGMGateway.pdb
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\log4net.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\nunit.framework.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\log4net.xml
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\bin\Debug\nunit.framework.xml
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.csprojAssemblyReference.cache
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.csproj.CopyComplete
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\RTGMGateway\obj\Debug\RTGMGateway.pdb

@@ -1,0 +1,1593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SolicitudPedidoGateway xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<TipoConsultaPedido>RegistroPedido</TipoConsultaPedido>
+	<Portatil>false</Portatil>
+	<IDDireccionEntrega xsi:nil="true" />
+	<FechaCompromisoInicio xsi:nil="true" />
+	<FechaCompromisoFin xsi:nil="true" />
+	<FechaSuministroInicio xsi:nil="true" />
+	<FechaSuministroFin xsi:nil="true" />
+	<IDZona xsi:nil="true" />
+	<IDRutaOrigen xsi:nil="true" />
+	<IDRutaBoletin xsi:nil="true" />
+	<IDRutaSuministro xsi:nil="true" />
+	<IDEstatusPedido xsi:nil="true" />
+	<IDEstatusBoletin xsi:nil="true" />
+	<IDEstatusMovil xsi:nil="true" />
+	<IDAutotanque xsi:nil="true" />
+	<IDAutotanqueMovil xsi:nil="true" />
+	<FolioRemision xsi:nil="true" />
+	<FolioFactura xsi:nil="true" />
+	<IDZonaLecturista xsi:nil="true" />
+	<TipoPedido xsi:nil="true" />
+	<TipoServicio xsi:nil="true" />
+	<AñoPed xsi:nil="true" />
+	<IDPedido>1555</IDPedido>
+</SolicitudPedidoGateway><?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPedido xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Pedido xsi:type="PedidoCRMDatos">
+		<ExtensionData />
+		<Class>PedidoCRMDatos</Class>
+		<InternalException />
+		<Method>get_Method</Method>
+		<Success>true</Success>
+		<AnioAtt>2018</AnioAtt>
+		<AnioPed>2018</AnioPed>
+		<Boletin xsi:nil="true" />
+		<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+		<DetallePedido>
+			<DetallePedido>
+				<ExtensionData />
+				<Class>DetallePedido</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CantidadLectura>0</CantidadLectura>
+				<CantidadLecturaAnterior>0</CantidadLecturaAnterior>
+				<CantidadSolicitada>1.0000000000</CantidadSolicitada>
+				<CantidadSurtida>48.0000000000</CantidadSurtida>
+				<DescuentoAplicable>0</DescuentoAplicable>
+				<DescuentoAplicado>0</DescuentoAplicado>
+				<DiferenciaDeLecturas>0</DiferenciaDeLecturas>
+				<GUID>320e52e8-24aa-e811-80d5-0050569f76bb</GUID>
+				<IDDetallePedido>1</IDDetallePedido>
+				<IDPedido>0</IDPedido>
+				<Importe>496.8000</Importe>
+				<Impuesto>0</Impuesto>
+				<ImpuestoAplicable>0</ImpuestoAplicable>
+				<PorcentajeTanque>0</PorcentajeTanque>
+				<Precio>10.3500</Precio>
+				<PrecioAplicable>0</PrecioAplicable>
+				<Producto>
+					<ExtensionData />
+					<Class>Producto</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<Descripcion>GAS ESTACIONARIO</Descripcion>
+					<IDProducto>1</IDProducto>
+				</Producto>
+				<RedondeoAnterior>0</RedondeoAnterior>
+				<Total>496.8000</Total>
+				<TotalAplicable>0</TotalAplicable>
+			</DetallePedido>
+		</DetallePedido>
+		<DireccionEntrega xsi:type="DireccionEntregaCRMDatos">
+			<ExtensionData />
+			<Class>DireccionEntregaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>true</Success>
+			<CP>09608</CP>
+			<CalleNombre>HERRADURA</CalleNombre>
+			<ColoniaNombre>1A AMPLIACION SANTIAGO ACAHUALTEPEC</ColoniaNombre>
+			<CondicionesCredito xsi:type="CondicionesCreditoCRMDatos">
+				<ExtensionData />
+				<Class>CondicionesCreditoCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<AgendaGestionCobranza />
+				<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+				<DificultadCobro>DIFICULTAD 1</DificultadCobro>
+				<DificultadGestion>DIFICULTAD 1</DificultadGestion>
+				<FormaPagoPreferidaDescripcion>Efectivo            </FormaPagoPreferidaDescripcion>
+				<FuenteDatos>CRM</FuenteDatos>
+				<HFinAtencionCyC>2018-07-30T19:00:00</HFinAtencionCyC>
+				<HInicioAtencionCyC>2018-07-30T19:00:00</HInicioAtencionCyC>
+				<IDCartera>0</IDCartera>
+				<IDClasificacionCredito xsi:nil="true" />
+				<IDDificultadCobro>1</IDDificultadCobro>
+				<IDDificultadGestion>1</IDDificultadGestion>
+				<IDDireccionEntrega>10</IDDireccionEntrega>
+				<IDEmpleadoNomina xsi:nil="true" />
+				<IDEmpresa>1</IDEmpresa>
+				<IDFormaPagoPreferida>1</IDFormaPagoPreferida>
+				<IDResponsableGestion>4</IDResponsableGestion>
+				<IDSupervisorGestion xsi:nil="true" />
+				<LimiteCredito>0</LimiteCredito>
+				<PlazoCredito>0</PlazoCredito>
+				<ResponsableGestion xsi:type="EmpleadoCRMDatos">
+					<ExtensionData />
+					<Class>EmpleadoCRMDatos</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<IDEmpleado>4</IDEmpleado>
+					<IDEmpresa>1</IDEmpresa>
+					<NombreCompleto>  </NombreCompleto>
+					<NumeroEmpleado>0</NumeroEmpleado>
+				</ResponsableGestion>
+				<Saldo>0</Saldo>
+			</CondicionesCredito>
+			<ConfiguracionSuministro xsi:type="ConfiguracionSuministroDatos">
+				<ExtensionData />
+				<Class>ConfiguracionSuministroDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Ajustes>+03.0                           </Ajustes>
+				<Derechos>0913</Derechos>
+				<RequiereTAG>false</RequiereTAG>
+				<RestriccionGPS>false</RestriccionGPS>
+				<TipoPago>credito</TipoPago>
+			</ConfiguracionSuministro>
+			<ConsumoPromedio xsi:nil="true" />
+			<ContratoAprobado>false</ContratoAprobado>
+			<DatosFiscales xsi:type="DatosFiscalesCRMDatos">
+				<ExtensionData />
+				<Class>DatosFiscalesCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CP>09608</CP>
+				<CopiasCFD>0</CopiasCFD>
+				<EnvioCFDCorreo xsi:nil="true" />
+				<IDDatosFiscales>6</IDDatosFiscales>
+				<IDEmpresa>1</IDEmpresa>
+				<NombreCuenta>Cliente 1</NombreCuenta>
+				<RFC>COCD840101977</RFC>
+				<RazonSocial>Cliente 1</RazonSocial>
+			</DatosFiscales>
+			<Descuentos />
+			<DigitoVerificador>0</DigitoVerificador>
+			<DireccionCompleta>HERRADURA 1     1A AMPLIACION SANTIAGO ACAHUALTEPEC  IZTAPALAPA  CIUDAD DE MEXICO  </DireccionCompleta>
+			<EstadoNombre>CIUDAD DE MEXICO</EstadoNombre>
+			<FAlta xsi:nil="true" />
+			<FactorConversion xsi:nil="true" />
+			<FechaConsulta xsi:nil="true" />
+			<FuenteDatos>CRM</FuenteDatos>
+			<Georreferencia>
+				<ExtensionData />
+				<Altitud xsi:nil="true" />
+				<Latitud>19.3571519</Latitud>
+				<Longitud>-99.0026517</Longitud>
+				<MargenError xsi:nil="true" />
+				<Velocidad xsi:nil="true" />
+			</Georreferencia>
+			<IDAutotanque xsi:nil="true" />
+			<IDCalle>2222</IDCalle>
+			<IDClientesRelacionados />
+			<IDColonia>11166</IDColonia>
+			<IDDatosFiscales xsi:nil="true" />
+			<IDDireccionEntrega>10</IDDireccionEntrega>
+			<IDEmpresa>1</IDEmpresa>
+			<IDEntreCalle1 xsi:nil="true" />
+			<IDEntreCalle2 xsi:nil="true" />
+			<IDMunicipio>9009</IDMunicipio>
+			<MotivoNoSuministrar>/</MotivoNoSuministrar>
+			<MunicipioNombre>IZTAPALAPA</MunicipioNombre>
+			<NoSuministrar xsi:nil="true" />
+			<Nombre>Contacto 1</Nombre>
+			<NombreContacto>Contacto 1</NombreContacto>
+			<NumExterior>1</NumExterior>
+			<ProgramacionSuministro>
+				<ExtensionData />
+				<Class>ProgramacionSuministro</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<IDProgramacion>0</IDProgramacion>
+				<ProgramacionActiva>false</ProgramacionActiva>
+			</ProgramacionSuministro>
+			<Ramo>
+				<ExtensionData />
+				<GiroCliente>
+					<ExtensionData />
+					<Descripcion>COMERCIAL</Descripcion>
+					<IDGiroCliente>3</IDGiroCliente>
+				</GiroCliente>
+				<IDRamoCliente>18</IDRamoCliente>
+				<RamoClienteDescripcion>CAFETERIA                               </RamoClienteDescripcion>
+			</Ramo>
+			<Ruta xsi:type="RutaCRMDatos">
+				<ExtensionData />
+				<Class>RutaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Ruta 163            </Descripcion>
+				<IDEmpresa>1</IDEmpresa>
+				<IDRuta>163</IDRuta>
+				<NumeroRuta>163</NumeroRuta>
+				<ReporteRAF xsi:nil="true" />
+			</Ruta>
+			<StatusCalidad>NUEVO</StatusCalidad>
+			<TipoFacturacion>
+				<ExtensionData />
+				<Class>TipoFacturacion</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Sin Facturacion                                             </Descripcion>
+				<IDTipoFacturacion>0</IDTipoFacturacion>
+			</TipoFacturacion>
+			<VIP>false</VIP>
+			<ZonaEconomica>
+				<ExtensionData />
+				<Descripcion>ZE Ciudad México</Descripcion>
+				<IDZonaEconomomica>0</IDZonaEconomomica>
+			</ZonaEconomica>
+			<ZonaSuministro xsi:type="ZonaCRMDatos">
+				<ExtensionData />
+				<Class>ZonaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>CÉLULA 203          </Descripcion>
+				<IDZona>203</IDZona>
+				<NumeroZona>203</NumeroZona>
+			</ZonaSuministro>
+		</DireccionEntrega>
+		<EstatusBoletin />
+		<EstatusPedido>SURTIDO</EstatusPedido>
+		<FAlta xsi:nil="true" />
+		<FCargo xsi:nil="true" />
+		<FCompromiso>2018-08-31T00:00:00</FCompromiso>
+		<FEnvioMovil xsi:nil="true" />
+		<FLecturaAnterior xsi:nil="true" />
+		<FStatusMovil xsi:nil="true" />
+		<FSuministro>2018-08-31T12:40:17</FSuministro>
+		<FolioFactura>345</FolioFactura>
+		<FolioPresupuestoST xsi:nil="true" />
+		<FolioRemision>16565855</FolioRemision>
+		<FormaPago>Crédito OP          </FormaPago>
+		<IDAutotanque>303</IDAutotanque>
+		<IDAutotanqueMovil xsi:nil="true" />
+		<IDCartera>0</IDCartera>
+		<IDDireccionEntrega>10</IDDireccionEntrega>
+		<IDEmpresa>1</IDEmpresa>
+		<IDEstatusMovil xsi:nil="true" />
+		<IDEstatusPedido>6</IDEstatusPedido>
+		<IDFolioAtt>345</IDFolioAtt>
+		<IDFormaPago>9</IDFormaPago>
+		<IDMotivoCancelacion xsi:nil="true" />
+		<IDMovil xsi:nil="true" />
+		<IDPedido>1555</IDPedido>
+		<IDPrioridadPedido xsi:nil="true" />
+		<IDTipoCargo>1</IDTipoCargo>
+		<IDTipoPedido>1</IDTipoPedido>
+		<IDTipoServicio>1</IDTipoServicio>
+		<IDZona>203</IDZona>
+		<Importe>496.8000</Importe>
+		<Impuesto>0.0000000000</Impuesto>
+		<Lecturista>
+			<ExtensionData />
+			<Class>EmpleadoLecturista</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<IDEmpleado>0</IDEmpleado>
+			<IDEmpresa>0</IDEmpresa>
+			<NumeroEmpleado>0</NumeroEmpleado>
+		</Lecturista>
+		<LlamadaInsistente xsi:nil="true" />
+		<NumeroImpresiones xsi:nil="true" />
+		<PedidosRelacionados />
+		<RutaBoletin xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaBoletin>
+		<RutaOrigen xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaOrigen>
+		<RutaSuministro xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaSuministro>
+		<Saldo xsi:nil="true" />
+		<SerieRemision>E</SerieRemision>
+		<TipoCargo>Suministro de gas   </TipoCargo>
+		<TipoPedido>Telefonico</TipoPedido>
+		<TipoServicio>Estacionario</TipoServicio>
+		<Total>496.8000</Total>
+		<URLCRM>http://192.168.1.42:5555/GrupoMetropolitanoDevCRM/main.aspx?etn=itssa_pedido&amp;id=%7B310e52e8-24aa-e811-80d5-0050569f76bb%7D&amp;Pagetype=entityrecord</URLCRM>
+		<Zona xsi:type="ZonaCRMDatos">
+			<ExtensionData />
+			<Class>ZonaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>CÉLULA 203          </Descripcion>
+			<IDZona>203</IDZona>
+			<NumeroZona>0</NumeroZona>
+		</Zona>
+	</Pedido>
+	<Pedido xsi:type="PedidoCRMDatos">
+		<ExtensionData />
+		<Class>PedidoCRMDatos</Class>
+		<InternalException />
+		<Method>get_Method</Method>
+		<Success>true</Success>
+		<AnioAtt>2018</AnioAtt>
+		<AnioPed>2018</AnioPed>
+		<Boletin xsi:nil="true" />
+		<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+		<DetallePedido>
+			<DetallePedido>
+				<ExtensionData />
+				<Class>DetallePedido</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CantidadLectura>0</CantidadLectura>
+				<CantidadLecturaAnterior>0</CantidadLecturaAnterior>
+				<CantidadSolicitada>1.0000000000</CantidadSolicitada>
+				<CantidadSurtida>48.0000000000</CantidadSurtida>
+				<DescuentoAplicable>0</DescuentoAplicable>
+				<DescuentoAplicado>0</DescuentoAplicado>
+				<DiferenciaDeLecturas>0</DiferenciaDeLecturas>
+				<GUID>320e52e8-24aa-e811-80d5-0050569f76bb</GUID>
+				<IDDetallePedido>1</IDDetallePedido>
+				<IDPedido>0</IDPedido>
+				<Importe>496.8000</Importe>
+				<Impuesto>0</Impuesto>
+				<ImpuestoAplicable>0</ImpuestoAplicable>
+				<PorcentajeTanque>0</PorcentajeTanque>
+				<Precio>10.3500</Precio>
+				<PrecioAplicable>0</PrecioAplicable>
+				<Producto>
+					<ExtensionData />
+					<Class>Producto</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<Descripcion>GAS ESTACIONARIO</Descripcion>
+					<IDProducto>1</IDProducto>
+				</Producto>
+				<RedondeoAnterior>0</RedondeoAnterior>
+				<Total>496.8000</Total>
+				<TotalAplicable>0</TotalAplicable>
+			</DetallePedido>
+		</DetallePedido>
+		<DireccionEntrega xsi:type="DireccionEntregaCRMDatos">
+			<ExtensionData />
+			<Class>DireccionEntregaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>true</Success>
+			<CP>09608</CP>
+			<CalleNombre>HERRADURA</CalleNombre>
+			<ColoniaNombre>1A AMPLIACION SANTIAGO ACAHUALTEPEC</ColoniaNombre>
+			<CondicionesCredito xsi:type="CondicionesCreditoCRMDatos">
+				<ExtensionData />
+				<Class>CondicionesCreditoCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<AgendaGestionCobranza />
+				<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+				<DificultadCobro>DIFICULTAD 1</DificultadCobro>
+				<DificultadGestion>DIFICULTAD 1</DificultadGestion>
+				<FormaPagoPreferidaDescripcion>Efectivo            </FormaPagoPreferidaDescripcion>
+				<FuenteDatos>CRM</FuenteDatos>
+				<HFinAtencionCyC>2018-07-30T19:00:00</HFinAtencionCyC>
+				<HInicioAtencionCyC>2018-07-30T19:00:00</HInicioAtencionCyC>
+				<IDCartera>0</IDCartera>
+				<IDClasificacionCredito xsi:nil="true" />
+				<IDDificultadCobro>1</IDDificultadCobro>
+				<IDDificultadGestion>1</IDDificultadGestion>
+				<IDDireccionEntrega>10</IDDireccionEntrega>
+				<IDEmpleadoNomina xsi:nil="true" />
+				<IDEmpresa>1</IDEmpresa>
+				<IDFormaPagoPreferida>1</IDFormaPagoPreferida>
+				<IDResponsableGestion>4</IDResponsableGestion>
+				<IDSupervisorGestion xsi:nil="true" />
+				<LimiteCredito>0</LimiteCredito>
+				<PlazoCredito>0</PlazoCredito>
+				<ResponsableGestion xsi:type="EmpleadoCRMDatos">
+					<ExtensionData />
+					<Class>EmpleadoCRMDatos</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<IDEmpleado>4</IDEmpleado>
+					<IDEmpresa>1</IDEmpresa>
+					<NombreCompleto>  </NombreCompleto>
+					<NumeroEmpleado>0</NumeroEmpleado>
+				</ResponsableGestion>
+				<Saldo>0</Saldo>
+			</CondicionesCredito>
+			<ConfiguracionSuministro xsi:type="ConfiguracionSuministroDatos">
+				<ExtensionData />
+				<Class>ConfiguracionSuministroDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Ajustes>+03.0                           </Ajustes>
+				<Derechos>0913</Derechos>
+				<RequiereTAG>false</RequiereTAG>
+				<RestriccionGPS>false</RestriccionGPS>
+				<TipoPago>credito</TipoPago>
+			</ConfiguracionSuministro>
+			<ConsumoPromedio xsi:nil="true" />
+			<ContratoAprobado>false</ContratoAprobado>
+			<DatosFiscales xsi:type="DatosFiscalesCRMDatos">
+				<ExtensionData />
+				<Class>DatosFiscalesCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CP>09608</CP>
+				<CopiasCFD>0</CopiasCFD>
+				<EnvioCFDCorreo xsi:nil="true" />
+				<IDDatosFiscales>6</IDDatosFiscales>
+				<IDEmpresa>1</IDEmpresa>
+				<NombreCuenta>Cliente 1</NombreCuenta>
+				<RFC>COCD840101977</RFC>
+				<RazonSocial>Cliente 1</RazonSocial>
+			</DatosFiscales>
+			<Descuentos />
+			<DigitoVerificador>0</DigitoVerificador>
+			<DireccionCompleta>HERRADURA 1     1A AMPLIACION SANTIAGO ACAHUALTEPEC  IZTAPALAPA  CIUDAD DE MEXICO  </DireccionCompleta>
+			<EstadoNombre>CIUDAD DE MEXICO</EstadoNombre>
+			<FAlta xsi:nil="true" />
+			<FactorConversion xsi:nil="true" />
+			<FechaConsulta xsi:nil="true" />
+			<FuenteDatos>CRM</FuenteDatos>
+			<Georreferencia>
+				<ExtensionData />
+				<Altitud xsi:nil="true" />
+				<Latitud>19.3571519</Latitud>
+				<Longitud>-99.0026517</Longitud>
+				<MargenError xsi:nil="true" />
+				<Velocidad xsi:nil="true" />
+			</Georreferencia>
+			<IDAutotanque xsi:nil="true" />
+			<IDCalle>2222</IDCalle>
+			<IDClientesRelacionados />
+			<IDColonia>11166</IDColonia>
+			<IDDatosFiscales xsi:nil="true" />
+			<IDDireccionEntrega>10</IDDireccionEntrega>
+			<IDEmpresa>1</IDEmpresa>
+			<IDEntreCalle1 xsi:nil="true" />
+			<IDEntreCalle2 xsi:nil="true" />
+			<IDMunicipio>9009</IDMunicipio>
+			<MotivoNoSuministrar>/</MotivoNoSuministrar>
+			<MunicipioNombre>IZTAPALAPA</MunicipioNombre>
+			<NoSuministrar xsi:nil="true" />
+			<Nombre>Contacto 1</Nombre>
+			<NombreContacto>Contacto 1</NombreContacto>
+			<NumExterior>1</NumExterior>
+			<ProgramacionSuministro>
+				<ExtensionData />
+				<Class>ProgramacionSuministro</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<IDProgramacion>0</IDProgramacion>
+				<ProgramacionActiva>false</ProgramacionActiva>
+			</ProgramacionSuministro>
+			<Ramo>
+				<ExtensionData />
+				<GiroCliente>
+					<ExtensionData />
+					<Descripcion>COMERCIAL</Descripcion>
+					<IDGiroCliente>3</IDGiroCliente>
+				</GiroCliente>
+				<IDRamoCliente>18</IDRamoCliente>
+				<RamoClienteDescripcion>CAFETERIA                               </RamoClienteDescripcion>
+			</Ramo>
+			<Ruta xsi:type="RutaCRMDatos">
+				<ExtensionData />
+				<Class>RutaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Ruta 163            </Descripcion>
+				<IDEmpresa>1</IDEmpresa>
+				<IDRuta>163</IDRuta>
+				<NumeroRuta>163</NumeroRuta>
+				<ReporteRAF xsi:nil="true" />
+			</Ruta>
+			<StatusCalidad>NUEVO</StatusCalidad>
+			<TipoFacturacion>
+				<ExtensionData />
+				<Class>TipoFacturacion</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Sin Facturacion                                             </Descripcion>
+				<IDTipoFacturacion>0</IDTipoFacturacion>
+			</TipoFacturacion>
+			<VIP>false</VIP>
+			<ZonaEconomica>
+				<ExtensionData />
+				<Descripcion>ZE Ciudad México</Descripcion>
+				<IDZonaEconomomica>0</IDZonaEconomomica>
+			</ZonaEconomica>
+			<ZonaSuministro xsi:type="ZonaCRMDatos">
+				<ExtensionData />
+				<Class>ZonaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>CÉLULA 203          </Descripcion>
+				<IDZona>203</IDZona>
+				<NumeroZona>203</NumeroZona>
+			</ZonaSuministro>
+		</DireccionEntrega>
+		<EstatusBoletin />
+		<EstatusPedido>SURTIDO</EstatusPedido>
+		<FAlta xsi:nil="true" />
+		<FCargo xsi:nil="true" />
+		<FCompromiso>2018-08-31T00:00:00</FCompromiso>
+		<FEnvioMovil xsi:nil="true" />
+		<FLecturaAnterior xsi:nil="true" />
+		<FStatusMovil xsi:nil="true" />
+		<FSuministro>2018-08-31T12:40:17</FSuministro>
+		<FolioFactura>345</FolioFactura>
+		<FolioPresupuestoST xsi:nil="true" />
+		<FolioRemision>16565855</FolioRemision>
+		<FormaPago>Crédito OP          </FormaPago>
+		<IDAutotanque>303</IDAutotanque>
+		<IDAutotanqueMovil xsi:nil="true" />
+		<IDCartera>0</IDCartera>
+		<IDDireccionEntrega>10</IDDireccionEntrega>
+		<IDEmpresa>1</IDEmpresa>
+		<IDEstatusMovil xsi:nil="true" />
+		<IDEstatusPedido>6</IDEstatusPedido>
+		<IDFolioAtt>345</IDFolioAtt>
+		<IDFormaPago>9</IDFormaPago>
+		<IDMotivoCancelacion xsi:nil="true" />
+		<IDMovil xsi:nil="true" />
+		<IDPedido>1555</IDPedido>
+		<IDPrioridadPedido xsi:nil="true" />
+		<IDTipoCargo>1</IDTipoCargo>
+		<IDTipoPedido>1</IDTipoPedido>
+		<IDTipoServicio>1</IDTipoServicio>
+		<IDZona>203</IDZona>
+		<Importe>496.8000</Importe>
+		<Impuesto>0.0000000000</Impuesto>
+		<Lecturista>
+			<ExtensionData />
+			<Class>EmpleadoLecturista</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<IDEmpleado>0</IDEmpleado>
+			<IDEmpresa>0</IDEmpresa>
+			<NumeroEmpleado>0</NumeroEmpleado>
+		</Lecturista>
+		<LlamadaInsistente xsi:nil="true" />
+		<NumeroImpresiones xsi:nil="true" />
+		<PedidosRelacionados />
+		<RutaBoletin xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaBoletin>
+		<RutaOrigen xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaOrigen>
+		<RutaSuministro xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaSuministro>
+		<Saldo xsi:nil="true" />
+		<SerieRemision>E</SerieRemision>
+		<TipoCargo>Suministro de gas   </TipoCargo>
+		<TipoPedido>Telefonico</TipoPedido>
+		<TipoServicio>Estacionario</TipoServicio>
+		<Total>496.8000</Total>
+		<URLCRM>http://192.168.1.42:5555/GrupoMetropolitanoDevCRM/main.aspx?etn=itssa_pedido&amp;id=%7B310e52e8-24aa-e811-80d5-0050569f76bb%7D&amp;Pagetype=entityrecord</URLCRM>
+		<Zona xsi:type="ZonaCRMDatos">
+			<ExtensionData />
+			<Class>ZonaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>CÉLULA 203          </Descripcion>
+			<IDZona>203</IDZona>
+			<NumeroZona>0</NumeroZona>
+		</Zona>
+	</Pedido>
+	<Pedido xsi:type="PedidoCRMDatos">
+		<ExtensionData />
+		<Class>PedidoCRMDatos</Class>
+		<InternalException />
+		<Method>get_Method</Method>
+		<Success>true</Success>
+		<AnioAtt>2018</AnioAtt>
+		<AnioPed>2018</AnioPed>
+		<Boletin xsi:nil="true" />
+		<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+		<DetallePedido>
+			<DetallePedido>
+				<ExtensionData />
+				<Class>DetallePedido</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CantidadLectura>0</CantidadLectura>
+				<CantidadLecturaAnterior>0</CantidadLecturaAnterior>
+				<CantidadSolicitada>1.0000000000</CantidadSolicitada>
+				<CantidadSurtida>48.0000000000</CantidadSurtida>
+				<DescuentoAplicable>0</DescuentoAplicable>
+				<DescuentoAplicado>0</DescuentoAplicado>
+				<DiferenciaDeLecturas>0</DiferenciaDeLecturas>
+				<GUID>320e52e8-24aa-e811-80d5-0050569f76bb</GUID>
+				<IDDetallePedido>1</IDDetallePedido>
+				<IDPedido>0</IDPedido>
+				<Importe>496.8000</Importe>
+				<Impuesto>0</Impuesto>
+				<ImpuestoAplicable>0</ImpuestoAplicable>
+				<PorcentajeTanque>0</PorcentajeTanque>
+				<Precio>10.3500</Precio>
+				<PrecioAplicable>0</PrecioAplicable>
+				<Producto>
+					<ExtensionData />
+					<Class>Producto</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<Descripcion>GAS ESTACIONARIO</Descripcion>
+					<IDProducto>1</IDProducto>
+				</Producto>
+				<RedondeoAnterior>0</RedondeoAnterior>
+				<Total>496.8000</Total>
+				<TotalAplicable>0</TotalAplicable>
+			</DetallePedido>
+		</DetallePedido>
+		<DireccionEntrega xsi:type="DireccionEntregaCRMDatos">
+			<ExtensionData />
+			<Class>DireccionEntregaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>true</Success>
+			<CP>09608</CP>
+			<CalleNombre>HERRADURA</CalleNombre>
+			<ColoniaNombre>1A AMPLIACION SANTIAGO ACAHUALTEPEC</ColoniaNombre>
+			<CondicionesCredito xsi:type="CondicionesCreditoCRMDatos">
+				<ExtensionData />
+				<Class>CondicionesCreditoCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<AgendaGestionCobranza />
+				<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+				<DificultadCobro>DIFICULTAD 1</DificultadCobro>
+				<DificultadGestion>DIFICULTAD 1</DificultadGestion>
+				<FormaPagoPreferidaDescripcion>Efectivo            </FormaPagoPreferidaDescripcion>
+				<FuenteDatos>CRM</FuenteDatos>
+				<HFinAtencionCyC>2018-07-30T19:00:00</HFinAtencionCyC>
+				<HInicioAtencionCyC>2018-07-30T19:00:00</HInicioAtencionCyC>
+				<IDCartera>0</IDCartera>
+				<IDClasificacionCredito xsi:nil="true" />
+				<IDDificultadCobro>1</IDDificultadCobro>
+				<IDDificultadGestion>1</IDDificultadGestion>
+				<IDDireccionEntrega>10</IDDireccionEntrega>
+				<IDEmpleadoNomina xsi:nil="true" />
+				<IDEmpresa>1</IDEmpresa>
+				<IDFormaPagoPreferida>1</IDFormaPagoPreferida>
+				<IDResponsableGestion>4</IDResponsableGestion>
+				<IDSupervisorGestion xsi:nil="true" />
+				<LimiteCredito>0</LimiteCredito>
+				<PlazoCredito>0</PlazoCredito>
+				<ResponsableGestion xsi:type="EmpleadoCRMDatos">
+					<ExtensionData />
+					<Class>EmpleadoCRMDatos</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<IDEmpleado>4</IDEmpleado>
+					<IDEmpresa>1</IDEmpresa>
+					<NombreCompleto>  </NombreCompleto>
+					<NumeroEmpleado>0</NumeroEmpleado>
+				</ResponsableGestion>
+				<Saldo>0</Saldo>
+			</CondicionesCredito>
+			<ConfiguracionSuministro xsi:type="ConfiguracionSuministroDatos">
+				<ExtensionData />
+				<Class>ConfiguracionSuministroDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Ajustes>+03.0                           </Ajustes>
+				<Derechos>0913</Derechos>
+				<RequiereTAG>false</RequiereTAG>
+				<RestriccionGPS>false</RestriccionGPS>
+				<TipoPago>credito</TipoPago>
+			</ConfiguracionSuministro>
+			<ConsumoPromedio xsi:nil="true" />
+			<ContratoAprobado>false</ContratoAprobado>
+			<DatosFiscales xsi:type="DatosFiscalesCRMDatos">
+				<ExtensionData />
+				<Class>DatosFiscalesCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CP>09608</CP>
+				<CopiasCFD>0</CopiasCFD>
+				<EnvioCFDCorreo xsi:nil="true" />
+				<IDDatosFiscales>6</IDDatosFiscales>
+				<IDEmpresa>1</IDEmpresa>
+				<NombreCuenta>Cliente 1</NombreCuenta>
+				<RFC>COCD840101977</RFC>
+				<RazonSocial>Cliente 1</RazonSocial>
+			</DatosFiscales>
+			<Descuentos />
+			<DigitoVerificador>0</DigitoVerificador>
+			<DireccionCompleta>HERRADURA 1     1A AMPLIACION SANTIAGO ACAHUALTEPEC  IZTAPALAPA  CIUDAD DE MEXICO  </DireccionCompleta>
+			<EstadoNombre>CIUDAD DE MEXICO</EstadoNombre>
+			<FAlta xsi:nil="true" />
+			<FactorConversion xsi:nil="true" />
+			<FechaConsulta xsi:nil="true" />
+			<FuenteDatos>CRM</FuenteDatos>
+			<Georreferencia>
+				<ExtensionData />
+				<Altitud xsi:nil="true" />
+				<Latitud>19.3571519</Latitud>
+				<Longitud>-99.0026517</Longitud>
+				<MargenError xsi:nil="true" />
+				<Velocidad xsi:nil="true" />
+			</Georreferencia>
+			<IDAutotanque xsi:nil="true" />
+			<IDCalle>2222</IDCalle>
+			<IDClientesRelacionados />
+			<IDColonia>11166</IDColonia>
+			<IDDatosFiscales xsi:nil="true" />
+			<IDDireccionEntrega>10</IDDireccionEntrega>
+			<IDEmpresa>1</IDEmpresa>
+			<IDEntreCalle1 xsi:nil="true" />
+			<IDEntreCalle2 xsi:nil="true" />
+			<IDMunicipio>9009</IDMunicipio>
+			<MotivoNoSuministrar>/</MotivoNoSuministrar>
+			<MunicipioNombre>IZTAPALAPA</MunicipioNombre>
+			<NoSuministrar xsi:nil="true" />
+			<Nombre>Contacto 1</Nombre>
+			<NombreContacto>Contacto 1</NombreContacto>
+			<NumExterior>1</NumExterior>
+			<ProgramacionSuministro>
+				<ExtensionData />
+				<Class>ProgramacionSuministro</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<IDProgramacion>0</IDProgramacion>
+				<ProgramacionActiva>false</ProgramacionActiva>
+			</ProgramacionSuministro>
+			<Ramo>
+				<ExtensionData />
+				<GiroCliente>
+					<ExtensionData />
+					<Descripcion>COMERCIAL</Descripcion>
+					<IDGiroCliente>3</IDGiroCliente>
+				</GiroCliente>
+				<IDRamoCliente>18</IDRamoCliente>
+				<RamoClienteDescripcion>CAFETERIA                               </RamoClienteDescripcion>
+			</Ramo>
+			<Ruta xsi:type="RutaCRMDatos">
+				<ExtensionData />
+				<Class>RutaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Ruta 163            </Descripcion>
+				<IDEmpresa>1</IDEmpresa>
+				<IDRuta>163</IDRuta>
+				<NumeroRuta>163</NumeroRuta>
+				<ReporteRAF xsi:nil="true" />
+			</Ruta>
+			<StatusCalidad>NUEVO</StatusCalidad>
+			<TipoFacturacion>
+				<ExtensionData />
+				<Class>TipoFacturacion</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Sin Facturacion                                             </Descripcion>
+				<IDTipoFacturacion>0</IDTipoFacturacion>
+			</TipoFacturacion>
+			<VIP>false</VIP>
+			<ZonaEconomica>
+				<ExtensionData />
+				<Descripcion>ZE Ciudad México</Descripcion>
+				<IDZonaEconomomica>0</IDZonaEconomomica>
+			</ZonaEconomica>
+			<ZonaSuministro xsi:type="ZonaCRMDatos">
+				<ExtensionData />
+				<Class>ZonaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>CÉLULA 203          </Descripcion>
+				<IDZona>203</IDZona>
+				<NumeroZona>203</NumeroZona>
+			</ZonaSuministro>
+		</DireccionEntrega>
+		<EstatusBoletin />
+		<EstatusPedido>SURTIDO</EstatusPedido>
+		<FAlta xsi:nil="true" />
+		<FCargo xsi:nil="true" />
+		<FCompromiso>2018-08-31T00:00:00</FCompromiso>
+		<FEnvioMovil xsi:nil="true" />
+		<FLecturaAnterior xsi:nil="true" />
+		<FStatusMovil xsi:nil="true" />
+		<FSuministro>2018-08-31T12:40:17</FSuministro>
+		<FolioFactura>345</FolioFactura>
+		<FolioPresupuestoST xsi:nil="true" />
+		<FolioRemision>16565855</FolioRemision>
+		<FormaPago>Crédito OP          </FormaPago>
+		<IDAutotanque>303</IDAutotanque>
+		<IDAutotanqueMovil xsi:nil="true" />
+		<IDCartera>0</IDCartera>
+		<IDDireccionEntrega>10</IDDireccionEntrega>
+		<IDEmpresa>1</IDEmpresa>
+		<IDEstatusMovil xsi:nil="true" />
+		<IDEstatusPedido>6</IDEstatusPedido>
+		<IDFolioAtt>345</IDFolioAtt>
+		<IDFormaPago>9</IDFormaPago>
+		<IDMotivoCancelacion xsi:nil="true" />
+		<IDMovil xsi:nil="true" />
+		<IDPedido>1555</IDPedido>
+		<IDPrioridadPedido xsi:nil="true" />
+		<IDTipoCargo>1</IDTipoCargo>
+		<IDTipoPedido>1</IDTipoPedido>
+		<IDTipoServicio>1</IDTipoServicio>
+		<IDZona>203</IDZona>
+		<Importe>496.8000</Importe>
+		<Impuesto>0.0000000000</Impuesto>
+		<Lecturista>
+			<ExtensionData />
+			<Class>EmpleadoLecturista</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<IDEmpleado>0</IDEmpleado>
+			<IDEmpresa>0</IDEmpresa>
+			<NumeroEmpleado>0</NumeroEmpleado>
+		</Lecturista>
+		<LlamadaInsistente xsi:nil="true" />
+		<NumeroImpresiones xsi:nil="true" />
+		<PedidosRelacionados />
+		<RutaBoletin xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaBoletin>
+		<RutaOrigen xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaOrigen>
+		<RutaSuministro xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaSuministro>
+		<Saldo xsi:nil="true" />
+		<SerieRemision>E</SerieRemision>
+		<TipoCargo>Suministro de gas   </TipoCargo>
+		<TipoPedido>Telefonico</TipoPedido>
+		<TipoServicio>Estacionario</TipoServicio>
+		<Total>496.8000</Total>
+		<URLCRM>http://192.168.1.42:5555/GrupoMetropolitanoDevCRM/main.aspx?etn=itssa_pedido&amp;id=%7B310e52e8-24aa-e811-80d5-0050569f76bb%7D&amp;Pagetype=entityrecord</URLCRM>
+		<Zona xsi:type="ZonaCRMDatos">
+			<ExtensionData />
+			<Class>ZonaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>CÉLULA 203          </Descripcion>
+			<IDZona>203</IDZona>
+			<NumeroZona>0</NumeroZona>
+		</Zona>
+	</Pedido>
+	<Pedido xsi:type="PedidoCRMDatos">
+		<ExtensionData />
+		<Class>PedidoCRMDatos</Class>
+		<InternalException />
+		<Method>get_Method</Method>
+		<Success>true</Success>
+		<AnioAtt>2018</AnioAtt>
+		<AnioPed>2018</AnioPed>
+		<Boletin xsi:nil="true" />
+		<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+		<DetallePedido>
+			<DetallePedido>
+				<ExtensionData />
+				<Class>DetallePedido</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CantidadLectura>0</CantidadLectura>
+				<CantidadLecturaAnterior>0</CantidadLecturaAnterior>
+				<CantidadSolicitada>1.0000000000</CantidadSolicitada>
+				<CantidadSurtida>48.0000000000</CantidadSurtida>
+				<DescuentoAplicable>0</DescuentoAplicable>
+				<DescuentoAplicado>0</DescuentoAplicado>
+				<DiferenciaDeLecturas>0</DiferenciaDeLecturas>
+				<GUID>320e52e8-24aa-e811-80d5-0050569f76bb</GUID>
+				<IDDetallePedido>1</IDDetallePedido>
+				<IDPedido>0</IDPedido>
+				<Importe>496.8000</Importe>
+				<Impuesto>0</Impuesto>
+				<ImpuestoAplicable>0</ImpuestoAplicable>
+				<PorcentajeTanque>0</PorcentajeTanque>
+				<Precio>10.3500</Precio>
+				<PrecioAplicable>0</PrecioAplicable>
+				<Producto>
+					<ExtensionData />
+					<Class>Producto</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<Descripcion>GAS ESTACIONARIO</Descripcion>
+					<IDProducto>1</IDProducto>
+				</Producto>
+				<RedondeoAnterior>0</RedondeoAnterior>
+				<Total>496.8000</Total>
+				<TotalAplicable>0</TotalAplicable>
+			</DetallePedido>
+		</DetallePedido>
+		<DireccionEntrega xsi:type="DireccionEntregaCRMDatos">
+			<ExtensionData />
+			<Class>DireccionEntregaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>true</Success>
+			<CP>09608</CP>
+			<CalleNombre>HERRADURA</CalleNombre>
+			<ColoniaNombre>1A AMPLIACION SANTIAGO ACAHUALTEPEC</ColoniaNombre>
+			<CondicionesCredito xsi:type="CondicionesCreditoCRMDatos">
+				<ExtensionData />
+				<Class>CondicionesCreditoCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<AgendaGestionCobranza />
+				<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+				<DificultadCobro>DIFICULTAD 1</DificultadCobro>
+				<DificultadGestion>DIFICULTAD 1</DificultadGestion>
+				<FormaPagoPreferidaDescripcion>Efectivo            </FormaPagoPreferidaDescripcion>
+				<FuenteDatos>CRM</FuenteDatos>
+				<HFinAtencionCyC>2018-07-30T19:00:00</HFinAtencionCyC>
+				<HInicioAtencionCyC>2018-07-30T19:00:00</HInicioAtencionCyC>
+				<IDCartera>0</IDCartera>
+				<IDClasificacionCredito xsi:nil="true" />
+				<IDDificultadCobro>1</IDDificultadCobro>
+				<IDDificultadGestion>1</IDDificultadGestion>
+				<IDDireccionEntrega>10</IDDireccionEntrega>
+				<IDEmpleadoNomina xsi:nil="true" />
+				<IDEmpresa>1</IDEmpresa>
+				<IDFormaPagoPreferida>1</IDFormaPagoPreferida>
+				<IDResponsableGestion>4</IDResponsableGestion>
+				<IDSupervisorGestion xsi:nil="true" />
+				<LimiteCredito>0</LimiteCredito>
+				<PlazoCredito>0</PlazoCredito>
+				<ResponsableGestion xsi:type="EmpleadoCRMDatos">
+					<ExtensionData />
+					<Class>EmpleadoCRMDatos</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<IDEmpleado>4</IDEmpleado>
+					<IDEmpresa>1</IDEmpresa>
+					<NombreCompleto>  </NombreCompleto>
+					<NumeroEmpleado>0</NumeroEmpleado>
+				</ResponsableGestion>
+				<Saldo>0</Saldo>
+			</CondicionesCredito>
+			<ConfiguracionSuministro xsi:type="ConfiguracionSuministroDatos">
+				<ExtensionData />
+				<Class>ConfiguracionSuministroDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Ajustes>+03.0                           </Ajustes>
+				<Derechos>0913</Derechos>
+				<RequiereTAG>false</RequiereTAG>
+				<RestriccionGPS>false</RestriccionGPS>
+				<TipoPago>credito</TipoPago>
+			</ConfiguracionSuministro>
+			<ConsumoPromedio xsi:nil="true" />
+			<ContratoAprobado>false</ContratoAprobado>
+			<DatosFiscales xsi:type="DatosFiscalesCRMDatos">
+				<ExtensionData />
+				<Class>DatosFiscalesCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CP>09608</CP>
+				<CopiasCFD>0</CopiasCFD>
+				<EnvioCFDCorreo xsi:nil="true" />
+				<IDDatosFiscales>6</IDDatosFiscales>
+				<IDEmpresa>1</IDEmpresa>
+				<NombreCuenta>Cliente 1</NombreCuenta>
+				<RFC>COCD840101977</RFC>
+				<RazonSocial>Cliente 1</RazonSocial>
+			</DatosFiscales>
+			<Descuentos />
+			<DigitoVerificador>0</DigitoVerificador>
+			<DireccionCompleta>HERRADURA 1     1A AMPLIACION SANTIAGO ACAHUALTEPEC  IZTAPALAPA  CIUDAD DE MEXICO  </DireccionCompleta>
+			<EstadoNombre>CIUDAD DE MEXICO</EstadoNombre>
+			<FAlta xsi:nil="true" />
+			<FactorConversion xsi:nil="true" />
+			<FechaConsulta xsi:nil="true" />
+			<FuenteDatos>CRM</FuenteDatos>
+			<Georreferencia>
+				<ExtensionData />
+				<Altitud xsi:nil="true" />
+				<Latitud>19.3571519</Latitud>
+				<Longitud>-99.0026517</Longitud>
+				<MargenError xsi:nil="true" />
+				<Velocidad xsi:nil="true" />
+			</Georreferencia>
+			<IDAutotanque xsi:nil="true" />
+			<IDCalle>2222</IDCalle>
+			<IDClientesRelacionados />
+			<IDColonia>11166</IDColonia>
+			<IDDatosFiscales xsi:nil="true" />
+			<IDDireccionEntrega>10</IDDireccionEntrega>
+			<IDEmpresa>1</IDEmpresa>
+			<IDEntreCalle1 xsi:nil="true" />
+			<IDEntreCalle2 xsi:nil="true" />
+			<IDMunicipio>9009</IDMunicipio>
+			<MotivoNoSuministrar>/</MotivoNoSuministrar>
+			<MunicipioNombre>IZTAPALAPA</MunicipioNombre>
+			<NoSuministrar xsi:nil="true" />
+			<Nombre>Contacto 1</Nombre>
+			<NombreContacto>Contacto 1</NombreContacto>
+			<NumExterior>1</NumExterior>
+			<ProgramacionSuministro>
+				<ExtensionData />
+				<Class>ProgramacionSuministro</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<IDProgramacion>0</IDProgramacion>
+				<ProgramacionActiva>false</ProgramacionActiva>
+			</ProgramacionSuministro>
+			<Ramo>
+				<ExtensionData />
+				<GiroCliente>
+					<ExtensionData />
+					<Descripcion>COMERCIAL</Descripcion>
+					<IDGiroCliente>3</IDGiroCliente>
+				</GiroCliente>
+				<IDRamoCliente>18</IDRamoCliente>
+				<RamoClienteDescripcion>CAFETERIA                               </RamoClienteDescripcion>
+			</Ramo>
+			<Ruta xsi:type="RutaCRMDatos">
+				<ExtensionData />
+				<Class>RutaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Ruta 163            </Descripcion>
+				<IDEmpresa>1</IDEmpresa>
+				<IDRuta>163</IDRuta>
+				<NumeroRuta>163</NumeroRuta>
+				<ReporteRAF xsi:nil="true" />
+			</Ruta>
+			<StatusCalidad>NUEVO</StatusCalidad>
+			<TipoFacturacion>
+				<ExtensionData />
+				<Class>TipoFacturacion</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Sin Facturacion                                             </Descripcion>
+				<IDTipoFacturacion>0</IDTipoFacturacion>
+			</TipoFacturacion>
+			<VIP>false</VIP>
+			<ZonaEconomica>
+				<ExtensionData />
+				<Descripcion>ZE Ciudad México</Descripcion>
+				<IDZonaEconomomica>0</IDZonaEconomomica>
+			</ZonaEconomica>
+			<ZonaSuministro xsi:type="ZonaCRMDatos">
+				<ExtensionData />
+				<Class>ZonaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>CÉLULA 203          </Descripcion>
+				<IDZona>203</IDZona>
+				<NumeroZona>203</NumeroZona>
+			</ZonaSuministro>
+		</DireccionEntrega>
+		<EstatusBoletin />
+		<EstatusPedido>SURTIDO</EstatusPedido>
+		<FAlta xsi:nil="true" />
+		<FCargo xsi:nil="true" />
+		<FCompromiso>2018-08-31T00:00:00</FCompromiso>
+		<FEnvioMovil xsi:nil="true" />
+		<FLecturaAnterior xsi:nil="true" />
+		<FStatusMovil xsi:nil="true" />
+		<FSuministro>2018-08-31T12:40:17</FSuministro>
+		<FolioFactura>345</FolioFactura>
+		<FolioPresupuestoST xsi:nil="true" />
+		<FolioRemision>16565855</FolioRemision>
+		<FormaPago>Crédito OP          </FormaPago>
+		<IDAutotanque>303</IDAutotanque>
+		<IDAutotanqueMovil xsi:nil="true" />
+		<IDCartera>0</IDCartera>
+		<IDDireccionEntrega>10</IDDireccionEntrega>
+		<IDEmpresa>1</IDEmpresa>
+		<IDEstatusMovil xsi:nil="true" />
+		<IDEstatusPedido>6</IDEstatusPedido>
+		<IDFolioAtt>345</IDFolioAtt>
+		<IDFormaPago>9</IDFormaPago>
+		<IDMotivoCancelacion xsi:nil="true" />
+		<IDMovil xsi:nil="true" />
+		<IDPedido>1555</IDPedido>
+		<IDPrioridadPedido xsi:nil="true" />
+		<IDTipoCargo>1</IDTipoCargo>
+		<IDTipoPedido>1</IDTipoPedido>
+		<IDTipoServicio>1</IDTipoServicio>
+		<IDZona>203</IDZona>
+		<Importe>496.8000</Importe>
+		<Impuesto>0.0000000000</Impuesto>
+		<Lecturista>
+			<ExtensionData />
+			<Class>EmpleadoLecturista</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<IDEmpleado>0</IDEmpleado>
+			<IDEmpresa>0</IDEmpresa>
+			<NumeroEmpleado>0</NumeroEmpleado>
+		</Lecturista>
+		<LlamadaInsistente xsi:nil="true" />
+		<NumeroImpresiones xsi:nil="true" />
+		<PedidosRelacionados />
+		<RutaBoletin xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaBoletin>
+		<RutaOrigen xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaOrigen>
+		<RutaSuministro xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaSuministro>
+		<Saldo xsi:nil="true" />
+		<SerieRemision>E</SerieRemision>
+		<TipoCargo>Suministro de gas   </TipoCargo>
+		<TipoPedido>Telefonico</TipoPedido>
+		<TipoServicio>Estacionario</TipoServicio>
+		<Total>496.8000</Total>
+		<URLCRM>http://192.168.1.42:5555/GrupoMetropolitanoDevCRM/main.aspx?etn=itssa_pedido&amp;id=%7B310e52e8-24aa-e811-80d5-0050569f76bb%7D&amp;Pagetype=entityrecord</URLCRM>
+		<Zona xsi:type="ZonaCRMDatos">
+			<ExtensionData />
+			<Class>ZonaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>CÉLULA 203          </Descripcion>
+			<IDZona>203</IDZona>
+			<NumeroZona>0</NumeroZona>
+		</Zona>
+	</Pedido>
+	<Pedido xsi:type="PedidoCRMDatos">
+		<ExtensionData />
+		<Class>PedidoCRMDatos</Class>
+		<InternalException />
+		<Method>get_Method</Method>
+		<Success>true</Success>
+		<AnioAtt>2018</AnioAtt>
+		<AnioPed>2018</AnioPed>
+		<Boletin xsi:nil="true" />
+		<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+		<DetallePedido>
+			<DetallePedido>
+				<ExtensionData />
+				<Class>DetallePedido</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CantidadLectura>0</CantidadLectura>
+				<CantidadLecturaAnterior>0</CantidadLecturaAnterior>
+				<CantidadSolicitada>1.0000000000</CantidadSolicitada>
+				<CantidadSurtida>48.0000000000</CantidadSurtida>
+				<DescuentoAplicable>0</DescuentoAplicable>
+				<DescuentoAplicado>0</DescuentoAplicado>
+				<DiferenciaDeLecturas>0</DiferenciaDeLecturas>
+				<GUID>320e52e8-24aa-e811-80d5-0050569f76bb</GUID>
+				<IDDetallePedido>1</IDDetallePedido>
+				<IDPedido>0</IDPedido>
+				<Importe>496.8000</Importe>
+				<Impuesto>0</Impuesto>
+				<ImpuestoAplicable>0</ImpuestoAplicable>
+				<PorcentajeTanque>0</PorcentajeTanque>
+				<Precio>10.3500</Precio>
+				<PrecioAplicable>0</PrecioAplicable>
+				<Producto>
+					<ExtensionData />
+					<Class>Producto</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<Descripcion>GAS ESTACIONARIO</Descripcion>
+					<IDProducto>1</IDProducto>
+				</Producto>
+				<RedondeoAnterior>0</RedondeoAnterior>
+				<Total>496.8000</Total>
+				<TotalAplicable>0</TotalAplicable>
+			</DetallePedido>
+		</DetallePedido>
+		<DireccionEntrega xsi:type="DireccionEntregaCRMDatos">
+			<ExtensionData />
+			<Class>DireccionEntregaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>true</Success>
+			<CP>09608</CP>
+			<CalleNombre>HERRADURA</CalleNombre>
+			<ColoniaNombre>1A AMPLIACION SANTIAGO ACAHUALTEPEC</ColoniaNombre>
+			<CondicionesCredito xsi:type="CondicionesCreditoCRMDatos">
+				<ExtensionData />
+				<Class>CondicionesCreditoCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<AgendaGestionCobranza />
+				<CarteraDescripcion>Sin Crédito         </CarteraDescripcion>
+				<DificultadCobro>DIFICULTAD 1</DificultadCobro>
+				<DificultadGestion>DIFICULTAD 1</DificultadGestion>
+				<FormaPagoPreferidaDescripcion>Efectivo            </FormaPagoPreferidaDescripcion>
+				<FuenteDatos>CRM</FuenteDatos>
+				<HFinAtencionCyC>2018-07-30T19:00:00</HFinAtencionCyC>
+				<HInicioAtencionCyC>2018-07-30T19:00:00</HInicioAtencionCyC>
+				<IDCartera>0</IDCartera>
+				<IDClasificacionCredito xsi:nil="true" />
+				<IDDificultadCobro>1</IDDificultadCobro>
+				<IDDificultadGestion>1</IDDificultadGestion>
+				<IDDireccionEntrega>10</IDDireccionEntrega>
+				<IDEmpleadoNomina xsi:nil="true" />
+				<IDEmpresa>1</IDEmpresa>
+				<IDFormaPagoPreferida>1</IDFormaPagoPreferida>
+				<IDResponsableGestion>4</IDResponsableGestion>
+				<IDSupervisorGestion xsi:nil="true" />
+				<LimiteCredito>0</LimiteCredito>
+				<PlazoCredito>0</PlazoCredito>
+				<ResponsableGestion xsi:type="EmpleadoCRMDatos">
+					<ExtensionData />
+					<Class>EmpleadoCRMDatos</Class>
+					<InternalException />
+					<Method>get_Method</Method>
+					<Success>false</Success>
+					<IDEmpleado>4</IDEmpleado>
+					<IDEmpresa>1</IDEmpresa>
+					<NombreCompleto>  </NombreCompleto>
+					<NumeroEmpleado>0</NumeroEmpleado>
+				</ResponsableGestion>
+				<Saldo>0</Saldo>
+			</CondicionesCredito>
+			<ConfiguracionSuministro xsi:type="ConfiguracionSuministroDatos">
+				<ExtensionData />
+				<Class>ConfiguracionSuministroDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Ajustes>+03.0                           </Ajustes>
+				<Derechos>0913</Derechos>
+				<RequiereTAG>false</RequiereTAG>
+				<RestriccionGPS>false</RestriccionGPS>
+				<TipoPago>credito</TipoPago>
+			</ConfiguracionSuministro>
+			<ConsumoPromedio xsi:nil="true" />
+			<ContratoAprobado>false</ContratoAprobado>
+			<DatosFiscales xsi:type="DatosFiscalesCRMDatos">
+				<ExtensionData />
+				<Class>DatosFiscalesCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<CP>09608</CP>
+				<CopiasCFD>0</CopiasCFD>
+				<EnvioCFDCorreo xsi:nil="true" />
+				<IDDatosFiscales>6</IDDatosFiscales>
+				<IDEmpresa>1</IDEmpresa>
+				<NombreCuenta>Cliente 1</NombreCuenta>
+				<RFC>COCD840101977</RFC>
+				<RazonSocial>Cliente 1</RazonSocial>
+			</DatosFiscales>
+			<Descuentos />
+			<DigitoVerificador>0</DigitoVerificador>
+			<DireccionCompleta>HERRADURA 1     1A AMPLIACION SANTIAGO ACAHUALTEPEC  IZTAPALAPA  CIUDAD DE MEXICO  </DireccionCompleta>
+			<EstadoNombre>CIUDAD DE MEXICO</EstadoNombre>
+			<FAlta xsi:nil="true" />
+			<FactorConversion xsi:nil="true" />
+			<FechaConsulta xsi:nil="true" />
+			<FuenteDatos>CRM</FuenteDatos>
+			<Georreferencia>
+				<ExtensionData />
+				<Altitud xsi:nil="true" />
+				<Latitud>19.3571519</Latitud>
+				<Longitud>-99.0026517</Longitud>
+				<MargenError xsi:nil="true" />
+				<Velocidad xsi:nil="true" />
+			</Georreferencia>
+			<IDAutotanque xsi:nil="true" />
+			<IDCalle>2222</IDCalle>
+			<IDClientesRelacionados />
+			<IDColonia>11166</IDColonia>
+			<IDDatosFiscales xsi:nil="true" />
+			<IDDireccionEntrega>10</IDDireccionEntrega>
+			<IDEmpresa>1</IDEmpresa>
+			<IDEntreCalle1 xsi:nil="true" />
+			<IDEntreCalle2 xsi:nil="true" />
+			<IDMunicipio>9009</IDMunicipio>
+			<MotivoNoSuministrar>/</MotivoNoSuministrar>
+			<MunicipioNombre>IZTAPALAPA</MunicipioNombre>
+			<NoSuministrar xsi:nil="true" />
+			<Nombre>Contacto 1</Nombre>
+			<NombreContacto>Contacto 1</NombreContacto>
+			<NumExterior>1</NumExterior>
+			<ProgramacionSuministro>
+				<ExtensionData />
+				<Class>ProgramacionSuministro</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<IDProgramacion>0</IDProgramacion>
+				<ProgramacionActiva>false</ProgramacionActiva>
+			</ProgramacionSuministro>
+			<Ramo>
+				<ExtensionData />
+				<GiroCliente>
+					<ExtensionData />
+					<Descripcion>COMERCIAL</Descripcion>
+					<IDGiroCliente>3</IDGiroCliente>
+				</GiroCliente>
+				<IDRamoCliente>18</IDRamoCliente>
+				<RamoClienteDescripcion>CAFETERIA                               </RamoClienteDescripcion>
+			</Ramo>
+			<Ruta xsi:type="RutaCRMDatos">
+				<ExtensionData />
+				<Class>RutaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Ruta 163            </Descripcion>
+				<IDEmpresa>1</IDEmpresa>
+				<IDRuta>163</IDRuta>
+				<NumeroRuta>163</NumeroRuta>
+				<ReporteRAF xsi:nil="true" />
+			</Ruta>
+			<StatusCalidad>NUEVO</StatusCalidad>
+			<TipoFacturacion>
+				<ExtensionData />
+				<Class>TipoFacturacion</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>Sin Facturacion                                             </Descripcion>
+				<IDTipoFacturacion>0</IDTipoFacturacion>
+			</TipoFacturacion>
+			<VIP>false</VIP>
+			<ZonaEconomica>
+				<ExtensionData />
+				<Descripcion>ZE Ciudad México</Descripcion>
+				<IDZonaEconomomica>0</IDZonaEconomomica>
+			</ZonaEconomica>
+			<ZonaSuministro xsi:type="ZonaCRMDatos">
+				<ExtensionData />
+				<Class>ZonaCRMDatos</Class>
+				<InternalException />
+				<Method>get_Method</Method>
+				<Success>false</Success>
+				<Descripcion>CÉLULA 203          </Descripcion>
+				<IDZona>203</IDZona>
+				<NumeroZona>203</NumeroZona>
+			</ZonaSuministro>
+		</DireccionEntrega>
+		<EstatusBoletin />
+		<EstatusPedido>SURTIDO</EstatusPedido>
+		<FAlta xsi:nil="true" />
+		<FCargo xsi:nil="true" />
+		<FCompromiso>2018-08-31T00:00:00</FCompromiso>
+		<FEnvioMovil xsi:nil="true" />
+		<FLecturaAnterior xsi:nil="true" />
+		<FStatusMovil xsi:nil="true" />
+		<FSuministro>2018-08-31T12:40:17</FSuministro>
+		<FolioFactura>345</FolioFactura>
+		<FolioPresupuestoST xsi:nil="true" />
+		<FolioRemision>16565855</FolioRemision>
+		<FormaPago>Crédito OP          </FormaPago>
+		<IDAutotanque>303</IDAutotanque>
+		<IDAutotanqueMovil xsi:nil="true" />
+		<IDCartera>0</IDCartera>
+		<IDDireccionEntrega>10</IDDireccionEntrega>
+		<IDEmpresa>1</IDEmpresa>
+		<IDEstatusMovil xsi:nil="true" />
+		<IDEstatusPedido>6</IDEstatusPedido>
+		<IDFolioAtt>345</IDFolioAtt>
+		<IDFormaPago>9</IDFormaPago>
+		<IDMotivoCancelacion xsi:nil="true" />
+		<IDMovil xsi:nil="true" />
+		<IDPedido>1555</IDPedido>
+		<IDPrioridadPedido xsi:nil="true" />
+		<IDTipoCargo>1</IDTipoCargo>
+		<IDTipoPedido>1</IDTipoPedido>
+		<IDTipoServicio>1</IDTipoServicio>
+		<IDZona>203</IDZona>
+		<Importe>496.8000</Importe>
+		<Impuesto>0.0000000000</Impuesto>
+		<Lecturista>
+			<ExtensionData />
+			<Class>EmpleadoLecturista</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<IDEmpleado>0</IDEmpleado>
+			<IDEmpresa>0</IDEmpresa>
+			<NumeroEmpleado>0</NumeroEmpleado>
+		</Lecturista>
+		<LlamadaInsistente xsi:nil="true" />
+		<NumeroImpresiones xsi:nil="true" />
+		<PedidosRelacionados />
+		<RutaBoletin xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaBoletin>
+		<RutaOrigen xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaOrigen>
+		<RutaSuministro xsi:type="RutaCRMDatos">
+			<ExtensionData />
+			<Class>RutaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>Ruta 163            </Descripcion>
+			<IDEmpresa>1</IDEmpresa>
+			<IDRuta>163</IDRuta>
+			<NumeroRuta>163</NumeroRuta>
+			<ReporteRAF xsi:nil="true" />
+		</RutaSuministro>
+		<Saldo xsi:nil="true" />
+		<SerieRemision>E</SerieRemision>
+		<TipoCargo>Suministro de gas   </TipoCargo>
+		<TipoPedido>Telefonico</TipoPedido>
+		<TipoServicio>Estacionario</TipoServicio>
+		<Total>496.8000</Total>
+		<URLCRM>http://192.168.1.42:5555/GrupoMetropolitanoDevCRM/main.aspx?etn=itssa_pedido&amp;id=%7B310e52e8-24aa-e811-80d5-0050569f76bb%7D&amp;Pagetype=entityrecord</URLCRM>
+		<Zona xsi:type="ZonaCRMDatos">
+			<ExtensionData />
+			<Class>ZonaCRMDatos</Class>
+			<InternalException />
+			<Method>get_Method</Method>
+			<Success>false</Success>
+			<Descripcion>CÉLULA 203          </Descripcion>
+			<IDZona>203</IDZona>
+			<NumeroZona>0</NumeroZona>
+		</Zona>
+	</Pedido>
+</ArrayOfPedido>

@@ -49,4 +49,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DireccionEntregaCRMDatos" nillable="true" type="tns:DireccionEntregaCRMDatos" />
+  <xs:complexType name="PedidoCRMDatos">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q7:PedidoCRM">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PedidoCRMDatos" nillable="true" type="tns:PedidoCRMDatos" />
+  <xs:complexType name="PedidoCRMSaldo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q8:Pedido">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Abono" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PedidoCRMSaldo" nillable="true" type="tns:PedidoCRMSaldo" />
 </xs:schema>

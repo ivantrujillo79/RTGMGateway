@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RTGMGateway.RTGMCore {
+namespace RTGMCore {
     using System.Runtime.Serialization;
     using System;
-    
-    
+    using System.Xml.Serialization;
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Fuente", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     public enum Fuente : int {
@@ -37,6 +37,7 @@ namespace RTGMGateway.RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatil))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatilDatos))]
+    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     public partial class DireccionEntrega : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -86,6 +87,9 @@ namespace RTGMGateway.RTGMCore {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> FAltaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> FactorConversionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> FechaConsultaField;
@@ -426,6 +430,19 @@ namespace RTGMGateway.RTGMCore {
                 if ((this.FAltaField.Equals(value) != true)) {
                     this.FAltaField = value;
                     this.RaisePropertyChanged("FAlta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> FactorConversion {
+            get {
+                return this.FactorConversionField;
+            }
+            set {
+                if ((this.FactorConversionField.Equals(value) != true)) {
+                    this.FactorConversionField = value;
+                    this.RaisePropertyChanged("FactorConversion");
                 }
             }
         }
@@ -1027,6 +1044,7 @@ namespace RTGMGateway.RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.EmpleadoSIGAMETDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.EmpleadoCRM))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.EmpleadoCRMDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.EmpleadoLecturista))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.CondicionesCreditoSIGAMET))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.CondicionesCreditoSIGAMETDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.CondicionesCreditoCRM))]
@@ -1053,6 +1071,15 @@ namespace RTGMGateway.RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.ZonaSIGAMETDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.ZonaCRM))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.ZonaCRMDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.Pedido))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DetallePedido))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMET))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMETDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatil))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatilDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRM))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntrega))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMET))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
@@ -1663,10 +1690,10 @@ namespace RTGMGateway.RTGMCore {
     public partial class AgendaGestionCobranza : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<byte> CadaCuantoField;
+        private System.Nullable<int> CadaCuantoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<byte> CardinalidadField;
+        private System.Nullable<int> CardinalidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int DiaField;
@@ -1690,7 +1717,7 @@ namespace RTGMGateway.RTGMCore {
         private string TipoPeriodoField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<byte> CadaCuanto {
+        public System.Nullable<int> CadaCuanto {
             get {
                 return this.CadaCuantoField;
             }
@@ -1703,7 +1730,7 @@ namespace RTGMGateway.RTGMCore {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<byte> Cardinalidad {
+        public System.Nullable<int> Cardinalidad {
             get {
                 return this.CardinalidadField;
             }
@@ -1815,6 +1842,7 @@ namespace RTGMGateway.RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.EmpleadoSIGAMETDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.EmpleadoCRM))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.EmpleadoCRMDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.EmpleadoLecturista))]
     public partial class Empleado : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1990,6 +2018,29 @@ namespace RTGMGateway.RTGMCore {
     [System.Runtime.Serialization.DataContractAttribute(Name="EmpleadoCRMDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
     [System.SerializableAttribute()]
     public partial class EmpleadoCRMDatos : RTGMCore.EmpleadoCRM {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EmpleadoLecturista", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    [System.SerializableAttribute()]
+    public partial class EmpleadoLecturista : RTGMCore.Empleado {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.ZonaLecturista ZonaLecturistaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.ZonaLecturista ZonaLecturista {
+            get {
+                return this.ZonaLecturistaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZonaLecturistaField, value) != true)) {
+                    this.ZonaLecturistaField = value;
+                    this.RaisePropertyChanged("ZonaLecturista");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2576,6 +2627,7 @@ namespace RTGMGateway.RTGMCore {
             }
         }
         
+        [XmlIgnore]
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.Dictionary<string, string> PreferenciasCliente {
             get {
@@ -2996,6 +3048,9 @@ namespace RTGMGateway.RTGMCore {
         private int IDEmpresaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDRutaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> NumeroRutaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -3023,6 +3078,19 @@ namespace RTGMGateway.RTGMCore {
                 if ((this.IDEmpresaField.Equals(value) != true)) {
                     this.IDEmpresaField = value;
                     this.RaisePropertyChanged("IDEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDRuta {
+            get {
+                return this.IDRutaField;
+            }
+            set {
+                if ((this.IDRutaField.Equals(value) != true)) {
+                    this.IDRutaField = value;
+                    this.RaisePropertyChanged("IDRuta");
                 }
             }
         }
@@ -3445,6 +3513,1541 @@ namespace RTGMGateway.RTGMCore {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Pedido", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMET))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMETDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatil))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatilDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRM))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
+    [XmlInclude(typeof(RTGMCore.PedidoSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.PedidoCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.PedidoCRMSaldo))]
+    [XmlInclude(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
+    public partial class Pedido : RTGMCore.ServiceResult {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> AnioAttField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> AnioPedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<byte> BoletinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CarteraDescripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ConfiguracionSuministroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<RTGMCore.DetallePedido> DetallePedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.DireccionEntrega DireccionEntregaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstatusBoletinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstatusMovilField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstatusPedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FAltaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FCargoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FCompromisoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FEnvioMovilField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FLecturaAnteriorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FStatusMovilField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FSuministroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> FolioFacturaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> FolioPresupuestoSTField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> FolioRemisionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FormaPagoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GUIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.Georreferencia GeorreferenciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDAutotanqueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDAutotanqueMovilField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDCarteraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDDireccionEntregaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDEstatusMovilField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDEstatusPedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDFolioAttField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDFormaPagoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDMotivoCancelacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDMovilField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDPedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDPrioridadPedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDTipoCargoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDTipoPedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDTipoServicioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IDUsuarioAltaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDZonaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImagenLecturaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> ImporteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> ImpuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.EmpleadoLecturista LecturistaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> LlamadaInsistenteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MotivoCancelacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> NumeroImpresionesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ObservacionesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ObservacionesCancelacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ObservacionesServiciosTecnicosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PedidoReferenciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<RTGMCore.Pedido> PedidosRelacionadosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PrioridadPedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReporteRAFField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReporteRAFBoletinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.Ruta RutaBoletinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.Ruta RutaOrigenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.Ruta RutaSuministroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> SaldoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SerieFacturaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SerieRemisionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoCargoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoPedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoServicioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> TotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string URLCRMField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.Zona ZonaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> AnioAtt {
+            get {
+                return this.AnioAttField;
+            }
+            set {
+                if ((this.AnioAttField.Equals(value) != true)) {
+                    this.AnioAttField = value;
+                    this.RaisePropertyChanged("AnioAtt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> AnioPed {
+            get {
+                return this.AnioPedField;
+            }
+            set {
+                if ((this.AnioPedField.Equals(value) != true)) {
+                    this.AnioPedField = value;
+                    this.RaisePropertyChanged("AnioPed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<byte> Boletin {
+            get {
+                return this.BoletinField;
+            }
+            set {
+                if ((this.BoletinField.Equals(value) != true)) {
+                    this.BoletinField = value;
+                    this.RaisePropertyChanged("Boletin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CarteraDescripcion {
+            get {
+                return this.CarteraDescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CarteraDescripcionField, value) != true)) {
+                    this.CarteraDescripcionField = value;
+                    this.RaisePropertyChanged("CarteraDescripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ConfiguracionSuministro {
+            get {
+                return this.ConfiguracionSuministroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ConfiguracionSuministroField, value) != true)) {
+                    this.ConfiguracionSuministroField = value;
+                    this.RaisePropertyChanged("ConfiguracionSuministro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<RTGMCore.DetallePedido> DetallePedido {
+            get {
+                return this.DetallePedidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetallePedidoField, value) != true)) {
+                    this.DetallePedidoField = value;
+                    this.RaisePropertyChanged("DetallePedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.DireccionEntrega DireccionEntrega {
+            get {
+                return this.DireccionEntregaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DireccionEntregaField, value) != true)) {
+                    this.DireccionEntregaField = value;
+                    this.RaisePropertyChanged("DireccionEntrega");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EstatusBoletin {
+            get {
+                return this.EstatusBoletinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstatusBoletinField, value) != true)) {
+                    this.EstatusBoletinField = value;
+                    this.RaisePropertyChanged("EstatusBoletin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EstatusMovil {
+            get {
+                return this.EstatusMovilField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstatusMovilField, value) != true)) {
+                    this.EstatusMovilField = value;
+                    this.RaisePropertyChanged("EstatusMovil");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EstatusPedido {
+            get {
+                return this.EstatusPedidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstatusPedidoField, value) != true)) {
+                    this.EstatusPedidoField = value;
+                    this.RaisePropertyChanged("EstatusPedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FAlta {
+            get {
+                return this.FAltaField;
+            }
+            set {
+                if ((this.FAltaField.Equals(value) != true)) {
+                    this.FAltaField = value;
+                    this.RaisePropertyChanged("FAlta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FCargo {
+            get {
+                return this.FCargoField;
+            }
+            set {
+                if ((this.FCargoField.Equals(value) != true)) {
+                    this.FCargoField = value;
+                    this.RaisePropertyChanged("FCargo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FCompromiso {
+            get {
+                return this.FCompromisoField;
+            }
+            set {
+                if ((this.FCompromisoField.Equals(value) != true)) {
+                    this.FCompromisoField = value;
+                    this.RaisePropertyChanged("FCompromiso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FEnvioMovil {
+            get {
+                return this.FEnvioMovilField;
+            }
+            set {
+                if ((this.FEnvioMovilField.Equals(value) != true)) {
+                    this.FEnvioMovilField = value;
+                    this.RaisePropertyChanged("FEnvioMovil");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FLecturaAnterior {
+            get {
+                return this.FLecturaAnteriorField;
+            }
+            set {
+                if ((this.FLecturaAnteriorField.Equals(value) != true)) {
+                    this.FLecturaAnteriorField = value;
+                    this.RaisePropertyChanged("FLecturaAnterior");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FStatusMovil {
+            get {
+                return this.FStatusMovilField;
+            }
+            set {
+                if ((this.FStatusMovilField.Equals(value) != true)) {
+                    this.FStatusMovilField = value;
+                    this.RaisePropertyChanged("FStatusMovil");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FSuministro {
+            get {
+                return this.FSuministroField;
+            }
+            set {
+                if ((this.FSuministroField.Equals(value) != true)) {
+                    this.FSuministroField = value;
+                    this.RaisePropertyChanged("FSuministro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> FolioFactura {
+            get {
+                return this.FolioFacturaField;
+            }
+            set {
+                if ((this.FolioFacturaField.Equals(value) != true)) {
+                    this.FolioFacturaField = value;
+                    this.RaisePropertyChanged("FolioFactura");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> FolioPresupuestoST {
+            get {
+                return this.FolioPresupuestoSTField;
+            }
+            set {
+                if ((this.FolioPresupuestoSTField.Equals(value) != true)) {
+                    this.FolioPresupuestoSTField = value;
+                    this.RaisePropertyChanged("FolioPresupuestoST");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> FolioRemision {
+            get {
+                return this.FolioRemisionField;
+            }
+            set {
+                if ((this.FolioRemisionField.Equals(value) != true)) {
+                    this.FolioRemisionField = value;
+                    this.RaisePropertyChanged("FolioRemision");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FormaPago {
+            get {
+                return this.FormaPagoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FormaPagoField, value) != true)) {
+                    this.FormaPagoField = value;
+                    this.RaisePropertyChanged("FormaPago");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GUID {
+            get {
+                return this.GUIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GUIDField, value) != true)) {
+                    this.GUIDField = value;
+                    this.RaisePropertyChanged("GUID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.Georreferencia Georreferencia {
+            get {
+                return this.GeorreferenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GeorreferenciaField, value) != true)) {
+                    this.GeorreferenciaField = value;
+                    this.RaisePropertyChanged("Georreferencia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDAutotanque {
+            get {
+                return this.IDAutotanqueField;
+            }
+            set {
+                if ((this.IDAutotanqueField.Equals(value) != true)) {
+                    this.IDAutotanqueField = value;
+                    this.RaisePropertyChanged("IDAutotanque");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDAutotanqueMovil {
+            get {
+                return this.IDAutotanqueMovilField;
+            }
+            set {
+                if ((this.IDAutotanqueMovilField.Equals(value) != true)) {
+                    this.IDAutotanqueMovilField = value;
+                    this.RaisePropertyChanged("IDAutotanqueMovil");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDCartera {
+            get {
+                return this.IDCarteraField;
+            }
+            set {
+                if ((this.IDCarteraField.Equals(value) != true)) {
+                    this.IDCarteraField = value;
+                    this.RaisePropertyChanged("IDCartera");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDDireccionEntrega {
+            get {
+                return this.IDDireccionEntregaField;
+            }
+            set {
+                if ((this.IDDireccionEntregaField.Equals(value) != true)) {
+                    this.IDDireccionEntregaField = value;
+                    this.RaisePropertyChanged("IDDireccionEntrega");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDEmpresa {
+            get {
+                return this.IDEmpresaField;
+            }
+            set {
+                if ((this.IDEmpresaField.Equals(value) != true)) {
+                    this.IDEmpresaField = value;
+                    this.RaisePropertyChanged("IDEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDEstatusMovil {
+            get {
+                return this.IDEstatusMovilField;
+            }
+            set {
+                if ((this.IDEstatusMovilField.Equals(value) != true)) {
+                    this.IDEstatusMovilField = value;
+                    this.RaisePropertyChanged("IDEstatusMovil");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDEstatusPedido {
+            get {
+                return this.IDEstatusPedidoField;
+            }
+            set {
+                if ((this.IDEstatusPedidoField.Equals(value) != true)) {
+                    this.IDEstatusPedidoField = value;
+                    this.RaisePropertyChanged("IDEstatusPedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDFolioAtt {
+            get {
+                return this.IDFolioAttField;
+            }
+            set {
+                if ((this.IDFolioAttField.Equals(value) != true)) {
+                    this.IDFolioAttField = value;
+                    this.RaisePropertyChanged("IDFolioAtt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDFormaPago {
+            get {
+                return this.IDFormaPagoField;
+            }
+            set {
+                if ((this.IDFormaPagoField.Equals(value) != true)) {
+                    this.IDFormaPagoField = value;
+                    this.RaisePropertyChanged("IDFormaPago");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDMotivoCancelacion {
+            get {
+                return this.IDMotivoCancelacionField;
+            }
+            set {
+                if ((this.IDMotivoCancelacionField.Equals(value) != true)) {
+                    this.IDMotivoCancelacionField = value;
+                    this.RaisePropertyChanged("IDMotivoCancelacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDMovil {
+            get {
+                return this.IDMovilField;
+            }
+            set {
+                if ((this.IDMovilField.Equals(value) != true)) {
+                    this.IDMovilField = value;
+                    this.RaisePropertyChanged("IDMovil");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDPedido {
+            get {
+                return this.IDPedidoField;
+            }
+            set {
+                if ((this.IDPedidoField.Equals(value) != true)) {
+                    this.IDPedidoField = value;
+                    this.RaisePropertyChanged("IDPedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDPrioridadPedido {
+            get {
+                return this.IDPrioridadPedidoField;
+            }
+            set {
+                if ((this.IDPrioridadPedidoField.Equals(value) != true)) {
+                    this.IDPrioridadPedidoField = value;
+                    this.RaisePropertyChanged("IDPrioridadPedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDTipoCargo {
+            get {
+                return this.IDTipoCargoField;
+            }
+            set {
+                if ((this.IDTipoCargoField.Equals(value) != true)) {
+                    this.IDTipoCargoField = value;
+                    this.RaisePropertyChanged("IDTipoCargo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDTipoPedido {
+            get {
+                return this.IDTipoPedidoField;
+            }
+            set {
+                if ((this.IDTipoPedidoField.Equals(value) != true)) {
+                    this.IDTipoPedidoField = value;
+                    this.RaisePropertyChanged("IDTipoPedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDTipoServicio {
+            get {
+                return this.IDTipoServicioField;
+            }
+            set {
+                if ((this.IDTipoServicioField.Equals(value) != true)) {
+                    this.IDTipoServicioField = value;
+                    this.RaisePropertyChanged("IDTipoServicio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IDUsuarioAlta {
+            get {
+                return this.IDUsuarioAltaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IDUsuarioAltaField, value) != true)) {
+                    this.IDUsuarioAltaField = value;
+                    this.RaisePropertyChanged("IDUsuarioAlta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDZona {
+            get {
+                return this.IDZonaField;
+            }
+            set {
+                if ((this.IDZonaField.Equals(value) != true)) {
+                    this.IDZonaField = value;
+                    this.RaisePropertyChanged("IDZona");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImagenLectura {
+            get {
+                return this.ImagenLecturaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImagenLecturaField, value) != true)) {
+                    this.ImagenLecturaField = value;
+                    this.RaisePropertyChanged("ImagenLectura");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Importe {
+            get {
+                return this.ImporteField;
+            }
+            set {
+                if ((this.ImporteField.Equals(value) != true)) {
+                    this.ImporteField = value;
+                    this.RaisePropertyChanged("Importe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Impuesto {
+            get {
+                return this.ImpuestoField;
+            }
+            set {
+                if ((this.ImpuestoField.Equals(value) != true)) {
+                    this.ImpuestoField = value;
+                    this.RaisePropertyChanged("Impuesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.EmpleadoLecturista Lecturista {
+            get {
+                return this.LecturistaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LecturistaField, value) != true)) {
+                    this.LecturistaField = value;
+                    this.RaisePropertyChanged("Lecturista");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> LlamadaInsistente {
+            get {
+                return this.LlamadaInsistenteField;
+            }
+            set {
+                if ((this.LlamadaInsistenteField.Equals(value) != true)) {
+                    this.LlamadaInsistenteField = value;
+                    this.RaisePropertyChanged("LlamadaInsistente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MotivoCancelacion {
+            get {
+                return this.MotivoCancelacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MotivoCancelacionField, value) != true)) {
+                    this.MotivoCancelacionField = value;
+                    this.RaisePropertyChanged("MotivoCancelacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> NumeroImpresiones {
+            get {
+                return this.NumeroImpresionesField;
+            }
+            set {
+                if ((this.NumeroImpresionesField.Equals(value) != true)) {
+                    this.NumeroImpresionesField = value;
+                    this.RaisePropertyChanged("NumeroImpresiones");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones {
+            get {
+                return this.ObservacionesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObservacionesField, value) != true)) {
+                    this.ObservacionesField = value;
+                    this.RaisePropertyChanged("Observaciones");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ObservacionesCancelacion {
+            get {
+                return this.ObservacionesCancelacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObservacionesCancelacionField, value) != true)) {
+                    this.ObservacionesCancelacionField = value;
+                    this.RaisePropertyChanged("ObservacionesCancelacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ObservacionesServiciosTecnicos {
+            get {
+                return this.ObservacionesServiciosTecnicosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObservacionesServiciosTecnicosField, value) != true)) {
+                    this.ObservacionesServiciosTecnicosField = value;
+                    this.RaisePropertyChanged("ObservacionesServiciosTecnicos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PedidoReferencia {
+            get {
+                return this.PedidoReferenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PedidoReferenciaField, value) != true)) {
+                    this.PedidoReferenciaField = value;
+                    this.RaisePropertyChanged("PedidoReferencia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<RTGMCore.Pedido> PedidosRelacionados {
+            get {
+                return this.PedidosRelacionadosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PedidosRelacionadosField, value) != true)) {
+                    this.PedidosRelacionadosField = value;
+                    this.RaisePropertyChanged("PedidosRelacionados");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PrioridadPedido {
+            get {
+                return this.PrioridadPedidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrioridadPedidoField, value) != true)) {
+                    this.PrioridadPedidoField = value;
+                    this.RaisePropertyChanged("PrioridadPedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReporteRAF {
+            get {
+                return this.ReporteRAFField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReporteRAFField, value) != true)) {
+                    this.ReporteRAFField = value;
+                    this.RaisePropertyChanged("ReporteRAF");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReporteRAFBoletin {
+            get {
+                return this.ReporteRAFBoletinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReporteRAFBoletinField, value) != true)) {
+                    this.ReporteRAFBoletinField = value;
+                    this.RaisePropertyChanged("ReporteRAFBoletin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.Ruta RutaBoletin {
+            get {
+                return this.RutaBoletinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RutaBoletinField, value) != true)) {
+                    this.RutaBoletinField = value;
+                    this.RaisePropertyChanged("RutaBoletin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.Ruta RutaOrigen {
+            get {
+                return this.RutaOrigenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RutaOrigenField, value) != true)) {
+                    this.RutaOrigenField = value;
+                    this.RaisePropertyChanged("RutaOrigen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.Ruta RutaSuministro {
+            get {
+                return this.RutaSuministroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RutaSuministroField, value) != true)) {
+                    this.RutaSuministroField = value;
+                    this.RaisePropertyChanged("RutaSuministro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Saldo {
+            get {
+                return this.SaldoField;
+            }
+            set {
+                if ((this.SaldoField.Equals(value) != true)) {
+                    this.SaldoField = value;
+                    this.RaisePropertyChanged("Saldo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SerieFactura {
+            get {
+                return this.SerieFacturaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SerieFacturaField, value) != true)) {
+                    this.SerieFacturaField = value;
+                    this.RaisePropertyChanged("SerieFactura");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SerieRemision {
+            get {
+                return this.SerieRemisionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SerieRemisionField, value) != true)) {
+                    this.SerieRemisionField = value;
+                    this.RaisePropertyChanged("SerieRemision");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoCargo {
+            get {
+                return this.TipoCargoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoCargoField, value) != true)) {
+                    this.TipoCargoField = value;
+                    this.RaisePropertyChanged("TipoCargo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoPedido {
+            get {
+                return this.TipoPedidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoPedidoField, value) != true)) {
+                    this.TipoPedidoField = value;
+                    this.RaisePropertyChanged("TipoPedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoServicio {
+            get {
+                return this.TipoServicioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoServicioField, value) != true)) {
+                    this.TipoServicioField = value;
+                    this.RaisePropertyChanged("TipoServicio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Total {
+            get {
+                return this.TotalField;
+            }
+            set {
+                if ((this.TotalField.Equals(value) != true)) {
+                    this.TotalField = value;
+                    this.RaisePropertyChanged("Total");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string URLCRM {
+            get {
+                return this.URLCRMField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.URLCRMField, value) != true)) {
+                    this.URLCRMField = value;
+                    this.RaisePropertyChanged("URLCRM");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.Zona Zona {
+            get {
+                return this.ZonaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZonaField, value) != true)) {
+                    this.ZonaField = value;
+                    this.RaisePropertyChanged("Zona");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DetallePedido", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    [System.SerializableAttribute()]
+    public partial class DetallePedido : RTGMCore.ServiceResult {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CantidadLecturaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CantidadLecturaAnteriorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CantidadSolicitadaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CantidadSurtidaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal DescuentoAplicableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal DescuentoAplicadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal DiferenciaDeLecturasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GUIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDDetallePedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDPedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImagenLecturaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ImporteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ImpuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ImpuestoAplicableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PorcentajeTanqueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PrecioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PrecioAplicableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RTGMCore.Producto ProductoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal RedondeoAnteriorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TagField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalAplicableField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CantidadLectura {
+            get {
+                return this.CantidadLecturaField;
+            }
+            set {
+                if ((this.CantidadLecturaField.Equals(value) != true)) {
+                    this.CantidadLecturaField = value;
+                    this.RaisePropertyChanged("CantidadLectura");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CantidadLecturaAnterior {
+            get {
+                return this.CantidadLecturaAnteriorField;
+            }
+            set {
+                if ((this.CantidadLecturaAnteriorField.Equals(value) != true)) {
+                    this.CantidadLecturaAnteriorField = value;
+                    this.RaisePropertyChanged("CantidadLecturaAnterior");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CantidadSolicitada {
+            get {
+                return this.CantidadSolicitadaField;
+            }
+            set {
+                if ((this.CantidadSolicitadaField.Equals(value) != true)) {
+                    this.CantidadSolicitadaField = value;
+                    this.RaisePropertyChanged("CantidadSolicitada");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CantidadSurtida {
+            get {
+                return this.CantidadSurtidaField;
+            }
+            set {
+                if ((this.CantidadSurtidaField.Equals(value) != true)) {
+                    this.CantidadSurtidaField = value;
+                    this.RaisePropertyChanged("CantidadSurtida");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal DescuentoAplicable {
+            get {
+                return this.DescuentoAplicableField;
+            }
+            set {
+                if ((this.DescuentoAplicableField.Equals(value) != true)) {
+                    this.DescuentoAplicableField = value;
+                    this.RaisePropertyChanged("DescuentoAplicable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal DescuentoAplicado {
+            get {
+                return this.DescuentoAplicadoField;
+            }
+            set {
+                if ((this.DescuentoAplicadoField.Equals(value) != true)) {
+                    this.DescuentoAplicadoField = value;
+                    this.RaisePropertyChanged("DescuentoAplicado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal DiferenciaDeLecturas {
+            get {
+                return this.DiferenciaDeLecturasField;
+            }
+            set {
+                if ((this.DiferenciaDeLecturasField.Equals(value) != true)) {
+                    this.DiferenciaDeLecturasField = value;
+                    this.RaisePropertyChanged("DiferenciaDeLecturas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GUID {
+            get {
+                return this.GUIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GUIDField, value) != true)) {
+                    this.GUIDField = value;
+                    this.RaisePropertyChanged("GUID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDDetallePedido {
+            get {
+                return this.IDDetallePedidoField;
+            }
+            set {
+                if ((this.IDDetallePedidoField.Equals(value) != true)) {
+                    this.IDDetallePedidoField = value;
+                    this.RaisePropertyChanged("IDDetallePedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDPedido {
+            get {
+                return this.IDPedidoField;
+            }
+            set {
+                if ((this.IDPedidoField.Equals(value) != true)) {
+                    this.IDPedidoField = value;
+                    this.RaisePropertyChanged("IDPedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImagenLectura {
+            get {
+                return this.ImagenLecturaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImagenLecturaField, value) != true)) {
+                    this.ImagenLecturaField = value;
+                    this.RaisePropertyChanged("ImagenLectura");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Importe {
+            get {
+                return this.ImporteField;
+            }
+            set {
+                if ((this.ImporteField.Equals(value) != true)) {
+                    this.ImporteField = value;
+                    this.RaisePropertyChanged("Importe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Impuesto {
+            get {
+                return this.ImpuestoField;
+            }
+            set {
+                if ((this.ImpuestoField.Equals(value) != true)) {
+                    this.ImpuestoField = value;
+                    this.RaisePropertyChanged("Impuesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ImpuestoAplicable {
+            get {
+                return this.ImpuestoAplicableField;
+            }
+            set {
+                if ((this.ImpuestoAplicableField.Equals(value) != true)) {
+                    this.ImpuestoAplicableField = value;
+                    this.RaisePropertyChanged("ImpuestoAplicable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PorcentajeTanque {
+            get {
+                return this.PorcentajeTanqueField;
+            }
+            set {
+                if ((this.PorcentajeTanqueField.Equals(value) != true)) {
+                    this.PorcentajeTanqueField = value;
+                    this.RaisePropertyChanged("PorcentajeTanque");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Precio {
+            get {
+                return this.PrecioField;
+            }
+            set {
+                if ((this.PrecioField.Equals(value) != true)) {
+                    this.PrecioField = value;
+                    this.RaisePropertyChanged("Precio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal PrecioAplicable {
+            get {
+                return this.PrecioAplicableField;
+            }
+            set {
+                if ((this.PrecioAplicableField.Equals(value) != true)) {
+                    this.PrecioAplicableField = value;
+                    this.RaisePropertyChanged("PrecioAplicable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RTGMCore.Producto Producto {
+            get {
+                return this.ProductoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductoField, value) != true)) {
+                    this.ProductoField = value;
+                    this.RaisePropertyChanged("Producto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal RedondeoAnterior {
+            get {
+                return this.RedondeoAnteriorField;
+            }
+            set {
+                if ((this.RedondeoAnteriorField.Equals(value) != true)) {
+                    this.RedondeoAnteriorField = value;
+                    this.RaisePropertyChanged("RedondeoAnterior");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tag {
+            get {
+                return this.TagField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TagField, value) != true)) {
+                    this.TagField = value;
+                    this.RaisePropertyChanged("Tag");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Total {
+            get {
+                return this.TotalField;
+            }
+            set {
+                if ((this.TotalField.Equals(value) != true)) {
+                    this.TotalField = value;
+                    this.RaisePropertyChanged("Total");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalAplicable {
+            get {
+                return this.TotalAplicableField;
+            }
+            set {
+                if ((this.TotalAplicableField.Equals(value) != true)) {
+                    this.TotalAplicableField = value;
+                    this.RaisePropertyChanged("TotalAplicable");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoSIGAMET", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMETDatos))]
+    public partial class PedidoSIGAMET : RTGMCore.Pedido {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoSIGAMETDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos")]
+    [System.SerializableAttribute()]
+    public partial class PedidoSIGAMETDatos : RTGMCore.PedidoSIGAMET {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoSigametPortatil", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatilDatos))]
+    public partial class PedidoSigametPortatil : RTGMCore.Pedido {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoSigametPortatilDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos")]
+    [System.SerializableAttribute()]
+    public partial class PedidoSigametPortatilDatos : RTGMCore.PedidoSigametPortatil {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoCRM", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMDatos))]
+    public partial class PedidoCRM : RTGMCore.Pedido {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoCRMDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
+    [System.SerializableAttribute()]
+    [XmlRoot(ElementName = "Pedido")]
+    public partial class PedidoCRMDatos : RTGMCore.PedidoCRM {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoCRMSaldo", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
+    [System.SerializableAttribute()]
+    public partial class PedidoCRMSaldo : RTGMCore.Pedido {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AbonoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Abono {
+            get {
+                return this.AbonoField;
+            }
+            set {
+                if ((this.AbonoField.Equals(value) != true)) {
+                    this.AbonoField = value;
+                    this.RaisePropertyChanged("Abono");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaSIGAMET", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
@@ -3455,6 +5058,12 @@ namespace RTGMGateway.RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaSIGAMETDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos")]
     [System.SerializableAttribute()]
+    [XmlInclude(typeof(RTGMCore.CondicionesCreditoSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.EmpleadoSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
+    [XmlInclude(typeof(RTGMCore.DatosFiscalesSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.RutaSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.ZonaSIGAMETDatos))]
     public partial class DireccionEntregaSIGAMETDatos : RTGMCore.DireccionEntregaSIGAMET {
     }
     
@@ -3470,6 +5079,12 @@ namespace RTGMGateway.RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaCRMDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
     [System.SerializableAttribute()]
+    [XmlInclude(typeof(RTGMCore.CondicionesCreditoCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.EmpleadoCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
+    [XmlInclude(typeof(RTGMCore.DatosFiscalesCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.RutaCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.ZonaCRMDatos))]
     public partial class DireccionEntregaCRMDatos : RTGMCore.DireccionEntregaCRM {
     }
     
@@ -4016,6 +5631,115 @@ namespace RTGMGateway.RTGMCore {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ZonaLecturista", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    [System.SerializableAttribute()]
+    public partial class ZonaLecturista : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDZonaLecturistaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SerieField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ZonaLecturistaIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripcion {
+            get {
+                return this.DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
+                    this.DescripcionField = value;
+                    this.RaisePropertyChanged("Descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IDZonaLecturista {
+            get {
+                return this.IDZonaLecturistaField;
+            }
+            set {
+                if ((this.IDZonaLecturistaField.Equals(value) != true)) {
+                    this.IDZonaLecturistaField = value;
+                    this.RaisePropertyChanged("IDZonaLecturista");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Serie {
+            get {
+                return this.SerieField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SerieField, value) != true)) {
+                    this.SerieField = value;
+                    this.RaisePropertyChanged("Serie");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ZonaLecturistaId {
+            get {
+                return this.ZonaLecturistaIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZonaLecturistaIdField, value) != true)) {
+                    this.ZonaLecturistaIdField = value;
+                    this.RaisePropertyChanged("ZonaLecturistaId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="GiroCliente", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     [System.SerializableAttribute()]
     public partial class GiroCliente : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -4075,6 +5799,61 @@ namespace RTGMGateway.RTGMCore {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoConsultaPedido", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    public enum TipoConsultaPedido : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Boletin = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        EnvioDispositivoMovil = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RegistroPedido = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ActualizacionStatus = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Metropoli = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ServiciosTecnicos = 5,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoActualizacion", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
+    public enum TipoActualizacion : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Saldo = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Boletin = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        EnvioProgramacion = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        EstatusMovil = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Liquidacion = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AsignacionServicioTecnico = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Facturacion = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Metropoli = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Cancelacion = 8,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RTGMCore.IGasMetropolitanoRuntimeService")]
     public interface IGasMetropolitanoRuntimeService {
@@ -4101,11 +5880,51 @@ namespace RTGMGateway.RTGMCore {
                     bool Portatil, 
                     string Usuario, 
                     string Referencia, 
-                    System.Nullable<int> IDAutotanque);
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidosResponse")]
+        System.Collections.Generic.List<RTGMCore.Pedido> ConsultarPedidos(
+                    int IDEmpresa, 
+                    RTGMCore.Fuente FuenteDatos, 
+                    RTGMCore.TipoConsultaPedido TipoConsultaPedido, 
+                    bool Portatil, 
+                    string IDUsuario, 
+                    System.Nullable<int> IDDireccionEntrega, 
+                    System.Nullable<int> IDSucursal, 
+                    System.Nullable<System.DateTime> FechaCompromisoIncicio, 
+                    System.Nullable<System.DateTime> FechaCompromisoFin, 
+                    System.Nullable<System.DateTime> FechaSumistroInicio, 
+                    System.Nullable<System.DateTime> FechaSuministroFin, 
+                    System.Nullable<int> IDZona, 
+                    System.Nullable<int> IDRutaOrigen, 
+                    System.Nullable<int> IDRutaBoletin, 
+                    System.Nullable<int> IDRutaSuministro, 
+                    System.Nullable<int> IDEstatusPedido, 
+                    string EstatusPedidoDescripcion, 
+                    System.Nullable<int> IDEstatusBoletin, 
+                    string EstatusBoletin, 
+                    System.Nullable<int> IDEstatusMovil, 
+                    string EstatusMovilDescripcion, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<int> IDAutotanqueMovil, 
+                    string SerieRemision, 
+                    System.Nullable<int> FolioRemision, 
+                    string SerieFactura, 
+                    System.Nullable<int> FolioFactura, 
+                    System.Nullable<int> IDZonaLecturista, 
+                    System.Nullable<int> TipoPedido, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> AñoPed, 
+                    System.Nullable<int> IDPedido, 
+                    string PedidoReferencia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscales", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscalesResponse" +
             "")]
         RTGMCore.DatosFiscales ConsultarDatosFiscales(System.Nullable<int> IDEmpresa, System.Nullable<int> IDDatosFiscales);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedido", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedidoResponse")]
+        System.Collections.Generic.List<RTGMCore.Pedido> ActualizarPedido(RTGMCore.Fuente FuenteDatos, int IDEmpresa, RTGMCore.TipoActualizacion TipoActualizacion, bool Portatil, System.Collections.Generic.List<RTGMCore.Pedido> Pedido, string IDUsuario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4155,12 +5974,54 @@ namespace RTGMGateway.RTGMCore {
                     bool Portatil, 
                     string Usuario, 
                     string Referencia, 
-                    System.Nullable<int> IDAutotanque) {
-            return base.Channel.BusquedaDireccionEntrega(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque);
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta) {
+            return base.Channel.BusquedaDireccionEntrega(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta);
+        }
+        
+        public System.Collections.Generic.List<RTGMCore.Pedido> ConsultarPedidos(
+                    int IDEmpresa, 
+                    RTGMCore.Fuente FuenteDatos, 
+                    RTGMCore.TipoConsultaPedido TipoConsultaPedido, 
+                    bool Portatil, 
+                    string IDUsuario, 
+                    System.Nullable<int> IDDireccionEntrega, 
+                    System.Nullable<int> IDSucursal, 
+                    System.Nullable<System.DateTime> FechaCompromisoIncicio, 
+                    System.Nullable<System.DateTime> FechaCompromisoFin, 
+                    System.Nullable<System.DateTime> FechaSumistroInicio, 
+                    System.Nullable<System.DateTime> FechaSuministroFin, 
+                    System.Nullable<int> IDZona, 
+                    System.Nullable<int> IDRutaOrigen, 
+                    System.Nullable<int> IDRutaBoletin, 
+                    System.Nullable<int> IDRutaSuministro, 
+                    System.Nullable<int> IDEstatusPedido, 
+                    string EstatusPedidoDescripcion, 
+                    System.Nullable<int> IDEstatusBoletin, 
+                    string EstatusBoletin, 
+                    System.Nullable<int> IDEstatusMovil, 
+                    string EstatusMovilDescripcion, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<int> IDAutotanqueMovil, 
+                    string SerieRemision, 
+                    System.Nullable<int> FolioRemision, 
+                    string SerieFactura, 
+                    System.Nullable<int> FolioFactura, 
+                    System.Nullable<int> IDZonaLecturista, 
+                    System.Nullable<int> TipoPedido, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> AñoPed, 
+                    System.Nullable<int> IDPedido, 
+                    string PedidoReferencia) {
+            return base.Channel.ConsultarPedidos(IDEmpresa, FuenteDatos, TipoConsultaPedido, Portatil, IDUsuario, IDDireccionEntrega, IDSucursal, FechaCompromisoIncicio, FechaCompromisoFin, FechaSumistroInicio, FechaSuministroFin, IDZona, IDRutaOrigen, IDRutaBoletin, IDRutaSuministro, IDEstatusPedido, EstatusPedidoDescripcion, IDEstatusBoletin, EstatusBoletin, IDEstatusMovil, EstatusMovilDescripcion, IDAutotanque, IDAutotanqueMovil, SerieRemision, FolioRemision, SerieFactura, FolioFactura, IDZonaLecturista, TipoPedido, TipoServicio, AñoPed, IDPedido, PedidoReferencia);
         }
         
         public RTGMCore.DatosFiscales ConsultarDatosFiscales(System.Nullable<int> IDEmpresa, System.Nullable<int> IDDatosFiscales) {
             return base.Channel.ConsultarDatosFiscales(IDEmpresa, IDDatosFiscales);
+        }
+        
+        public System.Collections.Generic.List<RTGMCore.Pedido> ActualizarPedido(RTGMCore.Fuente FuenteDatos, int IDEmpresa, RTGMCore.TipoActualizacion TipoActualizacion, bool Portatil, System.Collections.Generic.List<RTGMCore.Pedido> Pedido, string IDUsuario) {
+            return base.Channel.ActualizarPedido(FuenteDatos, IDEmpresa, TipoActualizacion, Portatil, Pedido, IDUsuario);
         }
     }
 }

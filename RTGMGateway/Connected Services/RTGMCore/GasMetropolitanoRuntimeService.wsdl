@@ -16,20 +16,40 @@
   <wsdl:message name="IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_OutputMessage">
     <wsdl:part name="parameters" element="tns:BusquedaDireccionEntregaResponse" />
   </wsdl:message>
+  <wsdl:message name="IGasMetropolitanoRuntimeService_ConsultarPedidos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarPedidos" />
+  </wsdl:message>
+  <wsdl:message name="IGasMetropolitanoRuntimeService_ConsultarPedidos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarPedidosResponse" />
+  </wsdl:message>
   <wsdl:message name="IGasMetropolitanoRuntimeService_ConsultarDatosFiscales_InputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarDatosFiscales" />
   </wsdl:message>
   <wsdl:message name="IGasMetropolitanoRuntimeService_ConsultarDatosFiscales_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarDatosFiscalesResponse" />
   </wsdl:message>
+  <wsdl:message name="IGasMetropolitanoRuntimeService_ActualizarPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPedido" />
+  </wsdl:message>
+  <wsdl:message name="IGasMetropolitanoRuntimeService_ActualizarPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPedidoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGasMetropolitanoRuntimeService">
     <wsdl:operation name="BusquedaDireccionEntrega">
       <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntrega" message="tns:IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaResponse" message="tns:IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ConsultarPedidos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos" message="tns:IGasMetropolitanoRuntimeService_ConsultarPedidos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidosResponse" message="tns:IGasMetropolitanoRuntimeService_ConsultarPedidos_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ConsultarDatosFiscales">
       <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscales" message="tns:IGasMetropolitanoRuntimeService_ConsultarDatosFiscales_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscalesResponse" message="tns:IGasMetropolitanoRuntimeService_ConsultarDatosFiscales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedido" message="tns:IGasMetropolitanoRuntimeService_ActualizarPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedidoResponse" message="tns:IGasMetropolitanoRuntimeService_ActualizarPedido_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGasMetropolitanoRuntimeService" type="tns:IGasMetropolitanoRuntimeService">
@@ -43,8 +63,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ConsultarPedidos">
+      <soap:operation soapAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ConsultarDatosFiscales">
       <soap:operation soapAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPedido">
+      <soap:operation soapAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedido" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
