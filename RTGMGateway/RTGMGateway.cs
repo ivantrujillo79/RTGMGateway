@@ -523,7 +523,7 @@ namespace RTGMGateway
                     ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
   
                 direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
-                                                                    _Corporativo, _Sucursal,
+                                                                    _Corporativo, null,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
                                                                     ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,

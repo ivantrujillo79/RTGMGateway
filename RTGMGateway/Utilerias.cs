@@ -10,13 +10,14 @@ namespace RTGMGateway
 {
     public enum EnumMetodoWS
     {
-        BusquedaDireccionEntrega = 1,
-        ConsultarPedidos = 2,
-        ActualizarPedido = 3,
-        ActualizarPedidoBoletin = 4,
-        ActualizarPedidoSaldo = 5,
-        ActualizarPedidoLiquidacion = 6,
-        ActualizarPedidoCancelarLiquidacion = 7 
+        ActualizarPedido = 1,
+        ActualizarPedidoBoletin = 2,
+        ActualizarPedidoSaldo = 3,
+        ActualizarPedidoLiquidacion = 4,
+        ActualizarPedidoCancelarLiquidacion = 5,
+        BusquedaDireccionEntrega = 6,
+        ConsultarPedidos = 7,
+        ConsultarCondicionesCredito = 8,
     }
     
     public class Utilerias

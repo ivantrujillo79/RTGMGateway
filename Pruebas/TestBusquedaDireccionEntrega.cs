@@ -12,7 +12,7 @@ namespace Pruebas
     {
 
         [TestCase(2, "MARIA ELIZABETH URIBE GONZALEZ", RTGMCore.Fuente.Sigamet)]
-        [TestCase(10, "MERLINA SOLANO MARQUEZ", RTGMCore.Fuente.CRM)]
+        [TestCase(502763362, "MERLINA SOLANO MARQUEZ", RTGMCore.Fuente.CRM)]
         public void pruebaRecuperaClientePorID(int Cliente, string Nombre,RTGMCore.Fuente Fuente)
         {
             bool respuestaExitosa = true;
@@ -76,7 +76,7 @@ namespace Pruebas
         {
             bool respuestaExitosa = true;
             RTGMGateway.RTGMGateway obGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
-            obGateway.URLServicio = _URL;
+            obGateway.URLServicio = Variables.GLOBAL_URLGateway;
 
             List<RTGMCore.DireccionEntrega> lsDirecciones = new List<RTGMCore.DireccionEntrega>();
 
@@ -152,35 +152,31 @@ namespace Pruebas
 
             Assert.AreEqual(objGeorreferencia.Latitud, decimal.Parse(Latitud));
         }
-
-        //[TestCase(57990055, 0, "57043430", "SERICULTURA", "VEINTE DE NOVIEMBRE 2DO TRAMO", "VENUSTIANO CARRANZA",
-        //    "Sin Crédito")]
-        //[TestCase(60012802, null, "30987000", "TLATILCO", "TLATILCO", "AZCAPOTZALCO", "Crédito Suspendido")]
-        //[TestCase(60038863, 0, " ", " ", " ", " ", "Jurídico")]
-        //[TestCase(60059055, 0, "/", "AV HENRY FORD", "ZONA INDUSTRIAL CUAUTITLAN IZCALLI", "CUAUTITLAN IZCALLI",
-        //    "Morosa")]
-        //[TestCase(0, null, "~", "*", "^", "`", "Sin Crédito")]
-        public void pruebaRecuperaCondicionesCredito(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
-            string Municipio, string CarteraDescripcion)
+        
+        [TestCase(502763316)]
+        public void pruebaRecuperaCondicionesCredito(int Cliente)
         {
+            bool respuestaExitosa = true;
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
             objGateway.URLServicio = Variables.GLOBAL_URLGateway;
+            RTGMCore.CondicionesCredito objCondicionesCredito = null;
+
             SolicitudGateway objRequest = new SolicitudGateway
             {
-                //Fuente = RTGMCore.Fuente.Sigamet,
-                IDCliente = Cliente,
-                //IDEmpresa = Empresa,
-                Portatil = false,
-                IDAutotanque = 52,
-                Telefono = Telefono,
-                CalleNombre = Calle,
-                ColoniaNombre = Colonia,
-                MunicipioNombre = Municipio
+                IDCliente = Cliente
             };
-            
-            RTGMCore.CondicionesCredito objCondicionesCredito = objGateway.buscarCondicionesCredito(objRequest);
-            
-            Assert.AreEqual(objCondicionesCredito.CarteraDescripcion.Trim(), CarteraDescripcion);
+
+            try
+            {
+                objCondicionesCredito = objGateway.buscarCondicionesCredito(objRequest);
+                Assert.IsNotNull(objCondicionesCredito);
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(objRequest, objCondicionesCredito, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarCondicionesCredito);
         }
 
         //[TestCase(502246858, 0, "S/Teléfono", "CINE MEXICANO", "LOMAS ESTRELLA 1A SECCION", "IZTAPALAPA",
