@@ -10,18 +10,14 @@ namespace Pruebas
     [TestFixture]
     class TestActualizarPedido
     {
-        private string _CadenaConexion = "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;";
-        private byte _Modulo = 1;
-        private string _URL = @"http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc";
-
         // Actualizar estatus boletín
         [TestCase(1505, 1, 205, "BOLETINADO")]
         public void pruebaActualizaBoletin(int pedido, int empresa, int celula, string estatus)
         {
             bool respuestaExitosa = true;
 
-            RTGMActualizarPedido objGateway = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMActualizarPedido objGateway = new RTGMActualizarPedido(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
 
             List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
             lstPedido.Add(new RTGMCore.PedidoCRMDatos
@@ -60,8 +56,8 @@ namespace Pruebas
         {
             bool respuestaExitosa = true;
 
-            RTGMActualizarPedido objGateway = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMActualizarPedido objGateway = new RTGMActualizarPedido(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
 
             List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
             lstPedido.Add(new RTGMCore.PedidoCRMSaldo
@@ -130,8 +126,8 @@ namespace Pruebas
 
             listaDetallePedidos.Add(obDetalle);
 
-            RTGMActualizarPedido objGateway = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMActualizarPedido objGateway = new RTGMActualizarPedido(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
 
             List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
             lstPedido.Add(new RTGMCore.PedidoCRMDatos
@@ -191,8 +187,8 @@ namespace Pruebas
             RTGMCore.RutaCRMDatos obRuta = new RTGMCore.RutaCRMDatos { IDRuta = parRuta };
             List<RTGMCore.Pedido> lsPedidos = new List<RTGMCore.Pedido>();
 
-            RTGMActualizarPedido obGateway = new RTGMActualizarPedido(_Modulo, _CadenaConexion);
-            obGateway.URLServicio = _URL;
+            RTGMActualizarPedido obGateway = new RTGMActualizarPedido(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            obGateway.URLServicio = Variables.GLOBAL_URLGateway;
 
             lsPedidos.Add(new RTGMCore.PedidoCRMDatos
             {

@@ -10,17 +10,14 @@ namespace Pruebas
     [TestFixture]
     class TestBusquedaDireccionEntrega
     {
-        private readonly byte _Modulo = 1;
-        private readonly string _CadenaConexion = "Server=192.168.1.30;Database=SigametDEVTB;User Id=ROPIMA;Password = ROPIMA9999;";
-        private string _URL = @"http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc";
 
         [TestCase(2, "MARIA ELIZABETH URIBE GONZALEZ", RTGMCore.Fuente.Sigamet)]
-        [TestCase(502763311, "MERLINA SOLANO MARQUEZ", RTGMCore.Fuente.CRM)]
+        [TestCase(10, "MERLINA SOLANO MARQUEZ", RTGMCore.Fuente.CRM)]
         public void pruebaRecuperaClientePorID(int Cliente, string Nombre,RTGMCore.Fuente Fuente)
         {
             bool respuestaExitosa = true;
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
 
             SolicitudGateway objRequest = new SolicitudGateway
             {
@@ -50,8 +47,8 @@ namespace Pruebas
         public void pruebaRecuperaClientesPorZona(int zona)
         {
             bool respuestaExitosa = true;
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             List<RTGMCore.DireccionEntrega> lsDirecciones = new List<RTGMCore.DireccionEntrega>();
 
             SolicitudGateway obSolicitud = new SolicitudGateway
@@ -78,10 +75,10 @@ namespace Pruebas
         public void pruebaRecuperaClientes(int empresa)
         {
             bool respuestaExitosa = true;
-            RTGMGateway.RTGMGateway obGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
+            RTGMGateway.RTGMGateway obGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
             obGateway.URLServicio = _URL;
 
-            List<RTGMCore.DireccionEntrega> lsDirecciones = null;
+            List<RTGMCore.DireccionEntrega> lsDirecciones = new List<RTGMCore.DireccionEntrega>();
 
             SolicitudGateway obSolicitud = new SolicitudGateway
             {
@@ -111,8 +108,8 @@ namespace Pruebas
         //[TestCase(16, 0, "", "!", "SIN EMPRESA")]
         public void pruebaRecuperaDatosFiscales(int Cliente, int Empresa, string Telefono, string Calle, string RazonSocial)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -137,8 +134,8 @@ namespace Pruebas
         public void pruebaRecuperaGeorreferencia(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Latitud)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -166,8 +163,8 @@ namespace Pruebas
         public void pruebaRecuperaCondicionesCredito(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Municipio, string CarteraDescripcion)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -195,8 +192,8 @@ namespace Pruebas
         public void pruebaRecuperaEmpleado(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Municipio, int Sucursal, int Empleado)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -220,8 +217,8 @@ namespace Pruebas
         public void pruebaRecuperaPrecio(int Cliente, int Empresa, string Telefono, string Calle, string Colonia,
             string Municipio, int Sucursal, string Precio)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -250,8 +247,8 @@ namespace Pruebas
         public void pruebaRecuperaConfiguracionSuministro(int Cliente, int Empresa, string Telefono, string Calle, 
             string Colonia, string Municipio, int Sucursal, int Autotanque, string Ajustes)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -284,8 +281,8 @@ namespace Pruebas
         public void pruebaRecuperaZona(int Cliente, int Empresa, string Telefono, string Calle, string Colonia, 
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroZona)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -315,8 +312,8 @@ namespace Pruebas
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior,
             int NumeroRuta)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -347,8 +344,8 @@ namespace Pruebas
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior, 
             string NumeroInterior, int IDZona)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -381,8 +378,8 @@ namespace Pruebas
             string Colonia, string Municipio, int Sucursal, int Autotanque, string NombreCliente, 
             int NumeroExterior, string NumeroInterior, int TipoServicio, bool ProgramacionActiva)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -416,8 +413,8 @@ namespace Pruebas
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior, 
             string NumeroInterior, int TipoServicio, int Zona, int IDRamo)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,
@@ -454,8 +451,8 @@ namespace Pruebas
             string Municipio, int Sucursal, int Autotanque, string NombreCliente, int NumeroExterior,
             string NumeroInterior, int TipoServicio, int Zona, int Ruta, int TipoCliente)
         {
-            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(_Modulo, _CadenaConexion);
-            objGateway.URLServicio = _URL;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
             SolicitudGateway objRequest = new SolicitudGateway
             {
                 //Fuente = RTGMCore.Fuente.Sigamet,

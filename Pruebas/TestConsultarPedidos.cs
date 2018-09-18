@@ -10,17 +10,13 @@ namespace Pruebas
     [TestFixture]
     class TestConsultarPedidos
     {
-        private string _CadenaConexion = "Server=192.168.1.30;Database=sigametdevtb;User Id=ROPIMA;Password = ROPIMA9999;";
-        private byte _Modulo = 1;
-        private string _URL = @"http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc";
-
         //[TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
         [TestCase(30002431)]
         public void pruebaRecuperaPorIDPedido(int Pedido)
         {
             bool respuestaExitosa = true;
-            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = _URL;
+            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objPedidoGateway.URLServicio = Variables.GLOBAL_URLGateway;
             List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
@@ -48,8 +44,8 @@ namespace Pruebas
         public void pruebaRecuperaPorIDZona(int parZona)
         {
             bool respuestaExitosa = true;
-            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = _URL;
+            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objPedidoGateway.URLServicio = Variables.GLOBAL_URLGateway;
             List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
@@ -78,8 +74,8 @@ namespace Pruebas
         public void recuperaServiciosTecnicos(int parZona)
         {
             bool respuestaExitosa = true;
-            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = _URL;
+            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objPedidoGateway.URLServicio = Variables.GLOBAL_URLGateway;
             List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
@@ -112,8 +108,8 @@ namespace Pruebas
         public void pruebaRecuperaPorEstatusPedido(string parEstatus)
         {
             bool respuestaExitosa = true;
-            RTGMPedidoGateway obPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            obPedidoGateway.URLServicio = _URL;
+            RTGMPedidoGateway obPedidoGateway = new RTGMPedidoGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            obPedidoGateway.URLServicio = Variables.GLOBAL_URLGateway;
             List<RTGMCore.Pedido> Pedidos = new List<RTGMCore.Pedido>();
 
             SolicitudPedidoGateway obSolicitud = new SolicitudPedidoGateway
@@ -136,94 +132,5 @@ namespace Pruebas
             Utilerias.Exportar(obSolicitud, Pedidos, obPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
         }
 
-        //  Georreferencia
-        //[TestCase("201820146299", 1, "19.54064367")]
-        public void pruebaRecuperaGeorreferencia(string PedidoReferencia, int IDEmpresa, string Latitud)
-        {
-            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = _URL;
-            
-            SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
-            {
-                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.Boletin,
-                FechaCompromisoInicio = DateTime.Now.Date,
-                IDZona = 201,
-                EstatusBoletin = "BOLETIN",
-                PedidoReferencia = PedidoReferencia,
-                IDDireccionEntrega = null,
-                Portatil = false,
-                IDUsuario = null,
-                FechaCompromisoFin = null,
-                FechaSuministroInicio = null,
-                FechaSuministroFin = null,
-                IDRutaOrigen = null,
-                IDRutaBoletin = null,
-                IDRutaSuministro = null,
-                IDEstatusPedido = null,
-                EstatusPedidoDescripcion = null,
-                IDEstatusBoletin = null,
-                IDEstatusMovil = null,
-                EstatusMovilDescripcion = null,
-                IDAutotanque = null,
-                IDAutotanqueMovil = null,
-                SerieRemision = null,
-                FolioRemision = null,
-                SerieFactura = null,
-                FolioFactura = null,
-                IDZonaLecturista = null,
-                TipoPedido = null,
-                TipoServicio = null,
-                AñoPed = null,
-                IDPedido = null
-            };
-
-            RTGMCore.Georreferencia objGeorreferencia = objPedidoGateway.buscarGeorreferencia(objRequest);
-
-            Assert.AreEqual(decimal.Parse(Latitud), objGeorreferencia.Latitud);
-        }
-
-        //[TestCase(502615080, 1, 2)]
-        public void pruebaRecuperaZona(int Cliente, int IDEmpresa, int IDZona)
-        {
-            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(_Modulo, _CadenaConexion);
-            objPedidoGateway.URLServicio = _URL;
-            SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
-            {
-                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido,
-                FechaCompromisoInicio = DateTime.Now.Date,
-                EstatusBoletin = "BOLETIN",
-                IDDireccionEntrega = Cliente,
-                PedidoReferencia = null,
-                Portatil = false,
-                IDUsuario = null,
-                FechaCompromisoFin = null,
-                FechaSuministroInicio = null,
-                FechaSuministroFin = null,
-                IDRutaOrigen = null,
-                IDRutaBoletin = null,
-                IDRutaSuministro = null,
-                IDEstatusPedido = null,
-                EstatusPedidoDescripcion = null,
-                IDEstatusBoletin = null,
-                IDEstatusMovil = null,
-                EstatusMovilDescripcion = null,
-                IDAutotanque = null,
-                IDAutotanqueMovil = null,
-                SerieRemision = null,
-                FolioRemision = null,
-                SerieFactura = null,
-                FolioFactura = null,
-                IDZona = null,
-                IDZonaLecturista = null,
-                TipoPedido = null,
-                TipoServicio = null,
-                AñoPed = null,
-                IDPedido = null
-            };
-
-            RTGMCore.Zona objZona = objPedidoGateway.buscarZona(objRequest);
-
-            Assert.AreEqual(IDZona, objZona.IDZona);
-        }
     }
 }
