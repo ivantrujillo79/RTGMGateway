@@ -142,9 +142,7 @@ namespace RTGMGateway
                 registrarParametros(Solicitud);
 
                 lstPedidosRespuesta = actualizarPedidos(Solicitud);
-
-                //lstPedidosRespuesta.ForEach(x => x.Message = "NO HAY ERROR");
-
+                
                 lstPedidosRespuesta.ForEach(x => log.Info(Utilerias.SerializarAString(x)));
             }
             catch (Exception ex)
@@ -155,6 +153,15 @@ namespace RTGMGateway
             }
             finally
             {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
                 log.Info("===   Finaliza ejecución de método ActualizarPedidos   ===");
             }
             return lstPedidosRespuesta;

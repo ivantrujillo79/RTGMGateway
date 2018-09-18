@@ -179,6 +179,14 @@ namespace RTGMGateway
             }
             finally
             {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
                 log.Info("===   Finaliza ejecución de método buscarDireccionEntrega   ===");
             }
             if (direcciones != null && direcciones.Count > 0)
@@ -208,7 +216,7 @@ namespace RTGMGateway
                 source = _Fuente;
                 //RTGMCore.Fuente.Sigamet;                
                 
-                log.Info("Inicia llamado a buscarDireccionEntrega" +
+                log.Info("Inicia llamado a buscarDireccionesEntrega" +
                     ", Source: "            + source                            + ", Cliente: "         + ParSolicitud.IDCliente + 
                     ", Empresa: "           + _Corporativo                      + ", Sucursal: "        + "" +
                     ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
@@ -251,6 +259,14 @@ namespace RTGMGateway
             }
             finally
             {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
                 log.Info("===   Finaliza ejecución de método buscarDireccionesEntrega   ===");
             }
 
@@ -312,7 +328,6 @@ namespace RTGMGateway
                     log.Info(Utilerias.SerializarAString(dir));
                 }
 
-                log.Info("===   Finaliza ejecución de método buscarClientesPorZona   ===");
             }
             catch(Exception ex)
             {
@@ -321,6 +336,18 @@ namespace RTGMGateway
                 {
                     throw new Exception("El servicio RunTimeGM respondió con error.\n"+ex.Message);
                 }
+            }
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarClientesPorZona   ===");
             }
 
             if (direcciones != null && direcciones.Count > 0)
@@ -368,8 +395,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarDatoFiscal");
             }
             catch (Exception ex)
             {
@@ -379,7 +404,19 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recuperan los datos fiscales en método buscarDatoFiscal");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarDatoFiscal   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].DatosFiscales;
             else
@@ -428,7 +465,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
-                log.Info("Finaliza ejecución de método buscarGeorreferencia");
             }
             catch (Exception ex)
             {
@@ -438,7 +474,18 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera georreferencia en método buscarGeorreferencia");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarGeorreferencia   ===");
+            }
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].Georreferencia;
             else
@@ -486,8 +533,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarCondicionesCredito");
             }
             catch (Exception ex)
             {
@@ -497,7 +542,19 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera condición de credito en método buscarCondicionesCredito");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarCondicionesCredito   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].CondicionesCredito;
             else
@@ -545,8 +602,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarEmpleado");
             }
             catch (Exception ex)
             {
@@ -556,7 +611,18 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera empleado en método buscarEmpleado");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarEmpleado   ===");
+            }
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].SupervisorComercial;
             else
@@ -604,8 +670,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarPrecio");
             }
             catch (Exception ex)
             {
@@ -615,7 +679,18 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera precio en método buscarPrecio");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarPrecio   ===");
+            }
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].PrecioPorDefecto;
             else
@@ -663,8 +738,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarConfiguracionSuministro");
             }
             catch (Exception ex)
             {
@@ -674,7 +747,18 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera configuración suministro en método buscarConfiguracionSuministro");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarConfiguracionSuministro   ===");
+            }
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].ConfiguracionSuministro;
             else
@@ -722,8 +806,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarZona");
             }
             catch (Exception ex)
             {
@@ -733,7 +815,18 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera zona en método buscarZona");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarZona   ===");
+            }
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].ZonaSuministro;
             else
@@ -780,8 +873,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarRuta");
             }
             catch (Exception ex)
             {
@@ -791,7 +882,19 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera ruta en método buscarRuta");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarRuta   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].Ruta;
             else
@@ -838,8 +941,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarZonaEconomica");
             }
             catch (Exception ex)
             {
@@ -849,7 +950,19 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera zona económica en método buscarZonaEconomica");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarZonaEconomica   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].ZonaEconomica;
             else
@@ -931,39 +1044,50 @@ namespace RTGMGateway
                 RTGMCore.Fuente source;
 
                 source = _Fuente;
-                    //RTGMCore.Fuente.Sigamet;
+                //RTGMCore.Fuente.Sigamet;
 
                 log.Info("Inicia llamado a buscarGiroCliente" +
-                    ", Source: "            + source                            + ", Cliente: "         + ParSolicitud.IDCliente + 
-                    ", Empresa: "           + _Corporativo + ", Sucursal: "     + _Sucursal +     
-                    ", Telefono: "          + ParSolicitud.Telefono             + ", Calle: "           + ParSolicitud.CalleNombre +
-                    ", Colonia: "           + ParSolicitud.ColoniaNombre        + ", Municipio: "       + ParSolicitud.MunicipioNombre +
-                    ", Nombre: "            + ParSolicitud.Nombre               + ", Numero exterior: " + ParSolicitud.NumeroExterior+
-                    ", Numero interior: "   + ParSolicitud.NumeroInterior       + ", Tipo servicio: "   + ParSolicitud.TipoServicio +
-                    ", Zona: "              + ParSolicitud.Zona                 + ", Ruta: "            + ParSolicitud.Ruta + 
-                    ", Zona económina: "    + ParSolicitud.ZonaEconomica        + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
-                    ", Portatil: "          + ParSolicitud.Portatil             + ", Usuario: "         + ParSolicitud.Usuario +
-                    ", Referencia: "        + ParSolicitud.Referencia           + ", Autotanque: "      + ParSolicitud.IDAutotanque + ".");
-  
+                    ", Source: " + source + ", Cliente: " + ParSolicitud.IDCliente +
+                    ", Empresa: " + _Corporativo + ", Sucursal: " + _Sucursal +
+                    ", Telefono: " + ParSolicitud.Telefono + ", Calle: " + ParSolicitud.CalleNombre +
+                    ", Colonia: " + ParSolicitud.ColoniaNombre + ", Municipio: " + ParSolicitud.MunicipioNombre +
+                    ", Nombre: " + ParSolicitud.Nombre + ", Numero exterior: " + ParSolicitud.NumeroExterior +
+                    ", Numero interior: " + ParSolicitud.NumeroInterior + ", Tipo servicio: " + ParSolicitud.TipoServicio +
+                    ", Zona: " + ParSolicitud.Zona + ", Ruta: " + ParSolicitud.Ruta +
+                    ", Zona económina: " + ParSolicitud.ZonaEconomica + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                    ", Portatil: " + ParSolicitud.Portatil + ", Usuario: " + ParSolicitud.Usuario +
+                    ", Referencia: " + ParSolicitud.Referencia + ", Autotanque: " + ParSolicitud.IDAutotanque + ".");
+
                 direcciones = serviceClient.BusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
                                                                     _Corporativo, _Sucursal,
                                                                     ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre, 
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
                                                                     ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio, 
-                                                                    ParSolicitud.Zona, ParSolicitud.Ruta, 
-                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista, 
-                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario, 
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarGiroCliente");
             }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
             }
-            log.Info("Se recupera giro cliente en método buscarGiroCliente");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarGiroCliente   ===");
+            }
+            
             //return direcciones[0].GiroCliente;
             return null;
         }
@@ -1020,7 +1144,20 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera ramo cliente en método buscarRamoCliente");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarRamoCliente   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].Ramo;
             else
@@ -1069,8 +1206,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarTipoCliente");
             }
             catch (Exception ex)
             {
@@ -1080,7 +1215,20 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera tipo cliente en método buscarTipoCliente");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarTipoCliente   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].TipoCliente;
             else
@@ -1127,8 +1275,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarOrigenCliente");
             }
             catch (Exception ex)
             {
@@ -1138,7 +1284,20 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera origen cliente en método buscarOrigenCliente");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarOrigenCliente   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].OrigenCliente;
             else
@@ -1185,8 +1344,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarTarjetaCredito");
             }
             catch (Exception ex)
             {
@@ -1196,7 +1353,20 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera tarjeta de crédito en método buscarTarjetaCredito");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarTarjetaCredito   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].TarjetasCredito[0];
             else
@@ -1243,8 +1413,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarAgendaCobranza");
             }
             catch (Exception ex)
             {
@@ -1254,7 +1422,20 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera agenda cobranza en método buscarAgendaCobranza");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarAgendaCobranza   ===");
+            }
+
             //return direcciones[0].
             return null;
         }
@@ -1299,14 +1480,25 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarProducto");
             }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
             }
-            log.Info("Se recupera producto en método buscarProducto");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarProducto   ===");
+            }
+
             //return direcciones[0].
             return null;
         }
@@ -1351,8 +1543,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarDescuento");
             }
             catch (Exception ex)
             {
@@ -1362,7 +1552,20 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera descuento en método buscarDescuento");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarDescuento   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].Descuentos[0];
             else
@@ -1409,8 +1612,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
-                log.Info("Finaliza ejecución de método buscarTipoFacturacion");
             }
             catch (Exception ex)
             {
@@ -1420,7 +1621,20 @@ namespace RTGMGateway
                     throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
                 }
             }
-            log.Info("Se recupera tipo facturación en método buscarTipoFacturacion");
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+
+                log.Info("===   Finaliza ejecución de método buscarTipoFacturacion   ===");
+            }
+
             if (direcciones != null && direcciones.Count > 0)
                 return direcciones[0].TipoFacturacion;
             else
