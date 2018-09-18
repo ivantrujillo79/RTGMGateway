@@ -59,6 +59,7 @@
     <Compile Include="TestBusquedaDireccionEntrega.cs" />
     <Compile Include="TestConsultarPedidos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Variables.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
