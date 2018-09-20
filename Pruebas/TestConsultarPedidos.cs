@@ -10,8 +10,8 @@ namespace Pruebas
     [TestFixture]
     class TestConsultarPedidos
     {
-        //[TestCase("201820147549",502627606, RTGMCore.Fuente.Sigamet)]
-        [TestCase(30002431)]
+
+        [TestCase(30029093)]
         public void pruebaRecuperaPorIDPedido(int Pedido)
         {
             bool respuestaExitosa = true;
@@ -53,6 +53,34 @@ namespace Pruebas
                 TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido
                 ,
                 IDZona = parZona
+            };
+
+            try
+            {
+                objPedido = objPedidoGateway.buscarPedidos(objRequest);
+                Assert.IsNotNull(objPedido[0]);
+                Assert.True(objPedido[0].Success);
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(objRequest, objPedido, objPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
+        }
+
+        [TestCase(502762158)]
+        public void pruebaRecuperaPorIDDireccionEntrega(int? parDireccionEntrega)
+        {
+            bool respuestaExitosa = true;
+            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objPedidoGateway.URLServicio = Variables.GLOBAL_URLGateway;
+            List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
+
+            SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
+            {
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido
+                ,IDDireccionEntrega = parDireccionEntrega
             };
 
             try
