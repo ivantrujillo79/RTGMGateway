@@ -59,17 +59,19 @@ namespace RTGMGateway
                     _Corporativo = 0;
                     _Sucursal = 0;
                 }
+
+                log.Info("Instancia de RTGMGateway creada.");
             }
-            catch(ArgumentOutOfRangeException aore)
+            catch (ArgumentOutOfRangeException aore)
             {
-                throw new RTGMTimeOutException { Mensaje = "El periodo de espera de "+ TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() +" consulta al RTGM se ha excedido" };
+                throw new RTGMTimeOutException { Mensaje = "El periodo de espera de "+ TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() +
+                    " segundos en la consulta al RTGM se ha excedido" };
             }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
                 throw ex;
             }
-            log.Info("Instancia de RTGMGateway creada.");
         }
 
         public double LongitudRepuesta

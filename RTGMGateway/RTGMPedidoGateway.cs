@@ -48,12 +48,18 @@ namespace RTGMGateway
                 _Modulo = Modulo;
                 _CadenaConexion = CadenaConexion;
                 consultarParametros(_Modulo, _CadenaConexion);
+
+                log.Info("Instancia de RTGMPedidoGateway creada.");
+            }
+            catch (ArgumentOutOfRangeException aore)
+            {
+                throw new RTGMTimeOutException { Mensaje = "El periodo de espera de " + TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + 
+                    " segundos en la consulta al RTGM se ha excedido" };
             }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
             }
-            log.Info("Instancia de RTGMPedidoGateway creada.");
         }
 
         public virtual void Dispose(){
