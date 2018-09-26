@@ -61,7 +61,7 @@
     <Compile Include="RTGMGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTGMPedidoGateway.cs" />
-    <Compile Include="RTGMTimeOutException.cs" />
+    <Compile Include="RTGMTimeoutException.cs" />
     <Compile Include="SolicitudActualizaPedido.cs" />
     <Compile Include="SolicitudGateway.cs" />
     <Compile Include="SolicitudPedidoGateway.cs" />

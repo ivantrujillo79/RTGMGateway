@@ -175,7 +175,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " + 
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " + 
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -271,7 +271,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -361,7 +361,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -441,7 +441,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -524,7 +524,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -605,7 +605,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -687,7 +687,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -768,7 +768,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -849,7 +849,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -930,7 +930,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1010,7 +1010,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1091,7 +1091,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1175,7 +1175,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1245,7 +1245,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1324,7 +1324,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1408,7 +1408,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1490,7 +1490,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1572,7 +1572,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1654,7 +1654,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1734,7 +1734,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1810,7 +1810,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
@@ -1892,7 +1892,7 @@ namespace RTGMGateway
             }
             catch (TimeoutException toe)
             {
-                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
                     TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
                 log.Error(toe.Message);
                 log.Error(rtgmtoe.Mensaje);
