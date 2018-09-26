@@ -63,7 +63,7 @@ namespace Pruebas
                 Assert.IsNotNull(lsDirecciones[0]);
                 Assert.True(lsDirecciones[0].Success);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 respuestaExitosa = false;
             }
@@ -99,6 +99,36 @@ namespace Pruebas
             }
 
             Utilerias.Exportar(obSolicitud, lsDirecciones, obGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
+        }
+
+        [TestCase(2, 205)]
+        public void pruebaTiempoDeEspera(int tiempoEspera, int zona)
+        {
+            bool respuestaExitosa = true;
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
+            objGateway.TiempoEspera = tiempoEspera;
+
+            List<RTGMCore.DireccionEntrega> lsDirecciones = new List<RTGMCore.DireccionEntrega>();
+
+            SolicitudGateway obSolicitud = new SolicitudGateway
+            {
+                Zona = zona,
+                Portatil = false,
+            };
+
+            try
+            {
+                lsDirecciones = objGateway.buscarClientesPorZona(obSolicitud);
+                Assert.IsNotNull(lsDirecciones[0]);
+                Assert.True(lsDirecciones[0].Success);
+            }
+            catch (Exception ex)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(obSolicitud, lsDirecciones, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
         }
 
         //[TestCase(1000578, 0, "57875000", "VIA MORELOS KM 14.5", "GEO INTERNACIONAL SA DE CV")]
