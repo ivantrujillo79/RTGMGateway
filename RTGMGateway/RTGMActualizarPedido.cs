@@ -56,7 +56,10 @@ namespace RTGMGateway
                 _BasicHttpBinding = new BasicHttpBinding();
                 _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
                 _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
 
                 _Modulo = Modulo;
                 _CadenaConexion = CadenaConexion;
