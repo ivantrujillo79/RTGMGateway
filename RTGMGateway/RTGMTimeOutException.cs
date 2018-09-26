@@ -7,6 +7,6 @@ namespace RTGMGateway
 {
     class RTGMTimeOutException : Exception
     {
-
+        public string Mensaje { get; set; }
     }
 }

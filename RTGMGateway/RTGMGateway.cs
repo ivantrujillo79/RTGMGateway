@@ -38,6 +38,9 @@ namespace RTGMGateway
                 _BasicHttpBinding = new BasicHttpBinding();
                 _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
                 _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
 
                 DataRow drParametros;
@@ -56,6 +59,10 @@ namespace RTGMGateway
                     _Corporativo = 0;
                     _Sucursal = 0;
                 }
+            }
+            catch(ArgumentOutOfRangeException aore)
+            {
+                throw new RTGMTimeOutException { Mensaje = "El periodo de espera de "+ TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() +" consulta al RTGM se ha excedido" };
             }
             catch (Exception ex)
             {
