@@ -40,21 +40,12 @@ namespace RTGMGateway
                 _BasicHttpBinding = new BasicHttpBinding();
                 _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
                 _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
-                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
 
                 _Modulo = Modulo;
                 _CadenaConexion = CadenaConexion;
                 consultarParametros(_Modulo, _CadenaConexion);
 
                 log.Info("Instancia de RTGMPedidoGateway creada.");
-            }
-            catch (ArgumentOutOfRangeException aore)
-            {
-                throw new RTGMTimeOutException { Mensaje = "El periodo de espera de " + TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + 
-                    " segundos en la consulta al RTGM se ha excedido" };
             }
             catch (Exception ex)
             {
@@ -232,6 +223,11 @@ namespace RTGMGateway
             {
                 log.Info("===   Inicia ejecución de método buscarPedidos   ===");
 
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -254,6 +250,15 @@ namespace RTGMGateway
 
                 lstPedidos.ForEach(x => log.Info(Utilerias.SerializarAString(x)));
 
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
