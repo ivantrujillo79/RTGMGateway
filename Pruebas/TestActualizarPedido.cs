@@ -93,7 +93,7 @@ namespace Pruebas
         }
 
         // Liquidar pedido
-        [TestCase(30002431, 201, 2, 1, 502763311)]
+        [TestCase(30031271, 8, 604, 1, 502751262)]
         public void pruebaLiquidacion(int? pedido, int zona, int ruta, int producto, int direccionEntrega)
         {
             bool respuestaExitosa = true;
@@ -139,10 +139,10 @@ namespace Pruebas
                 ,IDDireccionEntrega     = direccionEntrega
                 ,AnioAtt                = 2018
                 ,FSuministro            = DateTime.Now
-                ,FolioRemision          = 16182
+                ,FolioRemision          = 16182771
                 ,IDAutotanque           = 303
                 ,IDEmpresa              = 1
-                ,IDFolioAtt             = 927565
+                ,IDFolioAtt             = 927565771
                 ,IDFormaPago            = 4
                 ,IDTipoCargo            = 1
                 ,IDTipoPedido           = 1
@@ -223,6 +223,51 @@ namespace Pruebas
 
             Utilerias.Exportar(obSolicitud, lsRespuesta, obGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedidoCancelarLiquidacion);
         }
+
+        // Tiempo de espera
+        [TestCase(30002431, 201, 70, 1, 1)]
+        public void pruebaTiempoDeEspera(int pedido, int zona, decimal abono, int empresa, int tiempoEspera)
+        {
+            bool respuestaExitosa = true;
+
+            RTGMActualizarPedido objGateway = new RTGMActualizarPedido(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
+            objGateway.TiempoEspera = tiempoEspera;
+
+            List<RTGMCore.Pedido> lstPedido = new List<RTGMCore.Pedido>();
+            lstPedido.Add(new RTGMCore.PedidoCRMSaldo
+            {
+                IDEmpresa = empresa
+                ,IDPedido = pedido
+                ,PedidoReferencia = Convert.ToString(pedido)
+                ,IDZona = zona
+                ,Abono = abono
+            });
+
+            SolicitudActualizarPedido Solicitud = new SolicitudActualizarPedido
+            {
+                Pedidos = lstPedido,
+                Portatil = false,
+                TipoActualizacion = RTGMCore.TipoActualizacion.Saldo,
+            };
+
+            List<RTGMCore.Pedido> ListaRespuesta = new List<RTGMCore.Pedido>();
+
+            try
+            {
+                ListaRespuesta = objGateway.ActualizarPedido(Solicitud);
+                Assert.IsNotNull(ListaRespuesta[0]);
+                Assert.True(ListaRespuesta[0].Success);
+            }
+            catch (Exception ex)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(Solicitud, ListaRespuesta, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.ActualizarPedidoSaldo);
+
+        }
+
     }
 }
 

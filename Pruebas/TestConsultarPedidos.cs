@@ -160,5 +160,35 @@ namespace Pruebas
             Utilerias.Exportar(obSolicitud, Pedidos, obPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
         }
 
+        [TestCase(2, 205)]
+        public void pruebaTiempoDeEspera(int parTiempoEspera, int parZona)
+        {
+            bool respuestaExitosa = true;
+            RTGMPedidoGateway objPedidoGateway = new RTGMPedidoGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objPedidoGateway.URLServicio = Variables.GLOBAL_URLGateway;
+            objPedidoGateway.TiempoEspera = parTiempoEspera;
+
+            List<RTGMCore.Pedido> objPedido = new List<RTGMCore.Pedido>();
+
+            SolicitudPedidoGateway objRequest = new SolicitudPedidoGateway
+            {
+                TipoConsultaPedido = RTGMCore.TipoConsultaPedido.RegistroPedido
+                ,IDZona = parZona
+            };
+
+            try
+            {
+                objPedido = objPedidoGateway.buscarPedidos(objRequest);
+                Assert.IsNotNull(objPedido[0]);
+                Assert.True(objPedido[0].Success);
+            }
+            catch (Exception ex)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(objRequest, objPedido, objPedidoGateway.Fuente, respuestaExitosa, EnumMetodoWS.ConsultarPedidos);
+        }
+
     }
 }
