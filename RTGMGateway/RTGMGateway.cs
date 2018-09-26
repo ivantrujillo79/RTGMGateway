@@ -38,10 +38,6 @@ namespace RTGMGateway
                 _BasicHttpBinding = new BasicHttpBinding();
                 _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
                 _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
-                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
 
                 DataRow drParametros;
                 _Modulo = Modulo;
@@ -61,11 +57,6 @@ namespace RTGMGateway
                 }
 
                 log.Info("Instancia de RTGMGateway creada.");
-            }
-            catch (ArgumentOutOfRangeException aore)
-            {
-                throw new RTGMTimeOutException { Mensaje = "El periodo de espera de "+ TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() +
-                    " segundos en la consulta al RTGM se ha excedido" };
             }
             catch (Exception ex)
             {
@@ -138,7 +129,11 @@ namespace RTGMGateway
             try
             {
                 log.Info("===   Inicia ejecución de método buscarDireccionEntrega   ===");
-                
+
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -178,7 +173,16 @@ namespace RTGMGateway
                 }
 
             }
-            catch(Exception ex)
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " + 
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
+            catch (Exception ex)
             {
                 log.Error(ex.Message);
                 if (direcciones == null || direcciones.Count == 0)
@@ -216,6 +220,10 @@ namespace RTGMGateway
             {
                 log.Info("===   Inicia ejecución de método buscarDireccionesEntrega   ===");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -261,6 +269,15 @@ namespace RTGMGateway
                 //    throw new Exception(Direcciones[0].Message);
                 //}
             }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
@@ -292,7 +309,11 @@ namespace RTGMGateway
             try
             {
                 log.Info("===   Inicia ejecución de método buscarClientesPorZona   ===");
-                
+
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -338,7 +359,16 @@ namespace RTGMGateway
                 }
 
             }
-            catch(Exception ex)
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
+            catch (Exception ex)
             {
                 log.Error(ex.Message);
                 if (direcciones == null || direcciones.Count == 0)
@@ -372,6 +402,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarDatoFiscal");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -404,6 +438,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -441,6 +484,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarGeorreferencia");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -474,6 +521,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
 
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -510,6 +566,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarCondicionesCredito");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -542,6 +602,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -579,6 +648,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarEmpleado");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -611,6 +684,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -647,6 +729,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarPrecio");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -679,6 +765,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -715,6 +810,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarConfiguracionSuministro");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -747,6 +846,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -783,6 +891,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarZona");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -815,6 +927,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -851,6 +972,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarRuta");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -882,6 +1007,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -919,6 +1053,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarZonaEconomica");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -950,6 +1088,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -987,6 +1134,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarProgramacionSuministro");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1022,6 +1173,15 @@ namespace RTGMGateway
 
                 log.Info("Finaliza ejecución de método buscarProgramacionSuministro");
             }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
@@ -1046,6 +1206,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarGiroCliente");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1079,6 +1243,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
             }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
@@ -1110,6 +1283,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarRamoCliente");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1144,6 +1321,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.FechaConsulta);
 
                 log.Info("Finaliza ejecución de método buscarRamoCliente");
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -1183,6 +1369,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarTipoCliente");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1215,6 +1405,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -1253,6 +1452,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarOrigenCliente");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1284,6 +1487,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -1322,6 +1534,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarTarjetaCredito");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1353,6 +1569,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -1391,6 +1616,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarAgendaCobranza");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1422,6 +1651,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -1458,6 +1696,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarProducto");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1490,6 +1732,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
             }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
             catch (Exception ex)
             {
                 log.Error(ex.Message);
@@ -1521,6 +1772,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarDescuento");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1552,6 +1807,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
@@ -1590,6 +1854,10 @@ namespace RTGMGateway
             {
                 log.Info("Inicia ejecución de método buscarTipoFacturacion");
 
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
@@ -1621,6 +1889,15 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario, 
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeOutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
             }
             catch (Exception ex)
             {
