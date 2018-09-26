@@ -5,8 +5,15 @@ using System.Text;
 
 namespace RTGMGateway
 {
-    class RTGMTimeOutException : Exception
+    public class RTGMTimeoutException : Exception
     {
         public string Mensaje { get; set; }
+
+        public RTGMTimeoutException() { }
+
+        public RTGMTimeoutException(string mensaje)
+        {
+            this.Mensaje = mensaje;
+        }
     }
 }
