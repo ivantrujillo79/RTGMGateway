@@ -31,7 +31,15 @@ namespace RTGMGateway
                 {
                     cnn.Open();
                 }
-                valorParametro = cmd.ExecuteScalar().ToString();
+
+                try
+                {
+                    valorParametro = cmd.ExecuteScalar().ToString();
+                }
+                catch
+                {
+                    valorParametro = "";
+                }
                 if (cnn.State == System.Data.ConnectionState.Open)
                 {
                     cnn.Close();
@@ -91,6 +99,11 @@ namespace RTGMGateway
                     dr.Read();
                     drParametros["Corporativo"] = Convert.ToByte(dr[0]);
                     drParametros["Sucursal"] = Convert.ToByte(dr[1]);
+                }
+                else
+                {
+                    drParametros["Corporativo"] =1;
+                    drParametros["Sucursal"] = 1;
                 }
 
                 if (cnn.State == System.Data.ConnectionState.Open)
