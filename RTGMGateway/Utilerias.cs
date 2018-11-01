@@ -61,7 +61,7 @@ namespace RTGMGateway
                 }
             }
         }
-        //
+        //Comentario
         public static string SerializarAString(object objeto)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(objeto.GetType());
