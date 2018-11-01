@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 // Puede especificar todos los valores o usar los números de compilación y de revisión predeterminados
 // mediante el carácter "*", como se muestra a continuación:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.0.0")]
-[assembly: AssemblyFileVersion("1.2.0.0")]
+[assembly: AssemblyVersion("1.3.0.0")]
+[assembly: AssemblyFileVersion("1.3.0.0")]
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
