@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("RTGMGateway")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("RTGMGateway")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyCompany("Transforma")]
 [assembly: AssemblyProduct("RTGMGateway")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Transforma 2018")]
+[assembly: AssemblyTrademark("Transforma")]
 [assembly: AssemblyCulture("")]
 
 // Si establece ComVisible en false, los tipos de este ensamblado no estarán visibles 
@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 // Puede especificar todos los valores o usar los números de compilación y de revisión predeterminados
 // mediante el carácter "*", como se muestra a continuación:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
