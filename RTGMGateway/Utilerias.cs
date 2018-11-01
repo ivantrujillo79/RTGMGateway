@@ -45,7 +45,6 @@ namespace RTGMGateway
             {
                 XmlSerializer serializer = new XmlSerializer(objeto.GetType());
                 serializer.Serialize(textWriter, objeto);
-
                 writer.Flush();
             }
             catch (Exception ex)
