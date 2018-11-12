@@ -123,6 +123,9 @@ namespace RTGMCore {
         private System.Nullable<int> IDDireccionEntregaPadreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDDireccionEntregaPadreEdificioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDEmpresaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -577,6 +580,19 @@ namespace RTGMCore {
                 if ((this.IDDireccionEntregaPadreField.Equals(value) != true)) {
                     this.IDDireccionEntregaPadreField = value;
                     this.RaisePropertyChanged("IDDireccionEntregaPadre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDDireccionEntregaPadreEdificio {
+            get {
+                return this.IDDireccionEntregaPadreEdificioField;
+            }
+            set {
+                if ((this.IDDireccionEntregaPadreEdificioField.Equals(value) != true)) {
+                    this.IDDireccionEntregaPadreEdificioField = value;
+                    this.RaisePropertyChanged("IDDireccionEntregaPadreEdificio");
                 }
             }
         }

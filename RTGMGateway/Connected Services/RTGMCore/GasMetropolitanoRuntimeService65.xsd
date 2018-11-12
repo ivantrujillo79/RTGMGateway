@@ -46,6 +46,7 @@
           <xs:element minOccurs="0" name="IDDatosFiscales" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IDDireccionEntrega" type="xs:int" />
           <xs:element minOccurs="0" name="IDDireccionEntregaPadre" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IDDireccionEntregaPadreEdificio" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IDEmpresa" type="xs:int" />
           <xs:element minOccurs="0" name="IDEntreCalle1" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IDEntreCalle2" nillable="true" type="xs:int" />
