@@ -10,10 +10,8 @@ namespace Pruebas
     [TestFixture]
     class TestBusquedaDireccionEntrega
     {
-
-        [TestCase(2, "MARIA ELIZABETH URIBE GONZALEZ", RTGMCore.Fuente.Sigamet)]
-        [TestCase(502763362, "MERLINA SOLANO MARQUEZ", RTGMCore.Fuente.CRM)]
-        public void pruebaRecuperaClientePorID(int Cliente, string Nombre,RTGMCore.Fuente Fuente)
+        [TestCase(502729577)]
+        public void pruebaRecuperaClientePorID(int Cliente)
         {
             bool respuestaExitosa = true;
             RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
@@ -129,6 +127,37 @@ namespace Pruebas
             }
 
             Utilerias.Exportar(obSolicitud, lsDirecciones, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
+        }
+
+        [TestCase(502729577)]
+        public void pruebaEsClientePadre(int Cliente)
+        {
+            bool respuestaExitosa = true;
+            int idRamoCliente = 53;        /*  53 = Edificios administrados */
+            RTGMGateway.RTGMGateway objGateway = new RTGMGateway.RTGMGateway(Variables.GLOBAL_Modulo, Variables.GLOBAL_CadenaConexion);
+            objGateway.URLServicio = Variables.GLOBAL_URLGateway;
+
+            SolicitudGateway objRequest = new SolicitudGateway
+            {
+                IDCliente = Cliente,
+                Portatil = false,
+                IDAutotanque = null,
+                FechaConsulta = null
+            };
+
+            RTGMCore.DireccionEntrega objDireccionEntrega = new RTGMCore.DireccionEntrega();
+            try
+            {
+                objDireccionEntrega = objGateway.buscarDireccionEntrega(objRequest);
+                Assert.AreEqual(idRamoCliente, objDireccionEntrega.Ramo.IDRamoCliente);
+                Assert.IsNull(objDireccionEntrega.IDDireccionEntregaPadreEdificio);
+            }
+            catch (Exception)
+            {
+                respuestaExitosa = false;
+            }
+
+            Utilerias.Exportar(objRequest, objDireccionEntrega, objGateway.Fuente, respuestaExitosa, EnumMetodoWS.BusquedaDireccionEntrega);
         }
 
         //[TestCase(1000578, 0, "57875000", "VIA MORELOS KM 14.5", "GEO INTERNACIONAL SA DE CV")]
