@@ -8,12 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RTGMCore {
+namespace RTGMGateway.RTGMCore {
     using System.Runtime.Serialization;
     using System;
-    using System.Xml.Serialization;
-
-
+    
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Fuente", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     public enum Fuente : int {
@@ -38,7 +37,6 @@ namespace RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatil))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatilDatos))]
-    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     public partial class DireccionEntrega : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1106,13 +1104,13 @@ namespace RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.ZonaCRMDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.Pedido))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DetallePedido))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMET))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMETDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatil))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatilDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRM))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntrega))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMET))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
@@ -1297,6 +1295,9 @@ namespace RTGMCore {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IDFormaPagoLiquidacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> IDFormaPagoPreferidaField;
@@ -1594,6 +1595,19 @@ namespace RTGMCore {
                 if ((this.IDEmpresaField.Equals(value) != true)) {
                     this.IDEmpresaField = value;
                     this.RaisePropertyChanged("IDEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IDFormaPagoLiquidacion {
+            get {
+                return this.IDFormaPagoLiquidacionField;
+            }
+            set {
+                if ((this.IDFormaPagoLiquidacionField.Equals(value) != true)) {
+                    this.IDFormaPagoLiquidacionField = value;
+                    this.RaisePropertyChanged("IDFormaPagoLiquidacion");
                 }
             }
         }
@@ -2660,7 +2674,6 @@ namespace RTGMCore {
             }
         }
         
-        [XmlIgnore]
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.Dictionary<string, string> PreferenciasCliente {
             get {
@@ -3548,18 +3561,13 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Pedido", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMET))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMETDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatil))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatilDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRM))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.PedidoSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.PedidoCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.PedidoCRMSaldo))]
-    [XmlInclude(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
     public partial class Pedido : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -5028,29 +5036,6 @@ namespace RTGMCore {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoCRMSaldo", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
-    [System.SerializableAttribute()]
-    public partial class PedidoCRMSaldo : RTGMCore.Pedido {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal AbonoField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Abono {
-            get {
-                return this.AbonoField;
-            }
-            set {
-                if ((this.AbonoField.Equals(value) != true)) {
-                    this.AbonoField = value;
-                    this.RaisePropertyChanged("Abono");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PedidoSIGAMET", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMETDatos))]
@@ -5096,6 +5081,29 @@ namespace RTGMCore {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PedidoCRMSaldo", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
+    [System.SerializableAttribute()]
+    public partial class PedidoCRMSaldo : RTGMCore.Pedido {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AbonoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Abono {
+            get {
+                return this.AbonoField;
+            }
+            set {
+                if ((this.AbonoField.Equals(value) != true)) {
+                    this.AbonoField = value;
+                    this.RaisePropertyChanged("Abono");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaSIGAMET", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
@@ -5106,12 +5114,6 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaSIGAMETDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos")]
     [System.SerializableAttribute()]
-    [XmlInclude(typeof(RTGMCore.CondicionesCreditoSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.EmpleadoSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
-    [XmlInclude(typeof(RTGMCore.DatosFiscalesSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.RutaSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.ZonaSIGAMETDatos))]
     public partial class DireccionEntregaSIGAMETDatos : RTGMCore.DireccionEntregaSIGAMET {
     }
     
@@ -5127,12 +5129,6 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaCRMDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
     [System.SerializableAttribute()]
-    [XmlInclude(typeof(RTGMCore.CondicionesCreditoCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.EmpleadoCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
-    [XmlInclude(typeof(RTGMCore.DatosFiscalesCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.RutaCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.ZonaCRMDatos))]
     public partial class DireccionEntregaCRMDatos : RTGMCore.DireccionEntregaCRM {
     }
     

@@ -71,23 +71,23 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService1.wsdl" />
-    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService6.xsd">
+    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService.wsdl" />
+    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService61.xsd">
+    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService62.xsd">
+    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService63.xsd">
+    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService64.xsd">
+    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService65.xsd">
+    <None Include="Connected Services\RTGMCore\GasMetropolitanoRuntimeService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\RTGMCore\RTGMGateway.RTGMCore.DatosFiscales.datasource">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.1.21:88/GasMetropolitanoRuntimeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" />
+  <xs:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" />
   <xs:complexType name="EmpleadoSIGAMETDatos">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" base="q1:EmpleadoSIGAMET">
