@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RTGMGateway.RTGMCore {
+namespace RTGMCore {
     using System.Runtime.Serialization;
     using System;
     

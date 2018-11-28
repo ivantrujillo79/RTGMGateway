@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RTGMGateway.RTGMCore;
+using RTGMCore;
 
 namespace RTGMGateway
 {

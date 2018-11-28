@@ -21,3 +21,23 @@ C:\Proyectos\Grupo Metropolitano\RTGMGateway\Pruebas\obj\Debug\Pruebas.csproj.Co
 C:\Proyectos\Grupo Metropolitano\RTGMGateway\Pruebas\obj\Debug\Pruebas.csproj.CopyComplete
 C:\Proyectos\Grupo Metropolitano\RTGMGateway\Pruebas\obj\Debug\Pruebas.dll
 C:\Proyectos\Grupo Metropolitano\RTGMGateway\Pruebas\obj\Debug\Pruebas.pdb
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\obj\Debug\Pruebas.csprojResolveAssemblyReference.cache
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Pruebas.dll.config
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Pruebas.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Pruebas.pdb
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\nunit.framework.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\RTGMGateway.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\log4net.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\nunit.framework.pdb
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\nunit.framework.xml
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\RTGMGateway.pdb
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\bin\Debug\log4net.xml
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\obj\Debug\Pruebas.dll
+C:\Proyectos\NET\GasMetropolitano\RTGMGateway\Pruebas\obj\Debug\Pruebas.pdb
