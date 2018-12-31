@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pruebas", "..\Pruebas\Prueb
 		{226853D8-23AA-4FF2-B66F-0AC17D0A66B9} = {226853D8-23AA-4FF2-B66F-0AC17D0A66B9}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pruebaWS", "..\pruebaWS\pruebaWS.csproj", "{304C6751-F5FF-47B5-89EF-6801C45ECF8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{9476F2F8-B6E5-40A2-97A2-4DB7442A5176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9476F2F8-B6E5-40A2-97A2-4DB7442A5176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9476F2F8-B6E5-40A2-97A2-4DB7442A5176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{304C6751-F5FF-47B5-89EF-6801C45ECF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{304C6751-F5FF-47B5-89EF-6801C45ECF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{304C6751-F5FF-47B5-89EF-6801C45ECF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{304C6751-F5FF-47B5-89EF-6801C45ECF8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,16 @@
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\obj\Debug\pruebaWS.csprojAssemblyReference.cache
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\obj\Debug\pruebaWS.Form1.resources
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\obj\Debug\pruebaWS.Properties.Resources.resources
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\obj\Debug\pruebaWS.csproj.GenerateResource.cache
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\obj\Debug\pruebaWS.csproj.CoreCompileInputs.cache
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\bin\Debug\pruebaWS.exe.config
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\bin\Debug\pruebaWS.exe
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\bin\Debug\pruebaWS.pdb
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\bin\Debug\RTGMGateway.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\bin\Debug\log4net.dll
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\bin\Debug\RTGMGateway.pdb
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\bin\Debug\RTGMGateway.dll.config
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\bin\Debug\log4net.xml
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\obj\Debug\pruebaWS.csproj.CopyComplete
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\obj\Debug\pruebaWS.exe
+C:\Users\Iván Trujillo\Documents\Proyectos\Gateway\pruebaWS\obj\Debug\pruebaWS.pdb

@@ -11,7 +11,7 @@ namespace Pruebas
     class TestConsultarPedidos
     {
 
-        [TestCase(30029093)]
+        [TestCase(14669338)]
         public void pruebaRecuperaPorIDPedido(int Pedido)
         {
             bool respuestaExitosa = true;
