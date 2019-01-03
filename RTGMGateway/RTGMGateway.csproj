@@ -111,7 +111,9 @@
     <WCFMetadataStorage Include="Connected Services\RTGMCore\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\RTGMCore\configuration91.svcinfo" />
+    <None Include="Connected Services\RTGMCore\configuration91.svcinfo">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\RTGMCore\configuration.svcinfo" />

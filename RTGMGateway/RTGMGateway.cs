@@ -5,8 +5,8 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Data;
-
-
+using System.ServiceModel.Description;
+using RTGMCore;
 
 namespace RTGMGateway
 {
@@ -20,7 +20,8 @@ namespace RTGMGateway
         private double longitudRepuesta;
         private int tiempoEspera = 180;
         private bool guardarLog;
-        private const int MAX_CAPACITY = 2147483647;
+        private const long MAX_CAPACITY = 2147483647;
+                                        
         private string _CadenaConexion;
         private byte _Modulo;
         private RTGMCore.Fuente _Fuente;
@@ -36,8 +37,10 @@ namespace RTGMGateway
             try
             {
                 _BasicHttpBinding = new BasicHttpBinding();
+                _BasicHttpBinding.MaxBufferPoolSize = MAX_CAPACITY;
                 _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
-                _BasicHttpBinding.MaxBufferSize = MAX_CAPACITY;
+                //_BasicHttpBinding.ReaderQuotas.
+                _BasicHttpBinding.MaxBufferSize = Int32.MaxValue;
 
                 DataRow drParametros;
                 _Modulo = Modulo;
@@ -226,12 +229,22 @@ namespace RTGMGateway
                 _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+                ChannelFactory<IGasMetropolitanoRuntimeService> factory = new ChannelFactory<IGasMetropolitanoRuntimeService>(_BasicHttpBinding, _EndpointAddress);
+                foreach (OperationDescription op in factory.Endpoint.Contract.Operations)
+                {
+                    DataContractSerializerOperationBehavior dataContractBehavior =
+                                op.Behaviors.Find<DataContractSerializerOperationBehavior>()
+                                as DataContractSerializerOperationBehavior;
+                    if (dataContractBehavior != null)
+                    {
+                        dataContractBehavior.MaxItemsInObjectGraph = 100000;
+                    }
+                }
+                IGasMetropolitanoRuntimeService serviceClient = factory.CreateChannel();
 
                 RTGMCore.Fuente source;
 
-                source = _Fuente;
-                //RTGMCore.Fuente.Sigamet;                
+                source = _Fuente;    
                 
                 log.Info("Inicia llamado a buscarDireccionesEntrega" +
                     ", Source: "            + source                            + ", Cliente: "         + ParSolicitud.IDCliente + 
@@ -256,18 +269,12 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil,          ParSolicitud.Usuario,
                                                                     ParSolicitud.Referencia,        ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-
+                                
                 foreach (RTGMCore.DireccionEntrega dir in Direcciones)
                 {
                     log.Info(Utilerias.SerializarAString(dir));
                 }
 
-                //if (Direcciones.Count > 0 && 
-                //    Direcciones[0].Message != null && 
-                //    Direcciones[0].Message.Contains("ERROR"))
-                //{
-                //    throw new Exception(Direcciones[0].Message);
-                //}
             }
             catch (TimeoutException toe)
             {
@@ -285,14 +292,14 @@ namespace RTGMGateway
             }
             finally
             {
-                if (serviceClient.State == CommunicationState.Faulted)
+                /*if (serviceClient.State == CommunicationState.Faulted)
                 {
                     serviceClient.Abort();
                 }
                 else
                 {
                     serviceClient.Close();
-                }
+                }*/
                 log.Info("===   Finaliza ejecución de método buscarDireccionesEntrega   ===");
             }
 
