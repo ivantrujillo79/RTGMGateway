@@ -237,7 +237,7 @@ namespace RTGMGateway
                                 as DataContractSerializerOperationBehavior;
                     if (dataContractBehavior != null)
                     {
-                        dataContractBehavior.MaxItemsInObjectGraph = 100000;
+                        dataContractBehavior.MaxItemsInObjectGraph = Int32.MaxValue;
                     }
                 }
                 IGasMetropolitanoRuntimeService serviceClient = factory.CreateChannel();
