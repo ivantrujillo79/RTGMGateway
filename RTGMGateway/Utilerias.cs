@@ -18,6 +18,7 @@ namespace RTGMGateway
         BusquedaDireccionEntrega = 6,
         ConsultarPedidos = 7,
         ConsultarCondicionesCredito = 8,
+
     }
     
     public class Utilerias
