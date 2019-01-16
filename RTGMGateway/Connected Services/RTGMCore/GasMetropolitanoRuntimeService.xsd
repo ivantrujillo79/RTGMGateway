@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" />
+  <xs:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System" />
   <xs:element name="BusquedaDireccionEntrega">
     <xs:complexType>
       <xs:sequence>
@@ -35,12 +36,46 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="BusquedaDireccionEntregaLista">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="FuenteDatos" type="q3:Fuente" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="IDCliente" nillable="true" type="q4:ArrayOfNullableOfint" />
+        <xs:element minOccurs="0" name="IDEmpresa" type="xs:int" />
+        <xs:element minOccurs="0" name="Sucursal" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CalleNombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ColoniaNombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MunicipioNombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NumExterior" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="NumInterior" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TipoServicio" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Zona" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Ruta" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="ZonaEconomica" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="ZonaLecturista" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Portatil" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Referencia" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IDAutotanque" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="FechaConsulta" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusquedaDireccionEntregaListaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="BusquedaDireccionEntregaListaResult" nillable="true" type="q5:ArrayOfDireccionEntrega" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ConsultarPedidos">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="IDEmpresa" type="xs:int" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="FuenteDatos" type="q3:Fuente" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="TipoConsultaPedido" type="q4:TipoConsultaPedido" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="FuenteDatos" type="q6:Fuente" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="TipoConsultaPedido" type="q7:TipoConsultaPedido" />
         <xs:element minOccurs="0" name="Portatil" type="xs:boolean" />
         <xs:element minOccurs="0" name="IDUsuario" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="IDDireccionEntrega" nillable="true" type="xs:int" />
@@ -77,7 +112,7 @@
   <xs:element name="ConsultarPedidosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ConsultarPedidosResult" nillable="true" type="q5:ArrayOfPedido" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ConsultarPedidosResult" nillable="true" type="q8:ArrayOfPedido" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -92,18 +127,18 @@
   <xs:element name="ConsultarDatosFiscalesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ConsultarDatosFiscalesResult" nillable="true" type="q6:DatosFiscales" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ConsultarDatosFiscalesResult" nillable="true" type="q9:DatosFiscales" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarPedido">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="FuenteDatos" type="q7:Fuente" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="FuenteDatos" type="q10:Fuente" />
         <xs:element minOccurs="0" name="IDEmpresa" type="xs:int" />
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="TipoActualizacion" type="q8:TipoActualizacion" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="TipoActualizacion" type="q11:TipoActualizacion" />
         <xs:element minOccurs="0" name="Portatil" type="xs:boolean" />
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="Pedido" nillable="true" type="q9:ArrayOfPedido" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="Pedido" nillable="true" type="q12:ArrayOfPedido" />
         <xs:element minOccurs="0" name="IDUsuario" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -111,7 +146,7 @@
   <xs:element name="ActualizarPedidoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ActualizarPedidoResult" nillable="true" type="q10:ArrayOfPedido" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio" minOccurs="0" name="ActualizarPedidoResult" nillable="true" type="q13:ArrayOfPedido" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

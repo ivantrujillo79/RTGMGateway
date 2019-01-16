@@ -11,9 +11,8 @@
 namespace RTGMCore {
     using System.Runtime.Serialization;
     using System;
-    using System.Xml.Serialization;
-
-
+    
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Fuente", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     public enum Fuente : int {
@@ -38,7 +37,6 @@ namespace RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatil))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatilDatos))]
-    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     public partial class DireccionEntrega : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2676,7 +2674,6 @@ namespace RTGMCore {
             }
         }
         
-        [XmlIgnore]
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.Dictionary<string, string> PreferenciasCliente {
             get {
@@ -3564,18 +3561,13 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Pedido", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMET))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSIGAMETDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatil))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoSigametPortatilDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRM))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.PedidoSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.PedidoCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.PedidoCRMSaldo))]
-    [XmlInclude(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.PedidoCRMSaldo))]
     public partial class Pedido : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -5122,12 +5114,6 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaSIGAMETDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos")]
     [System.SerializableAttribute()]
-    [XmlInclude(typeof(RTGMCore.CondicionesCreditoSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.EmpleadoSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
-    [XmlInclude(typeof(RTGMCore.DatosFiscalesSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.RutaSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.ZonaSIGAMETDatos))]
     public partial class DireccionEntregaSIGAMETDatos : RTGMCore.DireccionEntregaSIGAMET {
     }
     
@@ -5143,12 +5129,6 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaCRMDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
     [System.SerializableAttribute()]
-    [XmlInclude(typeof(RTGMCore.CondicionesCreditoCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.EmpleadoCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
-    [XmlInclude(typeof(RTGMCore.DatosFiscalesCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.RutaCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.ZonaCRMDatos))]
     public partial class DireccionEntregaCRMDatos : RTGMCore.DireccionEntregaCRM {
     }
     
@@ -5947,6 +5927,31 @@ namespace RTGMCore {
                     System.Nullable<int> IDAutotanque, 
                     System.Nullable<System.DateTime> FechaConsulta);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaLista", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaListaR" +
+            "esponse")]
+        System.Collections.Generic.List<RTGMCore.DireccionEntrega> BusquedaDireccionEntregaLista(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Collections.Generic.List<System.Nullable<int>> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidosResponse")]
         System.Collections.Generic.List<RTGMCore.Pedido> ConsultarPedidos(
                     int IDEmpresa, 
@@ -6041,6 +6046,31 @@ namespace RTGMCore {
                     System.Nullable<int> IDAutotanque, 
                     System.Nullable<System.DateTime> FechaConsulta) {
             return base.Channel.BusquedaDireccionEntrega(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta);
+        }
+        
+        public System.Collections.Generic.List<RTGMCore.DireccionEntrega> BusquedaDireccionEntregaLista(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Collections.Generic.List<System.Nullable<int>> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta) {
+            return base.Channel.BusquedaDireccionEntregaLista(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta);
         }
         
         public System.Collections.Generic.List<RTGMCore.Pedido> ConsultarPedidos(

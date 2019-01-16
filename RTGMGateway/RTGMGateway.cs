@@ -211,6 +211,91 @@ namespace RTGMGateway
                 return null;
         }
 
+
+        /// <summary>
+        /// Método que recupera las direcciones de entrega de una lista de cliente
+        /// </summary>
+        /// <param name="ParSolicitud">Objeto del tipo lista int</param>
+        public List<RTGMCore.DireccionEntrega>  busquedaDireccionEntregaLista(List<int?> ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            string IdClientes = "";
+            try
+            {
+                log.Info("===   Inicia ejecución de método BusquedaDireccionEntregaLista   ===");
+
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+
+                RTGMCore.Fuente source;
+
+                source = _Fuente;
+                //RTGMCore.Fuente.Sigamet;                
+                foreach (var item in ParSolicitud)
+                {
+                    IdClientes = IdClientes + item.ToString() + ", ";
+                }
+                log.Info("Inicia llamado a BusquedaDireccionEntregaLista" +
+                    ", Source: " + source + ", Clientes: " + IdClientes + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntregaLista(source, ParSolicitud,
+                                                                    _Corporativo, null,
+                                                                    null, null,
+                                                                    null, null,
+                                                                    null, null,
+                                                                    null, null,
+                                                                    null, null,
+                                                                    null, null,
+                                                                    false , null,
+                                                                    null, null,
+                                                                    null);
+
+                foreach (RTGMCore.DireccionEntrega dir in direcciones)
+                {
+                    log.Info(Utilerias.SerializarAString(dir));
+                }
+
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
+            }
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarDireccionEntrega   ===");
+            }
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones;
+            else
+                return null;
+        }
+
         /// <summary>
         /// Método que recupera una lista de direcciones de entrega
         /// </summary>
