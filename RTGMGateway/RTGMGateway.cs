@@ -215,8 +215,8 @@ namespace RTGMGateway
         /// <summary>
         /// Método que recupera las direcciones de entrega de una lista de cliente
         /// </summary>
-        /// <param name="ParSolicitud">Objeto del tipo lista int</param>
-        public List<RTGMCore.DireccionEntrega>  busquedaDireccionEntregaLista(List<int?> ParSolicitud)
+        /// <param name="ParSolicitud">Objeto del tipo SolicitudGateway</param>
+        public List<RTGMCore.DireccionEntrega>  busquedaDireccionEntregaLista(SolicitudGateway ParSolicitud)
         {
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
             string IdClientes = "";
@@ -236,24 +236,30 @@ namespace RTGMGateway
 
                 source = _Fuente;
                 //RTGMCore.Fuente.Sigamet;                
-                foreach (var item in ParSolicitud)
-                {
-                    IdClientes = IdClientes + item.ToString() + ", ";
-                }
-                log.Info("Inicia llamado a BusquedaDireccionEntregaLista" +
-                    ", Source: " + source + ", Clientes: " + IdClientes + ".");
+                log.Info("Inicia llamado a buscarDireccionEntrega" +
+                     ", Source: "               + source                            + ", Cliente: "             + ParSolicitud.IDCliente +
+                     ", Empresa: "              + _Corporativo                      + ", Sucursal: "            + "" +
+                     ", Telefono: "             + ParSolicitud.Telefono             + ", Calle: "               + ParSolicitud.CalleNombre +
+                     ", Colonia: "              + ParSolicitud.ColoniaNombre        + ", Municipio: "           + ParSolicitud.MunicipioNombre +
+                     ", Nombre: "               + ParSolicitud.Nombre               + ", Numero exterior: "     + ParSolicitud.NumeroExterior +
+                     ", Numero interior: "      + ParSolicitud.NumeroInterior       + ", Tipo servicio: "       + ParSolicitud.TipoServicio +
+                     ", Zona: "                 + ParSolicitud.Zona                 + ", Ruta: "                + ParSolicitud.Ruta +
+                     ", Zona económina: "       + ParSolicitud.ZonaEconomica        + ", Zona lecturista: "     + ParSolicitud.ZonaLecturista +
+                     ", Portatil: "             + ParSolicitud.Portatil             + ", Usuario: "             + ParSolicitud.Usuario +
+                     ", Referencia: "           + ParSolicitud.Referencia           + ", Autotanque: "          + ParSolicitud.IDAutotanque + 
+                     ", ListaClientes: "        + ParSolicitud.ListaCliente.Count   + ".");
 
-                direcciones = serviceClient.BusquedaDireccionEntregaLista(source, ParSolicitud,
+                direcciones = serviceClient.BusquedaDireccionEntregaLista(source, ParSolicitud.ListaCliente,
                                                                     _Corporativo, null,
-                                                                    null, null,
-                                                                    null, null,
-                                                                    null, null,
-                                                                    null, null,
-                                                                    null, null,
-                                                                    null, null,
-                                                                    false , null,
-                                                                    null, null,
-                                                                    null);
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
 
                 foreach (RTGMCore.DireccionEntrega dir in direcciones)
                 {
