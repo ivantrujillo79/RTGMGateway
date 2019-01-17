@@ -8,6 +8,7 @@
       <xsd:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos" />
       <xsd:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM" />
       <xsd:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://192.168.1.30:88/GasMetropolitanoRuntimeService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_InputMessage">
@@ -15,6 +16,12 @@
   </wsdl:message>
   <wsdl:message name="IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_OutputMessage">
     <wsdl:part name="parameters" element="tns:BusquedaDireccionEntregaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGasMetropolitanoRuntimeService_BusquedaDireccionEntregaLista_InputMessage">
+    <wsdl:part name="parameters" element="tns:BusquedaDireccionEntregaLista" />
+  </wsdl:message>
+  <wsdl:message name="IGasMetropolitanoRuntimeService_BusquedaDireccionEntregaLista_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BusquedaDireccionEntregaListaResponse" />
   </wsdl:message>
   <wsdl:message name="IGasMetropolitanoRuntimeService_ConsultarPedidos_InputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarPedidos" />
@@ -39,6 +46,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntrega" message="tns:IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaResponse" message="tns:IGasMetropolitanoRuntimeService_BusquedaDireccionEntrega_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="BusquedaDireccionEntregaLista">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaLista" message="tns:IGasMetropolitanoRuntimeService_BusquedaDireccionEntregaLista_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaListaResponse" message="tns:IGasMetropolitanoRuntimeService_BusquedaDireccionEntregaLista_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ConsultarPedidos">
       <wsdl:input wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos" message="tns:IGasMetropolitanoRuntimeService_ConsultarPedidos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidosResponse" message="tns:IGasMetropolitanoRuntimeService_ConsultarPedidos_OutputMessage" />
@@ -56,6 +67,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="BusquedaDireccionEntrega">
       <soap:operation soapAction="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntrega" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BusquedaDireccionEntregaLista">
+      <soap:operation soapAction="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaLista" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -211,6 +211,97 @@ namespace RTGMGateway
                 return null;
         }
 
+
+        /// <summary>
+        /// Método que recupera las direcciones de entrega de una lista de cliente
+        /// </summary>
+        /// <param name="ParSolicitud">Objeto del tipo SolicitudGateway</param>
+        public List<RTGMCore.DireccionEntrega>  busquedaDireccionEntregaLista(SolicitudGateway ParSolicitud)
+        {
+            List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
+            string IdClientes = "";
+            try
+            {
+                log.Info("===   Inicia ejecución de método BusquedaDireccionEntregaLista   ===");
+
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+
+                RTGMCore.Fuente source;
+
+                source = _Fuente;
+                //RTGMCore.Fuente.Sigamet;                
+                log.Info("Inicia llamado a buscarDireccionEntrega" +
+                     ", Source: "               + source                            + ", Cliente: "             + ParSolicitud.IDCliente +
+                     ", Empresa: "              + _Corporativo                      + ", Sucursal: "            + "" +
+                     ", Telefono: "             + ParSolicitud.Telefono             + ", Calle: "               + ParSolicitud.CalleNombre +
+                     ", Colonia: "              + ParSolicitud.ColoniaNombre        + ", Municipio: "           + ParSolicitud.MunicipioNombre +
+                     ", Nombre: "               + ParSolicitud.Nombre               + ", Numero exterior: "     + ParSolicitud.NumeroExterior +
+                     ", Numero interior: "      + ParSolicitud.NumeroInterior       + ", Tipo servicio: "       + ParSolicitud.TipoServicio +
+                     ", Zona: "                 + ParSolicitud.Zona                 + ", Ruta: "                + ParSolicitud.Ruta +
+                     ", Zona económina: "       + ParSolicitud.ZonaEconomica        + ", Zona lecturista: "     + ParSolicitud.ZonaLecturista +
+                     ", Portatil: "             + ParSolicitud.Portatil             + ", Usuario: "             + ParSolicitud.Usuario +
+                     ", Referencia: "           + ParSolicitud.Referencia           + ", Autotanque: "          + ParSolicitud.IDAutotanque + 
+                     ", ListaClientes: "        + ParSolicitud.ListaCliente.Count   + ".");
+
+                direcciones = serviceClient.BusquedaDireccionEntregaLista(source, ParSolicitud.ListaCliente,
+                                                                    _Corporativo, null,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
+
+                foreach (RTGMCore.DireccionEntrega dir in direcciones)
+                {
+                    log.Info(Utilerias.SerializarAString(dir));
+                }
+
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                if (direcciones == null || direcciones.Count == 0)
+                {
+                    throw new Exception("El servicio RunTimeGM respondió con error.\n" + ex.Message);
+                }
+            }
+            finally
+            {
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
+                log.Info("===   Finaliza ejecución de método buscarDireccionEntrega   ===");
+            }
+            if (direcciones != null && direcciones.Count > 0)
+                return direcciones;
+            else
+                return null;
+        }
+
         /// <summary>
         /// Método que recupera una lista de direcciones de entrega
         /// </summary>

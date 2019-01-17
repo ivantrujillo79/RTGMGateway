@@ -66,3 +66,12 @@ C:\Proyectos\NET\GasMetropolitano\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.
 C:\Proyectos\NET\GasMetropolitano\RTGMGateway\RTGMGateway\bin\Debug\RTGMGateway.pdb
 C:\Proyectos\NET\GasMetropolitano\RTGMGateway\RTGMGateway\bin\Debug\log4net.dll
 C:\Proyectos\NET\GasMetropolitano\RTGMGateway\RTGMGateway\bin\Debug\log4net.xml
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\bin\Debug\RTGMGateway.dll.config
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\bin\Debug\RTGMGateway.dll
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\bin\Debug\RTGMGateway.pdb
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\bin\Debug\log4net.dll
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\bin\Debug\log4net.xml
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\obj\Debug\RTGMGateway.csproj.CoreCompileInputs.cache
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\obj\Debug\RTGMGateway.csproj.CopyComplete
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\obj\Debug\RTGMGateway.dll
+C:\Users\binar_jpjfesv\Documents\GitLab\Transforma\RTGMGateway\development\RTGMGateway\obj\Debug\RTGMGateway.pdb

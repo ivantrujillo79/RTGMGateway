@@ -36,6 +36,8 @@ namespace RTGMGateway
 
         private System.Nullable<int> zonaEconomica;
 
+        private List<int?> listaClientes;
+
         //private int zonaLecturista;
 
         private System.Nullable<int> zonaLecturista;
@@ -303,6 +305,18 @@ namespace RTGMGateway
             set
             {
                 fechaConsulta = value;
+            }
+        }
+
+        public List<int?> ListaCliente
+        {
+            get
+            {
+                return listaClientes;
+            }
+            set
+            {
+                listaClientes = value;
             }
         }
         #endregion
