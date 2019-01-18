@@ -143,7 +143,7 @@ namespace RTGMGateway
 
                 RTGMCore.Fuente source;
 
-                source = _Fuente;
+                source = ParSolicitud.Fuente;//_Fuente;
                 //RTGMCore.Fuente.Sigamet;                
 
                 log.Info("Inicia llamado a buscarDireccionEntrega" +

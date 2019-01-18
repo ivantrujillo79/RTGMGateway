@@ -62,6 +62,10 @@ namespace RTGMGateway
             {
                 return fuente;
             }
+            set
+            {
+                fuente = value;
+            }
         }
 
         public System.Nullable<int> IDCliente
