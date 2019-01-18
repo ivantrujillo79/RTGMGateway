@@ -28,7 +28,7 @@ namespace RTGMGateway
         private byte _Corporativo;
         private byte _Sucursal;
 
-        public RTGMGateway(byte Modulo, string CadenaConexion)
+        public RTGMGateway(byte Modulo, string CadenaConexion, RTGMCore.Fuente Fuente)
         {
             // Inicializar logger
             log4net.Config.XmlConfigurator.Configure();
@@ -46,7 +46,7 @@ namespace RTGMGateway
                 _Modulo = Modulo;
                 _CadenaConexion = CadenaConexion;
                 DAO objDatos = new DAO(Modulo, CadenaConexion);
-                _Fuente = objDatos.consultarFuente(Modulo, CadenaConexion);
+                _Fuente = Fuente;//objDatos.consultarFuente(Modulo, CadenaConexion);
                 drParametros = objDatos.consultarCorporativoSucursal(Modulo, CadenaConexion);
                 if (drParametros != null)
                 {
