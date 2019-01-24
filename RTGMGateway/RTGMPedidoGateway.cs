@@ -246,6 +246,11 @@ namespace RTGMGateway
                     {
                         lstPedidos.Clear();
                     }
+
+                    if(lstPedidos[0].Message != null && lstPedidos[0].Message.Contains("Index was out of range"))
+                    {
+                        lstPedidos.Clear();
+                    }
                 }
 
                 lstPedidos.ForEach(x => log.Info(Utilerias.SerializarAString(x)));
