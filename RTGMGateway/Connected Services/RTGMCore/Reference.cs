@@ -11,9 +11,9 @@
 namespace RTGMCore {
     using System.Runtime.Serialization;
     using System;
-	using System.Xml.Serialization;							   
-    
-    
+    using System.Xml.Serialization;
+
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Fuente", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.Negocio")]
     public enum Fuente : int {
@@ -38,7 +38,7 @@ namespace RTGMCore {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatil))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RTGMCore.DireccionEntregaSIGAMETPortatilDatos))]
-	[XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]													   
+    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     public partial class DireccionEntrega : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2675,8 +2675,8 @@ namespace RTGMCore {
                 }
             }
         }
-        
-		[XmlIgnore]		   
+
+        [XmlIgnore]
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.Dictionary<string, string> PreferenciasCliente {
             get {
@@ -3575,7 +3575,7 @@ namespace RTGMCore {
     [XmlInclude(typeof(RTGMCore.PedidoCRMDatos))]
     [XmlInclude(typeof(RTGMCore.PedidoCRMSaldo))]
     [XmlInclude(typeof(RTGMCore.DireccionEntregaSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]										 
+    [XmlInclude(typeof(RTGMCore.DireccionEntregaCRMDatos))]
     public partial class Pedido : RTGMCore.ServiceResult {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -5122,12 +5122,12 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaSIGAMETDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.SqlDatos")]
     [System.SerializableAttribute()]
-	[XmlInclude(typeof(RTGMCore.CondicionesCreditoSIGAMETDatos))]
+    [XmlInclude(typeof(RTGMCore.CondicionesCreditoSIGAMETDatos))]
     [XmlInclude(typeof(RTGMCore.EmpleadoSIGAMETDatos))]
     [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
     [XmlInclude(typeof(RTGMCore.DatosFiscalesSIGAMETDatos))]
     [XmlInclude(typeof(RTGMCore.RutaSIGAMETDatos))]
-    [XmlInclude(typeof(RTGMCore.ZonaSIGAMETDatos))]															 
+    [XmlInclude(typeof(RTGMCore.ZonaSIGAMETDatos))]
     public partial class DireccionEntregaSIGAMETDatos : RTGMCore.DireccionEntregaSIGAMET {
     }
     
@@ -5143,12 +5143,12 @@ namespace RTGMCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DireccionEntregaCRMDatos", Namespace="http://schemas.datacontract.org/2004/07/GasMetropolitano.Runtime.WebServicesCRM")]
     [System.SerializableAttribute()]
-	[XmlInclude(typeof(RTGMCore.CondicionesCreditoCRMDatos))]
+    [XmlInclude(typeof(RTGMCore.CondicionesCreditoCRMDatos))]
     [XmlInclude(typeof(RTGMCore.EmpleadoCRMDatos))]
     [XmlInclude(typeof(RTGMCore.ConfiguracionSuministroDatos))]
     [XmlInclude(typeof(RTGMCore.DatosFiscalesCRMDatos))]
     [XmlInclude(typeof(RTGMCore.RutaCRMDatos))]
-    [XmlInclude(typeof(RTGMCore.ZonaCRMDatos))]														 
+    [XmlInclude(typeof(RTGMCore.ZonaCRMDatos))]
     public partial class DireccionEntregaCRMDatos : RTGMCore.DireccionEntregaCRM {
     }
     
@@ -5947,6 +5947,35 @@ namespace RTGMCore {
                     System.Nullable<int> IDAutotanque, 
                     System.Nullable<System.DateTime> FechaConsulta);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntrega", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaRespon" +
+            "se")]
+        System.IAsyncResult BeginBusquedaDireccionEntrega(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Nullable<int> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta, 
+                    System.AsyncCallback callback, 
+                    object asyncState);
+        
+        System.Collections.Generic.List<RTGMCore.DireccionEntrega> EndBusquedaDireccionEntrega(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaLista", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaListaR" +
             "esponse")]
         System.Collections.Generic.List<RTGMCore.DireccionEntrega> BusquedaDireccionEntregaLista(
@@ -5971,6 +6000,35 @@ namespace RTGMCore {
                     string Referencia, 
                     System.Nullable<int> IDAutotanque, 
                     System.Nullable<System.DateTime> FechaConsulta);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaLista", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/BusquedaDireccionEntregaListaR" +
+            "esponse")]
+        System.IAsyncResult BeginBusquedaDireccionEntregaLista(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Collections.Generic.List<System.Nullable<int>> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta, 
+                    System.AsyncCallback callback, 
+                    object asyncState);
+        
+        System.Collections.Generic.List<RTGMCore.DireccionEntrega> EndBusquedaDireccionEntregaLista(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidosResponse")]
         System.Collections.Generic.List<RTGMCore.Pedido> ConsultarPedidos(
@@ -6008,12 +6066,63 @@ namespace RTGMCore {
                     System.Nullable<int> IDPedido, 
                     string PedidoReferencia);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidos", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarPedidosResponse")]
+        System.IAsyncResult BeginConsultarPedidos(
+                    int IDEmpresa, 
+                    RTGMCore.Fuente FuenteDatos, 
+                    RTGMCore.TipoConsultaPedido TipoConsultaPedido, 
+                    bool Portatil, 
+                    string IDUsuario, 
+                    System.Nullable<int> IDDireccionEntrega, 
+                    System.Nullable<int> IDSucursal, 
+                    System.Nullable<System.DateTime> FechaCompromisoIncicio, 
+                    System.Nullable<System.DateTime> FechaCompromisoFin, 
+                    System.Nullable<System.DateTime> FechaSumistroInicio, 
+                    System.Nullable<System.DateTime> FechaSuministroFin, 
+                    System.Nullable<int> IDZona, 
+                    System.Nullable<int> IDRutaOrigen, 
+                    System.Nullable<int> IDRutaBoletin, 
+                    System.Nullable<int> IDRutaSuministro, 
+                    System.Nullable<int> IDEstatusPedido, 
+                    string EstatusPedidoDescripcion, 
+                    System.Nullable<int> IDEstatusBoletin, 
+                    string EstatusBoletin, 
+                    System.Nullable<int> IDEstatusMovil, 
+                    string EstatusMovilDescripcion, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<int> IDAutotanqueMovil, 
+                    string SerieRemision, 
+                    System.Nullable<int> FolioRemision, 
+                    string SerieFactura, 
+                    System.Nullable<int> FolioFactura, 
+                    System.Nullable<int> IDZonaLecturista, 
+                    System.Nullable<int> TipoPedido, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> AñoPed, 
+                    System.Nullable<int> IDPedido, 
+                    string PedidoReferencia, 
+                    System.AsyncCallback callback, 
+                    object asyncState);
+        
+        System.Collections.Generic.List<RTGMCore.Pedido> EndConsultarPedidos(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscales", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscalesResponse" +
             "")]
         RTGMCore.DatosFiscales ConsultarDatosFiscales(System.Nullable<int> IDEmpresa, System.Nullable<int> IDDatosFiscales);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscales", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ConsultarDatosFiscalesResponse" +
+            "")]
+        System.IAsyncResult BeginConsultarDatosFiscales(System.Nullable<int> IDEmpresa, System.Nullable<int> IDDatosFiscales, System.AsyncCallback callback, object asyncState);
+        
+        RTGMCore.DatosFiscales EndConsultarDatosFiscales(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedido", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedidoResponse")]
         System.Collections.Generic.List<RTGMCore.Pedido> ActualizarPedido(RTGMCore.Fuente FuenteDatos, int IDEmpresa, RTGMCore.TipoActualizacion TipoActualizacion, bool Portatil, System.Collections.Generic.List<RTGMCore.Pedido> Pedido, string IDUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedido", ReplyAction="http://tempuri.org/IGasMetropolitanoRuntimeService/ActualizarPedidoResponse")]
+        System.IAsyncResult BeginActualizarPedido(RTGMCore.Fuente FuenteDatos, int IDEmpresa, RTGMCore.TipoActualizacion TipoActualizacion, bool Portatil, System.Collections.Generic.List<RTGMCore.Pedido> Pedido, string IDUsuario, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<RTGMCore.Pedido> EndActualizarPedido(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -6022,7 +6131,132 @@ namespace RTGMCore {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class BusquedaDireccionEntregaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public BusquedaDireccionEntregaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<RTGMCore.DireccionEntrega> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<RTGMCore.DireccionEntrega>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class BusquedaDireccionEntregaListaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public BusquedaDireccionEntregaListaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<RTGMCore.DireccionEntrega> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<RTGMCore.DireccionEntrega>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultarPedidosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ConsultarPedidosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<RTGMCore.Pedido> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<RTGMCore.Pedido>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultarDatosFiscalesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ConsultarDatosFiscalesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public RTGMCore.DatosFiscales Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((RTGMCore.DatosFiscales)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ActualizarPedidoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ActualizarPedidoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<RTGMCore.Pedido> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<RTGMCore.Pedido>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GasMetropolitanoRuntimeServiceClient : System.ServiceModel.ClientBase<RTGMCore.IGasMetropolitanoRuntimeService>, RTGMCore.IGasMetropolitanoRuntimeService {
+        
+        private BeginOperationDelegate onBeginBusquedaDireccionEntregaDelegate;
+        
+        private EndOperationDelegate onEndBusquedaDireccionEntregaDelegate;
+        
+        private System.Threading.SendOrPostCallback onBusquedaDireccionEntregaCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginBusquedaDireccionEntregaListaDelegate;
+        
+        private EndOperationDelegate onEndBusquedaDireccionEntregaListaDelegate;
+        
+        private System.Threading.SendOrPostCallback onBusquedaDireccionEntregaListaCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginConsultarPedidosDelegate;
+        
+        private EndOperationDelegate onEndConsultarPedidosDelegate;
+        
+        private System.Threading.SendOrPostCallback onConsultarPedidosCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginConsultarDatosFiscalesDelegate;
+        
+        private EndOperationDelegate onEndConsultarDatosFiscalesDelegate;
+        
+        private System.Threading.SendOrPostCallback onConsultarDatosFiscalesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginActualizarPedidoDelegate;
+        
+        private EndOperationDelegate onEndActualizarPedidoDelegate;
+        
+        private System.Threading.SendOrPostCallback onActualizarPedidoCompletedDelegate;
         
         public GasMetropolitanoRuntimeServiceClient() {
         }
@@ -6042,6 +6276,16 @@ namespace RTGMCore {
         public GasMetropolitanoRuntimeServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
+        
+        public event System.EventHandler<BusquedaDireccionEntregaCompletedEventArgs> BusquedaDireccionEntregaCompleted;
+        
+        public event System.EventHandler<BusquedaDireccionEntregaListaCompletedEventArgs> BusquedaDireccionEntregaListaCompleted;
+        
+        public event System.EventHandler<ConsultarPedidosCompletedEventArgs> ConsultarPedidosCompleted;
+        
+        public event System.EventHandler<ConsultarDatosFiscalesCompletedEventArgs> ConsultarDatosFiscalesCompleted;
+        
+        public event System.EventHandler<ActualizarPedidoCompletedEventArgs> ActualizarPedidoCompleted;
         
         public System.Collections.Generic.List<RTGMCore.DireccionEntrega> BusquedaDireccionEntrega(
                     RTGMCore.Fuente FuenteDatos, 
@@ -6068,6 +6312,158 @@ namespace RTGMCore {
             return base.Channel.BusquedaDireccionEntrega(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginBusquedaDireccionEntrega(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Nullable<int> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta, 
+                    System.AsyncCallback callback, 
+                    object asyncState) {
+            return base.Channel.BeginBusquedaDireccionEntrega(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<RTGMCore.DireccionEntrega> EndBusquedaDireccionEntrega(System.IAsyncResult result) {
+            return base.Channel.EndBusquedaDireccionEntrega(result);
+        }
+        
+        private System.IAsyncResult OnBeginBusquedaDireccionEntrega(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            RTGMCore.Fuente FuenteDatos = ((RTGMCore.Fuente)(inValues[0]));
+            System.Nullable<int> IDCliente = ((System.Nullable<int>)(inValues[1]));
+            int IDEmpresa = ((int)(inValues[2]));
+            System.Nullable<int> Sucursal = ((System.Nullable<int>)(inValues[3]));
+            string Telefono = ((string)(inValues[4]));
+            string CalleNombre = ((string)(inValues[5]));
+            string ColoniaNombre = ((string)(inValues[6]));
+            string MunicipioNombre = ((string)(inValues[7]));
+            string Nombre = ((string)(inValues[8]));
+            System.Nullable<int> NumExterior = ((System.Nullable<int>)(inValues[9]));
+            string NumInterior = ((string)(inValues[10]));
+            System.Nullable<int> TipoServicio = ((System.Nullable<int>)(inValues[11]));
+            System.Nullable<int> Zona = ((System.Nullable<int>)(inValues[12]));
+            System.Nullable<int> Ruta = ((System.Nullable<int>)(inValues[13]));
+            System.Nullable<int> ZonaEconomica = ((System.Nullable<int>)(inValues[14]));
+            System.Nullable<int> ZonaLecturista = ((System.Nullable<int>)(inValues[15]));
+            bool Portatil = ((bool)(inValues[16]));
+            string Usuario = ((string)(inValues[17]));
+            string Referencia = ((string)(inValues[18]));
+            System.Nullable<int> IDAutotanque = ((System.Nullable<int>)(inValues[19]));
+            System.Nullable<System.DateTime> FechaConsulta = ((System.Nullable<System.DateTime>)(inValues[20]));
+            return this.BeginBusquedaDireccionEntrega(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta, callback, asyncState);
+        }
+        
+        private object[] OnEndBusquedaDireccionEntrega(System.IAsyncResult result) {
+            System.Collections.Generic.List<RTGMCore.DireccionEntrega> retVal = this.EndBusquedaDireccionEntrega(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnBusquedaDireccionEntregaCompleted(object state) {
+            if ((this.BusquedaDireccionEntregaCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.BusquedaDireccionEntregaCompleted(this, new BusquedaDireccionEntregaCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void BusquedaDireccionEntregaAsync(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Nullable<int> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta) {
+            this.BusquedaDireccionEntregaAsync(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta, null);
+        }
+        
+        public void BusquedaDireccionEntregaAsync(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Nullable<int> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta, 
+                    object userState) {
+            if ((this.onBeginBusquedaDireccionEntregaDelegate == null)) {
+                this.onBeginBusquedaDireccionEntregaDelegate = new BeginOperationDelegate(this.OnBeginBusquedaDireccionEntrega);
+            }
+            if ((this.onEndBusquedaDireccionEntregaDelegate == null)) {
+                this.onEndBusquedaDireccionEntregaDelegate = new EndOperationDelegate(this.OnEndBusquedaDireccionEntrega);
+            }
+            if ((this.onBusquedaDireccionEntregaCompletedDelegate == null)) {
+                this.onBusquedaDireccionEntregaCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnBusquedaDireccionEntregaCompleted);
+            }
+            base.InvokeAsync(this.onBeginBusquedaDireccionEntregaDelegate, new object[] {
+                        FuenteDatos,
+                        IDCliente,
+                        IDEmpresa,
+                        Sucursal,
+                        Telefono,
+                        CalleNombre,
+                        ColoniaNombre,
+                        MunicipioNombre,
+                        Nombre,
+                        NumExterior,
+                        NumInterior,
+                        TipoServicio,
+                        Zona,
+                        Ruta,
+                        ZonaEconomica,
+                        ZonaLecturista,
+                        Portatil,
+                        Usuario,
+                        Referencia,
+                        IDAutotanque,
+                        FechaConsulta}, this.onEndBusquedaDireccionEntregaDelegate, this.onBusquedaDireccionEntregaCompletedDelegate, userState);
+        }
+        
         public System.Collections.Generic.List<RTGMCore.DireccionEntrega> BusquedaDireccionEntregaLista(
                     RTGMCore.Fuente FuenteDatos, 
                     System.Collections.Generic.List<System.Nullable<int>> IDCliente, 
@@ -6091,6 +6487,158 @@ namespace RTGMCore {
                     System.Nullable<int> IDAutotanque, 
                     System.Nullable<System.DateTime> FechaConsulta) {
             return base.Channel.BusquedaDireccionEntregaLista(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginBusquedaDireccionEntregaLista(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Collections.Generic.List<System.Nullable<int>> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta, 
+                    System.AsyncCallback callback, 
+                    object asyncState) {
+            return base.Channel.BeginBusquedaDireccionEntregaLista(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<RTGMCore.DireccionEntrega> EndBusquedaDireccionEntregaLista(System.IAsyncResult result) {
+            return base.Channel.EndBusquedaDireccionEntregaLista(result);
+        }
+        
+        private System.IAsyncResult OnBeginBusquedaDireccionEntregaLista(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            RTGMCore.Fuente FuenteDatos = ((RTGMCore.Fuente)(inValues[0]));
+            System.Collections.Generic.List<System.Nullable<int>> IDCliente = ((System.Collections.Generic.List<System.Nullable<int>>)(inValues[1]));
+            int IDEmpresa = ((int)(inValues[2]));
+            System.Nullable<int> Sucursal = ((System.Nullable<int>)(inValues[3]));
+            string Telefono = ((string)(inValues[4]));
+            string CalleNombre = ((string)(inValues[5]));
+            string ColoniaNombre = ((string)(inValues[6]));
+            string MunicipioNombre = ((string)(inValues[7]));
+            string Nombre = ((string)(inValues[8]));
+            System.Nullable<int> NumExterior = ((System.Nullable<int>)(inValues[9]));
+            string NumInterior = ((string)(inValues[10]));
+            System.Nullable<int> TipoServicio = ((System.Nullable<int>)(inValues[11]));
+            System.Nullable<int> Zona = ((System.Nullable<int>)(inValues[12]));
+            System.Nullable<int> Ruta = ((System.Nullable<int>)(inValues[13]));
+            System.Nullable<int> ZonaEconomica = ((System.Nullable<int>)(inValues[14]));
+            System.Nullable<int> ZonaLecturista = ((System.Nullable<int>)(inValues[15]));
+            bool Portatil = ((bool)(inValues[16]));
+            string Usuario = ((string)(inValues[17]));
+            string Referencia = ((string)(inValues[18]));
+            System.Nullable<int> IDAutotanque = ((System.Nullable<int>)(inValues[19]));
+            System.Nullable<System.DateTime> FechaConsulta = ((System.Nullable<System.DateTime>)(inValues[20]));
+            return this.BeginBusquedaDireccionEntregaLista(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta, callback, asyncState);
+        }
+        
+        private object[] OnEndBusquedaDireccionEntregaLista(System.IAsyncResult result) {
+            System.Collections.Generic.List<RTGMCore.DireccionEntrega> retVal = this.EndBusquedaDireccionEntregaLista(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnBusquedaDireccionEntregaListaCompleted(object state) {
+            if ((this.BusquedaDireccionEntregaListaCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.BusquedaDireccionEntregaListaCompleted(this, new BusquedaDireccionEntregaListaCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void BusquedaDireccionEntregaListaAsync(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Collections.Generic.List<System.Nullable<int>> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta) {
+            this.BusquedaDireccionEntregaListaAsync(FuenteDatos, IDCliente, IDEmpresa, Sucursal, Telefono, CalleNombre, ColoniaNombre, MunicipioNombre, Nombre, NumExterior, NumInterior, TipoServicio, Zona, Ruta, ZonaEconomica, ZonaLecturista, Portatil, Usuario, Referencia, IDAutotanque, FechaConsulta, null);
+        }
+        
+        public void BusquedaDireccionEntregaListaAsync(
+                    RTGMCore.Fuente FuenteDatos, 
+                    System.Collections.Generic.List<System.Nullable<int>> IDCliente, 
+                    int IDEmpresa, 
+                    System.Nullable<int> Sucursal, 
+                    string Telefono, 
+                    string CalleNombre, 
+                    string ColoniaNombre, 
+                    string MunicipioNombre, 
+                    string Nombre, 
+                    System.Nullable<int> NumExterior, 
+                    string NumInterior, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> Zona, 
+                    System.Nullable<int> Ruta, 
+                    System.Nullable<int> ZonaEconomica, 
+                    System.Nullable<int> ZonaLecturista, 
+                    bool Portatil, 
+                    string Usuario, 
+                    string Referencia, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<System.DateTime> FechaConsulta, 
+                    object userState) {
+            if ((this.onBeginBusquedaDireccionEntregaListaDelegate == null)) {
+                this.onBeginBusquedaDireccionEntregaListaDelegate = new BeginOperationDelegate(this.OnBeginBusquedaDireccionEntregaLista);
+            }
+            if ((this.onEndBusquedaDireccionEntregaListaDelegate == null)) {
+                this.onEndBusquedaDireccionEntregaListaDelegate = new EndOperationDelegate(this.OnEndBusquedaDireccionEntregaLista);
+            }
+            if ((this.onBusquedaDireccionEntregaListaCompletedDelegate == null)) {
+                this.onBusquedaDireccionEntregaListaCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnBusquedaDireccionEntregaListaCompleted);
+            }
+            base.InvokeAsync(this.onBeginBusquedaDireccionEntregaListaDelegate, new object[] {
+                        FuenteDatos,
+                        IDCliente,
+                        IDEmpresa,
+                        Sucursal,
+                        Telefono,
+                        CalleNombre,
+                        ColoniaNombre,
+                        MunicipioNombre,
+                        Nombre,
+                        NumExterior,
+                        NumInterior,
+                        TipoServicio,
+                        Zona,
+                        Ruta,
+                        ZonaEconomica,
+                        ZonaLecturista,
+                        Portatil,
+                        Usuario,
+                        Referencia,
+                        IDAutotanque,
+                        FechaConsulta}, this.onEndBusquedaDireccionEntregaListaDelegate, this.onBusquedaDireccionEntregaListaCompletedDelegate, userState);
         }
         
         public System.Collections.Generic.List<RTGMCore.Pedido> ConsultarPedidos(
@@ -6130,12 +6678,328 @@ namespace RTGMCore {
             return base.Channel.ConsultarPedidos(IDEmpresa, FuenteDatos, TipoConsultaPedido, Portatil, IDUsuario, IDDireccionEntrega, IDSucursal, FechaCompromisoIncicio, FechaCompromisoFin, FechaSumistroInicio, FechaSuministroFin, IDZona, IDRutaOrigen, IDRutaBoletin, IDRutaSuministro, IDEstatusPedido, EstatusPedidoDescripcion, IDEstatusBoletin, EstatusBoletin, IDEstatusMovil, EstatusMovilDescripcion, IDAutotanque, IDAutotanqueMovil, SerieRemision, FolioRemision, SerieFactura, FolioFactura, IDZonaLecturista, TipoPedido, TipoServicio, AñoPed, IDPedido, PedidoReferencia);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultarPedidos(
+                    int IDEmpresa, 
+                    RTGMCore.Fuente FuenteDatos, 
+                    RTGMCore.TipoConsultaPedido TipoConsultaPedido, 
+                    bool Portatil, 
+                    string IDUsuario, 
+                    System.Nullable<int> IDDireccionEntrega, 
+                    System.Nullable<int> IDSucursal, 
+                    System.Nullable<System.DateTime> FechaCompromisoIncicio, 
+                    System.Nullable<System.DateTime> FechaCompromisoFin, 
+                    System.Nullable<System.DateTime> FechaSumistroInicio, 
+                    System.Nullable<System.DateTime> FechaSuministroFin, 
+                    System.Nullable<int> IDZona, 
+                    System.Nullable<int> IDRutaOrigen, 
+                    System.Nullable<int> IDRutaBoletin, 
+                    System.Nullable<int> IDRutaSuministro, 
+                    System.Nullable<int> IDEstatusPedido, 
+                    string EstatusPedidoDescripcion, 
+                    System.Nullable<int> IDEstatusBoletin, 
+                    string EstatusBoletin, 
+                    System.Nullable<int> IDEstatusMovil, 
+                    string EstatusMovilDescripcion, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<int> IDAutotanqueMovil, 
+                    string SerieRemision, 
+                    System.Nullable<int> FolioRemision, 
+                    string SerieFactura, 
+                    System.Nullable<int> FolioFactura, 
+                    System.Nullable<int> IDZonaLecturista, 
+                    System.Nullable<int> TipoPedido, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> AñoPed, 
+                    System.Nullable<int> IDPedido, 
+                    string PedidoReferencia, 
+                    System.AsyncCallback callback, 
+                    object asyncState) {
+            return base.Channel.BeginConsultarPedidos(IDEmpresa, FuenteDatos, TipoConsultaPedido, Portatil, IDUsuario, IDDireccionEntrega, IDSucursal, FechaCompromisoIncicio, FechaCompromisoFin, FechaSumistroInicio, FechaSuministroFin, IDZona, IDRutaOrigen, IDRutaBoletin, IDRutaSuministro, IDEstatusPedido, EstatusPedidoDescripcion, IDEstatusBoletin, EstatusBoletin, IDEstatusMovil, EstatusMovilDescripcion, IDAutotanque, IDAutotanqueMovil, SerieRemision, FolioRemision, SerieFactura, FolioFactura, IDZonaLecturista, TipoPedido, TipoServicio, AñoPed, IDPedido, PedidoReferencia, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<RTGMCore.Pedido> EndConsultarPedidos(System.IAsyncResult result) {
+            return base.Channel.EndConsultarPedidos(result);
+        }
+        
+        private System.IAsyncResult OnBeginConsultarPedidos(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int IDEmpresa = ((int)(inValues[0]));
+            RTGMCore.Fuente FuenteDatos = ((RTGMCore.Fuente)(inValues[1]));
+            RTGMCore.TipoConsultaPedido TipoConsultaPedido = ((RTGMCore.TipoConsultaPedido)(inValues[2]));
+            bool Portatil = ((bool)(inValues[3]));
+            string IDUsuario = ((string)(inValues[4]));
+            System.Nullable<int> IDDireccionEntrega = ((System.Nullable<int>)(inValues[5]));
+            System.Nullable<int> IDSucursal = ((System.Nullable<int>)(inValues[6]));
+            System.Nullable<System.DateTime> FechaCompromisoIncicio = ((System.Nullable<System.DateTime>)(inValues[7]));
+            System.Nullable<System.DateTime> FechaCompromisoFin = ((System.Nullable<System.DateTime>)(inValues[8]));
+            System.Nullable<System.DateTime> FechaSumistroInicio = ((System.Nullable<System.DateTime>)(inValues[9]));
+            System.Nullable<System.DateTime> FechaSuministroFin = ((System.Nullable<System.DateTime>)(inValues[10]));
+            System.Nullable<int> IDZona = ((System.Nullable<int>)(inValues[11]));
+            System.Nullable<int> IDRutaOrigen = ((System.Nullable<int>)(inValues[12]));
+            System.Nullable<int> IDRutaBoletin = ((System.Nullable<int>)(inValues[13]));
+            System.Nullable<int> IDRutaSuministro = ((System.Nullable<int>)(inValues[14]));
+            System.Nullable<int> IDEstatusPedido = ((System.Nullable<int>)(inValues[15]));
+            string EstatusPedidoDescripcion = ((string)(inValues[16]));
+            System.Nullable<int> IDEstatusBoletin = ((System.Nullable<int>)(inValues[17]));
+            string EstatusBoletin = ((string)(inValues[18]));
+            System.Nullable<int> IDEstatusMovil = ((System.Nullable<int>)(inValues[19]));
+            string EstatusMovilDescripcion = ((string)(inValues[20]));
+            System.Nullable<int> IDAutotanque = ((System.Nullable<int>)(inValues[21]));
+            System.Nullable<int> IDAutotanqueMovil = ((System.Nullable<int>)(inValues[22]));
+            string SerieRemision = ((string)(inValues[23]));
+            System.Nullable<int> FolioRemision = ((System.Nullable<int>)(inValues[24]));
+            string SerieFactura = ((string)(inValues[25]));
+            System.Nullable<int> FolioFactura = ((System.Nullable<int>)(inValues[26]));
+            System.Nullable<int> IDZonaLecturista = ((System.Nullable<int>)(inValues[27]));
+            System.Nullable<int> TipoPedido = ((System.Nullable<int>)(inValues[28]));
+            System.Nullable<int> TipoServicio = ((System.Nullable<int>)(inValues[29]));
+            System.Nullable<int> AñoPed = ((System.Nullable<int>)(inValues[30]));
+            System.Nullable<int> IDPedido = ((System.Nullable<int>)(inValues[31]));
+            string PedidoReferencia = ((string)(inValues[32]));
+            return this.BeginConsultarPedidos(IDEmpresa, FuenteDatos, TipoConsultaPedido, Portatil, IDUsuario, IDDireccionEntrega, IDSucursal, FechaCompromisoIncicio, FechaCompromisoFin, FechaSumistroInicio, FechaSuministroFin, IDZona, IDRutaOrigen, IDRutaBoletin, IDRutaSuministro, IDEstatusPedido, EstatusPedidoDescripcion, IDEstatusBoletin, EstatusBoletin, IDEstatusMovil, EstatusMovilDescripcion, IDAutotanque, IDAutotanqueMovil, SerieRemision, FolioRemision, SerieFactura, FolioFactura, IDZonaLecturista, TipoPedido, TipoServicio, AñoPed, IDPedido, PedidoReferencia, callback, asyncState);
+        }
+        
+        private object[] OnEndConsultarPedidos(System.IAsyncResult result) {
+            System.Collections.Generic.List<RTGMCore.Pedido> retVal = this.EndConsultarPedidos(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnConsultarPedidosCompleted(object state) {
+            if ((this.ConsultarPedidosCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ConsultarPedidosCompleted(this, new ConsultarPedidosCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ConsultarPedidosAsync(
+                    int IDEmpresa, 
+                    RTGMCore.Fuente FuenteDatos, 
+                    RTGMCore.TipoConsultaPedido TipoConsultaPedido, 
+                    bool Portatil, 
+                    string IDUsuario, 
+                    System.Nullable<int> IDDireccionEntrega, 
+                    System.Nullable<int> IDSucursal, 
+                    System.Nullable<System.DateTime> FechaCompromisoIncicio, 
+                    System.Nullable<System.DateTime> FechaCompromisoFin, 
+                    System.Nullable<System.DateTime> FechaSumistroInicio, 
+                    System.Nullable<System.DateTime> FechaSuministroFin, 
+                    System.Nullable<int> IDZona, 
+                    System.Nullable<int> IDRutaOrigen, 
+                    System.Nullable<int> IDRutaBoletin, 
+                    System.Nullable<int> IDRutaSuministro, 
+                    System.Nullable<int> IDEstatusPedido, 
+                    string EstatusPedidoDescripcion, 
+                    System.Nullable<int> IDEstatusBoletin, 
+                    string EstatusBoletin, 
+                    System.Nullable<int> IDEstatusMovil, 
+                    string EstatusMovilDescripcion, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<int> IDAutotanqueMovil, 
+                    string SerieRemision, 
+                    System.Nullable<int> FolioRemision, 
+                    string SerieFactura, 
+                    System.Nullable<int> FolioFactura, 
+                    System.Nullable<int> IDZonaLecturista, 
+                    System.Nullable<int> TipoPedido, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> AñoPed, 
+                    System.Nullable<int> IDPedido, 
+                    string PedidoReferencia) {
+            this.ConsultarPedidosAsync(IDEmpresa, FuenteDatos, TipoConsultaPedido, Portatil, IDUsuario, IDDireccionEntrega, IDSucursal, FechaCompromisoIncicio, FechaCompromisoFin, FechaSumistroInicio, FechaSuministroFin, IDZona, IDRutaOrigen, IDRutaBoletin, IDRutaSuministro, IDEstatusPedido, EstatusPedidoDescripcion, IDEstatusBoletin, EstatusBoletin, IDEstatusMovil, EstatusMovilDescripcion, IDAutotanque, IDAutotanqueMovil, SerieRemision, FolioRemision, SerieFactura, FolioFactura, IDZonaLecturista, TipoPedido, TipoServicio, AñoPed, IDPedido, PedidoReferencia, null);
+        }
+        
+        public void ConsultarPedidosAsync(
+                    int IDEmpresa, 
+                    RTGMCore.Fuente FuenteDatos, 
+                    RTGMCore.TipoConsultaPedido TipoConsultaPedido, 
+                    bool Portatil, 
+                    string IDUsuario, 
+                    System.Nullable<int> IDDireccionEntrega, 
+                    System.Nullable<int> IDSucursal, 
+                    System.Nullable<System.DateTime> FechaCompromisoIncicio, 
+                    System.Nullable<System.DateTime> FechaCompromisoFin, 
+                    System.Nullable<System.DateTime> FechaSumistroInicio, 
+                    System.Nullable<System.DateTime> FechaSuministroFin, 
+                    System.Nullable<int> IDZona, 
+                    System.Nullable<int> IDRutaOrigen, 
+                    System.Nullable<int> IDRutaBoletin, 
+                    System.Nullable<int> IDRutaSuministro, 
+                    System.Nullable<int> IDEstatusPedido, 
+                    string EstatusPedidoDescripcion, 
+                    System.Nullable<int> IDEstatusBoletin, 
+                    string EstatusBoletin, 
+                    System.Nullable<int> IDEstatusMovil, 
+                    string EstatusMovilDescripcion, 
+                    System.Nullable<int> IDAutotanque, 
+                    System.Nullable<int> IDAutotanqueMovil, 
+                    string SerieRemision, 
+                    System.Nullable<int> FolioRemision, 
+                    string SerieFactura, 
+                    System.Nullable<int> FolioFactura, 
+                    System.Nullable<int> IDZonaLecturista, 
+                    System.Nullable<int> TipoPedido, 
+                    System.Nullable<int> TipoServicio, 
+                    System.Nullable<int> AñoPed, 
+                    System.Nullable<int> IDPedido, 
+                    string PedidoReferencia, 
+                    object userState) {
+            if ((this.onBeginConsultarPedidosDelegate == null)) {
+                this.onBeginConsultarPedidosDelegate = new BeginOperationDelegate(this.OnBeginConsultarPedidos);
+            }
+            if ((this.onEndConsultarPedidosDelegate == null)) {
+                this.onEndConsultarPedidosDelegate = new EndOperationDelegate(this.OnEndConsultarPedidos);
+            }
+            if ((this.onConsultarPedidosCompletedDelegate == null)) {
+                this.onConsultarPedidosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultarPedidosCompleted);
+            }
+            base.InvokeAsync(this.onBeginConsultarPedidosDelegate, new object[] {
+                        IDEmpresa,
+                        FuenteDatos,
+                        TipoConsultaPedido,
+                        Portatil,
+                        IDUsuario,
+                        IDDireccionEntrega,
+                        IDSucursal,
+                        FechaCompromisoIncicio,
+                        FechaCompromisoFin,
+                        FechaSumistroInicio,
+                        FechaSuministroFin,
+                        IDZona,
+                        IDRutaOrigen,
+                        IDRutaBoletin,
+                        IDRutaSuministro,
+                        IDEstatusPedido,
+                        EstatusPedidoDescripcion,
+                        IDEstatusBoletin,
+                        EstatusBoletin,
+                        IDEstatusMovil,
+                        EstatusMovilDescripcion,
+                        IDAutotanque,
+                        IDAutotanqueMovil,
+                        SerieRemision,
+                        FolioRemision,
+                        SerieFactura,
+                        FolioFactura,
+                        IDZonaLecturista,
+                        TipoPedido,
+                        TipoServicio,
+                        AñoPed,
+                        IDPedido,
+                        PedidoReferencia}, this.onEndConsultarPedidosDelegate, this.onConsultarPedidosCompletedDelegate, userState);
+        }
+        
         public RTGMCore.DatosFiscales ConsultarDatosFiscales(System.Nullable<int> IDEmpresa, System.Nullable<int> IDDatosFiscales) {
             return base.Channel.ConsultarDatosFiscales(IDEmpresa, IDDatosFiscales);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginConsultarDatosFiscales(System.Nullable<int> IDEmpresa, System.Nullable<int> IDDatosFiscales, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginConsultarDatosFiscales(IDEmpresa, IDDatosFiscales, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public RTGMCore.DatosFiscales EndConsultarDatosFiscales(System.IAsyncResult result) {
+            return base.Channel.EndConsultarDatosFiscales(result);
+        }
+        
+        private System.IAsyncResult OnBeginConsultarDatosFiscales(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Nullable<int> IDEmpresa = ((System.Nullable<int>)(inValues[0]));
+            System.Nullable<int> IDDatosFiscales = ((System.Nullable<int>)(inValues[1]));
+            return this.BeginConsultarDatosFiscales(IDEmpresa, IDDatosFiscales, callback, asyncState);
+        }
+        
+        private object[] OnEndConsultarDatosFiscales(System.IAsyncResult result) {
+            RTGMCore.DatosFiscales retVal = this.EndConsultarDatosFiscales(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnConsultarDatosFiscalesCompleted(object state) {
+            if ((this.ConsultarDatosFiscalesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ConsultarDatosFiscalesCompleted(this, new ConsultarDatosFiscalesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ConsultarDatosFiscalesAsync(System.Nullable<int> IDEmpresa, System.Nullable<int> IDDatosFiscales) {
+            this.ConsultarDatosFiscalesAsync(IDEmpresa, IDDatosFiscales, null);
+        }
+        
+        public void ConsultarDatosFiscalesAsync(System.Nullable<int> IDEmpresa, System.Nullable<int> IDDatosFiscales, object userState) {
+            if ((this.onBeginConsultarDatosFiscalesDelegate == null)) {
+                this.onBeginConsultarDatosFiscalesDelegate = new BeginOperationDelegate(this.OnBeginConsultarDatosFiscales);
+            }
+            if ((this.onEndConsultarDatosFiscalesDelegate == null)) {
+                this.onEndConsultarDatosFiscalesDelegate = new EndOperationDelegate(this.OnEndConsultarDatosFiscales);
+            }
+            if ((this.onConsultarDatosFiscalesCompletedDelegate == null)) {
+                this.onConsultarDatosFiscalesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultarDatosFiscalesCompleted);
+            }
+            base.InvokeAsync(this.onBeginConsultarDatosFiscalesDelegate, new object[] {
+                        IDEmpresa,
+                        IDDatosFiscales}, this.onEndConsultarDatosFiscalesDelegate, this.onConsultarDatosFiscalesCompletedDelegate, userState);
+        }
+        
         public System.Collections.Generic.List<RTGMCore.Pedido> ActualizarPedido(RTGMCore.Fuente FuenteDatos, int IDEmpresa, RTGMCore.TipoActualizacion TipoActualizacion, bool Portatil, System.Collections.Generic.List<RTGMCore.Pedido> Pedido, string IDUsuario) {
             return base.Channel.ActualizarPedido(FuenteDatos, IDEmpresa, TipoActualizacion, Portatil, Pedido, IDUsuario);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginActualizarPedido(RTGMCore.Fuente FuenteDatos, int IDEmpresa, RTGMCore.TipoActualizacion TipoActualizacion, bool Portatil, System.Collections.Generic.List<RTGMCore.Pedido> Pedido, string IDUsuario, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginActualizarPedido(FuenteDatos, IDEmpresa, TipoActualizacion, Portatil, Pedido, IDUsuario, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<RTGMCore.Pedido> EndActualizarPedido(System.IAsyncResult result) {
+            return base.Channel.EndActualizarPedido(result);
+        }
+        
+        private System.IAsyncResult OnBeginActualizarPedido(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            RTGMCore.Fuente FuenteDatos = ((RTGMCore.Fuente)(inValues[0]));
+            int IDEmpresa = ((int)(inValues[1]));
+            RTGMCore.TipoActualizacion TipoActualizacion = ((RTGMCore.TipoActualizacion)(inValues[2]));
+            bool Portatil = ((bool)(inValues[3]));
+            System.Collections.Generic.List<RTGMCore.Pedido> Pedido = ((System.Collections.Generic.List<RTGMCore.Pedido>)(inValues[4]));
+            string IDUsuario = ((string)(inValues[5]));
+            return this.BeginActualizarPedido(FuenteDatos, IDEmpresa, TipoActualizacion, Portatil, Pedido, IDUsuario, callback, asyncState);
+        }
+        
+        private object[] OnEndActualizarPedido(System.IAsyncResult result) {
+            System.Collections.Generic.List<RTGMCore.Pedido> retVal = this.EndActualizarPedido(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnActualizarPedidoCompleted(object state) {
+            if ((this.ActualizarPedidoCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ActualizarPedidoCompleted(this, new ActualizarPedidoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ActualizarPedidoAsync(RTGMCore.Fuente FuenteDatos, int IDEmpresa, RTGMCore.TipoActualizacion TipoActualizacion, bool Portatil, System.Collections.Generic.List<RTGMCore.Pedido> Pedido, string IDUsuario) {
+            this.ActualizarPedidoAsync(FuenteDatos, IDEmpresa, TipoActualizacion, Portatil, Pedido, IDUsuario, null);
+        }
+        
+        public void ActualizarPedidoAsync(RTGMCore.Fuente FuenteDatos, int IDEmpresa, RTGMCore.TipoActualizacion TipoActualizacion, bool Portatil, System.Collections.Generic.List<RTGMCore.Pedido> Pedido, string IDUsuario, object userState) {
+            if ((this.onBeginActualizarPedidoDelegate == null)) {
+                this.onBeginActualizarPedidoDelegate = new BeginOperationDelegate(this.OnBeginActualizarPedido);
+            }
+            if ((this.onEndActualizarPedidoDelegate == null)) {
+                this.onEndActualizarPedidoDelegate = new EndOperationDelegate(this.OnEndActualizarPedido);
+            }
+            if ((this.onActualizarPedidoCompletedDelegate == null)) {
+                this.onActualizarPedidoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnActualizarPedidoCompleted);
+            }
+            base.InvokeAsync(this.onBeginActualizarPedidoDelegate, new object[] {
+                        FuenteDatos,
+                        IDEmpresa,
+                        TipoActualizacion,
+                        Portatil,
+                        Pedido,
+                        IDUsuario}, this.onEndActualizarPedidoDelegate, this.onActualizarPedidoCompletedDelegate, userState);
         }
     }
 }

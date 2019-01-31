@@ -27,7 +27,9 @@ namespace RTGMGateway
         private RTGMCore.Fuente _Fuente;
         private byte _Corporativo;
         private byte _Sucursal;
-
+        public List<RTGMCore.DireccionEntrega> listaDireccionEntrega;
+        public delegate void ListaEntrega(List<RTGMCore.DireccionEntrega> direccionEntregas);
+        public event ListaEntrega eListaEntregas;
         public RTGMGateway(byte Modulo, string CadenaConexion)
         {
             // Inicializar logger
@@ -58,7 +60,55 @@ namespace RTGMGateway
                     _Corporativo = 0;
                     _Sucursal = 0;
                 }
+                listaDireccionEntrega = new List<DireccionEntrega>();
+                log.Info("Instancia de RTGMGateway creada.");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                throw ex;
+            }
+        }
 
+        public RTGMGateway(byte Modulo, string CadenaConexion, string URLGateway)
+        {
+            // Inicializar logger
+            log4net.Config.XmlConfigurator.Configure();
+            log.Info("Creando nueva instancia de RTGMGateway...");
+
+            try
+            {
+                _BasicHttpBinding = new BasicHttpBinding();
+                _BasicHttpBinding.MaxBufferPoolSize = MAX_CAPACITY;
+                _BasicHttpBinding.MaxReceivedMessageSize = MAX_CAPACITY;
+                //_BasicHttpBinding.ReaderQuotas.
+                _BasicHttpBinding.MaxBufferSize = Int32.MaxValue;
+
+                DataRow drParametros;
+                _Modulo = Modulo;
+                _CadenaConexion = CadenaConexion;
+                DAO objDatos = new DAO(Modulo, CadenaConexion);
+                _Fuente = objDatos.consultarFuente(Modulo, CadenaConexion);
+                drParametros = objDatos.consultarCorporativoSucursal(Modulo, CadenaConexion);
+                if (drParametros != null)
+                {
+                    _Corporativo = Convert.ToByte(drParametros["Corporativo"]);
+                    _Sucursal = Convert.ToByte(drParametros["Sucursal"]);
+                }
+                else
+                {
+                    _Corporativo = 0;
+                    _Sucursal = 0;
+                }
+                listaDireccionEntrega = new List<DireccionEntrega>();
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _EndpointAddress = new EndpointAddress(URLGateway);
+
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+                serviceClient.BusquedaDireccionEntregaCompleted += new EventHandler<BusquedaDireccionEntregaCompletedEventArgs>(BusquedaDireccionEntregaCompleted);
                 log.Info("Instancia de RTGMGateway creada.");
             }
             catch (Exception ex)
@@ -211,6 +261,138 @@ namespace RTGMGateway
                 return null;
         }
 
+        /// <summary>
+        /// Método que recupera las direcciones de entrega de un cliente Async
+        /// </summary>
+        /// <param name="ParSolicitud">Objeto del tipo SolicitudGateway</param>
+        public void busquedaDireccionEntregaAsync(SolicitudGateway ParSolicitud)
+        {
+            try
+            {
+                log.Info("===   Inicia ejecución de método BusquedaDireccionEntregaLista   ===");
+
+                //_BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                //_BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                //_BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                //_BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                //_EndpointAddress = new EndpointAddress(this.URLServicio);
+
+                //serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+                //serviceClient.BusquedaDireccionEntregaCompleted += BusquedaDireccionEntregaCompleted;
+                RTGMCore.Fuente source;
+
+                source = _Fuente;              
+                log.Info("Inicia llamado a buscarDireccionEntrega" +
+                     ", Source: " + source + ", Cliente: " + ParSolicitud.IDCliente +
+                     ", Empresa: " + _Corporativo + ", Sucursal: " + "" +
+                     ", Telefono: " + ParSolicitud.Telefono + ", Calle: " + ParSolicitud.CalleNombre +
+                     ", Colonia: " + ParSolicitud.ColoniaNombre + ", Municipio: " + ParSolicitud.MunicipioNombre +
+                     ", Nombre: " + ParSolicitud.Nombre + ", Numero exterior: " + ParSolicitud.NumeroExterior +
+                     ", Numero interior: " + ParSolicitud.NumeroInterior + ", Tipo servicio: " + ParSolicitud.TipoServicio +
+                     ", Zona: " + ParSolicitud.Zona + ", Ruta: " + ParSolicitud.Ruta +
+                     ", Zona económina: " + ParSolicitud.ZonaEconomica + ", Zona lecturista: " + ParSolicitud.ZonaLecturista +
+                     ", Portatil: " + ParSolicitud.Portatil + ", Usuario: " + ParSolicitud.Usuario +
+                     ", Referencia: " + ParSolicitud.Referencia + ", Autotanque: " + ParSolicitud.IDAutotanque +
+                      ".");
+
+                serviceClient.BusquedaDireccionEntregaAsync(source, ParSolicitud.IDCliente,
+                                                                    _Corporativo, null,
+                                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                                                                    ParSolicitud.Zona, ParSolicitud.Ruta,
+                                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                                                                    ParSolicitud.FechaConsulta);
+                //serviceClient.BeginBusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
+                //                                                    _Corporativo, null,
+                //                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
+                //                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
+                //                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
+                //                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
+                //                                                    ParSolicitud.Zona, ParSolicitud.Ruta,
+                //                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
+                //                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
+                //                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
+                //                                                    ParSolicitud.FechaConsulta, new AsyncCallback(CallBack), serviceClient);
+            }
+            catch (TimeoutException toe)
+            {
+                var rtgmtoe = new RTGMTimeoutException("Se ha excedido el tiempo de espera de " +
+                    TimeSpan.FromSeconds(tiempoEspera).Seconds.ToString() + " segundos en la consulta al RTGM.");
+                log.Error(toe.Message);
+                log.Error(rtgmtoe.Mensaje);
+
+                throw rtgmtoe;
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            finally
+            {
+                //if (serviceClient.State == CommunicationState.Faulted)
+                //{
+                //    serviceClient.Abort();
+                //}
+                //else
+                //{
+                //    serviceClient.Close();
+                //}
+                log.Info("===   Finaliza ejecución de método buscarDireccionEntrega   ===");
+            }
+        }
+
+        private void CallBack(IAsyncResult ar)
+        {
+            List<DireccionEntrega> direccionEntregas = new List<DireccionEntrega>();
+            RTGMCore.GasMetropolitanoRuntimeServiceClient service = ar.AsyncState as GasMetropolitanoRuntimeServiceClient;
+            direccionEntregas = service.EndBusquedaDireccionEntrega(ar);
+            foreach (var item in direccionEntregas)
+            {
+                listaDireccionEntrega.Add(item);
+            }
+        }
+
+        public void OnListaEntregas(List<RTGMCore.DireccionEntrega> direccionEntregas)
+        {
+            if(direccionEntregas.Count>0)
+            {
+                eListaEntregas(direccionEntregas);
+            }
+        }
+
+        /// <summary>
+        /// Método que guarda el objetod direccion entrega en una lista 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BusquedaDireccionEntregaCompleted(object sender, RTGMCore.BusquedaDireccionEntregaCompletedEventArgs e)
+        {
+            List<RTGMCore.DireccionEntrega> direccionEntrega;
+            try
+            {
+                direccionEntrega = e.Result;
+                foreach (RTGMCore.DireccionEntrega dir in direccionEntrega)
+                {
+                    log.Info(Utilerias.SerializarAString(dir));
+                }
+                listaDireccionEntrega.Add(direccionEntrega[0]);
+                //if(0 == listaDireccionEntrega.Count)
+                //{
+                //    OnEvento(listaDireccionEntrega);
+                //}
+            }
+            catch (Exception ex)
+            {
+                DireccionEntrega direccionEntregaError = new DireccionEntrega();
+                direccionEntregaError.Message = ex.Message;
+                listaDireccionEntrega.Add(direccionEntregaError);
+                log.Error(ex.Message);
+            }
+        }
 
         /// <summary>
         /// Método que recupera las direcciones de entrega de una lista de cliente
@@ -219,7 +401,6 @@ namespace RTGMGateway
         public List<RTGMCore.DireccionEntrega>  busquedaDireccionEntregaLista(SolicitudGateway ParSolicitud)
         {
             List<RTGMCore.DireccionEntrega> direcciones = new List<RTGMCore.DireccionEntrega>();
-            string IdClientes = "";
             try
             {
                 log.Info("===   Inicia ejecución de método BusquedaDireccionEntregaLista   ===");
