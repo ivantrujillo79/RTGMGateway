@@ -10,7 +10,7 @@ using RTGMCore;
 
 namespace RTGMGateway
 {
-    public class RTGMGateway
+    public class RTGMGateway 
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public string URLServicio { get; set; }
@@ -30,6 +30,16 @@ namespace RTGMGateway
         public List<RTGMCore.DireccionEntrega> listaDireccionEntrega;
         public delegate void ListaEntrega(List<RTGMCore.DireccionEntrega> direccionEntregas);
         public event ListaEntrega eListaEntregas;
+        private List<int> listaCliente;
+
+        public List<int> ListaCliente
+        {
+            set
+            {
+                listaCliente = value;
+            }
+        }
+
         public RTGMGateway(byte Modulo, string CadenaConexion)
         {
             // Inicializar logger
@@ -106,8 +116,9 @@ namespace RTGMGateway
                 _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _EndpointAddress = new EndpointAddress(URLGateway);
-
+                
                 serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+                
                 serviceClient.BusquedaDireccionEntregaCompleted += new EventHandler<BusquedaDireccionEntregaCompletedEventArgs>(BusquedaDireccionEntregaCompleted);
                 log.Info("Instancia de RTGMGateway creada.");
             }
@@ -271,14 +282,14 @@ namespace RTGMGateway
             {
                 log.Info("===   Inicia ejecución de método BusquedaDireccionEntregaLista   ===");
 
-                //_BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                //_BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                //_BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                //_BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
-                //_EndpointAddress = new EndpointAddress(this.URLServicio);
+                _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.OpenTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
+                _EndpointAddress = new EndpointAddress(this.URLServicio);
 
-                //serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
-                //serviceClient.BusquedaDireccionEntregaCompleted += BusquedaDireccionEntregaCompleted;
+                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+                serviceClient.BusquedaDireccionEntregaCompleted += new EventHandler<BusquedaDireccionEntregaCompletedEventArgs>(BusquedaDireccionEntregaCompleted);
                 RTGMCore.Fuente source;
 
                 source = _Fuente;              
@@ -306,17 +317,6 @@ namespace RTGMGateway
                                                                     ParSolicitud.Portatil, ParSolicitud.Usuario,
                                                                     ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
                                                                     ParSolicitud.FechaConsulta);
-                //serviceClient.BeginBusquedaDireccionEntrega(source, ParSolicitud.IDCliente,
-                //                                                    _Corporativo, null,
-                //                                                    ParSolicitud.Telefono, ParSolicitud.CalleNombre,
-                //                                                    ParSolicitud.ColoniaNombre, ParSolicitud.MunicipioNombre,
-                //                                                    ParSolicitud.Nombre, ParSolicitud.NumeroExterior,
-                //                                                    ParSolicitud.NumeroInterior, ParSolicitud.TipoServicio,
-                //                                                    ParSolicitud.Zona, ParSolicitud.Ruta,
-                //                                                    ParSolicitud.ZonaEconomica, ParSolicitud.ZonaLecturista,
-                //                                                    ParSolicitud.Portatil, ParSolicitud.Usuario,
-                //                                                    ParSolicitud.Referencia, ParSolicitud.IDAutotanque,
-                //                                                    ParSolicitud.FechaConsulta, new AsyncCallback(CallBack), serviceClient);
             }
             catch (TimeoutException toe)
             {
@@ -333,29 +333,22 @@ namespace RTGMGateway
             }
             finally
             {
-                //if (serviceClient.State == CommunicationState.Faulted)
-                //{
-                //    serviceClient.Abort();
-                //}
-                //else
-                //{
-                //    serviceClient.Close();
-                //}
+                if (serviceClient.State == CommunicationState.Faulted)
+                {
+                    serviceClient.Abort();
+                }
+                else
+                {
+                    serviceClient.Close();
+                }
                 log.Info("===   Finaliza ejecución de método buscarDireccionEntrega   ===");
             }
         }
 
-        private void CallBack(IAsyncResult ar)
-        {
-            List<DireccionEntrega> direccionEntregas = new List<DireccionEntrega>();
-            RTGMCore.GasMetropolitanoRuntimeServiceClient service = ar.AsyncState as GasMetropolitanoRuntimeServiceClient;
-            direccionEntregas = service.EndBusquedaDireccionEntrega(ar);
-            foreach (var item in direccionEntregas)
-            {
-                listaDireccionEntrega.Add(item);
-            }
-        }
-
+        /// <summary>
+        /// Evento que se dispara cuando se completa la lista
+        /// </summary>
+        /// <param name="direccionEntregas"></param>
         public void OnListaEntregas(List<RTGMCore.DireccionEntrega> direccionEntregas)
         {
             if(direccionEntregas.Count>0)
@@ -375,22 +368,35 @@ namespace RTGMGateway
             try
             {
                 direccionEntrega = e.Result;
-                foreach (RTGMCore.DireccionEntrega dir in direccionEntrega)
+                if (direccionEntrega != null)
                 {
-                    log.Info(Utilerias.SerializarAString(dir));
+                    foreach (RTGMCore.DireccionEntrega dir in direccionEntrega)
+                    {
+                        log.Info(Utilerias.SerializarAString(dir));
+                    }
+                    listaDireccionEntrega.Add(direccionEntrega[0]);
                 }
-                listaDireccionEntrega.Add(direccionEntrega[0]);
-                //if(0 == listaDireccionEntrega.Count)
-                //{
-                //    OnEvento(listaDireccionEntrega);
-                //}
+                else
+                {
+                    DireccionEntrega direccionEntregaError = new DireccionEntrega();
+                    direccionEntregaError.Message = "No se encontró cliente";
+                    direccionEntregaError.IDDireccionEntrega = 0;
+                    listaDireccionEntrega.Add(direccionEntregaError);
+                }
             }
             catch (Exception ex)
             {
                 DireccionEntrega direccionEntregaError = new DireccionEntrega();
-                direccionEntregaError.Message = ex.Message;
+                direccionEntregaError.IDDireccionEntrega = -1;
                 listaDireccionEntrega.Add(direccionEntregaError);
                 log.Error(ex.Message);
+            }
+            finally
+            {
+                if (listaCliente.Count == listaDireccionEntrega.Count)
+                {
+                    OnListaEntregas(listaDireccionEntrega);
+                }
             }
         }
 
