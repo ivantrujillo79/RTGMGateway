@@ -364,32 +364,45 @@ namespace RTGMGateway
         /// <param name="e"></param>
         private void BusquedaDireccionEntregaCompleted(object sender, RTGMCore.BusquedaDireccionEntregaCompletedEventArgs e)
         {
-            List<RTGMCore.DireccionEntrega> direccionEntrega;
+            RTGMCore.DireccionEntrega direccionEntrega;
             try
             {
-                direccionEntrega = e.Result;
-                if (direccionEntrega != null)
+                if(e.Error == null)
                 {
-                    foreach (RTGMCore.DireccionEntrega dir in direccionEntrega)
+                    direccionEntrega = e.Result[0];
+                    if (direccionEntrega != null)
                     {
-                        log.Info(Utilerias.SerializarAString(dir));
+                        log.Info(Utilerias.SerializarAString(direccionEntrega));
+                        listaDireccionEntrega.Add(direccionEntrega);
                     }
-                    listaDireccionEntrega.Add(direccionEntrega[0]);
+                    else
+                    {
+                        DireccionEntrega direccionEntregaError = new DireccionEntrega();
+                        direccionEntregaError.Message = "No se encontró cliente";
+                        direccionEntregaError.IDDireccionEntrega = -2;
+                        listaDireccionEntrega.Add(direccionEntregaError);
+                    }
                 }
                 else
                 {
-                    DireccionEntrega direccionEntregaError = new DireccionEntrega();
-                    direccionEntregaError.Message = "No se encontró cliente";
-                    direccionEntregaError.IDDireccionEntrega = 0;
-                    listaDireccionEntrega.Add(direccionEntregaError);
+                    throw new ArgumentException(e.Error.Message);
                 }
             }
             catch (Exception ex)
             {
                 DireccionEntrega direccionEntregaError = new DireccionEntrega();
-                direccionEntregaError.IDDireccionEntrega = -1;
-                listaDireccionEntrega.Add(direccionEntregaError);
                 log.Error(ex.Message);
+                //if (e.Result == null)
+                //{
+                    direccionEntregaError.IDDireccionEntrega = -1;
+                    listaDireccionEntrega.Add(direccionEntregaError);
+                //}
+                //else
+                //{
+                //    direccionEntregaError = e.Result[0];
+                //    direccionEntregaError.Message = direccionEntregaError.Message + " " + ex.Message;
+                //    listaDireccionEntrega.Add(direccionEntregaError);
+                //}
             }
             finally
             {
