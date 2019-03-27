@@ -5,14 +5,17 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 //using System.Threading.Tasks;
+using System.ServiceModel.Description;
+using RTGMCore;
 
 namespace RTGMGateway
 {
 	public class RTGMPedidoGateway
     {
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-		private RTGMCore.GasMetropolitanoRuntimeServiceClient serviceClient;
-		private double longitudRepuesta;
+        //private RTGMCore.GasMetropolitanoRuntimeServiceClient serviceClient;
+        private IGasMetropolitanoRuntimeService serviceClient;
+        private double longitudRepuesta;
 		private int tiempoEspera = 180;
 		private bool guardarLog;
         private BasicHttpBinding _BasicHttpBinding;
@@ -227,10 +230,25 @@ namespace RTGMGateway
                 _BasicHttpBinding.SendTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _BasicHttpBinding.ReceiveTimeout = TimeSpan.FromSeconds(tiempoEspera);
                 _BasicHttpBinding.CloseTimeout = TimeSpan.FromSeconds(tiempoEspera);
-
                 _EndpointAddress = new EndpointAddress(this.URLServicio);
 
-                serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
+                ChannelFactory<IGasMetropolitanoRuntimeService> factory = new ChannelFactory<IGasMetropolitanoRuntimeService>(_BasicHttpBinding, _EndpointAddress);
+                foreach (OperationDescription op in factory.Endpoint.Contract.Operations)
+                {
+                    DataContractSerializerOperationBehavior dataContractBehavior =
+                                op.Behaviors.Find<DataContractSerializerOperationBehavior>()
+                                as DataContractSerializerOperationBehavior;
+                    if (dataContractBehavior != null)
+                    {
+                        dataContractBehavior.MaxItemsInObjectGraph = Int32.MaxValue;
+                    }
+                }
+                //IGasMetropolitanoRuntimeService 
+                    serviceClient = factory.CreateChannel();
+
+                
+
+                //serviceClient = new RTGMCore.GasMetropolitanoRuntimeServiceClient(_BasicHttpBinding, _EndpointAddress);
 
                 //RTGMCore.Fuente source;
 
@@ -272,14 +290,14 @@ namespace RTGMGateway
             }
             finally
             {
-                if (serviceClient.State == CommunicationState.Faulted)
+               /* if (serviceClient.State == CommunicationState.Faulted)
                 {
                     serviceClient.Abort();
                 }
                 else
                 {
                     serviceClient.Close();
-                }
+                }*/
 
                 log.Info("===   Finaliza ejecución de método buscarPedidos   ===");
             }
